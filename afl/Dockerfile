@@ -3,7 +3,7 @@ FROM ubuntu:16.04
 MAINTAINER zjuchenyuan
 LABEL description="Dockerfile for AFL"
 
-SHELL ["/bin/bash"]
+SHELL ["/bin/bash", "-c"]
 
 ENV DEBIAN_FRONTEND=noninteractive
 
