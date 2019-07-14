@@ -1,0 +1,27 @@
+start_time        : 1563118790
+last_update       : 1563118861
+fuzzer_pid        : 1
+cycles_done       : 0
+execs_done        : 53406
+execs_per_sec     : 762.63
+paths_total       : 31
+paths_favored     : 10
+paths_found       : 21
+paths_imported    : 0
+max_depth         : 2
+cur_path          : 0
+pending_favs      : 10
+pending_total     : 31
+variable_paths    : 0
+stability         : 100.00%
+bitmap_cvg        : 1.00%
+unique_crashes    : 0
+unique_hangs      : 0
+last_path         : 1563118820
+last_crash        : 0
+last_hang         : 0
+execs_since_crash : 53406
+exec_timeout      : 20
+afl_banner        : mp3gain
+afl_version       : 2.51b
+command_line      : afl-fuzz -p fast -i seed/mp3 -o output/aflfast -- /work/build/mp3gain/afl/justafl/mp3gain @@
