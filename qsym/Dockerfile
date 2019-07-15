@@ -7,4 +7,4 @@ WORKDIR /workdir/qsym
 RUN apt install -yq sudo && \
     sed -i '23,25 s/^/#/' setup.py && sed -i '4,7 s/^/#/' setup.sh && \
     ./setup.sh && pip install . 
-COPY --from=zjuchenyuan/afl /afl /
+COPY --from=zjuchenyuan/afl /afl /afl
