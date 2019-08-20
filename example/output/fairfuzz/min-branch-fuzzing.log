@@ -1,0 +1,40 @@
+Entering new queueing cycle
+while bitflipping, 0 of 0 tries hit branch -1
+while calibrating, 0 of 0 tries hit branch -1
+calib stage: 24 new coverage in 87312 total execs
+calib stage: 11 new branches in 87312 total execs
+In deterministic stage, 0 of 0 tries hit branch -1
+det stage: 55 new coverage in 323948 total execs
+det stage: 17 new branches in 323948 total execs
+In havoc stage, 0 of 0 tries hit branch -1
+havoc stage: 86 new coverage in 356964 total execs
+havoc stage: 19 new branches in 356964 total execs
+Trying to fuzz input output/fairfuzz/queue/id:000002,orig:25162: 
+which hit branch 64826 (hit by 3 inputs) 
+while bitflipping, 74620 of 74624 tries hit branch 64826
+while calibrating, 27984 of 27985 tries hit branch 64826
+calib stage: 8 new coverage in 102673 total execs
+calib stage: 1 new branches in 102673 total execs
+In deterministic stage, 195668 of 195843 tries hit branch 64826
+det stage: 10 new coverage in 298532 total execs
+det stage: 1 new branches in 298532 total execs
+In havoc stage, 28154 of 32768 tries hit branch 64826
+havoc stage: 29 new coverage in 331452 total execs
+havoc stage: 2 new branches in 331452 total execs
+Trying to fuzz input output/fairfuzz/queue/id:000123,src:000002,op:havoc,rep:128,+cov: 
+which hit branch 64455 (hit by 1 inputs) 
+while bitflipping, 69093 of 69120 tries hit branch 64455
+while calibrating, 25844 of 25921 tries hit branch 64455
+calib stage: 1 new coverage in 95049 total execs
+calib stage: 1 new branches in 95049 total execs
+In deterministic stage, 181794 of 181906 tries hit branch 64455
+det stage: 1 new coverage in 276955 total execs
+det stage: 1 new branches in 276955 total execs
+In havoc stage, 1020 of 1024 tries hit branch 64455
+havoc stage: 1 new coverage in 277979 total execs
+havoc stage: 1 new branches in 277979 total execs
+Trying to fuzz input output/fairfuzz/queue/id:000125,src:000123,op:flip1,pos:177,+cov: 
+which hit branch 42518 (hit by 1 inputs) 
+In havoc stage, 17126 of 17160 tries hit branch 42518
+havoc stage: 0 new coverage in 17160 total execs
+havoc stage: 0 new branches in 17160 total execs
