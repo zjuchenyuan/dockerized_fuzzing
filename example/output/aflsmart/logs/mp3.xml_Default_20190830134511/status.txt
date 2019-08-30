@@ -1,0 +1,12 @@
+Peach Fuzzing Run
+=================
+
+Date of run: 08/30/2019 13:45:11
+Peach Version: 0.0.0.0
+Seed: 35604
+Command line: -1 -inputFilePath=output/aflsmart/queue/id:000079,src:000001,op:havoc,rep:64,+cov -outputFilePath=output/aflsmart/chunks/id:000079,src:000001,op:havoc,rep:64,+cov.repaired /aflsmart/input_models/mp3.xml 
+Pit File: /aflsmart/input_models/mp3.xml
+. Test starting: Default
+
+. Iteration 1 : 08/30/2019 13:45:11
+. Test finished: Default
