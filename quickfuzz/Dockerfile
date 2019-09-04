@@ -1,6 +1,6 @@
 FROM zjuchenyuan/base
 
-ENV PATH=/root/.local/bin:$PATH
+ENV PATH=/QuickFuzz/.stack-work/install/x86_64-linux/lts-5.9/7.10.3/bin:/root/.local/bin:$PATH
 
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 575159689BEFB442 &&\
     echo 'deb http://download.fpcomplete.com/ubuntu xenial main'|sudo tee /etc/apt/sources.list.d/fpco.list &&\
