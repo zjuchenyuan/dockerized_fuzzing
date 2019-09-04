@@ -16,5 +16,5 @@ RUN git clone https://github.com/mothran/aflpin &&\
 
 RUN git clone https://github.com/mirrorer/afl &&\
     cd afl && git checkout df7c3f63d7 &&\
-    sed -i 's/FATAL("No instrumentation detected");/SAYF("This is as expected for AFLPIN");/' afl-fuzz.c &&\
+    sed -i 's/FATAL("No instrumentation detected");/SAYF("This is as expected for AFLPIN\n");/' afl-fuzz.c &&\
     make && make install
