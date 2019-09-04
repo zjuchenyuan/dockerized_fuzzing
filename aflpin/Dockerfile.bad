@@ -1,0 +1,25 @@
+FROM zjuchenyuan/base14
+
+RUN apt update && apt install -y gcc-4.4 g++-4.4 libdwarf-dev libelf-dev &&\
+    wget https://software.intel.com/sites/landingpage/pintool/downloads/pin-2.14-71313-gcc.4.4.7-linux.tar.gz &&\
+    tar xf pin-2.14-71313-gcc.4.4.7-linux.tar.gz
+
+ENV PIN_ROOT=/pin-2.14-71313-gcc.4.4.7-linux
+
+RUN git clone https://github.com/mothran/aflpin &&\
+    cd aflpin && mkdir obj-intel64 &&\
+    sed -i 's#-fdiagnostics-color=auto##' Config/makefile.unix.config &&\
+    sed -i 's#$(PIN_ROOT)/extras/xed2-$(TARGET)#$(PIN_ROOT)/extras/xed-$(TARGET)#' Config/makefile.unix.config &&\
+    sed -i 's#-std=c++11#-std=c++0x#'  Config/makefile.unix.config &&\
+    update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.4 10 &&\
+    update-alternatives --install /usr/bin/g++ g++ /usr/bin/gcc-4.4 10 &&\
+    make obj-intel64/aflpin.so
+
+RUN git clone https://github.com/mirrorer/afl &&\
+    cd afl &&\
+    sed -i 's/FATAL("No instrumentation detected");/SAYF("This is as expected for AFLPIN");/' afl-fuzz.c &&\
+    make && make install
+
+# this leads to this error, probably pin version not supported?
+#root@1bb4c0317035:/work# /pin-2.14-71313-gcc.4.4.7-linux/pin.sh -ifeellucky -t /aflpin/obj-intel64/aflpin.so -- ./build/mp3gain/normal/mp3gain seed/mp3/12566
+#E: Unable to load /aflpin/obj-intel64/aflpin.so: /aflpin/obj-intel64/aflpin.so: undefined symbol: _Z27FindColumnLineInfoByAddressSsmPjS_PPKc
