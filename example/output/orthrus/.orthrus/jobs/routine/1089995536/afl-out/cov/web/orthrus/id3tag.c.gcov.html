@@ -1,0 +1,1494 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - trace.lcov_info_final - orthrus/id3tag.c</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">orthrus</a> - id3tag.c<span style="font-size: 80%;"> (source / <a href="id3tag.c.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">trace.lcov_info_final</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">667</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-09-05 12:03:35</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">19</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : /**</a>
+<span class="lineNum">       2 </span>            :  * Handling of Replay Gain information in ID3v2 tags.
+<span class="lineNum">       3 </span>            :  *
+<span class="lineNum">       4 </span>            :  * We store Replay Gain data in RVA2 frames inside the ID3v2.4 tag.
+<span class="lineNum">       5 </span>            :  * Album and track gain are written as two separate frames.
+<span class="lineNum">       6 </span>            :  * We use the RVA2 frame as follows:
+<span class="lineNum">       7 </span>            :  *
+<span class="lineNum">       8 </span>            :  * Identification string:  either &quot;track&quot; or &quot;album&quot;;
+<span class="lineNum">       9 </span>            :  * Channel number:         always 1 (master volume);
+<span class="lineNum">      10 </span>            :  * Volume adjustment:      recommended gain relative to 89 dB standard;
+<span class="lineNum">      11 </span>            :  * Bits representing peak: always 16;
+<span class="lineNum">      12 </span>            :  * Peak volume:            max absolute sample value relative to full scale
+<span class="lineNum">      13 </span>            :  *
+<span class="lineNum">      14 </span>            :  * The meaning of the RVA2 peak volume field is not specified in ID3v2.4.
+<span class="lineNum">      15 </span>            :  * We follow the interpretation of QuodLibet/mutagen: Peak volume is the
+<span class="lineNum">      16 </span>            :  * maximum absolute sample value relative to full scale, before application
+<span class="lineNum">      17 </span>            :  * of the volume adjustment, stored as an unsigned fixed point value with
+<span class="lineNum">      18 </span>            :  * 1 integer bit and (peakbits-1) fractional bits.
+<span class="lineNum">      19 </span>            :  *
+<span class="lineNum">      20 </span>            :  * In addition to standard Replay Gain data, we also store mp3gain-specific
+<span class="lineNum">      21 </span>            :  * fields in TXXX frames. The description string of such frames starts with
+<span class="lineNum">      22 </span>            :  * &quot;MP3GAIN_&quot;. These frames are only needed when mp3gain updates the encoded
+<span class="lineNum">      23 </span>            :  * audio volume in MP3 stream (-r and -a command line options).
+<span class="lineNum">      24 </span>            :  *
+<span class="lineNum">      25 </span>            :  * We read tag data in ID3v2.2, ID3v2.3 or ID3v2.4 format, from either
+<span class="lineNum">      26 </span>            :  * the beginning or the end of the file. Extended tag headers are ignored
+<span class="lineNum">      27 </span>            :  * and removed; compressed frames are ignored but preserved. No workarounds
+<span class="lineNum">      28 </span>            :  * are attempted for invalid ID3v2.4 tags.
+<span class="lineNum">      29 </span>            :  *
+<span class="lineNum">      30 </span>            :  * When writing/updating tag data, we always write a single ID3v2.4 tag
+<span class="lineNum">      31 </span>            :  * at the beginning of the file, fully unsynchronized. If the original
+<span class="lineNum">      32 </span>            :  * file had an ID3v2.2 or ID3v2.3 tag, it is upgraded to ID3v2.4. If the
+<span class="lineNum">      33 </span>            :  * original file had only an appended tag, it is moved to the beginning of
+<span class="lineNum">      34 </span>            :  * the file. If the original file contained multiple tags, we update only
+<span class="lineNum">      35 </span>            :  * the first tag and ignore the rest (this is bad, but it's probably a
+<span class="lineNum">      36 </span>            :  * rare case). If the original file had only an ID3v1 tag, it is copied
+<span class="lineNum">      37 </span>            :  * to a new ID3v2 tag and the ID3v1 tag is left as it was.
+<span class="lineNum">      38 </span>            :  *
+<span class="lineNum">      39 </span>            :  * See: http://www.id3.org/id3v2.4.0-structure
+<span class="lineNum">      40 </span>            :  *      http://www.id3.org/id3v2.4.0-frames
+<span class="lineNum">      41 </span>            :  */
+<span class="lineNum">      42 </span>            : 
+<span class="lineNum">      43 </span>            : 
+<span class="lineNum">      44 </span>            : #include &lt;stdlib.h&gt;
+<span class="lineNum">      45 </span>            : #include &lt;stdio.h&gt;
+<span class="lineNum">      46 </span>            : #include &lt;stdarg.h&gt;
+<span class="lineNum">      47 </span>            : #include &lt;string.h&gt;
+<span class="lineNum">      48 </span>            : #include &quot;apetag.h&quot;
+<span class="lineNum">      49 </span>            : #include &quot;id3tag.h&quot;
+<span class="lineNum">      50 </span>            : #include &quot;mp3gain.h&quot;
+<span class="lineNum">      51 </span>            : 
+<span class="lineNum">      52 </span>            : 
+<span class="lineNum">      53 </span>            : #ifdef WIN32
+<span class="lineNum">      54 </span>            : #define strcasecmp(x,y) _stricmp(x,y)
+<span class="lineNum">      55 </span>            : #endif
+<span class="lineNum">      56 </span>            : 
+<span class="lineNum">      57 </span>            : #define DBG(x)
+<span class="lineNum">      58 </span>            : /*#define DBG(x) (printf x)*/
+<span class="lineNum">      59 </span>            : 
+<span class="lineNum">      60 </span>            : #define TAGFL_UNSYNC            (0x80)
+<span class="lineNum">      61 </span>            : #define TAGFL_EXTHDR            (0x40)
+<span class="lineNum">      62 </span>            : #define TAGFL_EXPR                      (0x20)
+<span class="lineNum">      63 </span>            : #define TAGFL_FOOTER            (0x10)
+<span class="lineNum">      64 </span>            : #define FRAMEFL_BAD                     (0x00f0)
+<span class="lineNum">      65 </span>            : #define FRAMEFL_TAGALTER        (0x4000)
+<span class="lineNum">      66 </span>            : #define FRAMEFL_GROUP           (0x0040)
+<span class="lineNum">      67 </span>            : #define FRAMEFL_COMPR           (0x0008)
+<span class="lineNum">      68 </span>            : #define FRAMEFL_CRYPT           (0x0004)
+<span class="lineNum">      69 </span>            : #define FRAMEFL_UNSYNC          (0x0002)
+<span class="lineNum">      70 </span>            : #define FRAMEFL_DLEN            (0x0001)
+<span class="lineNum">      71 </span>            : #define SYNCSAFE_INT_BAD        (0xffffffff)
+<span class="lineNum">      72 </span>            : 
+<span class="lineNum">      73 </span>            : 
+<span class="lineNum">      74 </span>            : struct ID3v2TagStruct {
+<span class="lineNum">      75 </span>            :         unsigned long offset;                           /* offset of tag in file */
+<span class="lineNum">      76 </span>            :         unsigned long length;                           /* total length of ID3v2 tag, including header/footer */
+<span class="lineNum">      77 </span>            :         unsigned int version;                           /* ID3v2 version */
+<span class="lineNum">      78 </span>            :         unsigned int flags;                                     /* tag flags */
+<span class="lineNum">      79 </span>            :         struct ID3v2FrameStruct *frames;        /* linked list of frames */
+<span class="lineNum">      80 </span>            : };
+<span class="lineNum">      81 </span>            : 
+<span class="lineNum">      82 </span>            : struct ID3v2FrameStruct {
+<span class="lineNum">      83 </span>            :         struct ID3v2FrameStruct *next;          /* pointer to next frame */
+<span class="lineNum">      84 </span>            :         char frameid[4];                                        /* frame ID */
+<span class="lineNum">      85 </span>            :         unsigned int flags;                                     /* frame flags */
+<span class="lineNum">      86 </span>            :         unsigned long len;                                      /* length of frame, excluding header */
+<span class="lineNum">      87 </span>            :         unsigned long hskip;                            /* length of flag parameters */
+<span class="lineNum">      88 </span>            :         unsigned char *data;                            /* pointer to data, excluding header */
+<span class="lineNum">      89 </span>            : };
+<span class="lineNum">      90 </span>            : 
+<span class="lineNum">      91 </span>            : struct upgrade_id3v22_struct {
+<span class="lineNum">      92 </span>            :         char id_v22[3];
+<span class="lineNum">      93 </span>            :         char id_new[4];
+<span class="lineNum">      94 </span>            : };
+<span class="lineNum">      95 </span>            : 
+<span class="lineNum">      96 </span>            : static const struct upgrade_id3v22_struct upgrade_id3v22_table[] = {
+<span class="lineNum">      97 </span>            :         { &quot;BUF&quot;, &quot;RBUF&quot; }, { &quot;CNT&quot;, &quot;PCNT&quot; },
+<span class="lineNum">      98 </span>            :         { &quot;COM&quot;, &quot;COMM&quot; }, { &quot;CRA&quot;, &quot;AENC&quot; },
+<span class="lineNum">      99 </span>            :         { &quot;ETC&quot;, &quot;ETCO&quot; }, { &quot;EQU&quot;, &quot;EQUA&quot; },
+<span class="lineNum">     100 </span>            :         { &quot;GEO&quot;, &quot;GEOB&quot; }, { &quot;IPL&quot;, &quot;IPLS&quot; },
+<span class="lineNum">     101 </span>            :         { &quot;LNK&quot;, &quot;LINK&quot; }, { &quot;MCI&quot;, &quot;MCDI&quot; },
+<span class="lineNum">     102 </span>            :         { &quot;MLL&quot;, &quot;MLLT&quot; }, { &quot;PIC&quot;, &quot;APIC&quot; /* NOTE: incompatible format */ },
+<span class="lineNum">     103 </span>            :         { &quot;POP&quot;, &quot;POPM&quot; }, { &quot;REV&quot;, &quot;RVRB&quot; },
+<span class="lineNum">     104 </span>            :         { &quot;RVA&quot;, &quot;RVAD&quot; }, { &quot;SLT&quot;, &quot;SYLT&quot; },
+<span class="lineNum">     105 </span>            :         { &quot;STC&quot;, &quot;SYTC&quot; }, { &quot;TAL&quot;, &quot;TALB&quot; },
+<span class="lineNum">     106 </span>            :         { &quot;TBP&quot;, &quot;TBPM&quot; }, { &quot;TCM&quot;, &quot;TCOM&quot; },
+<span class="lineNum">     107 </span>            :         { &quot;TCO&quot;, &quot;TCON&quot; }, { &quot;TCR&quot;, &quot;TCOP&quot; },
+<span class="lineNum">     108 </span>            :         { &quot;TDA&quot;, &quot;TDAT&quot; }, { &quot;TDY&quot;, &quot;TDLY&quot; },
+<span class="lineNum">     109 </span>            :         { &quot;TEN&quot;, &quot;TENC&quot; }, { &quot;TFT&quot;, &quot;TFLT&quot; },
+<span class="lineNum">     110 </span>            :         { &quot;TIM&quot;, &quot;TIME&quot; }, { &quot;TKE&quot;, &quot;TKEY&quot; },
+<span class="lineNum">     111 </span>            :         { &quot;TLA&quot;, &quot;TLAN&quot; }, { &quot;TLE&quot;, &quot;TLEN&quot; },
+<span class="lineNum">     112 </span>            :         { &quot;TMT&quot;, &quot;TMED&quot; }, { &quot;TOA&quot;, &quot;TOPE&quot; },
+<span class="lineNum">     113 </span>            :         { &quot;TOF&quot;, &quot;TOFN&quot; }, { &quot;TOL&quot;, &quot;TOLY&quot; },
+<span class="lineNum">     114 </span>            :         { &quot;TOR&quot;, &quot;TORY&quot; }, { &quot;TOT&quot;, &quot;TOAL&quot; },
+<span class="lineNum">     115 </span>            :         { &quot;TP1&quot;, &quot;TPE1&quot; }, { &quot;TP2&quot;, &quot;TPE2&quot; },
+<span class="lineNum">     116 </span>            :         { &quot;TP3&quot;, &quot;TPE3&quot; }, { &quot;TP4&quot;, &quot;TPE4&quot; },
+<span class="lineNum">     117 </span>            :         { &quot;TPA&quot;, &quot;TPOS&quot; }, { &quot;TPB&quot;, &quot;TPUB&quot; },
+<span class="lineNum">     118 </span>            :         { &quot;TRC&quot;, &quot;TSRC&quot; }, { &quot;TRD&quot;, &quot;TRDA&quot; },
+<span class="lineNum">     119 </span>            :         { &quot;TRK&quot;, &quot;TRCK&quot; }, { &quot;TSI&quot;, &quot;TSIZ&quot; },
+<span class="lineNum">     120 </span>            :         { &quot;TSS&quot;, &quot;TSSE&quot; }, { &quot;TT1&quot;, &quot;TIT1&quot; },
+<span class="lineNum">     121 </span>            :         { &quot;TT2&quot;, &quot;TIT2&quot; }, { &quot;TT3&quot;, &quot;TIT3&quot; },
+<span class="lineNum">     122 </span>            :         { &quot;TXT&quot;, &quot;TEXT&quot; }, { &quot;TXX&quot;, &quot;TXXX&quot; },
+<span class="lineNum">     123 </span>            :         { &quot;TYE&quot;, &quot;TYER&quot; }, { &quot;UFI&quot;, &quot;UFID&quot; },
+<span class="lineNum">     124 </span>            :         { &quot;ULT&quot;, &quot;USLT&quot; }, { &quot;WAF&quot;, &quot;WOAF&quot; },
+<span class="lineNum">     125 </span>            :         { &quot;WAR&quot;, &quot;WOAR&quot; }, { &quot;WAS&quot;, &quot;WOAS&quot; },
+<span class="lineNum">     126 </span>            :         { &quot;WCM&quot;, &quot;WCOM&quot; }, { &quot;WCP&quot;, &quot;WCOP&quot; },
+<span class="lineNum">     127 </span>            :         { &quot;WPB&quot;, &quot;WPUB&quot; }, { &quot;WXX&quot;, &quot;WXXX&quot; },
+<span class="lineNum">     128 </span>            :         { &quot;\0\0\0&quot;, &quot;\0\0\0\0&quot; } };
+<span class="lineNum">     129 </span>            : 
+<span class="lineNum">     130 </span>            : 
+<span class="lineNum">     131 </span>            : /**
+<a name="132"><span class="lineNum">     132 </span>            :  * Decode a 4-byte unsigned integer.</a>
+<span class="lineNum">     133 </span>            :  */
+<span class="lineNum">     134 </span><span class="lineNoCov">          0 : static __inline unsigned long id3_get_int32(const unsigned char *p)</span>
+<span class="lineNum">     135 </span>            : {
+<span class="lineNum">     136 </span><span class="lineNoCov">          0 :         return (p[0] &lt;&lt; 24) | (p[1] &lt;&lt; 16) | (p[2] &lt;&lt; 8) | p[3];</span>
+<span class="lineNum">     137 </span>            : }
+<span class="lineNum">     138 </span>            : 
+<span class="lineNum">     139 </span>            : 
+<span class="lineNum">     140 </span>            : /**
+<a name="141"><span class="lineNum">     141 </span>            :  * Decode a 4-byte unsigned synchsafe integer.</a>
+<span class="lineNum">     142 </span>            :  */
+<span class="lineNum">     143 </span><span class="lineNoCov">          0 : static __inline unsigned long id3_get_syncsafe_int(const unsigned char *p)</span>
+<span class="lineNum">     144 </span>            : {
+<span class="lineNum">     145 </span><span class="lineNoCov">          0 :         if ((p[0] | p[1] | p[2] | p[3]) &amp; 0x80)</span>
+<span class="lineNum">     146 </span><span class="lineNoCov">          0 :                 return SYNCSAFE_INT_BAD;</span>
+<span class="lineNum">     147 </span><span class="lineNoCov">          0 :         return (p[0] &lt;&lt; 21) | (p[1] &lt;&lt; 14) | (p[2] &lt;&lt; 7) | p[3];</span>
+<span class="lineNum">     148 </span>            : }
+<span class="lineNum">     149 </span>            : 
+<span class="lineNum">     150 </span>            : 
+<span class="lineNum">     151 </span>            : /**
+<a name="152"><span class="lineNum">     152 </span>            :  * Write a 4-byte unsigned synchsafe integer.</a>
+<span class="lineNum">     153 </span>            :  */
+<span class="lineNum">     154 </span><span class="lineNoCov">          0 : static __inline void id3_put_syncsafe_int(unsigned char *p, unsigned long i)</span>
+<span class="lineNum">     155 </span>            : {
+<span class="lineNum">     156 </span><span class="lineNoCov">          0 :         p[0] = (i &gt;&gt; 21) &amp; 0x7f;</span>
+<span class="lineNum">     157 </span><span class="lineNoCov">          0 :         p[1] = (i &gt;&gt; 14) &amp; 0x7f;</span>
+<span class="lineNum">     158 </span><span class="lineNoCov">          0 :         p[2] = (i &gt;&gt;  7) &amp; 0x7f;</span>
+<span class="lineNum">     159 </span><span class="lineNoCov">          0 :         p[3] = i &amp; 0x7f;</span>
+<span class="lineNum">     160 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     161 </span>            : 
+<span class="lineNum">     162 </span>            : 
+<span class="lineNum">     163 </span>            : /**
+<span class="lineNum">     164 </span>            :  * Decode srclen bytes of unsynchronized data from src into dest.
+<span class="lineNum">     165 </span>            :  * Return the number of bytes written into dest.
+<span class="lineNum">     166 </span>            :  *
+<span class="lineNum">     167 </span>            :  * The buffer pointed to by dest must be large enough to hold the decoded data.
+<span class="lineNum">     168 </span>            :  * The decoded data will never be longer than the unsynchronized data.
+<span class="lineNum">     169 </span>            :  * Decoding may be performed in-place by specifying dest equal to src.
+<span class="lineNum">     170 </span>            :  *
+<span class="lineNum">     171 </span>            :  * If dest == NULL, decoded data are not stored but the decoded length is
+<a name="172"><span class="lineNum">     172 </span>            :  * still computed and returned.</a>
+<span class="lineNum">     173 </span>            :  */
+<span class="lineNum">     174 </span><span class="lineNoCov">          0 : static unsigned long id3_get_unsync_data(unsigned char *dest, const unsigned char *src, unsigned long srclen)</span>
+<span class="lineNum">     175 </span>            : {
+<span class="lineNum">     176 </span><span class="lineNoCov">          0 :         unsigned long k = 0, i;</span>
+<span class="lineNum">     177 </span><span class="lineNoCov">          0 :         for (i = 0; i &lt; srclen; i++) {</span>
+<span class="lineNum">     178 </span><span class="lineNoCov">          0 :                 if (dest)</span>
+<span class="lineNum">     179 </span><span class="lineNoCov">          0 :                         dest[k] = src[i];</span>
+<span class="lineNum">     180 </span><span class="lineNoCov">          0 :                 k++;</span>
+<span class="lineNum">     181 </span><span class="lineNoCov">          0 :                 if (src[i] == 0xff &amp;&amp; i + 1 &lt; srclen &amp;&amp; src[i+1] == 0x00)</span>
+<span class="lineNum">     182 </span><span class="lineNoCov">          0 :                         i++;</span>
+<span class="lineNum">     183 </span>            :         }
+<span class="lineNum">     184 </span><span class="lineNoCov">          0 :         return k;</span>
+<span class="lineNum">     185 </span>            : }
+<span class="lineNum">     186 </span>            : 
+<span class="lineNum">     187 </span>            : 
+<span class="lineNum">     188 </span>            : /**
+<span class="lineNum">     189 </span>            :  * Encode srclen bytes of data from src, writing the unsynchronized version
+<span class="lineNum">     190 </span>            :  * into dest. Return the number of bytes written into dest.
+<span class="lineNum">     191 </span>            :  *
+<span class="lineNum">     192 </span>            :  * The buffer pointed to by dest must be large enough to hold the
+<span class="lineNum">     193 </span>            :  * unsynchronized data.
+<span class="lineNum">     194 </span>            :  *
+<span class="lineNum">     195 </span>            :  * If dest == NULL, unsynchronized data are not stored but the unsynchronized
+<span class="lineNum">     196 </span>            :  * length is still computed and returned.
+<span class="lineNum">     197 </span>            :  *
+<span class="lineNum">     198 </span>            :  * If the returned length is equal to srclen, unsynchronization is not
+<a name="199"><span class="lineNum">     199 </span>            :  * needed for these data.</a>
+<span class="lineNum">     200 </span>            :  */
+<span class="lineNum">     201 </span><span class="lineNoCov">          0 : static unsigned long id3_put_unsync_data(unsigned char *dest, const unsigned char *src, unsigned long srclen)</span>
+<span class="lineNum">     202 </span>            : {
+<span class="lineNum">     203 </span><span class="lineNoCov">          0 :         unsigned long k = 0, i;</span>
+<span class="lineNum">     204 </span><span class="lineNoCov">          0 :         for (i = 0; i &lt; srclen; i++) {</span>
+<span class="lineNum">     205 </span><span class="lineNoCov">          0 :                 if (dest)</span>
+<span class="lineNum">     206 </span><span class="lineNoCov">          0 :                         dest[k] = src[i];</span>
+<span class="lineNum">     207 </span><span class="lineNoCov">          0 :                 k++;</span>
+<span class="lineNum">     208 </span><span class="lineNoCov">          0 :                 if (src[i] == 0xff &amp;&amp; (i + 1 == srclen || src[i+1] == 0x00 || (src[i+1] &amp; 0xe0) == 0xe0)) {</span>
+<span class="lineNum">     209 </span><span class="lineNoCov">          0 :                         if (dest)</span>
+<span class="lineNum">     210 </span><span class="lineNoCov">          0 :                                 dest[k] = 0x00;</span>
+<span class="lineNum">     211 </span><span class="lineNoCov">          0 :                         k++;</span>
+<span class="lineNum">     212 </span>            :                 }
+<span class="lineNum">     213 </span>            :         }
+<span class="lineNum">     214 </span><span class="lineNoCov">          0 :         return k;</span>
+<span class="lineNum">     215 </span>            : }
+<span class="lineNum">     216 </span>            : 
+<span class="lineNum">     217 </span>            : 
+<span class="lineNum">     218 </span>            : /**
+<a name="219"><span class="lineNum">     219 </span>            :  * Release memory associated with a chain of frame structures.</a>
+<span class="lineNum">     220 </span>            :  */
+<span class="lineNum">     221 </span><span class="lineNoCov">          0 : static void id3_release_frames(struct ID3v2FrameStruct *frame)</span>
+<span class="lineNum">     222 </span>            : {
+<span class="lineNum">     223 </span>            :         struct ID3v2FrameStruct *tframe;
+<span class="lineNum">     224 </span><span class="lineNoCov">          0 :         while (frame) {</span>
+<span class="lineNum">     225 </span><span class="lineNoCov">          0 :                 tframe = frame;</span>
+<span class="lineNum">     226 </span><span class="lineNoCov">          0 :                 frame = frame-&gt;next;</span>
+<span class="lineNum">     227 </span><span class="lineNoCov">          0 :                 free(tframe-&gt;data);</span>
+<span class="lineNum">     228 </span><span class="lineNoCov">          0 :                 free(tframe);</span>
+<span class="lineNum">     229 </span>            :         }
+<span class="lineNum">     230 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">     231 </span>            : 
+<span class="lineNum">     232 </span>            : 
+<span class="lineNum">     233 </span>            : /**
+<span class="lineNum">     234 </span>            :  * Construct an ID3v2 frame according to specified format and parameters.
+<span class="lineNum">     235 </span>            :  *
+<span class="lineNum">     236 </span>            :  * The format string contains one character per field in the frame:
+<span class="lineNum">     237 </span>            :  *   's'  stores a string without null-termination (expects const char *)
+<span class="lineNum">     238 </span>            :  *   'b'  stores a single byte (expects unsigned int)
+<span class="lineNum">     239 </span>            :  *   'h'  stores a 16-bit big-endian integer (expects unsigned int)
+<span class="lineNum">     240 </span>            :  *
+<span class="lineNum">     241 </span>            :  * Return a newly allocated ID3v2FrameStruct, or NULL if the format
+<a name="242"><span class="lineNum">     242 </span>            :  * is invalid.</a>
+<span class="lineNum">     243 </span>            :  */
+<span class="lineNum">     244 </span><span class="lineNoCov">          0 : static struct ID3v2FrameStruct * id3_make_frame(const char *frameid, const char *format, ...)</span>
+<span class="lineNum">     245 </span>            : {
+<span class="lineNum">     246 </span>            :         va_list ap;
+<span class="lineNum">     247 </span>            :         struct ID3v2FrameStruct *frame;
+<span class="lineNum">     248 </span>            :         unsigned long j, k;
+<span class="lineNum">     249 </span>            :         unsigned int i;
+<span class="lineNum">     250 </span>            :         const char *p, *s;
+<span class="lineNum">     251 </span>            : 
+<span class="lineNum">     252 </span><span class="lineNoCov">          0 :         va_start(ap, format);</span>
+<span class="lineNum">     253 </span><span class="lineNoCov">          0 :         k = 0;</span>
+<span class="lineNum">     254 </span><span class="lineNoCov">          0 :         for (p = format; *p; p++) {</span>
+<span class="lineNum">     255 </span><span class="lineNoCov">          0 :                 switch (*p) {</span>
+<span class="lineNum">     256 </span>            :                         case 's':       /* string */
+<span class="lineNum">     257 </span><span class="lineNoCov">          0 :                                 s = va_arg(ap, const char *);</span>
+<span class="lineNum">     258 </span><span class="lineNoCov">          0 :                                 k += strlen(s);</span>
+<span class="lineNum">     259 </span><span class="lineNoCov">          0 :                                 break;</span>
+<span class="lineNum">     260 </span>            :                         case 'b':       /* byte */
+<span class="lineNum">     261 </span><span class="lineNoCov">          0 :                                 i = va_arg(ap, unsigned int);</span>
+<span class="lineNum">     262 </span><span class="lineNoCov">          0 :                                 k += 1;</span>
+<span class="lineNum">     263 </span><span class="lineNoCov">          0 :                                 break;</span>
+<span class="lineNum">     264 </span>            :                         case 'h':       /* 16-bit integer */
+<span class="lineNum">     265 </span><span class="lineNoCov">          0 :                                 i = va_arg(ap, unsigned int);</span>
+<span class="lineNum">     266 </span><span class="lineNoCov">          0 :                                 k += 2;</span>
+<span class="lineNum">     267 </span><span class="lineNoCov">          0 :                                 break;</span>
+<span class="lineNum">     268 </span>            :                         default:
+<span class="lineNum">     269 </span><span class="lineNoCov">          0 :                                 va_end(ap);</span>
+<span class="lineNum">     270 </span><span class="lineNoCov">          0 :                                 return NULL;</span>
+<span class="lineNum">     271 </span>            :                 }
+<span class="lineNum">     272 </span>            :         }
+<span class="lineNum">     273 </span><span class="lineNoCov">          0 :         va_end(ap);</span>
+<span class="lineNum">     274 </span>            : 
+<span class="lineNum">     275 </span><span class="lineNoCov">          0 :         frame = malloc(sizeof(struct ID3v2FrameStruct));</span>
+<span class="lineNum">     276 </span><span class="lineNoCov">          0 :         frame-&gt;next = NULL;</span>
+<span class="lineNum">     277 </span><span class="lineNoCov">          0 :         strncpy(frame-&gt;frameid, frameid, 4);</span>
+<span class="lineNum">     278 </span><span class="lineNoCov">          0 :         frame-&gt;flags = 0;</span>
+<span class="lineNum">     279 </span><span class="lineNoCov">          0 :         frame-&gt;len = k;</span>
+<span class="lineNum">     280 </span><span class="lineNoCov">          0 :         frame-&gt;hskip = 0;</span>
+<span class="lineNum">     281 </span><span class="lineNoCov">          0 :         frame-&gt;data = malloc(k);</span>
+<span class="lineNum">     282 </span>            : 
+<span class="lineNum">     283 </span><span class="lineNoCov">          0 :         va_start(ap, format);</span>
+<span class="lineNum">     284 </span><span class="lineNoCov">          0 :         k = 0;</span>
+<span class="lineNum">     285 </span><span class="lineNoCov">          0 :         for (p = format; *p; p++) {</span>
+<span class="lineNum">     286 </span><span class="lineNoCov">          0 :                 switch (*p) {</span>
+<span class="lineNum">     287 </span>            :                         case 's':       /* string */
+<span class="lineNum">     288 </span><span class="lineNoCov">          0 :                                 s = va_arg(ap, const char *);</span>
+<span class="lineNum">     289 </span><span class="lineNoCov">          0 :                                 j = strlen(s);</span>
+<span class="lineNum">     290 </span><span class="lineNoCov">          0 :                                 memcpy(frame-&gt;data + k, s, j);</span>
+<span class="lineNum">     291 </span><span class="lineNoCov">          0 :                                 k += j;</span>
+<span class="lineNum">     292 </span><span class="lineNoCov">          0 :                                 break;</span>
+<span class="lineNum">     293 </span>            :                         case 'b':       /* byte */
+<span class="lineNum">     294 </span><span class="lineNoCov">          0 :                                 i = va_arg(ap, unsigned int);</span>
+<span class="lineNum">     295 </span><span class="lineNoCov">          0 :                                 frame-&gt;data[k] = i;</span>
+<span class="lineNum">     296 </span><span class="lineNoCov">          0 :                                 k += 1;</span>
+<span class="lineNum">     297 </span><span class="lineNoCov">          0 :                                 break;</span>
+<span class="lineNum">     298 </span>            :                         case 'h':       /* 16-bit integer */
+<span class="lineNum">     299 </span><span class="lineNoCov">          0 :                                 i = va_arg(ap, unsigned int);</span>
+<span class="lineNum">     300 </span><span class="lineNoCov">          0 :                                 frame-&gt;data[k] = (i &gt;&gt; 8) &amp; 0xff;</span>
+<span class="lineNum">     301 </span><span class="lineNoCov">          0 :                                 frame-&gt;data[k+1] = i &amp; 0xff;</span>
+<span class="lineNum">     302 </span><span class="lineNoCov">          0 :                                 k += 2;</span>
+<span class="lineNum">     303 </span><span class="lineNoCov">          0 :                                 break;</span>
+<span class="lineNum">     304 </span>            :                         default:
+<span class="lineNum">     305 </span><span class="lineNoCov">          0 :                                 va_end(ap);</span>
+<span class="lineNum">     306 </span><span class="lineNoCov">          0 :                                 free(frame-&gt;data);</span>
+<span class="lineNum">     307 </span><span class="lineNoCov">          0 :                                 free(frame);</span>
+<span class="lineNum">     308 </span><span class="lineNoCov">          0 :                                 return NULL;</span>
+<span class="lineNum">     309 </span>            :                 }
+<span class="lineNum">     310 </span>            :         }
+<span class="lineNum">     311 </span><span class="lineNoCov">          0 :         va_end(ap);</span>
+<span class="lineNum">     312 </span>            : 
+<span class="lineNum">     313 </span><span class="lineNoCov">          0 :         return frame;</span>
+<span class="lineNum">     314 </span>            : }
+<span class="lineNum">     315 </span>            : 
+<span class="lineNum">     316 </span>            : 
+<span class="lineNum">     317 </span>            : /**
+<span class="lineNum">     318 </span>            :  * Decode an RVA2 frame (only track/album gain, only master channel).
+<span class="lineNum">     319 </span>            :  *
+<span class="lineNum">     320 </span>            :  * Store gain information in the info structure, unless info == NULL.
+<a name="321"><span class="lineNum">     321 </span>            :  * Return 1 if the frame is an RVA2 frame with track/album gain, 0 otherwise.</a>
+<span class="lineNum">     322 </span>            :  */
+<span class="lineNum">     323 </span><span class="lineNoCov">          0 : static int id3_decode_rva2_frame(const struct ID3v2FrameStruct *frame, struct MP3GainTagInfo *info)</span>
+<span class="lineNum">     324 </span>            : {
+<span class="lineNum">     325 </span>            :         unsigned long p;
+<span class="lineNum">     326 </span>            :         int is_album_gain, channel, peakbits;
+<span class="lineNum">     327 </span>            :         double gain, peak;
+<span class="lineNum">     328 </span>            : 
+<span class="lineNum">     329 </span>            :         /* Ignore non-RVA2 frames. */
+<span class="lineNum">     330 </span><span class="lineNoCov">          0 :         if (memcmp(frame-&gt;frameid, &quot;RVA2&quot;, 4) != 0)</span>
+<span class="lineNum">     331 </span><span class="lineNoCov">          0 :                 return 0;</span>
+<span class="lineNum">     332 </span>            : 
+<span class="lineNum">     333 </span><span class="lineNoCov">          0 :         p = frame-&gt;hskip;</span>
+<span class="lineNum">     334 </span>            : 
+<span class="lineNum">     335 </span>            :         /* Check identification string; we understand only &quot;track&quot; and &quot;album&quot;. */
+<span class="lineNum">     336 </span><span class="lineNoCov">          0 :         if (p + 6 &lt;= frame-&gt;len &amp;&amp;</span>
+<span class="lineNum">     337 </span><span class="lineNoCov">          0 :             (memcmp(frame-&gt;data + p, &quot;track\0&quot;, 6) == 0 ||</span>
+<span class="lineNum">     338 </span><span class="lineNoCov">          0 :              memcmp(frame-&gt;data + p, &quot;TRACK\0&quot;, 6) == 0)) {</span>
+<span class="lineNum">     339 </span><span class="lineNoCov">          0 :                 is_album_gain = 0; </span>
+<span class="lineNum">     340 </span><span class="lineNoCov">          0 :                 p += 6;</span>
+<span class="lineNum">     341 </span><span class="lineNoCov">          0 :         } else if (p + 6 &lt;= frame-&gt;len &amp;&amp;</span>
+<span class="lineNum">     342 </span><span class="lineNoCov">          0 :                    (memcmp(frame-&gt;data + p, &quot;album\0&quot;, 6) == 0 ||</span>
+<span class="lineNum">     343 </span><span class="lineNoCov">          0 :                     memcmp(frame-&gt;data + p, &quot;ALBUM\0&quot;, 6) == 0)) {</span>
+<span class="lineNum">     344 </span><span class="lineNoCov">          0 :                 is_album_gain = 1;</span>
+<span class="lineNum">     345 </span><span class="lineNoCov">          0 :                 p += 6;</span>
+<span class="lineNum">     346 </span>            :         } else {
+<span class="lineNum">     347 </span><span class="lineNoCov">          0 :                 return 0;</span>
+<span class="lineNum">     348 </span>            :         }
+<span class="lineNum">     349 </span>            : 
+<span class="lineNum">     350 </span>            :         /* Process per-channel data. */
+<span class="lineNum">     351 </span><span class="lineNoCov">          0 :         while (p + 4 &lt;= frame-&gt;len) {</span>
+<span class="lineNum">     352 </span>            :                 /*
+<span class="lineNum">     353 </span>            :                  *  p+0 :       channel number
+<span class="lineNum">     354 </span>            :                  *  p+1, p+2 :  16-bit signed BE int = adjustment * 512
+<span class="lineNum">     355 </span>            :                  *  p+3 :       nr of bits representing peak
+<span class="lineNum">     356 </span>            :                  *  p+4 ... :   unsigned multibyte BE int = peak sample * 2**(peakbits-1)
+<span class="lineNum">     357 </span>            :                  */
+<span class="lineNum">     358 </span><span class="lineNoCov">          0 :                 channel = frame-&gt;data[p];</span>
+<span class="lineNum">     359 </span><span class="lineNoCov">          0 :                 gain = (double)(((signed char)(frame-&gt;data[p+1]) &lt;&lt; 8) | frame-&gt;data[p+2]) / 512.0;</span>
+<span class="lineNum">     360 </span><span class="lineNoCov">          0 :                 peakbits = frame-&gt;data[p+3];</span>
+<span class="lineNum">     361 </span><span class="lineNoCov">          0 :                 if (p + 4 + (peakbits + 7) / 8 &gt; frame-&gt;len)</span>
+<span class="lineNum">     362 </span><span class="lineNoCov">          0 :                         break;</span>
+<span class="lineNum">     363 </span><span class="lineNoCov">          0 :                 peak = 0;</span>
+<span class="lineNum">     364 </span><span class="lineNoCov">          0 :                 if (peakbits &gt; 0)  peak += (double)(frame-&gt;data[p+4]);</span>
+<span class="lineNum">     365 </span><span class="lineNoCov">          0 :                 if (peakbits &gt; 8)  peak += (double)(frame-&gt;data[p+5]) / 256.0;</span>
+<span class="lineNum">     366 </span><span class="lineNoCov">          0 :                 if (peakbits &gt; 16) peak += (double)(frame-&gt;data[p+6]) / 65536.0;</span>
+<span class="lineNum">     367 </span><span class="lineNoCov">          0 :                 if (peakbits &gt; 0)  peak = peak / (double)(1 &lt;&lt; ((peakbits - 1) &amp; 7));</span>
+<span class="lineNum">     368 </span><span class="lineNoCov">          0 :                 p += 4 + (peakbits + 7) / 8;</span>
+<span class="lineNum">     369 </span><span class="lineNoCov">          0 :                 if (channel == 1) { /* channel == master volume channel */</span>
+<span class="lineNum">     370 </span><span class="lineNoCov">          0 :                         if (info) {</span>
+<span class="lineNum">     371 </span><span class="lineNoCov">          0 :                                 if (is_album_gain) {</span>
+<span class="lineNum">     372 </span><span class="lineNoCov">          0 :                                         info-&gt;haveAlbumGain = 1;</span>
+<span class="lineNum">     373 </span><span class="lineNoCov">          0 :                                         info-&gt;albumGain = gain;</span>
+<span class="lineNum">     374 </span><span class="lineNoCov">          0 :                                         info-&gt;haveAlbumPeak = (peakbits &gt; 0);</span>
+<span class="lineNum">     375 </span><span class="lineNoCov">          0 :                                         info-&gt;albumPeak = peak;</span>
+<span class="lineNum">     376 </span>            :                                 } else {
+<span class="lineNum">     377 </span><span class="lineNoCov">          0 :                                         info-&gt;haveTrackGain = 1;</span>
+<span class="lineNum">     378 </span><span class="lineNoCov">          0 :                                         info-&gt;trackGain = gain;</span>
+<span class="lineNum">     379 </span><span class="lineNoCov">          0 :                                         info-&gt;haveTrackPeak = (peakbits &gt; 0);</span>
+<span class="lineNum">     380 </span><span class="lineNoCov">          0 :                                         info-&gt;trackPeak = peak;</span>
+<span class="lineNum">     381 </span>            :                                 }
+<span class="lineNum">     382 </span>            :                         }
+<span class="lineNum">     383 </span>            :                 }
+<span class="lineNum">     384 </span>            :         }
+<span class="lineNum">     385 </span>            : 
+<span class="lineNum">     386 </span><span class="lineNoCov">          0 :         return 1;</span>
+<span class="lineNum">     387 </span>            : }
+<span class="lineNum">     388 </span>            : 
+<span class="lineNum">     389 </span>            : 
+<span class="lineNum">     390 </span>            : /**
+<span class="lineNum">     391 </span>            :  * Create an RVA2 frame, track or album gain, master channel.
+<a name="392"><span class="lineNum">     392 </span>            :  * Return a newly allocated ID3v2FrameStruct.</a>
+<span class="lineNum">     393 </span>            :  */
+<span class="lineNum">     394 </span><span class="lineNoCov">          0 : static struct ID3v2FrameStruct * id3_make_rva2_frame(int is_album_gain, double gain, int have_peak, double peak)</span>
+<span class="lineNum">     395 </span>            : {
+<span class="lineNum">     396 </span>            :         const char *ident;
+<span class="lineNum">     397 </span>            :         int g;
+<span class="lineNum">     398 </span>            :         unsigned int p;
+<span class="lineNum">     399 </span>            :         /*
+<span class="lineNum">     400 </span>            :          * identification:    string = &quot;track&quot; or &quot;album&quot;
+<span class="lineNum">     401 </span>            :          * channel type:      byte   = 1 (master volume)
+<span class="lineNum">     402 </span>            :          * volume adjustment: int16  = gain * 512
+<span class="lineNum">     403 </span>            :          * peak bits:         byte   = 16 (or 0 if no peak information)
+<span class="lineNum">     404 </span>            :          * peak:              uint16 = peak * 32768
+<span class="lineNum">     405 </span>            :          */
+<span class="lineNum">     406 </span><span class="lineNoCov">          0 :         ident = (is_album_gain) ? &quot;album&quot; : &quot;track&quot;;</span>
+<span class="lineNum">     407 </span><span class="lineNoCov">          0 :         g = (gain &lt;= -64) ? -32768 :</span>
+<span class="lineNum">     408 </span><span class="lineNoCov">          0 :             (gain &gt;=  64) ? 32767 :</span>
+<span class="lineNum">     409 </span><span class="lineNoCov">          0 :             (int)(gain * 512);</span>
+<span class="lineNum">     410 </span><span class="lineNoCov">          0 :         if (g &lt; -32768) g = -32768;</span>
+<span class="lineNum">     411 </span><span class="lineNoCov">          0 :         if (g &gt;  32767) g = 32767;</span>
+<span class="lineNum">     412 </span><span class="lineNoCov">          0 :         if (have_peak) {</span>
+<span class="lineNum">     413 </span><span class="lineNoCov">          0 :                 p = (peak &lt;= 0) ? 0 :</span>
+<span class="lineNum">     414 </span><span class="lineNoCov">          0 :                     (peak &gt;= 2) ? 65535 :</span>
+<span class="lineNum">     415 </span><span class="lineNoCov">          0 :                     (unsigned int)(peak * 32768);</span>
+<span class="lineNum">     416 </span><span class="lineNoCov">          0 :                 if (p &gt; 65535) p = 65535;</span>
+<span class="lineNum">     417 </span><span class="lineNoCov">          0 :                 return id3_make_frame(&quot;RVA2&quot;, &quot;sbbhbh&quot;, ident, 0, 1, g, 16, p);</span>
+<span class="lineNum">     418 </span>            :         } else {
+<span class="lineNum">     419 </span><span class="lineNoCov">          0 :                 return id3_make_frame(&quot;RVA2&quot;, &quot;sbbhb&quot;, ident, 0, 1, g, 0);</span>
+<span class="lineNum">     420 </span>            :         }
+<span class="lineNum">     421 </span>            : }
+<span class="lineNum">     422 </span>            : 
+<span class="lineNum">     423 </span>            : 
+<span class="lineNum">     424 </span>            : /**
+<span class="lineNum">     425 </span>            :  * Decode an APEv2/Vorbis-style TXXX frame, matching
+<span class="lineNum">     426 </span>            :  * /REPLAYGAIN_(ALBUM|TRACK)_(GAIN|PEAK)/ case-insensitively.
+<span class="lineNum">     427 </span>            :  *
+<span class="lineNum">     428 </span>            :  * Store gain information in the info structure, unless info == NULL.
+<a name="429"><span class="lineNum">     429 </span>            :  * Return 1 if the frame is one of our TXXX frames, 0 otherwise.</a>
+<span class="lineNum">     430 </span>            :  */
+<span class="lineNum">     431 </span><span class="lineNoCov">          0 : static int id3_decode_txxx_frame(const struct ID3v2FrameStruct *frame, struct MP3GainTagInfo *info)</span>
+<span class="lineNum">     432 </span>            : {
+<span class="lineNum">     433 </span>            :         unsigned long p, k;
+<span class="lineNum">     434 </span>            :         char buf[64];
+<span class="lineNum">     435 </span>            :         const char *value;
+<span class="lineNum">     436 </span>            : 
+<span class="lineNum">     437 </span>            :         /* Ignore non-TXXX frames. */
+<span class="lineNum">     438 </span><span class="lineNoCov">          0 :         if (memcmp(frame-&gt;frameid, &quot;TXXX&quot;, 4) != 0)</span>
+<span class="lineNum">     439 </span><span class="lineNoCov">          0 :                 return 0;</span>
+<span class="lineNum">     440 </span>            : 
+<span class="lineNum">     441 </span><span class="lineNoCov">          0 :         p = frame-&gt;hskip;</span>
+<span class="lineNum">     442 </span>            : 
+<span class="lineNum">     443 </span>            :         /* Check text encoding; we understand only 0 (ISO-8859-1) and 3 (UTF-8). */
+<span class="lineNum">     444 </span><span class="lineNoCov">          0 :         if (p &gt;= frame-&gt;len || (frame-&gt;data[p] != 0 &amp;&amp; frame-&gt;data[p] != 3))</span>
+<span class="lineNum">     445 </span><span class="lineNoCov">          0 :                 return 0;</span>
+<span class="lineNum">     446 </span><span class="lineNoCov">          0 :         p++;</span>
+<span class="lineNum">     447 </span>            : 
+<span class="lineNum">     448 </span>            :         /* Copy character data to temporary buffer. */
+<span class="lineNum">     449 </span><span class="lineNoCov">          0 :         k = (frame-&gt;len - p + 1 &lt; sizeof(buf)) ? (frame-&gt;len - p) : (sizeof(buf) - 2);</span>
+<span class="lineNum">     450 </span><span class="lineNoCov">          0 :         memcpy(buf, frame-&gt;data + p, k);</span>
+<span class="lineNum">     451 </span><span class="lineNoCov">          0 :         buf[k] = '\0';          /* terminate the value string */</span>
+<span class="lineNum">     452 </span><span class="lineNoCov">          0 :         buf[k+1] = '\0';        /* ensure buf contains two terminated strings, even for invalid frame data */</span>
+<span class="lineNum">     453 </span><span class="lineNoCov">          0 :         value = buf + strlen(buf) + 1;</span>
+<span class="lineNum">     454 </span>            : 
+<span class="lineNum">     455 </span>            :         /* Check identification string. */
+<span class="lineNum">     456 </span><span class="lineNoCov">          0 :         if (strcasecmp(buf, &quot;REPLAYGAIN_ALBUM_GAIN&quot;) == 0) {</span>
+<span class="lineNum">     457 </span><span class="lineNoCov">          0 :                 if (info) {</span>
+<span class="lineNum">     458 </span><span class="lineNoCov">          0 :                         info-&gt;haveAlbumGain = !0;</span>
+<span class="lineNum">     459 </span><span class="lineNoCov">          0 :                         info-&gt;albumGain = atof(value);</span>
+<span class="lineNum">     460 </span>            :                 }
+<span class="lineNum">     461 </span><span class="lineNoCov">          0 :                 return 1;</span>
+<span class="lineNum">     462 </span><span class="lineNoCov">          0 :         } else if (strcasecmp(buf, &quot;REPLAYGAIN_TRACK_GAIN&quot;) == 0) {</span>
+<span class="lineNum">     463 </span><span class="lineNoCov">          0 :                 if (info) {</span>
+<span class="lineNum">     464 </span><span class="lineNoCov">          0 :                         info-&gt;haveTrackGain = !0;</span>
+<span class="lineNum">     465 </span><span class="lineNoCov">          0 :                         info-&gt;trackGain = atof(value);</span>
+<span class="lineNum">     466 </span>            :                 }
+<span class="lineNum">     467 </span><span class="lineNoCov">          0 :                 return 1;</span>
+<span class="lineNum">     468 </span><span class="lineNoCov">          0 :         } else if (strcasecmp(buf, &quot;REPLAYGAIN_ALBUM_PEAK&quot;) == 0) {</span>
+<span class="lineNum">     469 </span><span class="lineNoCov">          0 :                 if (info) {</span>
+<span class="lineNum">     470 </span><span class="lineNoCov">          0 :                         info-&gt;haveAlbumPeak = !0;</span>
+<span class="lineNum">     471 </span><span class="lineNoCov">          0 :                         info-&gt;albumPeak = atof(value);</span>
+<span class="lineNum">     472 </span>            :                 }
+<span class="lineNum">     473 </span><span class="lineNoCov">          0 :                 return 1;</span>
+<span class="lineNum">     474 </span><span class="lineNoCov">          0 :         } else if (strcasecmp(buf, &quot;REPLAYGAIN_TRACK_PEAK&quot;) == 0) {</span>
+<span class="lineNum">     475 </span><span class="lineNoCov">          0 :                 if (info) {</span>
+<span class="lineNum">     476 </span><span class="lineNoCov">          0 :                         info-&gt;haveTrackPeak = !0;</span>
+<span class="lineNum">     477 </span><span class="lineNoCov">          0 :                         info-&gt;trackPeak = atof(value);</span>
+<span class="lineNum">     478 </span>            :                 }
+<span class="lineNum">     479 </span><span class="lineNoCov">          0 :                 return 1;</span>
+<span class="lineNum">     480 </span><span class="lineNoCov">          0 :         } else if (strcasecmp(buf, &quot;REPLAYGAIN_REFERENCE_LOUDNESS&quot;) == 0) {</span>
+<span class="lineNum">     481 </span>            :                 /* we derive no information from this at the moment, but
+<span class="lineNum">     482 </span>            :                  * we do want to delete this frame if re-writing */
+<span class="lineNum">     483 </span><span class="lineNoCov">          0 :                 return 1;</span>
+<span class="lineNum">     484 </span>            :         }
+<span class="lineNum">     485 </span>            : 
+<span class="lineNum">     486 </span><span class="lineNoCov">          0 :         return 0;</span>
+<span class="lineNum">     487 </span>            : }
+<span class="lineNum">     488 </span>            : 
+<span class="lineNum">     489 </span>            : /**
+<span class="lineNum">     490 </span>            :  * Decode a mp3gain-specific TXXX frame, either &quot;MP3GAIN_UNDO&quot; or
+<span class="lineNum">     491 </span>            :  * &quot;MP3GAIN_MINMAX&quot; or &quot;MP3GAIN_ALBUM_MINMAX&quot;.
+<span class="lineNum">     492 </span>            :  *
+<span class="lineNum">     493 </span>            :  * Store gain information in the info structure, unless info == NULL.
+<a name="494"><span class="lineNum">     494 </span>            :  * Return 1 if the frame is a mp3gain-specific TXXX frame, 0 otherwise.</a>
+<span class="lineNum">     495 </span>            :  */
+<span class="lineNum">     496 </span><span class="lineNoCov">          0 : static int id3_decode_mp3gain_frame(const struct ID3v2FrameStruct *frame, struct MP3GainTagInfo *info)</span>
+<span class="lineNum">     497 </span>            : {
+<span class="lineNum">     498 </span>            :         unsigned long p, k;
+<span class="lineNum">     499 </span>            :         char buf[64];
+<span class="lineNum">     500 </span>            :         int f1, f2;
+<span class="lineNum">     501 </span>            :         char f3;
+<span class="lineNum">     502 </span>            : 
+<span class="lineNum">     503 </span>            :         /* Ignore non-TXXX frames. */
+<span class="lineNum">     504 </span><span class="lineNoCov">          0 :         if (memcmp(frame-&gt;frameid, &quot;TXXX&quot;, 4) != 0)</span>
+<span class="lineNum">     505 </span><span class="lineNoCov">          0 :                 return 0;</span>
+<span class="lineNum">     506 </span>            : 
+<span class="lineNum">     507 </span><span class="lineNoCov">          0 :         p = frame-&gt;hskip;</span>
+<span class="lineNum">     508 </span>            : 
+<span class="lineNum">     509 </span>            :         /* Check text encoding; we understand only 0 (ISO-8859-1) and 3 (UTF-8). */
+<span class="lineNum">     510 </span><span class="lineNoCov">          0 :         if (p &gt;= frame-&gt;len || (frame-&gt;data[p] != 0 &amp;&amp; frame-&gt;data[p] != 3))</span>
+<span class="lineNum">     511 </span><span class="lineNoCov">          0 :                 return 0;</span>
+<span class="lineNum">     512 </span><span class="lineNoCov">          0 :         p++;</span>
+<span class="lineNum">     513 </span>            : 
+<span class="lineNum">     514 </span>            :         /* Copy character data to temporary buffer. */
+<span class="lineNum">     515 </span><span class="lineNoCov">          0 :         k = (frame-&gt;len - p + 1 &lt; sizeof(buf)) ? (frame-&gt;len - p) : (sizeof(buf) - 2);</span>
+<span class="lineNum">     516 </span><span class="lineNoCov">          0 :         memcpy(buf, frame-&gt;data + p, k);</span>
+<span class="lineNum">     517 </span><span class="lineNoCov">          0 :         buf[k] = '\0';          /* terminate the value string */</span>
+<span class="lineNum">     518 </span><span class="lineNoCov">          0 :         buf[k+1] = '\0';        /* ensure buf contains two terminated strings, even for invalid frame data */</span>
+<span class="lineNum">     519 </span>            : 
+<span class="lineNum">     520 </span>            :         /* Check identification string. */
+<span class="lineNum">     521 </span><span class="lineNoCov">          0 :         if (strcasecmp(buf, &quot;MP3GAIN_UNDO&quot;) == 0) {</span>
+<span class="lineNum">     522 </span>            :                 /* value should be something like &quot;+003,+003,W&quot; */
+<span class="lineNum">     523 </span><span class="lineNoCov">          0 :                 if (sscanf(buf + strlen(buf) + 1, &quot;%d,%d,%c&quot;, &amp;f1, &amp;f2, &amp;f3) == 3 &amp;&amp;</span>
+<span class="lineNum">     524 </span>            :                     info != NULL) {
+<span class="lineNum">     525 </span><span class="lineNoCov">          0 :                         info-&gt;haveUndo = 1;</span>
+<span class="lineNum">     526 </span><span class="lineNoCov">          0 :                         info-&gt;undoLeft = f1;</span>
+<span class="lineNum">     527 </span><span class="lineNoCov">          0 :                         info-&gt;undoRight = f2;</span>
+<span class="lineNum">     528 </span><span class="lineNoCov">          0 :                         info-&gt;undoWrap = (f3 == 'w' || f3 == 'W');</span>
+<span class="lineNum">     529 </span>            :                 }
+<span class="lineNum">     530 </span><span class="lineNoCov">          0 :                 return 1;</span>
+<span class="lineNum">     531 </span><span class="lineNoCov">          0 :         } else if (strcasecmp(buf, &quot;MP3GAIN_MINMAX&quot;) == 0) {</span>
+<span class="lineNum">     532 </span>            :                 /* value should be something like &quot;001,153&quot; */
+<span class="lineNum">     533 </span><span class="lineNoCov">          0 :                 if (sscanf(buf + strlen(buf) + 1, &quot;%d,%d&quot;, &amp;f1, &amp;f2) == 2 &amp;&amp;</span>
+<span class="lineNum">     534 </span>            :                     info != NULL) {
+<span class="lineNum">     535 </span><span class="lineNoCov">          0 :                         info-&gt;haveMinMaxGain = 1;</span>
+<span class="lineNum">     536 </span><span class="lineNoCov">          0 :                         info-&gt;minGain = f1;</span>
+<span class="lineNum">     537 </span><span class="lineNoCov">          0 :                         info-&gt;maxGain = f2;</span>
+<span class="lineNum">     538 </span>            :                 }
+<span class="lineNum">     539 </span><span class="lineNoCov">          0 :                 return 1;</span>
+<span class="lineNum">     540 </span><span class="lineNoCov">          0 :         } else if (strcasecmp(buf, &quot;MP3GAIN_ALBUM_MINMAX&quot;) == 0) {</span>
+<span class="lineNum">     541 </span>            :                 /* value should be something like &quot;001,153&quot; */
+<span class="lineNum">     542 </span><span class="lineNoCov">          0 :                 if (sscanf(buf + strlen(buf) + 1, &quot;%d,%d&quot;, &amp;f1, &amp;f2) == 2 &amp;&amp;</span>
+<span class="lineNum">     543 </span>            :                     info != NULL) {
+<span class="lineNum">     544 </span><span class="lineNoCov">          0 :                         info-&gt;haveAlbumMinMaxGain = 1;</span>
+<span class="lineNum">     545 </span><span class="lineNoCov">          0 :                         info-&gt;albumMinGain = f1;</span>
+<span class="lineNum">     546 </span><span class="lineNoCov">          0 :                         info-&gt;albumMaxGain = f2;</span>
+<span class="lineNum">     547 </span>            :                 }
+<span class="lineNum">     548 </span><span class="lineNoCov">          0 :                 return 1;</span>
+<span class="lineNum">     549 </span>            :         }
+<span class="lineNum">     550 </span>            : 
+<span class="lineNum">     551 </span><span class="lineNoCov">          0 :         return 0;</span>
+<span class="lineNum">     552 </span>            : }
+<span class="lineNum">     553 </span>            : 
+<span class="lineNum">     554 </span>            : 
+<span class="lineNum">     555 </span>            : /**
+<span class="lineNum">     556 </span>            :  * Read an ID3v2 tag from the current position in the MP3 file.
+<span class="lineNum">     557 </span>            :  *
+<span class="lineNum">     558 </span>            :  * Return 1 on success, 0 if no tag is found, or a negative error code
+<a name="559"><span class="lineNum">     559 </span>            :  * if the tag can not be processed.</a>
+<span class="lineNum">     560 </span>            :  */
+<span class="lineNum">     561 </span><span class="lineNoCov">          0 : static int id3_parse_v2_tag(FILE *f, struct ID3v2TagStruct *tag)</span>
+<span class="lineNum">     562 </span>            : {
+<span class="lineNum">     563 </span>            :         unsigned char buf[12], frameid[4];
+<span class="lineNum">     564 </span>            :         unsigned int fflags;
+<span class="lineNum">     565 </span>            :         unsigned long dlen, flen, fhskip, p, k;
+<span class="lineNum">     566 </span>            :         unsigned char *tagdata;
+<span class="lineNum">     567 </span>            :         struct ID3v2FrameStruct *frame, **pframe;
+<span class="lineNum">     568 </span>            : 
+<span class="lineNum">     569 </span>            :         /* Read header */
+<span class="lineNum">     570 </span><span class="lineNoCov">          0 :         tag-&gt;offset = ftell(f);</span>
+<span class="lineNum">     571 </span><span class="lineNoCov">          0 :         if (fread(buf, 1, 10, f) != 10)</span>
+<span class="lineNum">     572 </span><span class="lineNoCov">          0 :                 return 0;</span>
+<span class="lineNum">     573 </span>            : 
+<span class="lineNum">     574 </span>            :         /* Check 'ID3' signature. */
+<span class="lineNum">     575 </span><span class="lineNoCov">          0 :         if (memcmp(buf, &quot;ID3&quot;, 3) != 0)</span>
+<span class="lineNum">     576 </span><span class="lineNoCov">          0 :                 return 0;</span>
+<span class="lineNum">     577 </span>            : 
+<span class="lineNum">     578 </span>            :         DBG((&quot;DEBUG: Found ID3v2 tag at offset %lu\n&quot;, tag-&gt;offset));
+<span class="lineNum">     579 </span>            : 
+<span class="lineNum">     580 </span>            :         /* Check version and flags. */
+<span class="lineNum">     581 </span><span class="lineNoCov">          0 :         switch (buf[3]) {</span>
+<span class="lineNum">     582 </span>            :                 case 2: /* ID3v2.2 */
+<span class="lineNum">     583 </span><span class="lineNoCov">          0 :                         if (buf[5] &amp; (~(TAGFL_UNSYNC)))</span>
+<span class="lineNum">     584 </span><span class="lineNoCov">          0 :                                 return M3G_ERR_TAGFORMAT;       /* unknown flags */</span>
+<span class="lineNum">     585 </span><span class="lineNoCov">          0 :                         break;</span>
+<span class="lineNum">     586 </span>            :                 case 3: /* ID3v2.3 */
+<span class="lineNum">     587 </span><span class="lineNoCov">          0 :                         if (buf[5] &amp; (~(TAGFL_UNSYNC | TAGFL_EXTHDR | TAGFL_EXPR)))</span>
+<span class="lineNum">     588 </span><span class="lineNoCov">          0 :                                 return M3G_ERR_TAGFORMAT;       /* unknown flags */</span>
+<span class="lineNum">     589 </span><span class="lineNoCov">          0 :                         break;</span>
+<span class="lineNum">     590 </span>            :                 case 4: /* ID3v2.4 */
+<span class="lineNum">     591 </span><span class="lineNoCov">          0 :                         if (buf[5] &amp; (~(TAGFL_UNSYNC | TAGFL_EXTHDR | TAGFL_EXPR | TAGFL_FOOTER)))</span>
+<span class="lineNum">     592 </span><span class="lineNoCov">          0 :                                 return M3G_ERR_TAGFORMAT;       /* unknown flags */</span>
+<span class="lineNum">     593 </span><span class="lineNoCov">          0 :                         break;</span>
+<span class="lineNum">     594 </span>            :                 default:
+<span class="lineNum">     595 </span><span class="lineNoCov">          0 :                         return M3G_ERR_TAGFORMAT;               /* unknown version */</span>
+<span class="lineNum">     596 </span>            :         }
+<span class="lineNum">     597 </span>            : 
+<span class="lineNum">     598 </span>            :         /* Check length. */
+<span class="lineNum">     599 </span><span class="lineNoCov">          0 :         dlen = id3_get_syncsafe_int(buf + 6);</span>
+<span class="lineNum">     600 </span><span class="lineNoCov">          0 :         if (dlen == SYNCSAFE_INT_BAD)</span>
+<span class="lineNum">     601 </span><span class="lineNoCov">          0 :                 return M3G_ERR_TAGFORMAT;</span>
+<span class="lineNum">     602 </span>            : 
+<span class="lineNum">     603 </span>            :         /* Fill tag structure. */
+<span class="lineNum">     604 </span><span class="lineNoCov">          0 :         tag-&gt;flags   = buf[5];</span>
+<span class="lineNum">     605 </span><span class="lineNoCov">          0 :         tag-&gt;version = (buf[3] &lt;&lt; 8) | buf[4];</span>
+<span class="lineNum">     606 </span><span class="lineNoCov">          0 :         tag-&gt;length  = 10 + dlen + ((tag-&gt;flags &amp; TAGFL_FOOTER) ? 10 : 0);</span>
+<span class="lineNum">     607 </span><span class="lineNoCov">          0 :         tag-&gt;frames  = NULL;</span>
+<span class="lineNum">     608 </span>            : 
+<span class="lineNum">     609 </span>            :         DBG((&quot;  version=%04x length=%lu flags=%02x\n&quot;, tag-&gt;version, tag-&gt;length, tag-&gt;flags));
+<span class="lineNum">     610 </span>            : 
+<span class="lineNum">     611 </span>            :         /* Read rest of the tag. */
+<span class="lineNum">     612 </span><span class="lineNoCov">          0 :         tagdata = malloc(dlen);</span>
+<span class="lineNum">     613 </span><span class="lineNoCov">          0 :         if (fread(tagdata, 1, dlen, f) != dlen)</span>
+<span class="lineNum">     614 </span><span class="lineNoCov">          0 :                 goto badtag;</span>
+<span class="lineNum">     615 </span>            : 
+<span class="lineNum">     616 </span>            :         /* If this is an unsynced v2.2 or v2.3 tag, decode it now. */
+<span class="lineNum">     617 </span><span class="lineNoCov">          0 :         if ((tag-&gt;version &gt;&gt; 8) != 4 &amp;&amp; (tag-&gt;flags &amp; TAGFL_UNSYNC) != 0) {</span>
+<span class="lineNum">     618 </span><span class="lineNoCov">          0 :                 dlen = id3_get_unsync_data(tagdata, tagdata, dlen);</span>
+<span class="lineNum">     619 </span>            :         }
+<span class="lineNum">     620 </span>            : 
+<span class="lineNum">     621 </span>            :         /* Skip extended header. */
+<span class="lineNum">     622 </span><span class="lineNoCov">          0 :         p = 0;</span>
+<span class="lineNum">     623 </span><span class="lineNoCov">          0 :         if ((tag-&gt;flags &amp; TAGFL_EXTHDR) != 0) {</span>
+<span class="lineNum">     624 </span>            :                 DBG((&quot;  skip extended header\n&quot;));
+<span class="lineNum">     625 </span><span class="lineNoCov">          0 :                 if (p + 6 &gt; dlen)</span>
+<span class="lineNum">     626 </span><span class="lineNoCov">          0 :                         goto badtag;</span>
+<span class="lineNum">     627 </span><span class="lineNoCov">          0 :                 if ((tag-&gt;version &gt;&gt; 8) == 4) {</span>
+<span class="lineNum">     628 </span>            :                         /* Skip ID3v2.4 extended header */
+<span class="lineNum">     629 </span><span class="lineNoCov">          0 :                         k = id3_get_syncsafe_int(tagdata + p);</span>
+<span class="lineNum">     630 </span><span class="lineNoCov">          0 :                         if (k == SYNCSAFE_INT_BAD || k &gt; dlen)</span>
+<span class="lineNum">     631 </span>            :                                 goto badtag;
+<span class="lineNum">     632 </span><span class="lineNoCov">          0 :                         p += k;</span>
+<span class="lineNum">     633 </span><span class="lineNoCov">          0 :                 } else if ((tag-&gt;version &gt;&gt; 8) == 3) {</span>
+<span class="lineNum">     634 </span>            :                         /* Skip ID3v2.3 extended header */
+<span class="lineNum">     635 </span><span class="lineNoCov">          0 :                         k = id3_get_int32(tagdata + p);</span>
+<span class="lineNum">     636 </span><span class="lineNoCov">          0 :                         if (k &gt; dlen)</span>
+<span class="lineNum">     637 </span><span class="lineNoCov">          0 :                                 goto badtag;</span>
+<span class="lineNum">     638 </span><span class="lineNoCov">          0 :                         p += 4 + k;</span>
+<span class="lineNum">     639 </span>            :                 }
+<span class="lineNum">     640 </span>            :         }
+<span class="lineNum">     641 </span>            : 
+<span class="lineNum">     642 </span>            :         /* Scan frames. */
+<span class="lineNum">     643 </span><span class="lineNoCov">          0 :         pframe = &amp;(tag-&gt;frames);</span>
+<span class="lineNum">     644 </span><span class="lineNoCov">          0 :         while (p &lt; dlen &amp;&amp; tagdata[p] != '\0') {</span>
+<span class="lineNum">     645 </span>            : 
+<span class="lineNum">     646 </span>            :                 /* Decode frame header. */
+<span class="lineNum">     647 </span><span class="lineNoCov">          0 :                 switch (tag-&gt;version &gt;&gt; 8) {</span>
+<span class="lineNum">     648 </span>            : 
+<span class="lineNum">     649 </span>            :                         case 2: /* ID3v2.2 */
+<span class="lineNum">     650 </span><span class="lineNoCov">          0 :                                 if (p + 5 &gt; dlen)</span>
+<span class="lineNum">     651 </span><span class="lineNoCov">          0 :                                         goto badtag;</span>
+<span class="lineNum">     652 </span><span class="lineNoCov">          0 :                                 memset(frameid, 0, 4);</span>
+<span class="lineNum">     653 </span><span class="lineNoCov">          0 :                                 for (k = 0; upgrade_id3v22_table[k].id_new[0]; k++) {</span>
+<span class="lineNum">     654 </span><span class="lineNoCov">          0 :                                         if (memcmp(tagdata + p, upgrade_id3v22_table[k].id_v22, 3) == 0) {</span>
+<span class="lineNum">     655 </span><span class="lineNoCov">          0 :                                                 memcpy(frameid, upgrade_id3v22_table[k].id_new, 4);</span>
+<span class="lineNum">     656 </span><span class="lineNoCov">          0 :                                                 break;</span>
+<span class="lineNum">     657 </span>            :                                         }
+<span class="lineNum">     658 </span>            :                                 }
+<span class="lineNum">     659 </span><span class="lineNoCov">          0 :                                 flen   = (tagdata[p+3] &lt;&lt; 16) | (tagdata[p+4] &lt;&lt; 8) | tagdata[p+5];</span>
+<span class="lineNum">     660 </span><span class="lineNoCov">          0 :                                 fflags = 0;</span>
+<span class="lineNum">     661 </span><span class="lineNoCov">          0 :                                 if (flen &gt; dlen)</span>
+<span class="lineNum">     662 </span><span class="lineNoCov">          0 :                                         goto badtag;</span>
+<span class="lineNum">     663 </span><span class="lineNoCov">          0 :                                 p += 6;</span>
+<span class="lineNum">     664 </span><span class="lineNoCov">          0 :                                 break;</span>
+<span class="lineNum">     665 </span>            : 
+<span class="lineNum">     666 </span>            :                         case 3: /* ID3v2.3 */
+<span class="lineNum">     667 </span><span class="lineNoCov">          0 :                                 if (p + 10 &gt; dlen)</span>
+<span class="lineNum">     668 </span><span class="lineNoCov">          0 :                                         goto badtag;</span>
+<span class="lineNum">     669 </span><span class="lineNoCov">          0 :                                 memcpy(frameid, tagdata + p, 4);</span>
+<span class="lineNum">     670 </span><span class="lineNoCov">          0 :                                 flen   = id3_get_int32(tagdata + p + 4);</span>
+<span class="lineNum">     671 </span><span class="lineNoCov">          0 :                                 fflags = (tagdata[p+8] &lt;&lt; 7) &amp; 0xff00;</span>
+<span class="lineNum">     672 </span><span class="lineNoCov">          0 :                                 if (tagdata[p+9] &amp; 0x80) fflags |= FRAMEFL_COMPR | FRAMEFL_DLEN;</span>
+<span class="lineNum">     673 </span><span class="lineNoCov">          0 :                                 if (tagdata[p+9] &amp; 0x40) fflags |= FRAMEFL_CRYPT;</span>
+<span class="lineNum">     674 </span><span class="lineNoCov">          0 :                                 if (tagdata[p+9] &amp; 0x20) fflags |= FRAMEFL_GROUP;</span>
+<span class="lineNum">     675 </span><span class="lineNoCov">          0 :                                 if (tagdata[p+9] &amp; 0x1f) fflags |= FRAMEFL_BAD;</span>
+<span class="lineNum">     676 </span><span class="lineNoCov">          0 :                                 if (flen &gt; dlen)</span>
+<span class="lineNum">     677 </span><span class="lineNoCov">          0 :                                         goto badtag;</span>
+<span class="lineNum">     678 </span><span class="lineNoCov">          0 :                                 p += 10;</span>
+<span class="lineNum">     679 </span><span class="lineNoCov">          0 :                                 break;</span>
+<span class="lineNum">     680 </span>            : 
+<span class="lineNum">     681 </span>            :                         case 4: /* ID3v2.4 */
+<span class="lineNum">     682 </span><span class="lineNoCov">          0 :                                 if (p + 10 &gt; dlen)</span>
+<span class="lineNum">     683 </span><span class="lineNoCov">          0 :                                         goto badtag;</span>
+<span class="lineNum">     684 </span><span class="lineNoCov">          0 :                                 memcpy(frameid, tagdata + p, 4);</span>
+<span class="lineNum">     685 </span><span class="lineNoCov">          0 :                                 flen   = id3_get_syncsafe_int(tagdata + p + 4);</span>
+<span class="lineNum">     686 </span><span class="lineNoCov">          0 :                                 fflags = (tagdata[p+8] &lt;&lt; 8) | tagdata[p+9];</span>
+<span class="lineNum">     687 </span><span class="lineNoCov">          0 :                                 if (flen == SYNCSAFE_INT_BAD || flen &gt; dlen)</span>
+<span class="lineNum">     688 </span>            :                                         goto badtag;
+<span class="lineNum">     689 </span><span class="lineNoCov">          0 :                                 p += 10;</span>
+<span class="lineNum">     690 </span><span class="lineNoCov">          0 :                                 break;</span>
+<span class="lineNum">     691 </span>            : 
+<span class="lineNum">     692 </span>            :                         default: /* unreachable */
+<span class="lineNum">     693 </span><span class="lineNoCov">          0 :                                 goto badtag;</span>
+<span class="lineNum">     694 </span>            :                 }
+<span class="lineNum">     695 </span>            : 
+<span class="lineNum">     696 </span><span class="lineNoCov">          0 :                 if (p + flen &gt; dlen)</span>
+<span class="lineNum">     697 </span><span class="lineNoCov">          0 :                         goto badtag;</span>
+<span class="lineNum">     698 </span>            : 
+<span class="lineNum">     699 </span>            :                 DBG((&quot;  got frameid=%.4s fflags=%04x\n&quot;, frameid, fflags));
+<span class="lineNum">     700 </span>            : 
+<span class="lineNum">     701 </span>            :                 /* Drop unsupported frame types. */
+<span class="lineNum">     702 </span><span class="lineNoCov">          0 :                 if (frameid[0] == '\0' ||</span>
+<span class="lineNum">     703 </span><span class="lineNoCov">          0 :                     memcmp(frameid, &quot;RVAD&quot;, 4) == 0 ||</span>
+<span class="lineNum">     704 </span><span class="lineNoCov">          0 :                     memcmp(frameid, &quot;RGAD&quot;, 4) == 0 ||</span>
+<span class="lineNum">     705 </span><span class="lineNoCov">          0 :                     memcmp(frameid, &quot;XRVA&quot;, 4) == 0) {</span>
+<span class="lineNum">     706 </span>            :                         DBG((&quot;  drop unsupported frame\n&quot;));
+<span class="lineNum">     707 </span><span class="lineNoCov">          0 :                         p += flen;</span>
+<span class="lineNum">     708 </span><span class="lineNoCov">          0 :                         continue;</span>
+<span class="lineNum">     709 </span>            :                 }
+<span class="lineNum">     710 </span>            : 
+<span class="lineNum">     711 </span>            :                 /* Drop v2.3 frames which we can not upgrade. */
+<span class="lineNum">     712 </span><span class="lineNoCov">          0 :                 if ((tag-&gt;version &gt;&gt; 8) == 3 &amp;&amp; (fflags &amp; (FRAMEFL_CRYPT | FRAMEFL_BAD)) != 0) {</span>
+<span class="lineNum">     713 </span>            :                         DBG((&quot;  drop non-upgradable frame\n&quot;));
+<span class="lineNum">     714 </span><span class="lineNoCov">          0 :                         p += flen;</span>
+<span class="lineNum">     715 </span><span class="lineNoCov">          0 :                         continue;</span>
+<span class="lineNum">     716 </span>            :                 }
+<span class="lineNum">     717 </span>            : 
+<span class="lineNum">     718 </span>            :                 /* Drop frames that are too short for their flags. */
+<span class="lineNum">     719 </span><span class="lineNoCov">          0 :                 fhskip = (fflags &amp; FRAMEFL_GROUP ? 1 : 0) +</span>
+<span class="lineNum">     720 </span><span class="lineNoCov">          0 :                          (fflags &amp; FRAMEFL_CRYPT ? 1 : 0) +</span>
+<span class="lineNum">     721 </span><span class="lineNoCov">          0 :                          (fflags &amp; FRAMEFL_DLEN  ? 4 : 0);</span>
+<span class="lineNum">     722 </span><span class="lineNoCov">          0 :                 if (fhskip &gt; flen) {</span>
+<span class="lineNum">     723 </span>            :                         DBG((&quot;  drop short frame\n&quot;));
+<span class="lineNum">     724 </span><span class="lineNoCov">          0 :                         p += flen;</span>
+<span class="lineNum">     725 </span><span class="lineNoCov">          0 :                         continue;</span>
+<span class="lineNum">     726 </span>            :                 }
+<span class="lineNum">     727 </span>            : 
+<span class="lineNum">     728 </span>            :                 /* Drop v2.2 PIC frames that are too short. */
+<span class="lineNum">     729 </span><span class="lineNoCov">          0 :                 if ((tag-&gt;version &gt;&gt; 8) == 2 &amp;&amp; memcmp(frameid, &quot;APIC&quot;, 4) == 0 &amp;&amp; flen &lt; 6) {</span>
+<span class="lineNum">     730 </span>            :                         DBG((&quot;  drop short PIC frame\n&quot;));
+<span class="lineNum">     731 </span><span class="lineNoCov">          0 :                         p += flen;</span>
+<span class="lineNum">     732 </span><span class="lineNoCov">          0 :                         continue;</span>
+<span class="lineNum">     733 </span>            :                 }
+<span class="lineNum">     734 </span>            : 
+<span class="lineNum">     735 </span>            :                 /* Rename TYER (Year) to TDRC (Recording time) */
+<span class="lineNum">     736 </span><span class="lineNoCov">          0 :                 if (memcmp(frameid, &quot;TYER&quot;, 4) == 0)</span>
+<span class="lineNum">     737 </span><span class="lineNoCov">          0 :                         memcpy(frameid, &quot;TDRC&quot;, 4);</span>
+<span class="lineNum">     738 </span>            : 
+<span class="lineNum">     739 </span>            :                 /* Drop frames that want to be dropped on tag alteration. */
+<span class="lineNum">     740 </span><span class="lineNoCov">          0 :                 if (fflags &amp; FRAMEFL_TAGALTER) {</span>
+<span class="lineNum">     741 </span>            :                         DBG((&quot;  drop FRAMEFL_TAGALTER frame\n&quot;));
+<span class="lineNum">     742 </span><span class="lineNoCov">          0 :                         p += flen;</span>
+<span class="lineNum">     743 </span><span class="lineNoCov">          0 :                         continue;</span>
+<span class="lineNum">     744 </span>            :                 }
+<span class="lineNum">     745 </span>            : 
+<span class="lineNum">     746 </span>            :                 /* Allocate frame structure. */
+<span class="lineNum">     747 </span><span class="lineNoCov">          0 :                 frame = malloc(sizeof(struct ID3v2FrameStruct));</span>
+<span class="lineNum">     748 </span><span class="lineNoCov">          0 :                 frame-&gt;next = NULL;</span>
+<span class="lineNum">     749 </span><span class="lineNoCov">          0 :                 memcpy(frame-&gt;frameid, frameid, 4);</span>
+<span class="lineNum">     750 </span><span class="lineNoCov">          0 :                 frame-&gt;flags = fflags;</span>
+<span class="lineNum">     751 </span><span class="lineNoCov">          0 :                 frame-&gt;hskip = fhskip;</span>
+<span class="lineNum">     752 </span><span class="lineNoCov">          0 :                 *pframe = frame;</span>
+<span class="lineNum">     753 </span><span class="lineNoCov">          0 :                 pframe = &amp;(frame-&gt;next);</span>
+<span class="lineNum">     754 </span>            : 
+<span class="lineNum">     755 </span>            :                 /* Copy frame data. */
+<span class="lineNum">     756 </span><span class="lineNoCov">          0 :                 if ((tag-&gt;version &gt;&gt; 8) == 4 &amp;&amp; (fflags &amp; FRAMEFL_UNSYNC) != 0) {</span>
+<span class="lineNum">     757 </span>            :                         /* This frame is unsynchronized; decode it now. */
+<span class="lineNum">     758 </span><span class="lineNoCov">          0 :                         frame-&gt;data = malloc(flen);</span>
+<span class="lineNum">     759 </span><span class="lineNoCov">          0 :                         k = id3_get_unsync_data(frame-&gt;data, tagdata + p, flen);</span>
+<span class="lineNum">     760 </span><span class="lineNoCov">          0 :                         frame-&gt;len = k;</span>
+<span class="lineNum">     761 </span><span class="lineNoCov">          0 :                         p += flen;</span>
+<span class="lineNum">     762 </span><span class="lineNoCov">          0 :                 } else if ((tag-&gt;version &gt;&gt; 8) == 2 &amp;&amp; memcmp(frameid, &quot;APIC&quot;, 4) == 0) {</span>
+<span class="lineNum">     763 </span>            :                         /* APIC frame format differs from PIC frame format */
+<span class="lineNum">     764 </span><span class="lineNoCov">          0 :                         frame-&gt;data = malloc(flen + 12);</span>
+<span class="lineNum">     765 </span><span class="lineNoCov">          0 :                         frame-&gt;data[0] = tagdata[p];</span>
+<span class="lineNum">     766 </span><span class="lineNoCov">          0 :                         k = 1;</span>
+<span class="lineNum">     767 </span><span class="lineNoCov">          0 :                         if (memcmp(tagdata + p + 1, &quot;PNG&quot;, 3) == 0) {</span>
+<span class="lineNum">     768 </span><span class="lineNoCov">          0 :                                 memcpy(frame-&gt;data + k, &quot;image/png&quot;, strlen(&quot;image/png&quot;) + 1);</span>
+<span class="lineNum">     769 </span><span class="lineNoCov">          0 :                                 k += strlen(&quot;image/png&quot;) + 1;</span>
+<span class="lineNum">     770 </span><span class="lineNoCov">          0 :                         } else if (memcmp(tagdata + p + 1, &quot;JPG&quot;, 3) == 0) {</span>
+<span class="lineNum">     771 </span><span class="lineNoCov">          0 :                                 memcpy(frame-&gt;data + k, &quot;image/jpeg&quot;, strlen(&quot;image/jpeg&quot;) + 1);</span>
+<span class="lineNum">     772 </span><span class="lineNoCov">          0 :                                 k += strlen(&quot;image/jpeg&quot;) + 1;</span>
+<span class="lineNum">     773 </span><span class="lineNoCov">          0 :                         } else if (tagdata[p+1] == '\0') {</span>
+<span class="lineNum">     774 </span><span class="lineNoCov">          0 :                                 memcpy(frame-&gt;data + k, tagdata + p + 1, 3);</span>
+<span class="lineNum">     775 </span><span class="lineNoCov">          0 :                                 frame-&gt;data[k+3] = '\0';</span>
+<span class="lineNum">     776 </span><span class="lineNoCov">          0 :                                 k += 4;</span>
+<span class="lineNum">     777 </span>            :                         }
+<span class="lineNum">     778 </span><span class="lineNoCov">          0 :                         memcpy(frame-&gt;data + k, tagdata + p + 4, flen - 4);</span>
+<span class="lineNum">     779 </span><span class="lineNoCov">          0 :                         frame-&gt;len = k + flen - 4;</span>
+<span class="lineNum">     780 </span><span class="lineNoCov">          0 :                         p += flen;</span>
+<span class="lineNum">     781 </span>            :                 } else {
+<span class="lineNum">     782 </span>            :                         /* Normal case, just copy the data. */
+<span class="lineNum">     783 </span><span class="lineNoCov">          0 :                         frame-&gt;data = malloc(flen);</span>
+<span class="lineNum">     784 </span><span class="lineNoCov">          0 :                         memcpy(frame-&gt;data, tagdata + p, flen);</span>
+<span class="lineNum">     785 </span><span class="lineNoCov">          0 :                         frame-&gt;len = flen;</span>
+<span class="lineNum">     786 </span><span class="lineNoCov">          0 :                         p += flen;</span>
+<span class="lineNum">     787 </span>            :                 }
+<span class="lineNum">     788 </span>            : 
+<span class="lineNum">     789 </span>            :                 /* Reorder flag parameters of upgraded v2.3 frames. */
+<span class="lineNum">     790 </span><span class="lineNoCov">          0 :                 if ((tag-&gt;version &gt;&gt; 8) == 3 &amp;&amp; (fflags &amp; FRAMEFL_DLEN) != 0) {</span>
+<span class="lineNum">     791 </span><span class="lineNoCov">          0 :                         k = id3_get_int32(frame-&gt;data);</span>
+<span class="lineNum">     792 </span><span class="lineNoCov">          0 :                         if (fflags &amp; FRAMEFL_GROUP) {</span>
+<span class="lineNum">     793 </span><span class="lineNoCov">          0 :                                 frame-&gt;data[0] = frame-&gt;data[4];</span>
+<span class="lineNum">     794 </span><span class="lineNoCov">          0 :                                 id3_put_syncsafe_int(frame-&gt;data + 1, k);</span>
+<span class="lineNum">     795 </span>            :                         } else {
+<span class="lineNum">     796 </span><span class="lineNoCov">          0 :                                 id3_put_syncsafe_int(frame-&gt;data, k);</span>
+<span class="lineNum">     797 </span>            :                         }
+<span class="lineNum">     798 </span>            :                 }
+<span class="lineNum">     799 </span>            : 
+<span class="lineNum">     800 </span>            :         }
+<span class="lineNum">     801 </span>            : 
+<span class="lineNum">     802 </span><span class="lineNoCov">          0 :         if (p &gt; dlen)</span>
+<span class="lineNum">     803 </span><span class="lineNoCov">          0 :                 goto badtag;</span>
+<span class="lineNum">     804 </span>            : 
+<span class="lineNum">     805 </span><span class="lineNoCov">          0 :         free(tagdata);</span>
+<span class="lineNum">     806 </span><span class="lineNoCov">          0 :         return 1;</span>
+<span class="lineNum">     807 </span>            : 
+<span class="lineNum">     808 </span>            : badtag:
+<span class="lineNum">     809 </span><span class="lineNoCov">          0 :         free(tagdata);</span>
+<span class="lineNum">     810 </span><span class="lineNoCov">          0 :         id3_release_frames(tag-&gt;frames);</span>
+<span class="lineNum">     811 </span><span class="lineNoCov">          0 :         return M3G_ERR_TAGFORMAT;</span>
+<span class="lineNum">     812 </span>            : }
+<span class="lineNum">     813 </span>            : 
+<span class="lineNum">     814 </span>            : 
+<span class="lineNum">     815 </span>            : /**
+<span class="lineNum">     816 </span>            :  * Write an ID3v2 tag at the current position in the MP3 file.
+<span class="lineNum">     817 </span>            :  *
+<span class="lineNum">     818 </span>            :  * Tags are always written in ID3v2.4 format.
+<span class="lineNum">     819 </span>            :  * Tags are always written completely unsynchronized,
+<span class="lineNum">     820 </span>            :  * without extended header, padded up to an integer multiple of 2 KB.
+<span class="lineNum">     821 </span>            :  * We don't write a tag footer (not supported by QuodLibet).
+<span class="lineNum">     822 </span>            :  *
+<span class="lineNum">     823 </span>            :  * Return 1 on success, 0 if the tag contains no frames,
+<a name="824"><span class="lineNum">     824 </span>            :  * or a negative error code.</a>
+<span class="lineNum">     825 </span>            :  */
+<span class="lineNum">     826 </span><span class="lineNoCov">          0 : static int id3_write_tag(FILE *f, struct ID3v2TagStruct *tag)</span>
+<span class="lineNum">     827 </span>            : {
+<span class="lineNum">     828 </span>            :         unsigned long dlen, p, k;
+<span class="lineNum">     829 </span>            :         unsigned char *tagdata;
+<span class="lineNum">     830 </span>            :         struct ID3v2FrameStruct *frame;
+<span class="lineNum">     831 </span>            : 
+<span class="lineNum">     832 </span>            :         DBG((&quot;DEBUG: Writing ID3v2 tag\n&quot;));
+<span class="lineNum">     833 </span>            : 
+<span class="lineNum">     834 </span>            :         /* Do not write a tag with zero frames. */
+<span class="lineNum">     835 </span><span class="lineNoCov">          0 :         if (tag-&gt;frames == NULL)</span>
+<span class="lineNum">     836 </span><span class="lineNoCov">          0 :                 return 0;</span>
+<span class="lineNum">     837 </span>            : 
+<span class="lineNum">     838 </span>            :         /* Compute raw total length of tag. */
+<span class="lineNum">     839 </span><span class="lineNoCov">          0 :         dlen = 10;                              /* tag header */</span>
+<span class="lineNum">     840 </span><span class="lineNoCov">          0 :         for (frame = tag-&gt;frames; frame; frame = frame-&gt;next) {</span>
+<span class="lineNum">     841 </span><span class="lineNoCov">          0 :                 dlen += 10;</span>
+<span class="lineNum">     842 </span><span class="lineNoCov">          0 :                 dlen += id3_put_unsync_data(NULL, frame-&gt;data, frame-&gt;len);</span>
+<span class="lineNum">     843 </span>            :         }
+<span class="lineNum">     844 </span><span class="lineNoCov">          0 :         dlen = (dlen + 2047) &amp; (~2047);             /* padding */</span>
+<span class="lineNum">     845 </span>            : 
+<span class="lineNum">     846 </span>            :         DBG((&quot;  length=%lu\n&quot;, dlen));
+<span class="lineNum">     847 </span>            : 
+<span class="lineNum">     848 </span>            :         /* Allocate buffer and fill with zeros. */
+<span class="lineNum">     849 </span><span class="lineNoCov">          0 :         tagdata = calloc(dlen, sizeof(unsigned char));</span>
+<span class="lineNum">     850 </span>            : 
+<span class="lineNum">     851 </span>            :         /* Prepare tag header. */
+<span class="lineNum">     852 </span><span class="lineNoCov">          0 :         tagdata[0] = 'I';</span>
+<span class="lineNum">     853 </span><span class="lineNoCov">          0 :         tagdata[1] = 'D';</span>
+<span class="lineNum">     854 </span><span class="lineNoCov">          0 :         tagdata[2] = '3';</span>
+<span class="lineNum">     855 </span><span class="lineNoCov">          0 :         tagdata[3] = 4;</span>
+<span class="lineNum">     856 </span><span class="lineNoCov">          0 :         tagdata[4] = 0;</span>
+<span class="lineNum">     857 </span><span class="lineNoCov">          0 :         tagdata[5] = TAGFL_UNSYNC | (tag-&gt;flags &amp; TAGFL_EXPR);</span>
+<span class="lineNum">     858 </span><span class="lineNoCov">          0 :         id3_put_syncsafe_int(tagdata + 6, dlen - 10);</span>
+<span class="lineNum">     859 </span><span class="lineNoCov">          0 :         p = 10;</span>
+<span class="lineNum">     860 </span>            : 
+<span class="lineNum">     861 </span>            :         /* Prepare frames. */
+<span class="lineNum">     862 </span><span class="lineNoCov">          0 :         for (frame = tag-&gt;frames; frame; frame = frame-&gt;next) {</span>
+<span class="lineNum">     863 </span><span class="lineNoCov">          0 :                 unsigned long fflags = frame-&gt;flags &amp; (~FRAMEFL_UNSYNC);</span>
+<span class="lineNum">     864 </span><span class="lineNoCov">          0 :                 memcpy(tagdata + p, frame-&gt;frameid, 4);</span>
+<span class="lineNum">     865 </span><span class="lineNoCov">          0 :                 k = id3_put_unsync_data(tagdata + p + 10, frame-&gt;data, frame-&gt;len);</span>
+<span class="lineNum">     866 </span><span class="lineNoCov">          0 :                 id3_put_syncsafe_int(tagdata + p + 4, k);</span>
+<span class="lineNum">     867 </span><span class="lineNoCov">          0 :                 if (k != frame-&gt;len) fflags |= FRAMEFL_UNSYNC;</span>
+<span class="lineNum">     868 </span><span class="lineNoCov">          0 :                 tagdata[p+8] = (fflags &gt;&gt; 8) &amp; 0xff;</span>
+<span class="lineNum">     869 </span><span class="lineNoCov">          0 :                 tagdata[p+9] = fflags &amp; 0xff;</span>
+<span class="lineNum">     870 </span><span class="lineNoCov">          0 :                 p += 10 + k;</span>
+<span class="lineNum">     871 </span>            :                 DBG((&quot;  write frameid=%.4s length=%lu\n&quot;, frame-&gt;frameid, 10 + k));
+<span class="lineNum">     872 </span>            :         }
+<span class="lineNum">     873 </span>            : 
+<span class="lineNum">     874 </span>            :         /* Write the whole thing. */
+<span class="lineNum">     875 </span><span class="lineNoCov">          0 :         if (fwrite(tagdata, 1, dlen, f) != dlen) {</span>
+<span class="lineNum">     876 </span><span class="lineNoCov">          0 :                 free(tagdata);</span>
+<span class="lineNum">     877 </span><span class="lineNoCov">          0 :                 return M3G_ERR_WRITE;</span>
+<span class="lineNum">     878 </span>            :         }
+<span class="lineNum">     879 </span>            : 
+<span class="lineNum">     880 </span><span class="lineNoCov">          0 :         free(tagdata);</span>
+<span class="lineNum">     881 </span><span class="lineNoCov">          0 :         return 1;</span>
+<span class="lineNum">     882 </span>            : }
+<span class="lineNum">     883 </span>            : 
+<span class="lineNum">     884 </span>            : 
+<span class="lineNum">     885 </span>            : /**
+<span class="lineNum">     886 </span>            :  * Read an ID3v1 tag from the current position in the MP3 file.
+<span class="lineNum">     887 </span>            :  *
+<a name="888"><span class="lineNum">     888 </span>            :  * Return 1 on success, 0 if no tag is found.</a>
+<span class="lineNum">     889 </span>            :  */
+<span class="lineNum">     890 </span><span class="lineNoCov">          0 : static int id3_parse_v1_tag(FILE *f, struct ID3v2TagStruct *tag)</span>
+<span class="lineNum">     891 </span>            : {
+<span class="lineNum">     892 </span>            :         unsigned char buf[128];
+<span class="lineNum">     893 </span>            :         char sbuf[32],*p;
+<span class="lineNum">     894 </span>            : 
+<span class="lineNum">     895 </span>            :         struct ID3v2FrameStruct **pframe;
+<span class="lineNum">     896 </span>            : 
+<span class="lineNum">     897 </span>            :         /* Read tag */
+<span class="lineNum">     898 </span><span class="lineNoCov">          0 :         tag-&gt;offset = ftell(f);</span>
+<span class="lineNum">     899 </span><span class="lineNoCov">          0 :         if (fread(buf, 1, 128, f) != 128)</span>
+<span class="lineNum">     900 </span><span class="lineNoCov">          0 :                 return 0;</span>
+<span class="lineNum">     901 </span>            : 
+<span class="lineNum">     902 </span>            :         /* Check 'TAG' signature. */
+<span class="lineNum">     903 </span><span class="lineNoCov">          0 :         if (memcmp(buf, &quot;TAG&quot;, 3) != 0)</span>
+<span class="lineNum">     904 </span><span class="lineNoCov">          0 :                 return 0;</span>
+<span class="lineNum">     905 </span>            : 
+<span class="lineNum">     906 </span>            :         DBG((&quot;DEBUG: Found ID3v1 tag at offset %lu\n&quot;, tag-&gt;offset));
+<span class="lineNum">     907 </span>            : 
+<span class="lineNum">     908 </span>            :         /* Convert ID3v1 data to ID3v2.4 */
+<span class="lineNum">     909 </span><span class="lineNoCov">          0 :         tag-&gt;length = 128;</span>
+<span class="lineNum">     910 </span><span class="lineNoCov">          0 :         tag-&gt;version = 0;</span>
+<span class="lineNum">     911 </span><span class="lineNoCov">          0 :         tag-&gt;flags = 0;</span>
+<span class="lineNum">     912 </span><span class="lineNoCov">          0 :         tag-&gt;frames = NULL;</span>
+<span class="lineNum">     913 </span>            : 
+<span class="lineNum">     914 </span><span class="lineNoCov">          0 :         pframe = &amp;(tag-&gt;frames);</span>
+<span class="lineNum">     915 </span>            : 
+<span class="lineNum">     916 </span>            :         /* Add title field (offset 3, len 30). */
+<span class="lineNum">     917 </span><span class="lineNoCov">          0 :         if (buf[3] != '\0') {</span>
+<span class="lineNum">     918 </span><span class="lineNoCov">          0 :                 memcpy(sbuf, buf + 3, 30);</span>
+<span class="lineNum">     919 </span><span class="lineNoCov">          0 :                 sbuf[30] = '\0';</span>
+<span class="lineNum">     920 </span>            :                 /* get rid of trailing spaces */
+<span class="lineNum">     921 </span><span class="lineNoCov">          0 :                 for(p=sbuf+29; *p==' ' &amp;&amp; p&gt;=sbuf; *p--='\0');</span>
+<span class="lineNum">     922 </span><span class="lineNoCov">          0 :                 *pframe = id3_make_frame(&quot;TIT2&quot;, &quot;bs&quot;, 0, sbuf);</span>
+<span class="lineNum">     923 </span><span class="lineNoCov">          0 :                 pframe = &amp;((*pframe)-&gt;next);</span>
+<span class="lineNum">     924 </span>            :         }
+<span class="lineNum">     925 </span>            : 
+<span class="lineNum">     926 </span>            :         /* Add artist field (offset 33, len 30). */
+<span class="lineNum">     927 </span><span class="lineNoCov">          0 :         if (buf[33] != '\0') {</span>
+<span class="lineNum">     928 </span><span class="lineNoCov">          0 :                 memcpy(sbuf, buf + 33, 30);</span>
+<span class="lineNum">     929 </span><span class="lineNoCov">          0 :                 sbuf[30] = '\0';</span>
+<span class="lineNum">     930 </span>            :                 /* get rid of trailing spaces */
+<span class="lineNum">     931 </span><span class="lineNoCov">          0 :                 for(p=sbuf+29; *p==' ' &amp;&amp; p&gt;=sbuf; *p--='\0');</span>
+<span class="lineNum">     932 </span>            :                 DBG((&quot;fixed v1 artist: \&quot;%s\&quot;\n&quot;,sbuf));
+<span class="lineNum">     933 </span><span class="lineNoCov">          0 :                 *pframe = id3_make_frame(&quot;TPE1&quot;, &quot;bs&quot;, 0, sbuf);</span>
+<span class="lineNum">     934 </span><span class="lineNoCov">          0 :                 pframe = &amp;((*pframe)-&gt;next);</span>
+<span class="lineNum">     935 </span>            :         }
+<span class="lineNum">     936 </span>            : 
+<span class="lineNum">     937 </span>            :         /* Add album field (offset 63, len 30). */
+<span class="lineNum">     938 </span><span class="lineNoCov">          0 :         if (buf[63] != '\0') {</span>
+<span class="lineNum">     939 </span><span class="lineNoCov">          0 :                 memcpy(sbuf, buf + 63, 30);</span>
+<span class="lineNum">     940 </span><span class="lineNoCov">          0 :                 sbuf[30] = '\0';</span>
+<span class="lineNum">     941 </span>            :                 /* get rid of trailing spaces */
+<span class="lineNum">     942 </span><span class="lineNoCov">          0 :                 for(p=sbuf+29; *p==' ' &amp;&amp; p&gt;=sbuf; *p--='\0');</span>
+<span class="lineNum">     943 </span><span class="lineNoCov">          0 :                 *pframe = id3_make_frame(&quot;TALB&quot;, &quot;bs&quot;, 0, sbuf);</span>
+<span class="lineNum">     944 </span><span class="lineNoCov">          0 :                 pframe = &amp;((*pframe)-&gt;next);</span>
+<span class="lineNum">     945 </span>            :         }
+<span class="lineNum">     946 </span>            : 
+<span class="lineNum">     947 </span>            :         /* Add release year (offset 93, len 4). */
+<span class="lineNum">     948 </span><span class="lineNoCov">          0 :         if (buf[93] &gt;= '0' &amp;&amp; buf[93] &lt;= '9' &amp;&amp;</span>
+<span class="lineNum">     949 </span><span class="lineNoCov">          0 :             buf[94] &gt;= '0' &amp;&amp; buf[94] &lt;= '9' &amp;&amp;</span>
+<span class="lineNum">     950 </span><span class="lineNoCov">          0 :             buf[95] &gt;= '0' &amp;&amp; buf[95] &lt;= '9' &amp;&amp;</span>
+<span class="lineNum">     951 </span><span class="lineNoCov">          0 :             buf[96] &gt;= '0' &amp;&amp; buf[96] &lt;= '9') {</span>
+<span class="lineNum">     952 </span><span class="lineNoCov">          0 :                 memcpy(sbuf, buf + 93, 4);</span>
+<span class="lineNum">     953 </span><span class="lineNoCov">          0 :                 sbuf[4] = '\0';</span>
+<span class="lineNum">     954 </span><span class="lineNoCov">          0 :                 *pframe = id3_make_frame(&quot;TDRC&quot;, &quot;bs&quot;, 0, sbuf);</span>
+<span class="lineNum">     955 </span><span class="lineNoCov">          0 :                 pframe = &amp;((*pframe)-&gt;next);</span>
+<span class="lineNum">     956 </span>            :         }
+<span class="lineNum">     957 </span>            : 
+<span class="lineNum">     958 </span>            :         /* Add comment (offset 97, len 30). */
+<span class="lineNum">     959 </span><span class="lineNoCov">          0 :         if (buf[97] != '\0') {</span>
+<span class="lineNum">     960 </span><span class="lineNoCov">          0 :                 memcpy(sbuf, buf + 97, 30);</span>
+<span class="lineNum">     961 </span><span class="lineNoCov">          0 :                 sbuf[30] = '\0';</span>
+<span class="lineNum">     962 </span>            :                 /* get rid of trailing spaces */
+<span class="lineNum">     963 </span><span class="lineNoCov">          0 :                 for(p=sbuf+29; *p==' ' &amp;&amp; p&gt;=sbuf; *p--='\0');</span>
+<span class="lineNum">     964 </span>            :                 /* assume ISO-8859-1, unknown language, no description */
+<span class="lineNum">     965 </span><span class="lineNoCov">          0 :                 *pframe = id3_make_frame(&quot;COMM&quot;, &quot;bssbs&quot;, 0, &quot;XXX&quot;, &quot;&quot;, 0, sbuf);</span>
+<span class="lineNum">     966 </span><span class="lineNoCov">          0 :                 pframe = &amp;((*pframe)-&gt;next);</span>
+<span class="lineNum">     967 </span>            :         }
+<span class="lineNum">     968 </span>            : 
+<span class="lineNum">     969 </span>            :         /* Add track number (offset 126, len 1). */
+<span class="lineNum">     970 </span><span class="lineNoCov">          0 :         if (buf[125] == '\0' &amp;&amp; buf[126] != 0) {</span>
+<span class="lineNum">     971 </span><span class="lineNoCov">          0 :                 sprintf(sbuf, &quot;%u&quot;, buf[126]);</span>
+<span class="lineNum">     972 </span><span class="lineNoCov">          0 :                 *pframe = id3_make_frame(&quot;TRCK&quot;, &quot;bs&quot;, 0, sbuf);</span>
+<span class="lineNum">     973 </span><span class="lineNoCov">          0 :                 pframe = &amp;((*pframe)-&gt;next);</span>
+<span class="lineNum">     974 </span>            :         }
+<span class="lineNum">     975 </span>            : 
+<span class="lineNum">     976 </span><span class="lineNoCov">          0 :         return 1;</span>
+<span class="lineNum">     977 </span>            : }
+<span class="lineNum">     978 </span>            : 
+<span class="lineNum">     979 </span>            : 
+<span class="lineNum">     980 </span>            : /**
+<span class="lineNum">     981 </span>            :  * Search for an ID3v2 tag at the beginning and end of the file.
+<span class="lineNum">     982 </span>            :  * If no ID3v2 tag is found, search for an ID3v1 tag at the end
+<span class="lineNum">     983 </span>            :  * of the file.
+<span class="lineNum">     984 </span>            :  *
+<span class="lineNum">     985 </span>            :  * Return 1 on success, 0 if no tag is found, or a negative error code
+<a name="986"><span class="lineNum">     986 </span>            :  * if the tag can not be processed.</a>
+<span class="lineNum">     987 </span>            :  */
+<span class="lineNum">     988 </span><span class="lineNoCov">          0 : static int id3_search_tag(FILE *f, struct ID3v2TagStruct *tag)</span>
+<span class="lineNum">     989 </span>            : {
+<span class="lineNum">     990 </span>            :         unsigned char buf[32];
+<span class="lineNum">     991 </span><span class="lineNoCov">          0 :         unsigned long pos, k, id3v1_pos = 0;</span>
+<span class="lineNum">     992 </span>            :         int j, ret;
+<span class="lineNum">     993 </span>            : 
+<span class="lineNum">     994 </span>            :         /* Look for ID3v2 at the beginning of the file. */
+<span class="lineNum">     995 </span><span class="lineNoCov">          0 :         fseek(f, 0, SEEK_SET);</span>
+<span class="lineNum">     996 </span><span class="lineNoCov">          0 :         ret = id3_parse_v2_tag(f, tag);</span>
+<span class="lineNum">     997 </span>            : 
+<span class="lineNum">     998 </span><span class="lineNoCov">          0 :         if (ret == 0) {</span>
+<span class="lineNum">     999 </span>            :                 /* Look for ID3v2 at the end of the file. */
+<span class="lineNum">    1000 </span>            : 
+<span class="lineNum">    1001 </span><span class="lineNoCov">          0 :                 fseek(f, 0, SEEK_END);</span>
+<span class="lineNum">    1002 </span><span class="lineNoCov">          0 :                 pos = ftell(f);</span>
+<span class="lineNum">    1003 </span>            : 
+<span class="lineNum">    1004 </span><span class="lineNoCov">          0 :                 while (pos &gt; 128) {</span>
+<span class="lineNum">    1005 </span>            : 
+<span class="lineNum">    1006 </span>            :                         /* Test for ID3v2 footer */
+<span class="lineNum">    1007 </span><span class="lineNoCov">          0 :                         fseek(f, pos - 10, SEEK_SET);</span>
+<span class="lineNum">    1008 </span><span class="lineNoCov">          0 :                         if (fread(buf, 1, 10, f) != 10)</span>
+<span class="lineNum">    1009 </span><span class="lineNoCov">          0 :                                 return M3G_ERR_READ;</span>
+<span class="lineNum">    1010 </span><span class="lineNoCov">          0 :                         if (memcmp(buf, &quot;3DI&quot;, 3) == 0 &amp;&amp;</span>
+<span class="lineNum">    1011 </span><span class="lineNoCov">          0 :                             buf[3] == 4 &amp;&amp;</span>
+<span class="lineNum">    1012 </span><span class="lineNoCov">          0 :                             ((buf[6] | buf[7] | buf[8] | buf[9]) &amp; 0x80) == 0) {</span>
+<span class="lineNum">    1013 </span>            :                                 /* Parse ID3v2.4 tag */
+<span class="lineNum">    1014 </span><span class="lineNoCov">          0 :                                 k = id3_get_syncsafe_int(buf + 6);</span>
+<span class="lineNum">    1015 </span><span class="lineNoCov">          0 :                                 if (20 + k &lt; pos) {</span>
+<span class="lineNum">    1016 </span><span class="lineNoCov">          0 :                                         pos -= 20 + k;</span>
+<span class="lineNum">    1017 </span><span class="lineNoCov">          0 :                                         fseek(f, pos, SEEK_SET);</span>
+<span class="lineNum">    1018 </span><span class="lineNoCov">          0 :                                         ret = id3_parse_v2_tag(f, tag);</span>
+<span class="lineNum">    1019 </span><span class="lineNoCov">          0 :                                         break;</span>
+<span class="lineNum">    1020 </span>            :                                 }
+<span class="lineNum">    1021 </span>            :                         }
+<span class="lineNum">    1022 </span>            : 
+<span class="lineNum">    1023 </span>            :                         /* Test for ID3v1/Lyrics3v2 tag */
+<span class="lineNum">    1024 </span><span class="lineNoCov">          0 :                         fseek(f, pos - 128, SEEK_SET);</span>
+<span class="lineNum">    1025 </span><span class="lineNoCov">          0 :                         if (fread(buf, 1, 3, f) != 3)</span>
+<span class="lineNum">    1026 </span><span class="lineNoCov">          0 :                                 return M3G_ERR_READ;</span>
+<span class="lineNum">    1027 </span><span class="lineNoCov">          0 :                         if (memcmp(buf, &quot;TAG&quot;, 3) == 0) {</span>
+<span class="lineNum">    1028 </span>            :                                 /* Skip over ID3v1 tag and continue */
+<span class="lineNum">    1029 </span><span class="lineNoCov">          0 :                                 pos -= 128;</span>
+<span class="lineNum">    1030 </span>            :                                 DBG((&quot;DEBUG: Skipping ID3v1 tag at offset %lu\n&quot;, pos));
+<span class="lineNum">    1031 </span><span class="lineNoCov">          0 :                                 id3v1_pos = pos;</span>
+<span class="lineNum">    1032 </span>            :                                 /* Test for Lyrics3v2 tag */
+<span class="lineNum">    1033 </span><span class="lineNoCov">          0 :                                 if (pos &gt; 26) {</span>
+<span class="lineNum">    1034 </span><span class="lineNoCov">          0 :                                         fseek(f, pos - 15, SEEK_SET);</span>
+<span class="lineNum">    1035 </span><span class="lineNoCov">          0 :                                         if (fread(buf, 1, 15, f) != 15)</span>
+<span class="lineNum">    1036 </span><span class="lineNoCov">          0 :                                                 return M3G_ERR_READ;</span>
+<span class="lineNum">    1037 </span><span class="lineNoCov">          0 :                                         if (memcmp(buf + 6, &quot;LYRICS200&quot;, 9) == 0) {</span>
+<span class="lineNum">    1038 </span>            :                                                 /* Skip over Lyrics tag */
+<span class="lineNum">    1039 </span><span class="lineNoCov">          0 :                                                 k = 0;</span>
+<span class="lineNum">    1040 </span><span class="lineNoCov">          0 :                                                 for (j = 0; j &lt; 6; j++) {</span>
+<span class="lineNum">    1041 </span><span class="lineNoCov">          0 :                                                         if (buf[j] &lt; '0' || buf[j] &gt; '9') {</span>
+<span class="lineNum">    1042 </span><span class="lineNoCov">          0 :                                                                 k = 0;</span>
+<span class="lineNum">    1043 </span><span class="lineNoCov">          0 :                                                                 break;</span>
+<span class="lineNum">    1044 </span>            :                                                         }
+<span class="lineNum">    1045 </span><span class="lineNoCov">          0 :                                                         k = 10 * k + (buf[j] - '0');</span>
+<span class="lineNum">    1046 </span>            :                                                 }
+<span class="lineNum">    1047 </span><span class="lineNoCov">          0 :                                                 if (k &gt;= 11 &amp;&amp; k + 15 &lt; pos) {</span>
+<span class="lineNum">    1048 </span><span class="lineNoCov">          0 :                                                         pos -= k + 15;</span>
+<span class="lineNum">    1049 </span>            :                                                         DBG((&quot;DEBUG: Skipping Lyrics3v2 tag at offset %lu\n&quot;, pos));
+<span class="lineNum">    1050 </span>            :                                                 }
+<span class="lineNum">    1051 </span>            :                                         }
+<span class="lineNum">    1052 </span>            :                                 }
+<span class="lineNum">    1053 </span><span class="lineNoCov">          0 :                                 continue;</span>
+<span class="lineNum">    1054 </span>            :                         }
+<span class="lineNum">    1055 </span>            : 
+<span class="lineNum">    1056 </span>            :                         /* Test for APE tag */
+<span class="lineNum">    1057 </span><span class="lineNoCov">          0 :                         fseek(f, pos - 32, SEEK_SET);</span>
+<span class="lineNum">    1058 </span><span class="lineNoCov">          0 :                         if (fread(buf, 1, 32, f) != 32)</span>
+<span class="lineNum">    1059 </span><span class="lineNoCov">          0 :                                 return M3G_ERR_READ;</span>
+<span class="lineNum">    1060 </span><span class="lineNoCov">          0 :                         if (memcmp(buf, &quot;APETAGEX&quot;, 8) == 0) {</span>
+<span class="lineNum">    1061 </span>            :                                 /* Skip over APE tag and continue */
+<span class="lineNum">    1062 </span><span class="lineNoCov">          0 :                                 k = buf[12] | (buf[13] &lt;&lt; 8) | (buf[14] &lt;&lt; 16) | (buf[15] &lt;&lt; 24); /* tag length */</span>
+<span class="lineNum">    1063 </span><span class="lineNoCov">          0 :                                 if (buf[23] &amp; 0x80)</span>
+<span class="lineNum">    1064 </span><span class="lineNoCov">          0 :                                         k += 32; /* tag header present */</span>
+<span class="lineNum">    1065 </span><span class="lineNoCov">          0 :                                 if (k &gt;= 32 &amp;&amp; k &lt; pos) {</span>
+<span class="lineNum">    1066 </span><span class="lineNoCov">          0 :                                         pos -= k;</span>
+<span class="lineNum">    1067 </span>            :                                         DBG((&quot;DEBUG: Skipping APE tag at offset %lu\n&quot;, pos));
+<span class="lineNum">    1068 </span><span class="lineNoCov">          0 :                                         continue;</span>
+<span class="lineNum">    1069 </span>            :                                 }
+<span class="lineNum">    1070 </span>            :                         }
+<span class="lineNum">    1071 </span>            : 
+<span class="lineNum">    1072 </span>            :                         /* No more tags to skip. */
+<span class="lineNum">    1073 </span><span class="lineNoCov">          0 :                         break;</span>
+<span class="lineNum">    1074 </span>            : 
+<span class="lineNum">    1075 </span>            :                 }
+<span class="lineNum">    1076 </span>            :                 
+<span class="lineNum">    1077 </span>            :         }
+<span class="lineNum">    1078 </span>            : 
+<span class="lineNum">    1079 </span><span class="lineNoCov">          0 :         if (ret == 0 &amp;&amp; id3v1_pos != 0) {</span>
+<span class="lineNum">    1080 </span>            :                 /* Read ID3v1 at the end of the file. */
+<span class="lineNum">    1081 </span><span class="lineNoCov">          0 :                 fseek(f, id3v1_pos, SEEK_SET);</span>
+<span class="lineNum">    1082 </span><span class="lineNoCov">          0 :                 ret = id3_parse_v1_tag(f, tag);</span>
+<span class="lineNum">    1083 </span>            :         }
+<span class="lineNum">    1084 </span>            : 
+<span class="lineNum">    1085 </span><span class="lineNoCov">          0 :         return ret;</span>
+<span class="lineNum">    1086 </span>            : }
+<span class="lineNum">    1087 </span>            : 
+<span class="lineNum">    1088 </span>            : 
+<span class="lineNum">    1089 </span>            : /**
+<span class="lineNum">    1090 </span>            :  * Seek to offset in inf and copy count bytes to the current
+<span class="lineNum">    1091 </span>            :  * position in outf. If count == -1, copy until the end of the file.
+<span class="lineNum">    1092 </span>            :  *
+<a name="1093"><span class="lineNum">    1093 </span>            :  * Return 1 on success, otherwise a negative error code.</a>
+<span class="lineNum">    1094 </span>            :  */
+<span class="lineNum">    1095 </span><span class="lineNoCov">          0 : static int id3_copy_data(FILE *inf, FILE *outf, long offset, long count)</span>
+<span class="lineNum">    1096 </span>            : {
+<span class="lineNum">    1097 </span><span class="lineNoCov">          0 :         const long bufsize = 65536;</span>
+<span class="lineNum">    1098 </span>            :         char *buf;
+<span class="lineNum">    1099 </span>            :         size_t k;
+<span class="lineNum">    1100 </span>            :         int ret;
+<span class="lineNum">    1101 </span>            : 
+<span class="lineNum">    1102 </span><span class="lineNoCov">          0 :         ret = 1;</span>
+<span class="lineNum">    1103 </span><span class="lineNoCov">          0 :         buf = malloc(bufsize);</span>
+<span class="lineNum">    1104 </span>            : 
+<span class="lineNum">    1105 </span><span class="lineNoCov">          0 :         if (fseek(inf, offset, SEEK_SET))</span>
+<span class="lineNum">    1106 </span><span class="lineNoCov">          0 :                 ret = M3G_ERR_READ;</span>
+<span class="lineNum">    1107 </span>            : 
+<span class="lineNum">    1108 </span><span class="lineNoCov">          0 :         while (ret == 1 &amp;&amp; count != 0) {</span>
+<span class="lineNum">    1109 </span><span class="lineNoCov">          0 :                 k = (count &gt; 0 &amp;&amp; count &lt; bufsize) ? count : bufsize;</span>
+<span class="lineNum">    1110 </span><span class="lineNoCov">          0 :                 k = fread(buf, 1, k, inf);</span>
+<span class="lineNum">    1111 </span><span class="lineNoCov">          0 :                 if (k == 0) {</span>
+<span class="lineNum">    1112 </span><span class="lineNoCov">          0 :                         if (!feof(inf) || count &gt; 0)</span>
+<span class="lineNum">    1113 </span><span class="lineNoCov">          0 :                                 ret = M3G_ERR_READ;</span>
+<span class="lineNum">    1114 </span><span class="lineNoCov">          0 :                         break;</span>
+<span class="lineNum">    1115 </span>            :                 }
+<span class="lineNum">    1116 </span><span class="lineNoCov">          0 :                 if (fwrite(buf, 1, k, outf) != k) {</span>
+<span class="lineNum">    1117 </span><span class="lineNoCov">          0 :                         ret = M3G_ERR_WRITE;</span>
+<span class="lineNum">    1118 </span><span class="lineNoCov">          0 :                         break;</span>
+<span class="lineNum">    1119 </span>            :                 }
+<span class="lineNum">    1120 </span><span class="lineNoCov">          0 :                 if (count &gt; 0)</span>
+<span class="lineNum">    1121 </span><span class="lineNoCov">          0 :                         count -= k;</span>
+<span class="lineNum">    1122 </span>            :         }
+<span class="lineNum">    1123 </span>            : 
+<span class="lineNum">    1124 </span><span class="lineNoCov">          0 :         free(buf);</span>
+<span class="lineNum">    1125 </span><span class="lineNoCov">          0 :         return ret;</span>
+<span class="lineNum">    1126 </span>            : }
+<span class="lineNum">    1127 </span>            : 
+<span class="lineNum">    1128 </span>            : 
+<span class="lineNum">    1129 </span>            : /**
+<a name="1130"><span class="lineNum">    1130 </span>            :  * Read gain information from an ID3v2 tag.</a>
+<span class="lineNum">    1131 </span>            :  */
+<span class="lineNum">    1132 </span><span class="lineNoCov">          0 : int ReadMP3GainID3Tag(char *filename, struct MP3GainTagInfo *info)</span>
+<span class="lineNum">    1133 </span>            : {
+<span class="lineNum">    1134 </span>            :         FILE *f;
+<span class="lineNum">    1135 </span>            :         struct ID3v2TagStruct tag;
+<span class="lineNum">    1136 </span>            :         struct ID3v2FrameStruct *frame;
+<span class="lineNum">    1137 </span>            :         int ret;
+<span class="lineNum">    1138 </span>            : 
+<span class="lineNum">    1139 </span><span class="lineNoCov">          0 :         f = fopen(filename, &quot;rb&quot;);</span>
+<span class="lineNum">    1140 </span><span class="lineNoCov">          0 :         if (f == NULL) {</span>
+<span class="lineNum">    1141 </span><span class="lineNoCov">          0 :                 passError(MP3GAIN_UNSPECIFED_ERROR, 3, &quot;Could not open &quot;, filename, &quot;\n&quot;);</span>
+<span class="lineNum">    1142 </span><span class="lineNoCov">          0 :                 return M3G_ERR_FILEOPEN;</span>
+<span class="lineNum">    1143 </span>            :         }
+<span class="lineNum">    1144 </span>            : 
+<span class="lineNum">    1145 </span><span class="lineNoCov">          0 :         ret = id3_search_tag(f, &amp;tag);</span>
+<span class="lineNum">    1146 </span><span class="lineNoCov">          0 :         fclose(f);</span>
+<span class="lineNum">    1147 </span>            : 
+<span class="lineNum">    1148 </span><span class="lineNoCov">          0 :         if (ret == M3G_ERR_READ) {</span>
+<span class="lineNum">    1149 </span><span class="lineNoCov">          0 :                 passError(MP3GAIN_UNSPECIFED_ERROR, 3, &quot;Error reading &quot;, filename, &quot;\n&quot;);</span>
+<span class="lineNum">    1150 </span>            :         }
+<span class="lineNum">    1151 </span>            : 
+<span class="lineNum">    1152 </span><span class="lineNoCov">          0 :         if (ret == 1) {</span>
+<span class="lineNum">    1153 </span>            :                 /* Got the tag; extract gain information from the RVA2/TXXX frames. */
+<span class="lineNum">    1154 </span><span class="lineNoCov">          0 :                 frame = tag.frames;</span>
+<span class="lineNum">    1155 </span><span class="lineNoCov">          0 :                 while (frame) {</span>
+<span class="lineNum">    1156 </span><span class="lineNoCov">          0 :                         id3_decode_rva2_frame(frame, info);</span>
+<span class="lineNum">    1157 </span><span class="lineNoCov">          0 :                         id3_decode_txxx_frame(frame, info);</span>
+<span class="lineNum">    1158 </span><span class="lineNoCov">          0 :                         id3_decode_mp3gain_frame(frame, info);</span>
+<span class="lineNum">    1159 </span><span class="lineNoCov">          0 :                         frame = frame-&gt;next;</span>
+<span class="lineNum">    1160 </span>            :                 }
+<span class="lineNum">    1161 </span><span class="lineNoCov">          0 :                 id3_release_frames(tag.frames);</span>
+<span class="lineNum">    1162 </span>            :         }
+<span class="lineNum">    1163 </span>            : 
+<span class="lineNum">    1164 </span><span class="lineNoCov">          0 :         return ret;</span>
+<span class="lineNum">    1165 </span>            : }
+<span class="lineNum">    1166 </span>            : 
+<span class="lineNum">    1167 </span>            : 
+<span class="lineNum">    1168 </span>            : /**
+<span class="lineNum">    1169 </span>            :  * (Re-)Write gain information to an ID3v2 tag.
+<span class="lineNum">    1170 </span>            :  *
+<span class="lineNum">    1171 </span>            :  * Writes or updates an ID3v2.4 tag at the beginning of the file.
+<span class="lineNum">    1172 </span>            :  * If the file does not yet contain an ID3v2 tag, a new tag is created,
+<span class="lineNum">    1173 </span>            :  * copying basic fields from an ID3v1 tag if present.
+<span class="lineNum">    1174 </span>            :  * If the file contains an ID3v2.2 or ID3v2.3 tag, it is rewritten as ID3v2.4.
+<span class="lineNum">    1175 </span>            :  *
+<span class="lineNum">    1176 </span>            :  * Since modifications are made at the beginning of the file, the entire
+<span class="lineNum">    1177 </span>            :  * file is rewritten to a temporary file and then moved in place of the
+<a name="1178"><span class="lineNum">    1178 </span>            :  * old file.</a>
+<span class="lineNum">    1179 </span>            :  */
+<span class="lineNum">    1180 </span><span class="lineNoCov">          0 : int WriteMP3GainID3Tag(char *filename, struct MP3GainTagInfo *info, int saveTimeStamp)</span>
+<span class="lineNum">    1181 </span>            : {
+<span class="lineNum">    1182 </span>            :         char sbuf[32];
+<span class="lineNum">    1183 </span>            :         char *tmpfilename;
+<span class="lineNum">    1184 </span>            :         FILE *f, *outf;
+<span class="lineNum">    1185 </span>            :         struct ID3v2TagStruct tag;
+<span class="lineNum">    1186 </span>            :         struct ID3v2FrameStruct *frame, **pframe;
+<span class="lineNum">    1187 </span>            :         int ret, need_update;
+<span class="lineNum">    1188 </span>            : 
+<span class="lineNum">    1189 </span><span class="lineNoCov">          0 :         if (saveTimeStamp)</span>
+<span class="lineNum">    1190 </span><span class="lineNoCov">          0 :                 fileTime(filename, storeTime);</span>
+<span class="lineNum">    1191 </span>            : 
+<span class="lineNum">    1192 </span><span class="lineNoCov">          0 :         f = fopen(filename, &quot;rb&quot;);</span>
+<span class="lineNum">    1193 </span><span class="lineNoCov">          0 :         if (f == NULL) {</span>
+<span class="lineNum">    1194 </span><span class="lineNoCov">          0 :                 passError(MP3GAIN_UNSPECIFED_ERROR, 3, &quot;Could not open &quot;, filename, &quot;\n&quot;);</span>
+<span class="lineNum">    1195 </span><span class="lineNoCov">          0 :                 return M3G_ERR_FILEOPEN;</span>
+<span class="lineNum">    1196 </span>            :         }
+<span class="lineNum">    1197 </span><span class="lineNoCov">          0 :         ret = id3_search_tag(f, &amp;tag);</span>
+<span class="lineNum">    1198 </span>            : 
+<span class="lineNum">    1199 </span><span class="lineNoCov">          0 :         switch (ret) {</span>
+<span class="lineNum">    1200 </span>            :                 case M3G_ERR_READ:
+<span class="lineNum">    1201 </span><span class="lineNoCov">          0 :                         passError(MP3GAIN_UNSPECIFED_ERROR, 3, &quot;Error reading &quot;, filename, &quot;\n&quot;);</span>
+<span class="lineNum">    1202 </span><span class="lineNoCov">          0 :                         break;</span>
+<span class="lineNum">    1203 </span>            :                 case M3G_ERR_TAGFORMAT:
+<span class="lineNum">    1204 </span><span class="lineNoCov">          0 :                         passError(MP3GAIN_UNSPECIFED_ERROR, 3, &quot;Unsupported ID3v2 tag in &quot;, filename, &quot;\n&quot;);</span>
+<span class="lineNum">    1205 </span><span class="lineNoCov">          0 :                         break;</span>
+<span class="lineNum">    1206 </span>            :         }
+<span class="lineNum">    1207 </span>            : 
+<span class="lineNum">    1208 </span><span class="lineNoCov">          0 :         if (ret &lt; 0) {</span>
+<span class="lineNum">    1209 </span>            :                 /* Error. */
+<span class="lineNum">    1210 </span><span class="lineNoCov">          0 :                 fclose(f);</span>
+<span class="lineNum">    1211 </span><span class="lineNoCov">          0 :                 return ret;</span>
+<span class="lineNum">    1212 </span>            :         }
+<span class="lineNum">    1213 </span>            : 
+<span class="lineNum">    1214 </span><span class="lineNoCov">          0 :         if (ret == 0) {</span>
+<span class="lineNum">    1215 </span>            :                 /* No ID3v2 or ID3v1 tag found in the file; create a new tag. */
+<span class="lineNum">    1216 </span><span class="lineNoCov">          0 :                 tag.offset = 0;</span>
+<span class="lineNum">    1217 </span><span class="lineNoCov">          0 :                 tag.length = 0;</span>
+<span class="lineNum">    1218 </span><span class="lineNoCov">          0 :                 tag.version = 0;</span>
+<span class="lineNum">    1219 </span><span class="lineNoCov">          0 :                 tag.flags = 0;</span>
+<span class="lineNum">    1220 </span><span class="lineNoCov">          0 :                 tag.frames = NULL;</span>
+<span class="lineNum">    1221 </span>            :         }
+<span class="lineNum">    1222 </span>            : 
+<span class="lineNum">    1223 </span>            :         /* Kill existing replaygain frames. */
+<span class="lineNum">    1224 </span><span class="lineNoCov">          0 :         need_update = 0;</span>
+<span class="lineNum">    1225 </span><span class="lineNoCov">          0 :         pframe = &amp;(tag.frames);</span>
+<span class="lineNum">    1226 </span><span class="lineNoCov">          0 :         while ((frame = *pframe)) {</span>
+<span class="lineNum">    1227 </span><span class="lineNoCov">          0 :                 if (id3_decode_rva2_frame(frame, NULL) == 1 ||</span>
+<span class="lineNum">    1228 </span><span class="lineNoCov">          0 :                     id3_decode_txxx_frame(frame, NULL) == 1 ||</span>
+<span class="lineNum">    1229 </span><span class="lineNoCov">          0 :                     id3_decode_mp3gain_frame(frame, NULL) == 1) {</span>
+<span class="lineNum">    1230 </span>            :                         /* This is a ReplayGain frame; kill it. */
+<span class="lineNum">    1231 </span><span class="lineNoCov">          0 :                         need_update = 1;</span>
+<span class="lineNum">    1232 </span><span class="lineNoCov">          0 :                         *pframe = frame-&gt;next;</span>
+<span class="lineNum">    1233 </span><span class="lineNoCov">          0 :                         free(frame-&gt;data);</span>
+<span class="lineNum">    1234 </span><span class="lineNoCov">          0 :                         free(frame);</span>
+<span class="lineNum">    1235 </span>            :                 } else {
+<span class="lineNum">    1236 </span><span class="lineNoCov">          0 :                         pframe = &amp;((*pframe)-&gt;next);</span>
+<span class="lineNum">    1237 </span>            :                 }
+<span class="lineNum">    1238 </span>            :         }
+<span class="lineNum">    1239 </span>            : 
+<span class="lineNum">    1240 </span>            :         /* Append new replaygain frames. The TXXX versions are lower-case,
+<span class="lineNum">    1241 </span>            :          * because that's what Winamp wants... */
+<span class="lineNum">    1242 </span>            : 
+<span class="lineNum">    1243 </span><span class="lineNoCov">          0 :         if (info-&gt;haveTrackGain || info-&gt;haveTrackPeak ||</span>
+<span class="lineNum">    1244 </span><span class="lineNoCov">          0 :             info-&gt;haveAlbumGain || info-&gt;haveAlbumPeak) {</span>
+<span class="lineNum">    1245 </span><span class="lineNoCov">          0 :                 need_update = 1;</span>
+<span class="lineNum">    1246 </span><span class="lineNoCov">          0 :                 frame = id3_make_frame(&quot;TXXX&quot;, &quot;bsbs&quot;, 0, &quot;replaygain_reference_loudness&quot;, 0, &quot;89.0 dB&quot;);</span>
+<span class="lineNum">    1247 </span><span class="lineNoCov">          0 :                 *pframe = frame;</span>
+<span class="lineNum">    1248 </span><span class="lineNoCov">          0 :                 pframe = &amp;(frame-&gt;next);</span>
+<span class="lineNum">    1249 </span>            :         }
+<span class="lineNum">    1250 </span>            : 
+<span class="lineNum">    1251 </span><span class="lineNoCov">          0 :         if (info-&gt;haveTrackGain) {</span>
+<span class="lineNum">    1252 </span><span class="lineNoCov">          0 :                 need_update = 1;</span>
+<span class="lineNum">    1253 </span><span class="lineNoCov">          0 :                 frame = id3_make_rva2_frame(0, info-&gt;trackGain, info-&gt;haveTrackPeak, info-&gt;trackPeak);</span>
+<span class="lineNum">    1254 </span><span class="lineNoCov">          0 :                 *pframe = frame;</span>
+<span class="lineNum">    1255 </span><span class="lineNoCov">          0 :                 pframe = &amp;(frame-&gt;next);</span>
+<span class="lineNum">    1256 </span>            : 
+<span class="lineNum">    1257 </span><span class="lineNoCov">          0 :                 sprintf(sbuf, &quot;%-+9.6f dB&quot;, info-&gt;trackGain);</span>
+<span class="lineNum">    1258 </span><span class="lineNoCov">          0 :                 frame = id3_make_frame(&quot;TXXX&quot;, &quot;bsbs&quot;, 0, &quot;replaygain_track_gain&quot;, 0, sbuf);</span>
+<span class="lineNum">    1259 </span><span class="lineNoCov">          0 :                 *pframe = frame;</span>
+<span class="lineNum">    1260 </span><span class="lineNoCov">          0 :                 pframe = &amp;(frame-&gt;next);</span>
+<span class="lineNum">    1261 </span>            :         }
+<span class="lineNum">    1262 </span><span class="lineNoCov">          0 :         if (info-&gt;haveTrackPeak) {</span>
+<span class="lineNum">    1263 </span><span class="lineNoCov">          0 :                 need_update = 1;</span>
+<span class="lineNum">    1264 </span><span class="lineNoCov">          0 :                 sprintf(sbuf, &quot;%-8.6f&quot;, info-&gt;trackPeak);</span>
+<span class="lineNum">    1265 </span><span class="lineNoCov">          0 :                 frame = id3_make_frame(&quot;TXXX&quot;, &quot;bsbs&quot;, 0, &quot;replaygain_track_peak&quot;, 0, sbuf);</span>
+<span class="lineNum">    1266 </span><span class="lineNoCov">          0 :                 *pframe = frame;</span>
+<span class="lineNum">    1267 </span><span class="lineNoCov">          0 :                 pframe = &amp;(frame-&gt;next);</span>
+<span class="lineNum">    1268 </span>            :         }
+<span class="lineNum">    1269 </span>            : 
+<span class="lineNum">    1270 </span><span class="lineNoCov">          0 :         if (info-&gt;haveAlbumGain) {</span>
+<span class="lineNum">    1271 </span><span class="lineNoCov">          0 :                 need_update = 1;</span>
+<span class="lineNum">    1272 </span><span class="lineNoCov">          0 :                 frame = id3_make_rva2_frame(1, info-&gt;albumGain, info-&gt;haveAlbumPeak, info-&gt;albumPeak);</span>
+<span class="lineNum">    1273 </span><span class="lineNoCov">          0 :                 *pframe = frame;</span>
+<span class="lineNum">    1274 </span><span class="lineNoCov">          0 :                 pframe = &amp;(frame-&gt;next);</span>
+<span class="lineNum">    1275 </span>            : 
+<span class="lineNum">    1276 </span><span class="lineNoCov">          0 :                 sprintf(sbuf, &quot;%-+9.6f dB&quot;, info-&gt;albumGain);</span>
+<span class="lineNum">    1277 </span><span class="lineNoCov">          0 :                 frame = id3_make_frame(&quot;TXXX&quot;, &quot;bsbs&quot;, 0, &quot;replaygain_album_gain&quot;, 0, sbuf);</span>
+<span class="lineNum">    1278 </span><span class="lineNoCov">          0 :                 *pframe = frame;</span>
+<span class="lineNum">    1279 </span><span class="lineNoCov">          0 :                 pframe = &amp;(frame-&gt;next);</span>
+<span class="lineNum">    1280 </span>            :         }
+<span class="lineNum">    1281 </span><span class="lineNoCov">          0 :         if (info-&gt;haveAlbumPeak) {</span>
+<span class="lineNum">    1282 </span><span class="lineNoCov">          0 :                 need_update = 1;</span>
+<span class="lineNum">    1283 </span><span class="lineNoCov">          0 :                 sprintf(sbuf, &quot;%-8.6f&quot;, info-&gt;albumPeak);</span>
+<span class="lineNum">    1284 </span><span class="lineNoCov">          0 :                 frame = id3_make_frame(&quot;TXXX&quot;, &quot;bsbs&quot;, 0, &quot;replaygain_album_peak&quot;, 0, sbuf);</span>
+<span class="lineNum">    1285 </span><span class="lineNoCov">          0 :                 *pframe = frame;</span>
+<span class="lineNum">    1286 </span><span class="lineNoCov">          0 :                 pframe = &amp;(frame-&gt;next);</span>
+<span class="lineNum">    1287 </span>            :         }
+<span class="lineNum">    1288 </span>            : 
+<span class="lineNum">    1289 </span>            :         /* Append mp3gain-specific frames. */
+<span class="lineNum">    1290 </span><span class="lineNoCov">          0 :         if (info-&gt;haveMinMaxGain) {</span>
+<span class="lineNum">    1291 </span><span class="lineNoCov">          0 :                 need_update = 1;</span>
+<span class="lineNum">    1292 </span><span class="lineNoCov">          0 :                 sprintf(sbuf, &quot;%03d,%03d&quot;, info-&gt;minGain, info-&gt;maxGain);</span>
+<span class="lineNum">    1293 </span><span class="lineNoCov">          0 :                 frame = id3_make_frame(&quot;TXXX&quot;, &quot;bsbs&quot;, 0, &quot;MP3GAIN_MINMAX&quot;, 0, sbuf);</span>
+<span class="lineNum">    1294 </span><span class="lineNoCov">          0 :                 *pframe = frame;</span>
+<span class="lineNum">    1295 </span><span class="lineNoCov">          0 :                 pframe = &amp;(frame-&gt;next);</span>
+<span class="lineNum">    1296 </span>            :         }
+<span class="lineNum">    1297 </span><span class="lineNoCov">          0 :         if (info-&gt;haveAlbumMinMaxGain) {</span>
+<span class="lineNum">    1298 </span><span class="lineNoCov">          0 :                 need_update = 1;</span>
+<span class="lineNum">    1299 </span><span class="lineNoCov">          0 :                 sprintf(sbuf, &quot;%03d,%03d&quot;, info-&gt;albumMinGain, info-&gt;albumMaxGain);</span>
+<span class="lineNum">    1300 </span><span class="lineNoCov">          0 :                 frame = id3_make_frame(&quot;TXXX&quot;, &quot;bsbs&quot;, 0, &quot;MP3GAIN_ALBUM_MINMAX&quot;, 0, sbuf);</span>
+<span class="lineNum">    1301 </span><span class="lineNoCov">          0 :                 *pframe = frame;</span>
+<span class="lineNum">    1302 </span><span class="lineNoCov">          0 :                 pframe = &amp;(frame-&gt;next);</span>
+<span class="lineNum">    1303 </span>            :         }
+<span class="lineNum">    1304 </span><span class="lineNoCov">          0 :         if (info-&gt;haveUndo) {</span>
+<span class="lineNum">    1305 </span><span class="lineNoCov">          0 :                 need_update = 1;</span>
+<span class="lineNum">    1306 </span><span class="lineNoCov">          0 :                 sprintf(sbuf, &quot;%+04d,%+04d,%c&quot;, info-&gt;undoLeft, info-&gt;undoRight, info-&gt;undoWrap ? 'W' : 'N');</span>
+<span class="lineNum">    1307 </span><span class="lineNoCov">          0 :                 frame = id3_make_frame(&quot;TXXX&quot;, &quot;bsbs&quot;, 0, &quot;MP3GAIN_UNDO&quot;, 0, sbuf);</span>
+<span class="lineNum">    1308 </span><span class="lineNoCov">          0 :                 *pframe = frame;</span>
+<span class="lineNum">    1309 </span><span class="lineNoCov">          0 :                 pframe = &amp;(frame-&gt;next);</span>
+<span class="lineNum">    1310 </span>            :         }
+<span class="lineNum">    1311 </span>            : 
+<span class="lineNum">    1312 </span><span class="lineNoCov">          0 :         if (!need_update) {</span>
+<span class="lineNum">    1313 </span>            :                 /* No need to change MP3 file. */
+<span class="lineNum">    1314 </span><span class="lineNoCov">          0 :                 fclose(f);</span>
+<span class="lineNum">    1315 </span><span class="lineNoCov">          0 :                 id3_release_frames(tag.frames);</span>
+<span class="lineNum">    1316 </span><span class="lineNoCov">          0 :                 return 0;</span>
+<span class="lineNum">    1317 </span>            :         }
+<span class="lineNum">    1318 </span>            : 
+<span class="lineNum">    1319 </span>            :         /* Create temporary file. */
+<span class="lineNum">    1320 </span><span class="lineNoCov">          0 :         tmpfilename = malloc(strlen(filename) + 5);</span>
+<span class="lineNum">    1321 </span><span class="lineNoCov">          0 :         strcpy(tmpfilename, filename);</span>
+<span class="lineNum">    1322 </span><span class="lineNoCov">          0 :         strcat(tmpfilename, &quot;.TMP&quot;);</span>
+<span class="lineNum">    1323 </span><span class="lineNoCov">          0 :         outf = fopen(tmpfilename, &quot;wb&quot;);</span>
+<span class="lineNum">    1324 </span><span class="lineNoCov">          0 :         if (outf == NULL) {</span>
+<span class="lineNum">    1325 </span><span class="lineNoCov">          0 :                 passError(MP3GAIN_UNSPECIFED_ERROR, 3, &quot;Can not create temporary file &quot;, tmpfilename, &quot;\n&quot;);</span>
+<span class="lineNum">    1326 </span><span class="lineNoCov">          0 :                 fclose(f);</span>
+<span class="lineNum">    1327 </span><span class="lineNoCov">          0 :                 free(tmpfilename);</span>
+<span class="lineNum">    1328 </span><span class="lineNoCov">          0 :                 id3_release_frames(tag.frames);</span>
+<span class="lineNum">    1329 </span><span class="lineNoCov">          0 :                 return M3G_ERR_CANT_MAKE_TMP;</span>
+<span class="lineNum">    1330 </span>            :         }
+<span class="lineNum">    1331 </span>            : 
+<span class="lineNum">    1332 </span>            :         /* Write new ID3v2 tag. */
+<span class="lineNum">    1333 </span><span class="lineNoCov">          0 :         ret = id3_write_tag(outf, &amp;tag);</span>
+<span class="lineNum">    1334 </span>            : 
+<span class="lineNum">    1335 </span>            :         /* Write rest of MP3 file. */
+<span class="lineNum">    1336 </span><span class="lineNoCov">          0 :         if (ret &gt;= 0) {</span>
+<span class="lineNum">    1337 </span><span class="lineNoCov">          0 :                 if (tag.version == 0) {</span>
+<span class="lineNum">    1338 </span>            :                         /* The original file has no ID3v2 tag; copy everything. */
+<span class="lineNum">    1339 </span><span class="lineNoCov">          0 :                         ret = id3_copy_data(f, outf, 0, -1);</span>
+<span class="lineNum">    1340 </span>            :                 } else {
+<span class="lineNum">    1341 </span>            :                         /* The original file has an ID3v2 tag; copy everything
+<span class="lineNum">    1342 </span>            :                            except the original tag. */
+<span class="lineNum">    1343 </span><span class="lineNoCov">          0 :                         ret = id3_copy_data(f, outf, 0, tag.offset);</span>
+<span class="lineNum">    1344 </span><span class="lineNoCov">          0 :                         if (ret &gt;= 0)</span>
+<span class="lineNum">    1345 </span><span class="lineNoCov">          0 :                                 ret = id3_copy_data(f, outf, tag.offset + tag.length, -1);</span>
+<span class="lineNum">    1346 </span>            :                 }
+<span class="lineNum">    1347 </span>            :         }
+<span class="lineNum">    1348 </span>            : 
+<span class="lineNum">    1349 </span><span class="lineNoCov">          0 :         fclose(outf);</span>
+<span class="lineNum">    1350 </span><span class="lineNoCov">          0 :         fclose(f);</span>
+<span class="lineNum">    1351 </span><span class="lineNoCov">          0 :         id3_release_frames(tag.frames);</span>
+<span class="lineNum">    1352 </span>            : 
+<span class="lineNum">    1353 </span><span class="lineNoCov">          0 :         switch (ret) {</span>
+<span class="lineNum">    1354 </span>            :                 case M3G_ERR_READ:
+<span class="lineNum">    1355 </span><span class="lineNoCov">          0 :                         passError(MP3GAIN_UNSPECIFED_ERROR, 3, &quot;Error reading &quot;, filename, &quot;\n&quot;);</span>
+<span class="lineNum">    1356 </span><span class="lineNoCov">          0 :                         break;</span>
+<span class="lineNum">    1357 </span>            :                 case M3G_ERR_WRITE:
+<span class="lineNum">    1358 </span><span class="lineNoCov">          0 :                         passError(MP3GAIN_UNSPECIFED_ERROR, 3, &quot;Error writing &quot;, tmpfilename, &quot;\n&quot;);</span>
+<span class="lineNum">    1359 </span><span class="lineNoCov">          0 :                         break;</span>
+<span class="lineNum">    1360 </span>            :         }
+<span class="lineNum">    1361 </span>            : 
+<span class="lineNum">    1362 </span><span class="lineNoCov">          0 :         if (ret &lt; 0) {</span>
+<span class="lineNum">    1363 </span>            :                 /* Delete temp file after error. */
+<span class="lineNum">    1364 </span><span class="lineNoCov">          0 :                 remove(tmpfilename);</span>
+<span class="lineNum">    1365 </span><span class="lineNoCov">          0 :                 free(tmpfilename);</span>
+<span class="lineNum">    1366 </span><span class="lineNoCov">          0 :                 return ret;</span>
+<span class="lineNum">    1367 </span>            :         }
+<span class="lineNum">    1368 </span>            : 
+<span class="lineNum">    1369 </span>            :         /* Replace original file. */
+<span class="lineNum">    1370 </span>            : #ifdef WIN32
+<span class="lineNum">    1371 </span>            :         /* &quot;rename&quot; function in WIN32 does _not_ replace existing destination file, so
+<span class="lineNum">    1372 </span>            :            we have to manually remove it first */
+<span class="lineNum">    1373 </span>            :         if (remove(filename) != 0) {
+<span class="lineNum">    1374 </span>            :                 passError(MP3GAIN_UNSPECIFED_ERROR, 5, &quot;Can not rename &quot;, tmpfilename, &quot; to &quot;, filename, &quot;\n&quot;);
+<span class="lineNum">    1375 </span>            :                 ret = M3G_ERR_RENAME_TMP;
+<span class="lineNum">    1376 </span>            :                 /* Do NOT remove the temp file itself, just in case the &quot;remove(filename)&quot; function
+<span class="lineNum">    1377 </span>            :                    only _temporarily_ failed, and the original file will disappear soon, such as when
+<span class="lineNum">    1378 </span>            :                    all handles on the file are closed. If it does disappear and we also
+<span class="lineNum">    1379 </span>            :                    delete the tmp file, then the file is completely gone... */
+<span class="lineNum">    1380 </span>            :                 free(tmpfilename);
+<span class="lineNum">    1381 </span>            :         }
+<span class="lineNum">    1382 </span>            : #endif
+<span class="lineNum">    1383 </span>            : 
+<span class="lineNum">    1384 </span><span class="lineNoCov">          0 :         ret = 1;</span>
+<span class="lineNum">    1385 </span><span class="lineNoCov">          0 :         if (rename(tmpfilename, filename)) {</span>
+<span class="lineNum">    1386 </span><span class="lineNoCov">          0 :                 remove(tmpfilename);</span>
+<span class="lineNum">    1387 </span><span class="lineNoCov">          0 :                 passError(MP3GAIN_UNSPECIFED_ERROR, 5, &quot;Can not rename &quot;, tmpfilename, &quot; to &quot;, filename, &quot;\n&quot;);</span>
+<span class="lineNum">    1388 </span><span class="lineNoCov">          0 :                 ret = M3G_ERR_RENAME_TMP;</span>
+<span class="lineNum">    1389 </span>            :         } else {
+<span class="lineNum">    1390 </span><span class="lineNoCov">          0 :                 if (saveTimeStamp)</span>
+<span class="lineNum">    1391 </span><span class="lineNoCov">          0 :                         fileTime(filename, setStoredTime);</span>
+<span class="lineNum">    1392 </span>            :         }
+<span class="lineNum">    1393 </span>            : 
+<span class="lineNum">    1394 </span><span class="lineNoCov">          0 :         free(tmpfilename);</span>
+<span class="lineNum">    1395 </span>            : 
+<span class="lineNum">    1396 </span><span class="lineNoCov">          0 :         return ret;</span>
+<span class="lineNum">    1397 </span>            : }
+<span class="lineNum">    1398 </span>            : 
+<span class="lineNum">    1399 </span>            : 
+<span class="lineNum">    1400 </span>            : /**
+<span class="lineNum">    1401 </span>            :  * Remove gain information from the ID3v2 tag.
+<a name="1402"><span class="lineNum">    1402 </span>            :  * Return 1 on success, 0 if no changes are needed, or a negative error code.</a>
+<span class="lineNum">    1403 </span>            :  */
+<span class="lineNum">    1404 </span><span class="lineNoCov">          0 : int RemoveMP3GainID3Tag(char *filename, int saveTimeStamp)</span>
+<span class="lineNum">    1405 </span>            : {
+<span class="lineNum">    1406 </span>            :         struct MP3GainTagInfo info;
+<span class="lineNum">    1407 </span>            : 
+<span class="lineNum">    1408 </span><span class="lineNoCov">          0 :         info.haveAlbumGain = 0;</span>
+<span class="lineNum">    1409 </span><span class="lineNoCov">          0 :         info.haveAlbumPeak = 0;</span>
+<span class="lineNum">    1410 </span><span class="lineNoCov">          0 :         info.haveTrackGain = 0;</span>
+<span class="lineNum">    1411 </span><span class="lineNoCov">          0 :         info.haveTrackPeak = 0;</span>
+<span class="lineNum">    1412 </span><span class="lineNoCov">          0 :         info.haveMinMaxGain = 0;</span>
+<span class="lineNum">    1413 </span><span class="lineNoCov">          0 :         info.haveAlbumMinMaxGain = 0;</span>
+<span class="lineNum">    1414 </span><span class="lineNoCov">          0 :         info.haveUndo = 0;</span>
+<span class="lineNum">    1415 </span>            : 
+<span class="lineNum">    1416 </span><span class="lineNoCov">          0 :         return WriteMP3GainID3Tag(filename, &amp;info, saveTimeStamp);</span>
+<span class="lineNum">    1417 </span>            : }
+<span class="lineNum">    1418 </span>            : 
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.12</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

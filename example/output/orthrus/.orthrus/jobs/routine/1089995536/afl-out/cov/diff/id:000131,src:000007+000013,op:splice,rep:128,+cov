@@ -1,0 +1,9 @@
+diff id:000130,src:000007+000013,op:splice,rep:128 -> id:000131,src:000007+000013,op:splice,rep:128,+cov
+Src file: /work/output/orthrus/apetag.c
+  New 'line' coverage: 488
+  New 'line' coverage: 489
+  New 'line' coverage: 490
+  New 'line' coverage: 491
+  New 'line' coverage: 492
+  New 'line' coverage: 493
+  New 'line' coverage: 496

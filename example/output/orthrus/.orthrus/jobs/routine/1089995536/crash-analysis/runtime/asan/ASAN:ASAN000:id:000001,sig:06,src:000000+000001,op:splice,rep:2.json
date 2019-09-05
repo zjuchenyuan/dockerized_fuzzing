@@ -1,0 +1,136 @@
+{
+    "_fault_address": "0x60200000efb5", 
+    "_loc_size": "5", 
+    "_bp": "0x7fff97aff4b0", 
+    "_origin_bt": {
+        "frame3": {
+            "func": null, 
+            "column": null, 
+            "offset": "0x4f2480", 
+            "module": "/work/output/orthrus/.orthrus/binaries/asan-dbg/bin/mp3gain", 
+            "filename": null, 
+            "paramlist": null, 
+            "address": "0x4f2480", 
+            "line": null
+        }, 
+        "frame2": {
+            "func": null, 
+            "column": null, 
+            "offset": "0x503f15", 
+            "module": "/work/output/orthrus/.orthrus/binaries/asan-dbg/bin/mp3gain", 
+            "filename": null, 
+            "paramlist": null, 
+            "address": "0x503f15", 
+            "line": null
+        }, 
+        "frame1": {
+            "func": null, 
+            "column": null, 
+            "offset": "0x50240c", 
+            "module": "/work/output/orthrus/.orthrus/binaries/asan-dbg/bin/mp3gain", 
+            "filename": null, 
+            "paramlist": null, 
+            "address": "0x50240c", 
+            "line": null
+        }, 
+        "frame0": {
+            "func": null, 
+            "column": null, 
+            "offset": "0x4b8f98", 
+            "module": "/work/output/orthrus/.orthrus/binaries/asan-dbg/bin/mp3gain", 
+            "filename": null, 
+            "paramlist": null, 
+            "address": "0x4b8f98", 
+            "line": null
+        }, 
+        "frame4": {
+            "func": null, 
+            "column": null, 
+            "offset": "0x2082f", 
+            "module": "/lib/x86_64-linux-gnu/libc.so.6", 
+            "filename": null, 
+            "paramlist": null, 
+            "address": "0x7fef8521282f", 
+            "line": null
+        }
+    }, 
+    "_loc_end": "0x60200000efb5", 
+    "_command_line": "", 
+    "_loc_line": "", 
+    "_pc": "0x0000004a2ccd", 
+    "_freedby_bt": {}, 
+    "_reason": "heap-buffer-overflow", 
+    "_loc_position": "right", 
+    "_operation": "READ", 
+    "_op_size": "3", 
+    "_loc_frame_no": "", 
+    "_fault_bt": {
+        "frame3": {
+            "func": null, 
+            "column": null, 
+            "offset": "0x4f2480", 
+            "module": "/work/output/orthrus/.orthrus/binaries/asan-dbg/bin/mp3gain", 
+            "filename": null, 
+            "paramlist": null, 
+            "address": "0x4f2480", 
+            "line": null
+        }, 
+        "frame2": {
+            "func": null, 
+            "column": null, 
+            "offset": "0x503f15", 
+            "module": "/work/output/orthrus/.orthrus/binaries/asan-dbg/bin/mp3gain", 
+            "filename": null, 
+            "paramlist": null, 
+            "address": "0x503f15", 
+            "line": null
+        }, 
+        "frame1": {
+            "func": null, 
+            "column": null, 
+            "offset": "0x502e4a", 
+            "module": "/work/output/orthrus/.orthrus/binaries/asan-dbg/bin/mp3gain", 
+            "filename": null, 
+            "paramlist": null, 
+            "address": "0x502e4a", 
+            "line": null
+        }, 
+        "frame0": {
+            "func": null, 
+            "column": null, 
+            "offset": "0x4a2ccc", 
+            "module": "/work/output/orthrus/.orthrus/binaries/asan-dbg/bin/mp3gain", 
+            "filename": null, 
+            "paramlist": null, 
+            "address": "0x4a2ccc", 
+            "line": null
+        }, 
+        "frame5": {
+            "func": null, 
+            "column": null, 
+            "offset": "0x418e68", 
+            "module": "/work/output/orthrus/.orthrus/binaries/asan-dbg/bin/mp3gain", 
+            "filename": null, 
+            "paramlist": null, 
+            "address": "0x418e68", 
+            "line": null
+        }, 
+        "frame4": {
+            "func": null, 
+            "column": null, 
+            "offset": "0x2082f", 
+            "module": "/lib/x86_64-linux-gnu/libc.so.6", 
+            "filename": null, 
+            "paramlist": null, 
+            "address": "0x7fef8521282f", 
+            "line": null
+        }
+    }, 
+    "_sp": "0x7fff97afec60", 
+    "_loc_start": "0x60200000efb0", 
+    "jsonfile": ".orthrus/jobs/routine/1089995536/crash-analysis/runtime/asan/ASAN:ASAN000:id:000001,sig:06,src:000000+000001,op:splice,rep:2.json", 
+    "_exec_file": null, 
+    "_pid": 10977, 
+    "_loc_function": "", 
+    "_fault_var": ""
+}

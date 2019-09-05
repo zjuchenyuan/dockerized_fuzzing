@@ -1,0 +1,17 @@
+diff id:000043,orig:id:000128,src:000003,op:havoc,rep:32 -> id:000044,orig:id:000129,src:000003,op:havoc,rep:128,+cov
+Src file: /work/output/orthrus/mp3gain.c
+  New 'line' coverage: 2745
+Src file: /work/output/orthrus/apetag.c
+  New 'line' coverage: 28
+  New 'line' coverage: 29
+  New 'line' coverage: 30
+  New 'line' coverage: 31
+  New 'line' coverage: 32
+  New 'line' coverage: 34
+  New 'line' coverage: 91
+  New 'line' coverage: 93
+  New 'line' coverage: 94
+  New 'line' coverage: 95
+  New 'line' coverage: 96
+  New 'line' coverage: 97
+  New 'line' coverage: 99

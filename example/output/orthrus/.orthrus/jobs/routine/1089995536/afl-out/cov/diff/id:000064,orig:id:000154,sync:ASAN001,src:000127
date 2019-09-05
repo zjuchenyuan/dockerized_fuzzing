@@ -1,0 +1,6 @@
+diff id:000063,orig:id:000151,sync:ASAN000,src:000147,+cov -> id:000064,orig:id:000154,sync:ASAN001,src:000127
+Src file: /work/output/orthrus/mp3gain.c
+  New 'line' coverage: 2579
+Src file: /work/output/orthrus/apetag.c
+  New 'line' coverage: 230
+  New 'line' coverage: 231

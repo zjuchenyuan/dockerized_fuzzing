@@ -1,0 +1,32 @@
+diff id:000002,orig:id:000026,src:000000,op:flip1,pos:556 -> id:000003,orig:id:000027,src:000000,op:havoc,rep:32,+cov
+Src file: /work/output/orthrus/mp3gain.c
+  New 'function' coverage: passError()
+  New 'line' coverage: 2225
+  New 'line' coverage: 2563
+  New 'line' coverage: 2763
+  New 'line' coverage: 337
+  New 'line' coverage: 340
+  New 'line' coverage: 344
+  New 'line' coverage: 345
+  New 'line' coverage: 346
+  New 'line' coverage: 348
+  New 'line' coverage: 350
+  New 'line' coverage: 351
+  New 'line' coverage: 353
+  New 'line' coverage: 354
+  New 'line' coverage: 355
+  New 'line' coverage: 357
+  New 'line' coverage: 359
+  New 'line' coverage: 360
+  New 'line' coverage: 361
+  New 'line' coverage: 362
+  New 'line' coverage: 401
+  New 'line' coverage: 403
+  New 'line' coverage: 404
+  New 'line' coverage: 406
+Src file: /work/output/orthrus/rg_error.c
+  New 'function' coverage: DoError()
+  New 'line' coverage: 39
+  New 'line' coverage: 42
+  New 'line' coverage: 43
+  New 'line' coverage: 58

@@ -1,0 +1,8 @@
+diff id:000111,src:000000+000034,op:splice,rep:128 -> id:000112,src:000000+000034,op:splice,rep:16,+cov
+Src file: /work/output/orthrus/mp3gain.c
+  New 'line' coverage: 2155
+  New 'line' coverage: 2400
+  New 'line' coverage: 2401
+Src file: /work/output/orthrus/apetag.c
+  New 'line' coverage: 500
+  New 'line' coverage: 501

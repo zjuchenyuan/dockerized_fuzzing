@@ -1,0 +1,5 @@
+diff id:000022,orig:id:000092,sync:ASAN000,src:000090,+cov -> id:000023,orig:id:000095,sync:ASAN000,src:000092,+cov
+Src file: /work/output/orthrus/apetag.c
+  New 'line' coverage: 187
+  New 'line' coverage: 188
+  New 'line' coverage: 189

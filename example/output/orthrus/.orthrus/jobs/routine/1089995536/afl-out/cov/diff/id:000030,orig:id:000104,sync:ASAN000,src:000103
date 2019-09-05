@@ -1,0 +1,3 @@
+diff id:000029,orig:id:000103,sync:ASAN000,src:000093,+cov -> id:000030,orig:id:000104,sync:ASAN000,src:000103
+Src file: /work/output/orthrus/mp3gain.c
+  New 'line' coverage: 392

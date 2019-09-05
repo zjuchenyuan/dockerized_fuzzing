@@ -1,0 +1,2687 @@
+nohup: ignoring input
+    
+*** Imported 152 new test cases from: .orthrus/jobs/routine/1089995536/afl-out/HARDEN001/queue
+
+    [+] AFL test case: id:000000,orig:35041 (0 / 152), cycle: 0
+        lines......: 17.6% (450 of 2558 lines)
+        functions..: 27.8% (20 of 72 functions)
+    
+    Coverage diff (init) id:000000,orig:35041
+    diff (init) -> id:000000,orig:35041
+    New src file: /work/output/orthrus/gain_analysis.c
+      New 'function' coverage: AnalyzeSamples()
+      New 'function' coverage: InitGainAnalysis()
+      New 'function' coverage: ResetSampleFrequency()
+      New 'function' coverage: filterButter()
+      New 'function' coverage: filterYule()
+      New 'function' coverage: fsqr()
+      New 'line' coverage: 190
+      New 'line' coverage: 193
+      New 'line' coverage: 194
+      New 'line' coverage: 195
+      New 'line' coverage: 196
+      New 'line' coverage: 197
+      New 'line' coverage: 198
+      New 'line' coverage: 199
+      New 'line' coverage: 200
+      New 'line' coverage: 201
+      New 'line' coverage: 202
+      New 'line' coverage: 203
+      New 'line' coverage: 204
+      New 'line' coverage: 205
+      New 'line' coverage: 206
+      New 'line' coverage: 207
+      New 'line' coverage: 208
+      New 'line' coverage: 209
+      New 'line' coverage: 210
+      New 'line' coverage: 211
+      New 'line' coverage: 212
+      New 'line' coverage: 213
+      New 'line' coverage: 214
+      New 'line' coverage: 215
+      New 'line' coverage: 216
+      New 'line' coverage: 217
+      New 'line' coverage: 219
+      New 'line' coverage: 222
+      New 'line' coverage: 225
+      New 'line' coverage: 226
+      New 'line' coverage: 227
+      New 'line' coverage: 228
+      New 'line' coverage: 229
+      New 'line' coverage: 230
+      New 'line' coverage: 231
+      New 'line' coverage: 232
+      New 'line' coverage: 233
+      New 'line' coverage: 235
+      New 'line' coverage: 241
+      New 'line' coverage: 245
+      New 'line' coverage: 246
+      New 'line' coverage: 248
+      New 'line' coverage: 259
+      New 'line' coverage: 264
+      New 'line' coverage: 266
+      New 'line' coverage: 267
+      New 'line' coverage: 268
+      New 'line' coverage: 270
+      New 'line' coverage: 272
+      New 'line' coverage: 276
+      New 'line' coverage: 278
+      New 'line' coverage: 282
+      New 'line' coverage: 283
+      New 'line' coverage: 284
+      New 'line' coverage: 285
+      New 'line' coverage: 286
+      New 'line' coverage: 287
+      New 'line' coverage: 289
+      New 'line' coverage: 291
+      New 'line' coverage: 296
+      New 'line' coverage: 297
+      New 'line' coverage: 301
+      New 'line' coverage: 310
+      New 'line' coverage: 313
+      New 'line' coverage: 314
+      New 'line' coverage: 316
+      New 'line' coverage: 317
+      New 'line' coverage: 318
+      New 'line' coverage: 322
+      New 'line' coverage: 327
+      New 'line' coverage: 328
+      New 'line' coverage: 331
+      New 'line' coverage: 332
+      New 'line' coverage: 333
+      New 'line' coverage: 334
+      New 'line' coverage: 335
+      New 'line' coverage: 336
+      New 'line' coverage: 337
+      New 'line' coverage: 340
+      New 'line' coverage: 341
+      New 'line' coverage: 344
+      New 'line' coverage: 345
+      New 'line' coverage: 347
+      New 'line' coverage: 348
+      New 'line' coverage: 350
+      New 'line' coverage: 351
+      New 'line' coverage: 353
+      New 'line' coverage: 354
+      New 'line' coverage: 355
+      New 'line' coverage: 356
+      New 'line' coverage: 358
+      New 'line' coverage: 359
+      New 'line' coverage: 360
+      New 'line' coverage: 361
+      New 'line' coverage: 362
+      New 'line' coverage: 363
+      New 'line' coverage: 364
+      New 'line' coverage: 365
+      New 'line' coverage: 366
+      New 'line' coverage: 367
+      New 'line' coverage: 368
+      New 'line' coverage: 369
+      New 'line' coverage: 370
+      New 'line' coverage: 371
+      New 'line' coverage: 372
+      New 'line' coverage: 373
+      New 'line' coverage: 374
+      New 'line' coverage: 375
+      New 'line' coverage: 376
+      New 'line' coverage: 377
+      New 'line' coverage: 378
+      New 'line' coverage: 379
+      New 'line' coverage: 380
+      New 'line' coverage: 381
+      New 'line' coverage: 382
+      New 'line' coverage: 383
+      New 'line' coverage: 384
+      New 'line' coverage: 385
+      New 'line' coverage: 386
+      New 'line' coverage: 387
+      New 'line' coverage: 388
+      New 'line' coverage: 389
+      New 'line' coverage: 390
+      New 'line' coverage: 391
+      New 'line' coverage: 392
+      New 'line' coverage: 393
+      New 'line' coverage: 396
+      New 'line' coverage: 397
+      New 'line' coverage: 398
+      New 'line' coverage: 399
+      New 'line' coverage: 400
+      New 'line' coverage: 401
+      New 'line' coverage: 402
+      New 'line' coverage: 403
+      New 'line' coverage: 404
+      New 'line' coverage: 405
+      New 'line' coverage: 406
+      New 'line' coverage: 407
+      New 'line' coverage: 408
+      New 'line' coverage: 409
+      New 'line' coverage: 410
+      New 'line' coverage: 412
+      New 'line' coverage: 415
+      New 'line' coverage: 422
+      New 'line' coverage: 423
+      New 'line' coverage: 426
+    New src file: /work/output/orthrus/mp3gain.c
+      New 'function' coverage: convert_decout()
+      New 'function' coverage: fillBuffer()
+      New 'function' coverage: find_maxsample()
+      New 'function' coverage: frameSearch()
+      New 'function' coverage: getSizeOfFile()
+      New 'function' coverage: main()
+      New 'function' coverage: peek8Bits()
+      New 'function' coverage: scanFrameGain()
+      New 'function' coverage: skipBits()
+      New 'function' coverage: skipID3v2()
+      New 'line' coverage: 1429
+      New 'line' coverage: 1432
+      New 'line' coverage: 1433
+      New 'line' coverage: 1434
+      New 'line' coverage: 1441
+      New 'line' coverage: 1443
+      New 'line' coverage: 1446
+      New 'line' coverage: 1448
+      New 'line' coverage: 1449
+      New 'line' coverage: 1450
+      New 'line' coverage: 1451
+      New 'line' coverage: 1452
+      New 'line' coverage: 1454
+      New 'line' coverage: 1460
+      New 'line' coverage: 1462
+      New 'line' coverage: 1474
+      New 'line' coverage: 1475
+      New 'line' coverage: 1476
+      New 'line' coverage: 1477
+      New 'line' coverage: 1484
+      New 'line' coverage: 1485
+      New 'line' coverage: 1486
+      New 'line' coverage: 1487
+      New 'line' coverage: 1488
+      New 'line' coverage: 1489
+      New 'line' coverage: 1491
+      New 'line' coverage: 1495
+      New 'line' coverage: 1496
+      New 'line' coverage: 1497
+      New 'line' coverage: 1498
+      New 'line' coverage: 1499
+      New 'line' coverage: 1502
+      New 'line' coverage: 1508
+      New 'line' coverage: 1509
+      New 'line' coverage: 1510
+      New 'line' coverage: 1511
+      New 'line' coverage: 1518
+      New 'line' coverage: 1519
+      New 'line' coverage: 1521
+      New 'line' coverage: 1525
+      New 'line' coverage: 1526
+      New 'line' coverage: 1527
+      New 'line' coverage: 1528
+      New 'line' coverage: 1530
+      New 'line' coverage: 1534
+      New 'line' coverage: 1773
+      New 'line' coverage: 1776
+      New 'line' coverage: 1777
+      New 'line' coverage: 1783
+      New 'line' coverage: 1795
+      New 'line' coverage: 1796
+      New 'line' coverage: 1797
+      New 'line' coverage: 1798
+      New 'line' coverage: 1799
+      New 'line' coverage: 1800
+      New 'line' coverage: 1801
+      New 'line' coverage: 1802
+      New 'line' coverage: 1803
+      New 'line' coverage: 1804
+      New 'line' coverage: 1805
+      New 'line' coverage: 1806
+      New 'line' coverage: 1807
+      New 'line' coverage: 1808
+      New 'line' coverage: 1809
+      New 'line' coverage: 1810
+      New 'line' coverage: 1825
+      New 'line' coverage: 1835
+      New 'line' coverage: 1836
+      New 'line' coverage: 1848
+      New 'line' coverage: 1884
+      New 'line' coverage: 1885
+      New 'line' coverage: 1887
+      New 'line' coverage: 1893
+      New 'line' coverage: 1894
+      New 'line' coverage: 1895
+      New 'line' coverage: 1902
+      New 'line' coverage: 1903
+      New 'line' coverage: 1906
+      New 'line' coverage: 1920
+      New 'line' coverage: 1921
+      New 'line' coverage: 1923
+      New 'line' coverage: 1924
+      New 'line' coverage: 1929
+      New 'line' coverage: 1935
+      New 'line' coverage: 1937
+      New 'line' coverage: 1938
+      New 'line' coverage: 2029
+      New 'line' coverage: 2055
+      New 'line' coverage: 2075
+      New 'line' coverage: 2087
+      New 'line' coverage: 2105
+      New 'line' coverage: 2106
+      New 'line' coverage: 2108
+      New 'line' coverage: 2109
+      New 'line' coverage: 2114
+      New 'line' coverage: 2120
+      New 'line' coverage: 2134
+      New 'line' coverage: 2135
+      New 'line' coverage: 2136
+      New 'line' coverage: 2137
+      New 'line' coverage: 2138
+      New 'line' coverage: 2142
+      New 'line' coverage: 2148
+      New 'line' coverage: 2154
+      New 'line' coverage: 2158
+      New 'line' coverage: 216
+      New 'line' coverage: 2197
+      New 'line' coverage: 2198
+      New 'line' coverage: 2199
+      New 'line' coverage: 2200
+      New 'line' coverage: 2201
+      New 'line' coverage: 2202
+      New 'line' coverage: 2203
+      New 'line' coverage: 2204
+      New 'line' coverage: 2207
+      New 'line' coverage: 221
+      New 'line' coverage: 2211
+      New 'line' coverage: 2213
+      New 'line' coverage: 2215
+      New 'line' coverage: 2217
+      New 'line' coverage: 222
+      New 'line' coverage: 2223
+      New 'line' coverage: 2232
+      New 'line' coverage: 2236
+      New 'line' coverage: 2240
+      New 'line' coverage: 2245
+      New 'line' coverage: 2247
+      New 'line' coverage: 2249
+      New 'line' coverage: 2252
+      New 'line' coverage: 2254
+      New 'line' coverage: 2255
+      New 'line' coverage: 2257
+      New 'line' coverage: 2259
+      New 'line' coverage: 2260
+      New 'line' coverage: 227
+      New 'line' coverage: 2279
+      New 'line' coverage: 2281
+      New 'line' coverage: 2282
+      New 'line' coverage: 2283
+      New 'line' coverage: 2284
+      New 'line' coverage: 2286
+      New 'line' coverage: 2287
+      New 'line' coverage: 2288
+      New 'line' coverage: 2289
+      New 'line' coverage: 2290
+      New 'line' coverage: 2304
+      New 'line' coverage: 2305
+      New 'line' coverage: 2306
+      New 'line' coverage: 2312
+      New 'line' coverage: 2313
+      New 'line' coverage: 2314
+      New 'line' coverage: 2316
+      New 'line' coverage: 2317
+      New 'line' coverage: 2318
+      New 'line' coverage: 232
+      New 'line' coverage: 2320
+      New 'line' coverage: 2321
+      New 'line' coverage: 2322
+      New 'line' coverage: 2323
+      New 'line' coverage: 2334
+      New 'line' coverage: 2337
+      New 'line' coverage: 2345
+      New 'line' coverage: 235
+      New 'line' coverage: 2352
+      New 'line' coverage: 2353
+      New 'line' coverage: 2354
+      New 'line' coverage: 2355
+      New 'line' coverage: 2356
+      New 'line' coverage: 2357
+      New 'line' coverage: 2359
+      New 'line' coverage: 2361
+      New 'line' coverage: 2362
+      New 'line' coverage: 2366
+      New 'line' coverage: 2368
+      New 'line' coverage: 2369
+      New 'line' coverage: 2378
+      New 'line' coverage: 2380
+      New 'line' coverage: 2385
+      New 'line' coverage: 2386
+      New 'line' coverage: 2403
+      New 'line' coverage: 2404
+      New 'line' coverage: 2405
+      New 'line' coverage: 2415
+      New 'line' coverage: 2416
+      New 'line' coverage: 2417
+      New 'line' coverage: 2420
+      New 'line' coverage: 2421
+      New 'line' coverage: 249
+      New 'line' coverage: 251
+      New 'line' coverage: 252
+      New 'line' coverage: 253
+      New 'line' coverage: 279
+      New 'line' coverage: 281
+      New 'line' coverage: 282
+      New 'line' coverage: 283
+      New 'line' coverage: 285
+      New 'line' coverage: 291
+      New 'line' coverage: 294
+      New 'line' coverage: 295
+      New 'line' coverage: 296
+      New 'line' coverage: 297
+      New 'line' coverage: 299
+      New 'line' coverage: 306
+      New 'line' coverage: 316
+      New 'line' coverage: 318
+      New 'line' coverage: 334
+      New 'line' coverage: 365
+      New 'line' coverage: 374
+      New 'line' coverage: 375
+      New 'line' coverage: 377
+      New 'line' coverage: 383
+      New 'line' coverage: 385
+      New 'line' coverage: 387
+      New 'line' coverage: 388
+      New 'line' coverage: 389
+      New 'line' coverage: 390
+      New 'line' coverage: 391
+      New 'line' coverage: 393
+      New 'line' coverage: 394
+      New 'line' coverage: 395
+      New 'line' coverage: 396
+      New 'line' coverage: 397
+      New 'line' coverage: 399
+      New 'line' coverage: 400
+      New 'line' coverage: 414
+      New 'line' coverage: 416
+      New 'line' coverage: 417
+      New 'line' coverage: 418
+      New 'line' coverage: 419
+      New 'line' coverage: 420
+      New 'line' coverage: 423
+      New 'line' coverage: 425
+      New 'line' coverage: 426
+      New 'line' coverage: 431
+      New 'line' coverage: 432
+      New 'line' coverage: 433
+      New 'line' coverage: 435
+      New 'line' coverage: 441
+      New 'line' coverage: 443
+      New 'line' coverage: 450
+      New 'line' coverage: 451
+      New 'line' coverage: 455
+      New 'line' coverage: 456
+      New 'line' coverage: 458
+      New 'line' coverage: 498
+      New 'line' coverage: 500
+      New 'line' coverage: 503
+      New 'line' coverage: 504
+      New 'line' coverage: 505
+      New 'line' coverage: 506
+      New 'line' coverage: 507
+      New 'line' coverage: 510
+      New 'line' coverage: 622
+      New 'line' coverage: 630
+      New 'line' coverage: 631
+      New 'line' coverage: 632
+      New 'line' coverage: 633
+      New 'line' coverage: 635
+      New 'line' coverage: 636
+      New 'line' coverage: 640
+      New 'line' coverage: 642
+      New 'line' coverage: 666
+      New 'line' coverage: 668
+      New 'line' coverage: 669
+      New 'line' coverage: 671
+      New 'line' coverage: 674
+      New 'line' coverage: 675
+      New 'line' coverage: 676
+      New 'line' coverage: 677
+      New 'line' coverage: 678
+      New 'line' coverage: 680
+      New 'line' coverage: 681
+      New 'line' coverage: 683
+      New 'line' coverage: 686
+    New src file: /work/output/orthrus/apetag.c
+      New 'function' coverage: ReadMP3APETag()
+      New 'function' coverage: ReadMP3GainAPETag()
+      New 'function' coverage: ReadMP3ID3v1Tag()
+      New 'function' coverage: ReadMP3Lyrics3v2Tag()
+      New 'line' coverage: 150
+      New 'line' coverage: 171
+      New 'line' coverage: 172
+      New 'line' coverage: 173
+      New 'line' coverage: 174
+      New 'line' coverage: 19
+      New 'line' coverage: 22
+      New 'line' coverage: 23
+      New 'line' coverage: 24
+      New 'line' coverage: 25
+      New 'line' coverage: 366
+      New 'line' coverage: 370
+      New 'line' coverage: 371
+      New 'line' coverage: 374
+      New 'line' coverage: 375
+      New 'line' coverage: 377
+      New 'line' coverage: 380
+      New 'line' coverage: 381
+      New 'line' coverage: 382
+      New 'line' coverage: 383
+      New 'line' coverage: 384
+      New 'line' coverage: 386
+      New 'line' coverage: 387
+      New 'line' coverage: 392
+      New 'line' coverage: 394
+      New 'line' coverage: 77
+      New 'line' coverage: 85
+      New 'line' coverage: 86
+      New 'line' coverage: 87
+      New 'line' coverage: 89
+    
+    
+
+++++++ BEGIN - first exec output for CMD: .orthrus/binaries/coverage/gcc/bin/mp3gain .orthrus/jobs/routine/1089995536/afl-out/HARDEN001/queue/id:000000,orig:35041
+        Delaying a frame in decoding with old libmpg123.
+        Unexpected format returned by libmpg123.
+        .orthrus/jobs/routine/1089995536/afl-out/HARDEN001/queue/id:000000,orig:35041
+    ++++++ END
+
+    [+] AFL test case: id:000001,orig:id:000023,src:000000,op:havoc,rep:128,+cov (1 / 152), cycle: 0
+        lines......: 28.5% (728 of 2558 lines)
+        functions..: 36.1% (26 of 72 functions)
+    
+    Coverage diff id:000000,orig:35041 id:000001,orig:id:000023,src:000000,op:havoc,rep:128,+cov
+    diff id:000000,orig:35041 -> id:000001,orig:id:000023,src:000000,op:havoc,rep:128,+cov
+    Src file: /work/output/orthrus/mp3gain.c
+      New 'function' coverage: WriteMP3GainTag()
+      New 'line' coverage: 1128
+      New 'line' coverage: 1135
+      New 'line' coverage: 1141
+      New 'line' coverage: 1143
+      New 'line' coverage: 2149
+      New 'line' coverage: 2150
+      New 'line' coverage: 2151
+      New 'line' coverage: 2152
+      New 'line' coverage: 2429
+      New 'line' coverage: 2430
+      New 'line' coverage: 2432
+      New 'line' coverage: 2438
+      New 'line' coverage: 2441
+      New 'line' coverage: 2449
+      New 'line' coverage: 2450
+      New 'line' coverage: 2451
+      New 'line' coverage: 2452
+      New 'line' coverage: 2453
+      New 'line' coverage: 2454
+      New 'line' coverage: 2461
+      New 'line' coverage: 2462
+      New 'line' coverage: 2463
+      New 'line' coverage: 2470
+      New 'line' coverage: 2471
+      New 'line' coverage: 2472
+      New 'line' coverage: 2473
+      New 'line' coverage: 2474
+      New 'line' coverage: 2475
+      New 'line' coverage: 2480
+      New 'line' coverage: 2482
+      New 'line' coverage: 2484
+      New 'line' coverage: 2485
+      New 'line' coverage: 2488
+      New 'line' coverage: 2490
+      New 'line' coverage: 2494
+      New 'line' coverage: 2495
+      New 'line' coverage: 2496
+      New 'line' coverage: 2497
+      New 'line' coverage: 2498
+      New 'line' coverage: 2499
+      New 'line' coverage: 2501
+      New 'line' coverage: 2502
+      New 'line' coverage: 2503
+      New 'line' coverage: 2504
+      New 'line' coverage: 2558
+      New 'line' coverage: 2559
+      New 'line' coverage: 2560
+      New 'line' coverage: 2561
+      New 'line' coverage: 2562
+      New 'line' coverage: 2564
+      New 'line' coverage: 2569
+      New 'line' coverage: 2570
+      New 'line' coverage: 2578
+      New 'line' coverage: 2581
+      New 'line' coverage: 2584
+      New 'line' coverage: 2592
+      New 'line' coverage: 2593
+      New 'line' coverage: 2594
+      New 'line' coverage: 2595
+      New 'line' coverage: 2596
+      New 'line' coverage: 2597
+      New 'line' coverage: 2598
+      New 'line' coverage: 2599
+      New 'line' coverage: 2600
+      New 'line' coverage: 2601
+      New 'line' coverage: 2602
+      New 'line' coverage: 2606
+      New 'line' coverage: 2643
+      New 'line' coverage: 2645
+      New 'line' coverage: 2646
+      New 'line' coverage: 2647
+      New 'line' coverage: 2650
+      New 'line' coverage: 2653
+      New 'line' coverage: 2658
+      New 'line' coverage: 2659
+      New 'line' coverage: 2660
+      New 'line' coverage: 2661
+      New 'line' coverage: 2662
+      New 'line' coverage: 2663
+      New 'line' coverage: 2664
+      New 'line' coverage: 2665
+      New 'line' coverage: 2712
+      New 'line' coverage: 2713
+      New 'line' coverage: 2714
+      New 'line' coverage: 2715
+      New 'line' coverage: 2716
+      New 'line' coverage: 2717
+      New 'line' coverage: 2718
+      New 'line' coverage: 2720
+      New 'line' coverage: 2721
+      New 'line' coverage: 2722
+      New 'line' coverage: 2723
+      New 'line' coverage: 2729
+      New 'line' coverage: 2731
+      New 'line' coverage: 2734
+      New 'line' coverage: 2735
+      New 'line' coverage: 2736
+      New 'line' coverage: 2737
+      New 'line' coverage: 2739
+      New 'line' coverage: 2741
+      New 'line' coverage: 2744
+      New 'line' coverage: 2753
+      New 'line' coverage: 2758
+      New 'line' coverage: 2759
+      New 'line' coverage: 2760
+      New 'line' coverage: 2761
+    Src file: /work/output/orthrus/apetag.c
+      New 'function' coverage: Read_LE_Uint32()
+      New 'function' coverage: Read_LE_Uint32_unsigned()
+      New 'function' coverage: WriteMP3GainAPETag()
+      New 'function' coverage: Write_LE_Uint32()
+      New 'function' coverage: strlen_max()
+      New 'line' coverage: 120
+      New 'line' coverage: 122
+      New 'line' coverage: 123
+      New 'line' coverage: 124
+      New 'line' coverage: 125
+      New 'line' coverage: 128
+      New 'line' coverage: 131
+      New 'line' coverage: 133
+      New 'line' coverage: 134
+      New 'line' coverage: 135
+      New 'line' coverage: 136
+      New 'line' coverage: 137
+      New 'line' coverage: 143
+      New 'line' coverage: 144
+      New 'line' coverage: 145
+      New 'line' coverage: 146
+      New 'line' coverage: 175
+      New 'line' coverage: 176
+      New 'line' coverage: 177
+      New 'line' coverage: 178
+      New 'line' coverage: 179
+      New 'line' coverage: 180
+      New 'line' coverage: 181
+      New 'line' coverage: 186
+      New 'line' coverage: 191
+      New 'line' coverage: 192
+      New 'line' coverage: 193
+      New 'line' coverage: 194
+      New 'line' coverage: 196
+      New 'line' coverage: 198
+      New 'line' coverage: 199
+      New 'line' coverage: 202
+      New 'line' coverage: 203
+      New 'line' coverage: 204
+      New 'line' coverage: 205
+      New 'line' coverage: 206
+      New 'line' coverage: 207
+      New 'line' coverage: 209
+      New 'line' coverage: 210
+      New 'line' coverage: 211
+      New 'line' coverage: 213
+      New 'line' coverage: 214
+      New 'line' coverage: 215
+      New 'line' coverage: 216
+      New 'line' coverage: 217
+      New 'line' coverage: 218
+      New 'line' coverage: 220
+      New 'line' coverage: 223
+      New 'line' coverage: 224
+      New 'line' coverage: 225
+      New 'line' coverage: 226
+      New 'line' coverage: 227
+      New 'line' coverage: 228
+      New 'line' coverage: 229
+      New 'line' coverage: 232
+      New 'line' coverage: 235
+      New 'line' coverage: 252
+      New 'line' coverage: 254
+      New 'line' coverage: 255
+      New 'line' coverage: 256
+      New 'line' coverage: 257
+      New 'line' coverage: 258
+      New 'line' coverage: 259
+      New 'line' coverage: 260
+      New 'line' coverage: 261
+      New 'line' coverage: 262
+      New 'line' coverage: 286
+      New 'line' coverage: 287
+      New 'line' coverage: 288
+      New 'line' coverage: 291
+      New 'line' coverage: 293
+      New 'line' coverage: 294
+      New 'line' coverage: 296
+      New 'line' coverage: 297
+      New 'line' coverage: 298
+      New 'line' coverage: 300
+      New 'line' coverage: 301
+      New 'line' coverage: 302
+      New 'line' coverage: 303
+      New 'line' coverage: 306
+      New 'line' coverage: 307
+      New 'line' coverage: 308
+      New 'line' coverage: 309
+      New 'line' coverage: 310
+      New 'line' coverage: 311
+      New 'line' coverage: 315
+      New 'line' coverage: 404
+      New 'line' coverage: 416
+      New 'line' coverage: 420
+      New 'line' coverage: 421
+      New 'line' coverage: 422
+      New 'line' coverage: 424
+      New 'line' coverage: 426
+      New 'line' coverage: 427
+      New 'line' coverage: 430
+      New 'line' coverage: 435
+      New 'line' coverage: 440
+      New 'line' coverage: 442
+      New 'line' coverage: 443
+      New 'line' coverage: 445
+      New 'line' coverage: 447
+      New 'line' coverage: 448
+      New 'line' coverage: 450
+      New 'line' coverage: 452
+      New 'line' coverage: 453
+      New 'line' coverage: 455
+      New 'line' coverage: 460
+      New 'line' coverage: 466
+      New 'line' coverage: 468
+      New 'line' coverage: 469
+      New 'line' coverage: 471
+      New 'line' coverage: 473
+      New 'line' coverage: 479
+      New 'line' coverage: 480
+      New 'line' coverage: 481
+      New 'line' coverage: 483
+      New 'line' coverage: 484
+      New 'line' coverage: 485
+      New 'line' coverage: 486
+      New 'line' coverage: 499
+      New 'line' coverage: 519
+      New 'line' coverage: 521
+      New 'line' coverage: 522
+      New 'line' coverage: 523
+      New 'line' coverage: 524
+      New 'line' coverage: 525
+      New 'line' coverage: 526
+      New 'line' coverage: 527
+      New 'line' coverage: 528
+      New 'line' coverage: 529
+      New 'line' coverage: 530
+      New 'line' coverage: 531
+      New 'line' coverage: 532
+      New 'line' coverage: 534
+      New 'line' coverage: 549
+      New 'line' coverage: 570
+      New 'line' coverage: 572
+      New 'line' coverage: 573
+      New 'line' coverage: 574
+      New 'line' coverage: 575
+      New 'line' coverage: 576
+      New 'line' coverage: 577
+      New 'line' coverage: 578
+      New 'line' coverage: 579
+      New 'line' coverage: 580
+      New 'line' coverage: 581
+      New 'line' coverage: 582
+      New 'line' coverage: 584
+      New 'line' coverage: 586
+      New 'line' coverage: 587
+      New 'line' coverage: 588
+      New 'line' coverage: 589
+      New 'line' coverage: 590
+      New 'line' coverage: 591
+      New 'line' coverage: 592
+      New 'line' coverage: 593
+      New 'line' coverage: 594
+      New 'line' coverage: 596
+      New 'line' coverage: 610
+      New 'line' coverage: 624
+      New 'line' coverage: 625
+      New 'line' coverage: 630
+      New 'line' coverage: 631
+      New 'line' coverage: 632
+      New 'line' coverage: 633
+      New 'line' coverage: 634
+      New 'line' coverage: 636
+      New 'line' coverage: 639
+      New 'line' coverage: 643
+      New 'line' coverage: 645
+      New 'line' coverage: 648
+      New 'line' coverage: 649
+    
+    [+] AFL test case: id:000002,orig:id:000026,src:000000,op:flip1,pos:556 (2 / 152), cycle: 0
+        lines......: 28.5% (730 of 2558 lines)
+        functions..: 36.1% (26 of 72 functions)
+    
+    Coverage diff id:000001,orig:id:000023,src:000000,op:havoc,rep:128,+cov id:000002,orig:id:000026,src:000000,op:flip1,pos:556
+    diff id:000001,orig:id:000023,src:000000,op:havoc,rep:128,+cov -> id:000002,orig:id:000026,src:000000,op:flip1,pos:556
+    Src file: /work/output/orthrus/mp3gain.c
+      New 'line' coverage: 2487
+      New 'line' coverage: 2649
+    
+    [+] AFL test case: id:000003,orig:id:000027,src:000000,op:havoc,rep:32,+cov (3 / 152), cycle: 0
+        lines......: 29.6% (757 of 2558 lines)
+        functions..: 38.9% (28 of 72 functions)
+    
+    Coverage diff id:000002,orig:id:000026,src:000000,op:flip1,pos:556 id:000003,orig:id:000027,src:000000,op:havoc,rep:32,+cov
+    diff id:000002,orig:id:000026,src:000000,op:flip1,pos:556 -> id:000003,orig:id:000027,src:000000,op:havoc,rep:32,+cov
+    Src file: /work/output/orthrus/mp3gain.c
+      New 'function' coverage: passError()
+      New 'line' coverage: 2225
+      New 'line' coverage: 2563
+      New 'line' coverage: 2763
+      New 'line' coverage: 337
+      New 'line' coverage: 340
+      New 'line' coverage: 344
+      New 'line' coverage: 345
+      New 'line' coverage: 346
+      New 'line' coverage: 348
+      New 'line' coverage: 350
+      New 'line' coverage: 351
+      New 'line' coverage: 353
+      New 'line' coverage: 354
+      New 'line' coverage: 355
+      New 'line' coverage: 357
+      New 'line' coverage: 359
+      New 'line' coverage: 360
+      New 'line' coverage: 361
+      New 'line' coverage: 362
+      New 'line' coverage: 401
+      New 'line' coverage: 403
+      New 'line' coverage: 404
+      New 'line' coverage: 406
+    Src file: /work/output/orthrus/rg_error.c
+      New 'function' coverage: DoError()
+      New 'line' coverage: 39
+      New 'line' coverage: 42
+      New 'line' coverage: 43
+      New 'line' coverage: 58
+    
+    [+] AFL test case: id:000004,orig:id:000038,src:000000,op:havoc,rep:128,+cov (4 / 152), cycle: 0
+        lines......: 30.8% (788 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    
+    Coverage diff id:000003,orig:id:000027,src:000000,op:havoc,rep:32,+cov id:000004,orig:id:000038,src:000000,op:havoc,rep:128,+cov
+    diff id:000003,orig:id:000027,src:000000,op:havoc,rep:32,+cov -> id:000004,orig:id:000038,src:000000,op:havoc,rep:128,+cov
+    Src file: /work/output/orthrus/gain_analysis.c
+      New 'function' coverage: GetTitleGain()
+      New 'function' coverage: analyzeResult()
+      New 'line' coverage: 257
+      New 'line' coverage: 431
+      New 'line' coverage: 437
+      New 'line' coverage: 438
+      New 'line' coverage: 439
+      New 'line' coverage: 440
+      New 'line' coverage: 441
+      New 'line' coverage: 454
+      New 'line' coverage: 459
+      New 'line' coverage: 461
+      New 'line' coverage: 462
+      New 'line' coverage: 463
+      New 'line' coverage: 466
+      New 'line' coverage: 467
+      New 'line' coverage: 469
+      New 'line' coverage: 470
+      New 'line' coverage: 471
+    Src file: /work/output/orthrus/mp3gain.c
+      New 'line' coverage: 1435
+      New 'line' coverage: 1436
+      New 'line' coverage: 233
+      New 'line' coverage: 2433
+      New 'line' coverage: 2436
+      New 'line' coverage: 2442
+      New 'line' coverage: 2443
+      New 'line' coverage: 2444
+      New 'line' coverage: 2445
+      New 'line' coverage: 398
+      New 'line' coverage: 434
+      New 'line' coverage: 444
+      New 'line' coverage: 445
+      New 'line' coverage: 446
+    
+    [+] AFL test case: id:000005,orig:id:000039,src:000000,op:havoc,rep:128 (5 / 152), cycle: 0
+        lines......: 30.9% (791 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    
+    Coverage diff id:000004,orig:id:000038,src:000000,op:havoc,rep:128,+cov id:000005,orig:id:000039,src:000000,op:havoc,rep:128
+    diff id:000004,orig:id:000038,src:000000,op:havoc,rep:128,+cov -> id:000005,orig:id:000039,src:000000,op:havoc,rep:128
+    Src file: /work/output/orthrus/gain_analysis.c
+      New 'line' coverage: 256
+    Src file: /work/output/orthrus/mp3gain.c
+      New 'line' coverage: 1438
+      New 'line' coverage: 1439
+    
+    [+] AFL test case: id:000006,orig:id:000040,src:000000,op:havoc,rep:128 (6 / 152), cycle: 0
+        lines......: 30.9% (791 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000007,orig:id:000040,src:000000,op:havoc,rep:32 (7 / 152), cycle: 0
+        lines......: 30.9% (791 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000008,orig:id:000044,src:000000,op:havoc,rep:128,+cov (8 / 152), cycle: 0
+        lines......: 31.0% (794 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    
+    Coverage diff id:000007,orig:id:000040,src:000000,op:havoc,rep:32 id:000008,orig:id:000044,src:000000,op:havoc,rep:128,+cov
+    diff id:000007,orig:id:000040,src:000000,op:havoc,rep:32 -> id:000008,orig:id:000044,src:000000,op:havoc,rep:128,+cov
+    Src file: /work/output/orthrus/mp3gain.c
+      New 'line' coverage: 408
+      New 'line' coverage: 409
+      New 'line' coverage: 411
+    
+    [+] AFL test case: id:000009,orig:id:000050,src:000000,op:havoc,rep:128 (9 / 152), cycle: 0
+        lines......: 31.0% (794 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000010,orig:id:000051,src:000000,op:havoc,rep:128 (10 / 152), cycle: 0
+        lines......: 31.0% (794 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000011,orig:id:000053,src:000000,op:havoc,rep:64 (11 / 152), cycle: 0
+        lines......: 31.0% (794 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000012,orig:id:000059,src:000000,op:havoc,rep:64 (12 / 152), cycle: 0
+        lines......: 31.0% (794 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000013,orig:id:000061,src:000000,op:havoc,rep:128 (13 / 152), cycle: 0
+        lines......: 31.0% (794 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000014,orig:id:000064,src:000000,op:havoc,rep:64 (14 / 152), cycle: 0
+        lines......: 31.0% (794 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000015,orig:id:000070,src:000000+000003,op:splice,rep:32,+cov (15 / 152), cycle: 0
+        lines......: 31.0% (794 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000016,orig:id:000079,sync:HARDEN001,src:000081,+cov (16 / 152), cycle: 0
+        lines......: 31.0% (794 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000017,orig:id:000080,src:000000+000003,op:splice,rep:8,+cov (17 / 152), cycle: 0
+        lines......: 31.2% (798 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    
+    Coverage diff id:000016,orig:id:000079,sync:HARDEN001,src:000081,+cov id:000017,orig:id:000080,src:000000+000003,op:splice,rep:8,+cov
+    diff id:000016,orig:id:000079,sync:HARDEN001,src:000081,+cov -> id:000017,orig:id:000080,src:000000+000003,op:splice,rep:8,+cov
+    Src file: /work/output/orthrus/apetag.c
+      New 'line' coverage: 263
+      New 'line' coverage: 275
+      New 'line' coverage: 276
+      New 'line' coverage: 277
+    
+    [+] AFL test case: id:000018,orig:id:000081,sync:ASAN000,src:000034 (18 / 152), cycle: 0
+        lines......: 31.2% (799 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    
+    Coverage diff id:000017,orig:id:000080,src:000000+000003,op:splice,rep:8,+cov id:000018,orig:id:000081,sync:ASAN000,src:000034
+    diff id:000017,orig:id:000080,src:000000+000003,op:splice,rep:8,+cov -> id:000018,orig:id:000081,sync:ASAN000,src:000034
+    Src file: /work/output/orthrus/gain_analysis.c
+      New 'line' coverage: 255
+    
+    [+] AFL test case: id:000019,orig:id:000081,sync:HARDEN001,src:000108 (19 / 152), cycle: 0
+        lines......: 32.0% (819 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    
+    Coverage diff id:000018,orig:id:000081,sync:ASAN000,src:000034 id:000019,orig:id:000081,sync:HARDEN001,src:000108
+    diff id:000018,orig:id:000081,sync:ASAN000,src:000034 -> id:000019,orig:id:000081,sync:HARDEN001,src:000108
+    Src file: /work/output/orthrus/gain_analysis.c
+      New 'line' coverage: 253
+    Src file: /work/output/orthrus/mp3gain.c
+      New 'line' coverage: 2250
+      New 'line' coverage: 421
+      New 'line' coverage: 452
+      New 'line' coverage: 453
+      New 'line' coverage: 638
+      New 'line' coverage: 643
+      New 'line' coverage: 644
+      New 'line' coverage: 646
+      New 'line' coverage: 649
+      New 'line' coverage: 651
+      New 'line' coverage: 652
+      New 'line' coverage: 653
+      New 'line' coverage: 654
+      New 'line' coverage: 655
+      New 'line' coverage: 656
+      New 'line' coverage: 657
+      New 'line' coverage: 659
+      New 'line' coverage: 660
+      New 'line' coverage: 662
+    
+    [+] AFL test case: id:000020,orig:id:000082,src:000000+000003,op:splice,rep:64 (20 / 152), cycle: 0
+        lines......: 32.0% (819 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000021,orig:id:000083,sync:HARDEN001,src:000106 (21 / 152), cycle: 0
+        lines......: 32.1% (820 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    
+    Coverage diff id:000020,orig:id:000082,src:000000+000003,op:splice,rep:64 id:000021,orig:id:000083,sync:HARDEN001,src:000106
+    diff id:000020,orig:id:000082,src:000000+000003,op:splice,rep:64 -> id:000021,orig:id:000083,sync:HARDEN001,src:000106
+    Src file: /work/output/orthrus/mp3gain.c
+      New 'line' coverage: 647
+    
+    [+] AFL test case: id:000022,orig:id:000092,sync:ASAN000,src:000090,+cov (22 / 152), cycle: 0
+        lines......: 32.1% (820 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000023,orig:id:000095,sync:ASAN000,src:000092,+cov (23 / 152), cycle: 0
+        lines......: 32.2% (823 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    
+    Coverage diff id:000022,orig:id:000092,sync:ASAN000,src:000090,+cov id:000023,orig:id:000095,sync:ASAN000,src:000092,+cov
+    diff id:000022,orig:id:000092,sync:ASAN000,src:000090,+cov -> id:000023,orig:id:000095,sync:ASAN000,src:000092,+cov
+    Src file: /work/output/orthrus/apetag.c
+      New 'line' coverage: 187
+      New 'line' coverage: 188
+      New 'line' coverage: 189
+    
+    [+] AFL test case: id:000024,orig:id:000097,sync:HARDEN001,src:000078,+cov (24 / 152), cycle: 0
+        lines......: 32.2% (823 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000025,orig:id:000100,src:000001,op:havoc,rep:128,+cov (25 / 152), cycle: 0
+        lines......: 32.2% (823 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000026,orig:id:000101,sync:HARDEN001,src:000084 (26 / 152), cycle: 0
+        lines......: 32.2% (823 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000027,orig:id:000102,sync:HARDEN001,src:000110,+cov (27 / 152), cycle: 0
+        lines......: 32.4% (830 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    
+    Coverage diff id:000026,orig:id:000101,sync:HARDEN001,src:000084 id:000027,orig:id:000102,sync:HARDEN001,src:000110,+cov
+    diff id:000026,orig:id:000101,sync:HARDEN001,src:000084 -> id:000027,orig:id:000102,sync:HARDEN001,src:000110,+cov
+    Src file: /work/output/orthrus/mp3gain.c
+      New 'line' coverage: 2261
+      New 'line' coverage: 2262
+      New 'line' coverage: 2268
+      New 'line' coverage: 2269
+      New 'line' coverage: 2271
+      New 'line' coverage: 2273
+      New 'line' coverage: 2275
+    
+    [+] AFL test case: id:000028,orig:id:000103,src:000001,op:havoc,rep:64 (28 / 152), cycle: 0
+        lines......: 32.4% (830 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000029,orig:id:000103,sync:ASAN000,src:000093,+cov (29 / 152), cycle: 0
+        lines......: 32.4% (830 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000030,orig:id:000104,sync:ASAN000,src:000103 (30 / 152), cycle: 0
+        lines......: 32.5% (831 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    
+    Coverage diff id:000029,orig:id:000103,sync:ASAN000,src:000093,+cov id:000030,orig:id:000104,sync:ASAN000,src:000103
+    diff id:000029,orig:id:000103,sync:ASAN000,src:000093,+cov -> id:000030,orig:id:000104,sync:ASAN000,src:000103
+    Src file: /work/output/orthrus/mp3gain.c
+      New 'line' coverage: 392
+    
+    [+] AFL test case: id:000031,orig:id:000105,src:000001,op:havoc,rep:64 (31 / 152), cycle: 0
+        lines......: 32.5% (831 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000032,orig:id:000105,sync:HARDEN001,src:000113,+cov (32 / 152), cycle: 0
+        lines......: 32.5% (832 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    
+    Coverage diff id:000031,orig:id:000105,src:000001,op:havoc,rep:64 id:000032,orig:id:000105,sync:HARDEN001,src:000113,+cov
+    diff id:000031,orig:id:000105,src:000001,op:havoc,rep:64 -> id:000032,orig:id:000105,sync:HARDEN001,src:000113,+cov
+    Src file: /work/output/orthrus/gain_analysis.c
+      New 'line' coverage: 260
+    
+    [+] AFL test case: id:000033,orig:id:000106,sync:HARDEN001,src:000086 (33 / 152), cycle: 0
+        lines......: 32.5% (832 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000034,orig:id:000108,sync:ASAN000,src:000104 (34 / 152), cycle: 0
+        lines......: 32.5% (832 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000035,orig:id:000109,src:000005+000098,op:splice,rep:32,+cov (35 / 152), cycle: 0
+        lines......: 32.5% (832 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000036,orig:id:000111,src:000006,op:havoc,rep:64 (36 / 152), cycle: 0
+        lines......: 32.5% (832 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000037,orig:id:000117,sync:HARDEN001,src:000130 (37 / 152), cycle: 0
+        lines......: 32.6% (833 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    
+    Coverage diff id:000036,orig:id:000111,src:000006,op:havoc,rep:64 id:000037,orig:id:000117,sync:HARDEN001,src:000130
+    diff id:000036,orig:id:000111,src:000006,op:havoc,rep:64 -> id:000037,orig:id:000117,sync:HARDEN001,src:000130
+    Src file: /work/output/orthrus/gain_analysis.c
+      New 'line' coverage: 258
+    
+    [+] AFL test case: id:000038,orig:id:000123,src:000006+000113,op:splice,rep:64 (38 / 152), cycle: 0
+        lines......: 32.6% (833 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000039,orig:id:000123,sync:ASAN001,src:000115,+cov (39 / 152), cycle: 0
+        lines......: 32.7% (836 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    
+    Coverage diff id:000038,orig:id:000123,src:000006+000113,op:splice,rep:64 id:000039,orig:id:000123,sync:ASAN001,src:000115,+cov
+    diff id:000038,orig:id:000123,src:000006+000113,op:splice,rep:64 -> id:000039,orig:id:000123,sync:ASAN001,src:000115,+cov
+    Src file: /work/output/orthrus/mp3gain.c
+      New 'line' coverage: 2226
+      New 'line' coverage: 2227
+      New 'line' coverage: 2228
+    
+    [+] AFL test case: id:000040,orig:id:000124,src:000003,op:havoc,rep:8 (40 / 152), cycle: 0
+        lines......: 32.7% (836 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000041,orig:id:000124,src:000006+000113,op:splice,rep:4,+cov (41 / 152), cycle: 0
+        lines......: 32.7% (836 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000042,orig:id:000126,src:000003,op:havoc,rep:32,+cov (42 / 152), cycle: 0
+        lines......: 32.7% (836 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000043,orig:id:000128,src:000003,op:havoc,rep:32 (43 / 152), cycle: 0
+        lines......: 32.7% (836 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000044,orig:id:000129,src:000003,op:havoc,rep:128,+cov (44 / 152), cycle: 0
+        lines......: 33.2% (850 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    
+    Coverage diff id:000043,orig:id:000128,src:000003,op:havoc,rep:32 id:000044,orig:id:000129,src:000003,op:havoc,rep:128,+cov
+    diff id:000043,orig:id:000128,src:000003,op:havoc,rep:32 -> id:000044,orig:id:000129,src:000003,op:havoc,rep:128,+cov
+    Src file: /work/output/orthrus/mp3gain.c
+      New 'line' coverage: 2745
+    Src file: /work/output/orthrus/apetag.c
+      New 'line' coverage: 28
+      New 'line' coverage: 29
+      New 'line' coverage: 30
+      New 'line' coverage: 31
+      New 'line' coverage: 32
+      New 'line' coverage: 34
+      New 'line' coverage: 91
+      New 'line' coverage: 93
+      New 'line' coverage: 94
+      New 'line' coverage: 95
+      New 'line' coverage: 96
+      New 'line' coverage: 97
+      New 'line' coverage: 99
+    
+    [+] AFL test case: id:000045,orig:id:000130,sync:ASAN000,src:000113 (45 / 152), cycle: 0
+        lines......: 33.3% (851 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    
+    Coverage diff id:000044,orig:id:000129,src:000003,op:havoc,rep:128,+cov id:000045,orig:id:000130,sync:ASAN000,src:000113
+    diff id:000044,orig:id:000129,src:000003,op:havoc,rep:128,+cov -> id:000045,orig:id:000130,sync:ASAN000,src:000113
+    Src file: /work/output/orthrus/gain_analysis.c
+      New 'line' coverage: 254
+    
+    [+] AFL test case: id:000046,orig:id:000134,src:000005,op:havoc,rep:8 (46 / 152), cycle: 0
+        lines......: 33.3% (851 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000047,orig:id:000134,sync:HARDEN001,src:000157,+cov (47 / 152), cycle: 0
+        lines......: 33.3% (851 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000048,orig:id:000135,src:000005,op:havoc,rep:64 (48 / 152), cycle: 0
+        lines......: 33.3% (851 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000049,orig:id:000136,src:000005+000081,op:splice,rep:64 (49 / 152), cycle: 0
+        lines......: 33.3% (851 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000050,orig:id:000136,src:000090+000133,op:splice,rep:8 (50 / 152), cycle: 0
+        lines......: 33.3% (851 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000051,orig:id:000138,src:000005+000081,op:splice,rep:128 (51 / 152), cycle: 0
+        lines......: 33.3% (851 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000052,orig:id:000139,src:000005+000096,op:splice,rep:128 (52 / 152), cycle: 0
+        lines......: 33.3% (851 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000053,orig:id:000140,sync:ASAN000,src:000135 (53 / 152), cycle: 0
+        lines......: 33.3% (851 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000054,orig:id:000142,src:000006+000130,op:splice,rep:128,+cov (54 / 152), cycle: 0
+        lines......: 33.3% (851 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000055,orig:id:000143,src:000006+000134,op:splice,rep:32 (55 / 152), cycle: 0
+        lines......: 33.3% (851 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000056,orig:id:000143,sync:HARDEN001,src:000165 (56 / 152), cycle: 0
+        lines......: 33.3% (851 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000057,orig:id:000144,sync:HARDEN001,src:000167 (57 / 152), cycle: 0
+        lines......: 33.3% (851 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000058,orig:id:000147,src:000038,op:havoc,rep:128 (58 / 152), cycle: 0
+        lines......: 33.3% (851 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000059,orig:id:000147,sync:ASAN000,src:000146,+cov (59 / 152), cycle: 0
+        lines......: 33.9% (866 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    
+    Coverage diff id:000058,orig:id:000147,src:000038,op:havoc,rep:128 id:000059,orig:id:000147,sync:ASAN000,src:000146,+cov
+    diff id:000058,orig:id:000147,src:000038,op:havoc,rep:128 -> id:000059,orig:id:000147,sync:ASAN000,src:000146,+cov
+    Src file: /work/output/orthrus/gain_analysis.c
+      New 'line' coverage: 252
+    Src file: /work/output/orthrus/mp3gain.c
+      New 'line' coverage: 223
+      New 'line' coverage: 224
+      New 'line' coverage: 236
+      New 'line' coverage: 238
+      New 'line' coverage: 239
+      New 'line' coverage: 240
+      New 'line' coverage: 319
+      New 'line' coverage: 321
+      New 'line' coverage: 322
+      New 'line' coverage: 324
+      New 'line' coverage: 326
+      New 'line' coverage: 328
+      New 'line' coverage: 329
+      New 'line' coverage: 330
+    
+    [+] AFL test case: id:000060,orig:id:000148,src:000038,op:havoc,rep:64 (60 / 152), cycle: 0
+        lines......: 33.9% (866 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000061,orig:id:000148,sync:ASAN000,src:000142 (61 / 152), cycle: 0
+        lines......: 33.9% (866 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000062,orig:id:000149,src:000072+000077,op:splice,rep:16 (62 / 152), cycle: 0
+        lines......: 33.9% (866 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000063,orig:id:000151,sync:ASAN000,src:000147,+cov (63 / 152), cycle: 0
+        lines......: 33.9% (866 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000064,orig:id:000154,sync:ASAN001,src:000127 (64 / 152), cycle: 0
+        lines......: 34.0% (869 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    
+    Coverage diff id:000063,orig:id:000151,sync:ASAN000,src:000147,+cov id:000064,orig:id:000154,sync:ASAN001,src:000127
+    diff id:000063,orig:id:000151,sync:ASAN000,src:000147,+cov -> id:000064,orig:id:000154,sync:ASAN001,src:000127
+    Src file: /work/output/orthrus/mp3gain.c
+      New 'line' coverage: 2579
+    Src file: /work/output/orthrus/apetag.c
+      New 'line' coverage: 230
+      New 'line' coverage: 231
+    
+    [+] AFL test case: id:000065,orig:id:000156,sync:ASAN000,src:000126 (65 / 152), cycle: 0
+        lines......: 34.0% (869 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000066,orig:id:000158,src:000080+000076,op:splice,rep:32 (66 / 152), cycle: 0
+        lines......: 34.0% (869 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000067,orig:id:000159,src:000107,op:havoc,rep:128 (67 / 152), cycle: 0
+        lines......: 34.0% (869 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000068,orig:id:000160,sync:ASAN000,src:000154 (68 / 152), cycle: 0
+        lines......: 34.0% (869 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000069,orig:id:000161,sync:ASAN000,src:000128 (69 / 152), cycle: 0
+        lines......: 34.0% (869 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000070,orig:id:000162,src:000114+000007,op:splice,rep:64 (70 / 152), cycle: 0
+        lines......: 34.0% (869 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000071,orig:id:000164,src:000140+000102,op:splice,rep:64 (71 / 152), cycle: 0
+        lines......: 34.0% (869 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000072,orig:id:000166,src:000155,op:havoc,rep:4 (72 / 152), cycle: 0
+        lines......: 34.0% (869 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000073,orig:id:000168,src:000156,op:havoc,rep:128 (73 / 152), cycle: 0
+        lines......: 34.0% (869 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000074,orig:id:000169,src:000156,op:havoc,rep:64 (74 / 152), cycle: 0
+        lines......: 34.0% (869 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000075,orig:id:000171,sync:ASAN000,src:000137,+cov (75 / 152), cycle: 0
+        lines......: 34.0% (869 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000076,orig:id:000173,src:000172+000154,op:splice,rep:8,+cov (76 / 152), cycle: 0
+        lines......: 34.0% (869 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000077,orig:id:000175,src:000173,op:havoc,rep:128,+cov (77 / 152), cycle: 0
+        lines......: 34.0% (869 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000078,orig:id:000176,src:000175,op:havoc,rep:8 (78 / 152), cycle: 0
+        lines......: 34.1% (872 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    
+    Coverage diff id:000077,orig:id:000175,src:000173,op:havoc,rep:128,+cov id:000078,orig:id:000176,src:000175,op:havoc,rep:8
+    diff id:000077,orig:id:000175,src:000173,op:havoc,rep:128,+cov -> id:000078,orig:id:000176,src:000175,op:havoc,rep:8
+    Src file: /work/output/orthrus/mp3gain.c
+      New 'line' coverage: 378
+      New 'line' coverage: 379
+      New 'line' coverage: 380
+    
+    [+] AFL test case: id:000079,orig:id:000177,src:000175,op:havoc,rep:8 (79 / 152), cycle: 0
+        lines......: 34.1% (872 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000080,orig:id:000178,sync:ASAN000,src:000149 (80 / 152), cycle: 0
+        lines......: 34.1% (872 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000081,orig:id:000179,sync:ASAN001,src:000154,+cov (81 / 152), cycle: 0
+        lines......: 34.1% (872 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000082,orig:id:000182,src:000106+000020,op:splice,rep:64 (82 / 152), cycle: 0
+        lines......: 34.1% (872 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000083,orig:id:000184,src:000106+000056,op:splice,rep:128 (83 / 152), cycle: 0
+        lines......: 34.1% (872 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000084,orig:id:000185,src:000035+000182,op:splice,rep:64 (84 / 152), cycle: 0
+        lines......: 34.1% (872 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000085,orig:id:000186,sync:ASAN000,src:000155 (85 / 152), cycle: 0
+        lines......: 34.1% (872 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000086,orig:id:000187,src:000077+000122,op:splice,rep:128 (86 / 152), cycle: 0
+        lines......: 34.1% (872 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000087,orig:id:000188,sync:ASAN001,src:000161 (87 / 152), cycle: 0
+        lines......: 34.1% (872 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000088,orig:id:000189,src:000106+000182,op:splice,rep:64,+cov (88 / 152), cycle: 0
+        lines......: 34.2% (874 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    
+    Coverage diff id:000087,orig:id:000188,sync:ASAN001,src:000161 id:000088,orig:id:000189,src:000106+000182,op:splice,rep:64,+cov
+    diff id:000087,orig:id:000188,sync:ASAN001,src:000161 -> id:000088,orig:id:000189,src:000106+000182,op:splice,rep:64,+cov
+    Src file: /work/output/orthrus/mp3gain.c
+      New 'line' coverage: 2372
+      New 'line' coverage: 2373
+    
+    [+] AFL test case: id:000089,orig:id:000190,src:000189+000081,op:splice,rep:128 (89 / 152), cycle: 0
+        lines......: 34.2% (874 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000090,src:000000,op:havoc,rep:128,+cov (90 / 152), cycle: 0
+        lines......: 35.1% (898 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    
+    Coverage diff id:000089,orig:id:000190,src:000189+000081,op:splice,rep:128 id:000090,src:000000,op:havoc,rep:128,+cov
+    diff id:000089,orig:id:000190,src:000189+000081,op:splice,rep:128 -> id:000090,src:000000,op:havoc,rep:128,+cov
+    Src file: /work/output/orthrus/gain_analysis.c
+      New 'line' coverage: 443
+      New 'line' coverage: 444
+      New 'line' coverage: 445
+      New 'line' coverage: 446
+      New 'line' coverage: 449
+    Src file: /work/output/orthrus/mp3gain.c
+      New 'line' coverage: 2456
+      New 'line' coverage: 2457
+      New 'line' coverage: 2458
+      New 'line' coverage: 2464
+      New 'line' coverage: 2465
+      New 'line' coverage: 2466
+      New 'line' coverage: 2467
+    Src file: /work/output/orthrus/apetag.c
+      New 'line' coverage: 504
+      New 'line' coverage: 505
+      New 'line' coverage: 506
+      New 'line' coverage: 507
+      New 'line' coverage: 508
+      New 'line' coverage: 509
+      New 'line' coverage: 511
+      New 'line' coverage: 512
+      New 'line' coverage: 513
+      New 'line' coverage: 514
+      New 'line' coverage: 515
+      New 'line' coverage: 516
+    
+    [+] AFL test case: id:000091,src:000000,op:havoc,rep:64 (91 / 152), cycle: 0
+        lines......: 35.1% (898 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000092,src:000000,op:havoc,rep:64,+cov (92 / 152), cycle: 0
+        lines......: 35.1% (898 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000093,src:000000,op:havoc,rep:64 (93 / 152), cycle: 0
+        lines......: 35.1% (898 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000094,src:000000,op:havoc,rep:64 (94 / 152), cycle: 0
+        lines......: 35.1% (898 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000095,src:000000,op:havoc,rep:128 (95 / 152), cycle: 0
+        lines......: 35.1% (898 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000096,src:000000,op:havoc,rep:128 (96 / 152), cycle: 0
+        lines......: 35.1% (898 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000097,src:000000,op:havoc,rep:64 (97 / 152), cycle: 0
+        lines......: 35.1% (898 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000098,src:000000,op:havoc,rep:64 (98 / 152), cycle: 0
+        lines......: 35.1% (898 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000099,src:000000,op:havoc,rep:16 (99 / 152), cycle: 0
+        lines......: 35.1% (898 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000100,src:000000,op:havoc,rep:128,+cov (100 / 152), cycle: 0
+        lines......: 35.1% (898 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000101,src:000000,op:havoc,rep:128 (101 / 152), cycle: 0
+        lines......: 35.1% (898 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000102,src:000000,op:havoc,rep:16,+cov (102 / 152), cycle: 0
+        lines......: 35.1% (898 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000103,src:000000,op:havoc,rep:128 (103 / 152), cycle: 0
+        lines......: 35.1% (898 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000104,src:000000,op:havoc,rep:128 (104 / 152), cycle: 0
+        lines......: 35.1% (898 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000105,src:000000,op:havoc,rep:64 (105 / 152), cycle: 0
+        lines......: 35.1% (898 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000106,src:000000,op:havoc,rep:128,+cov (106 / 152), cycle: 0
+        lines......: 35.1% (898 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000107,src:000000,op:havoc,rep:128 (107 / 152), cycle: 0
+        lines......: 35.1% (898 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000108,src:000000,op:havoc,rep:64 (108 / 152), cycle: 0
+        lines......: 35.1% (898 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000109,src:000000,op:havoc,rep:64 (109 / 152), cycle: 0
+        lines......: 35.1% (898 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000110,src:000000,op:havoc,rep:64 (110 / 152), cycle: 0
+        lines......: 35.1% (898 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000111,src:000000+000034,op:splice,rep:128 (111 / 152), cycle: 0
+        lines......: 35.1% (898 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    [+] AFL test case: id:000112,src:000000+000034,op:splice,rep:16,+cov (112 / 152), cycle: 0
+        lines......: 35.3% (903 of 2558 lines)
+        functions..: 41.7% (30 of 72 functions)
+    
+    Coverage diff id:000111,src:000000+000034,op:splice,rep:128 id:000112,src:000000+000034,op:splice,rep:16,+cov
+    diff id:000111,src:000000+000034,op:splice,rep:128 -> id:000112,src:000000+000034,op:splice,rep:16,+cov
+    Src file: /work/output/orthrus/mp3gain.c
+      New 'line' coverage: 2155
+      New 'line' coverage: 2400
+      New 'line' coverage: 2401
+    Src file: /work/output/orthrus/apetag.c
+      New 'line' coverage: 500
+      New 'line' coverage: 501
+    
+    [+] AFL test case: id:000113,src:000000+000034,op:splice,rep:128,+cov (113 / 152), cycle: 0
+        lines......: 35.6% (910 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    
+    Coverage diff id:000112,src:000000+000034,op:splice,rep:16,+cov id:000113,src:000000+000034,op:splice,rep:128,+cov
+    diff id:000112,src:000000+000034,op:splice,rep:16,+cov -> id:000113,src:000000+000034,op:splice,rep:128,+cov
+    Src file: /work/output/orthrus/apetag.c
+      New 'function' coverage: truncate_file()
+      New 'line' coverage: 318
+      New 'line' coverage: 342
+      New 'line' coverage: 343
+      New 'line' coverage: 345
+      New 'line' coverage: 351
+      New 'line' coverage: 353
+      New 'line' coverage: 475
+    
+    [+] AFL test case: id:000114,src:000000+000060,op:splice,rep:4,+cov (114 / 152), cycle: 0
+        lines......: 35.6% (910 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000115,src:000000+000060,op:splice,rep:64 (115 / 152), cycle: 0
+        lines......: 35.6% (910 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000116,src:000000+000060,op:splice,rep:128 (116 / 152), cycle: 0
+        lines......: 35.6% (910 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000117,src:000000+000060,op:splice,rep:128 (117 / 152), cycle: 0
+        lines......: 35.6% (910 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000118,src:000000+000060,op:splice,rep:32 (118 / 152), cycle: 0
+        lines......: 35.6% (910 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000119,src:000000+000060,op:splice,rep:8 (119 / 152), cycle: 0
+        lines......: 35.6% (910 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000120,src:000000+000060,op:splice,rep:64 (120 / 152), cycle: 0
+        lines......: 35.6% (910 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000121,src:000000+000060,op:splice,rep:64,+cov (121 / 152), cycle: 0
+        lines......: 35.6% (910 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000122,src:000000+000060,op:splice,rep:128 (122 / 152), cycle: 0
+        lines......: 35.6% (910 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000123,src:000004,op:havoc,rep:64 (123 / 152), cycle: 0
+        lines......: 35.6% (910 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000124,src:000004,op:havoc,rep:128 (124 / 152), cycle: 0
+        lines......: 35.6% (910 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000125,src:000004,op:havoc,rep:128 (125 / 152), cycle: 0
+        lines......: 35.6% (910 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000126,src:000004+000123,op:splice,rep:128 (126 / 152), cycle: 0
+        lines......: 35.6% (910 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000127,src:000007+000126,op:splice,rep:16 (127 / 152), cycle: 0
+        lines......: 35.6% (910 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000128,src:000007+000013,op:splice,rep:128 (128 / 152), cycle: 0
+        lines......: 35.6% (910 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000129,src:000007+000013,op:splice,rep:4 (129 / 152), cycle: 0
+        lines......: 35.6% (910 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000130,src:000007+000013,op:splice,rep:128 (130 / 152), cycle: 0
+        lines......: 35.6% (910 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000131,src:000007+000013,op:splice,rep:128,+cov (131 / 152), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    
+    Coverage diff id:000130,src:000007+000013,op:splice,rep:128 id:000131,src:000007+000013,op:splice,rep:128,+cov
+    diff id:000130,src:000007+000013,op:splice,rep:128 -> id:000131,src:000007+000013,op:splice,rep:128,+cov
+    Src file: /work/output/orthrus/apetag.c
+      New 'line' coverage: 488
+      New 'line' coverage: 489
+      New 'line' coverage: 490
+      New 'line' coverage: 491
+      New 'line' coverage: 492
+      New 'line' coverage: 493
+      New 'line' coverage: 496
+    
+    [+] AFL test case: id:000132,src:000007+000013,op:splice,rep:128 (132 / 152), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000133,src:000007+000013,op:splice,rep:32 (133 / 152), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000134,src:000008+000053,op:splice,rep:128 (134 / 152), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000135,src:000008+000053,op:splice,rep:16 (135 / 152), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000136,src:000008+000053,op:splice,rep:8 (136 / 152), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000137,src:000008+000053,op:splice,rep:64 (137 / 152), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000138,src:000008+000053,op:splice,rep:64 (138 / 152), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000139,src:000008+000053,op:splice,rep:128 (139 / 152), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000140,src:000008+000053,op:splice,rep:128 (140 / 152), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000141,src:000008+000053,op:splice,rep:128,+cov (141 / 152), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000142,src:000008+000083,op:splice,rep:32 (142 / 152), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000143,src:000008+000083,op:splice,rep:64 (143 / 152), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000144,src:000011+000119,op:splice,rep:2 (144 / 152), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000145,src:000011+000119,op:splice,rep:128 (145 / 152), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000146,src:000027+000025,op:splice,rep:64,+cov (146 / 152), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000147,src:000027+000086,op:splice,rep:128 (147 / 152), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000148,src:000029+000064,op:splice,rep:8 (148 / 152), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000149,src:000029+000051,op:splice,rep:128 (149 / 152), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000150,src:000032+000088,op:splice,rep:64,+cov (150 / 152), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000151,src:000039+000046,op:splice,rep:64 (151 / 152), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    
+*** Imported 92 new test cases from: .orthrus/jobs/routine/1089995536/afl-out/HARDEN000/queue
+
+    [+] AFL test case: id:000000,orig:35041 (0 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000001,orig:id:000023,src:000000,op:havoc,rep:128,+cov (1 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000002,orig:id:000026,src:000000,op:flip1,pos:556 (2 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000003,orig:id:000027,src:000000,op:havoc,rep:32,+cov (3 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000004,orig:id:000038,src:000000,op:havoc,rep:128,+cov (4 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000005,orig:id:000039,src:000000,op:havoc,rep:128 (5 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000006,orig:id:000040,src:000000,op:havoc,rep:128 (6 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000007,orig:id:000040,src:000000,op:havoc,rep:32 (7 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000008,orig:id:000044,src:000000,op:havoc,rep:128,+cov (8 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000009,orig:id:000050,src:000000,op:havoc,rep:128 (9 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000010,orig:id:000051,src:000000,op:havoc,rep:128 (10 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000011,orig:id:000053,src:000000,op:havoc,rep:64 (11 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000012,orig:id:000059,src:000000,op:havoc,rep:64 (12 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000013,orig:id:000061,src:000000,op:havoc,rep:128 (13 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000014,orig:id:000064,src:000000,op:havoc,rep:64 (14 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000015,orig:id:000070,src:000000+000003,op:splice,rep:32,+cov (15 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000016,orig:id:000079,sync:HARDEN001,src:000081,+cov (16 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000017,orig:id:000080,src:000000+000003,op:splice,rep:8,+cov (17 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000018,orig:id:000081,sync:ASAN000,src:000034 (18 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000019,orig:id:000081,sync:HARDEN001,src:000108 (19 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000020,orig:id:000082,src:000000+000003,op:splice,rep:64 (20 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000021,orig:id:000083,sync:HARDEN001,src:000106 (21 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000022,orig:id:000092,sync:ASAN000,src:000090,+cov (22 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000023,orig:id:000095,sync:ASAN000,src:000092,+cov (23 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000024,orig:id:000097,sync:HARDEN001,src:000078,+cov (24 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000025,orig:id:000100,src:000001,op:havoc,rep:128,+cov (25 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000026,orig:id:000101,sync:HARDEN001,src:000084 (26 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000027,orig:id:000102,sync:HARDEN001,src:000110,+cov (27 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000028,orig:id:000103,src:000001,op:havoc,rep:64 (28 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000029,orig:id:000103,sync:ASAN000,src:000093,+cov (29 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000030,orig:id:000104,sync:ASAN000,src:000103 (30 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000031,orig:id:000105,src:000001,op:havoc,rep:64 (31 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000032,orig:id:000105,sync:HARDEN001,src:000113,+cov (32 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000033,orig:id:000106,sync:HARDEN001,src:000086 (33 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000034,orig:id:000108,sync:ASAN000,src:000104 (34 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000035,orig:id:000109,src:000005+000098,op:splice,rep:32,+cov (35 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000036,orig:id:000111,src:000006,op:havoc,rep:64 (36 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000037,orig:id:000117,sync:HARDEN001,src:000130 (37 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000038,orig:id:000123,src:000006+000113,op:splice,rep:64 (38 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000039,orig:id:000123,sync:ASAN001,src:000115,+cov (39 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000040,orig:id:000124,src:000003,op:havoc,rep:8 (40 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000041,orig:id:000124,src:000006+000113,op:splice,rep:4,+cov (41 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000042,orig:id:000126,src:000003,op:havoc,rep:32,+cov (42 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000043,orig:id:000128,src:000003,op:havoc,rep:32 (43 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000044,orig:id:000129,src:000003,op:havoc,rep:128,+cov (44 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000045,orig:id:000130,sync:ASAN000,src:000113 (45 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000046,orig:id:000134,src:000005,op:havoc,rep:8 (46 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000047,orig:id:000134,sync:HARDEN001,src:000157,+cov (47 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000048,orig:id:000135,src:000005,op:havoc,rep:64 (48 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000049,orig:id:000136,src:000005+000081,op:splice,rep:64 (49 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000050,orig:id:000136,src:000090+000133,op:splice,rep:8 (50 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000051,orig:id:000138,src:000005+000081,op:splice,rep:128 (51 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000052,orig:id:000139,src:000005+000096,op:splice,rep:128 (52 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000053,orig:id:000140,sync:ASAN000,src:000135 (53 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000054,orig:id:000142,src:000006+000130,op:splice,rep:128,+cov (54 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000055,orig:id:000143,src:000006+000134,op:splice,rep:32 (55 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000056,orig:id:000143,sync:HARDEN001,src:000165 (56 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000057,orig:id:000144,sync:HARDEN001,src:000167 (57 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000058,orig:id:000147,src:000038,op:havoc,rep:128 (58 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000059,orig:id:000147,sync:ASAN000,src:000146,+cov (59 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000060,orig:id:000148,src:000038,op:havoc,rep:64 (60 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000061,orig:id:000148,sync:ASAN000,src:000142 (61 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000062,orig:id:000149,src:000072+000077,op:splice,rep:16 (62 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000063,orig:id:000151,sync:ASAN000,src:000147,+cov (63 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000064,orig:id:000154,sync:ASAN001,src:000127 (64 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000065,orig:id:000156,sync:ASAN000,src:000126 (65 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000066,orig:id:000158,src:000080+000076,op:splice,rep:32 (66 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000067,orig:id:000159,src:000107,op:havoc,rep:128 (67 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000068,orig:id:000160,sync:ASAN000,src:000154 (68 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000069,orig:id:000161,sync:ASAN000,src:000128 (69 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000070,orig:id:000162,src:000114+000007,op:splice,rep:64 (70 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000071,orig:id:000164,src:000140+000102,op:splice,rep:64 (71 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000072,orig:id:000166,src:000155,op:havoc,rep:4 (72 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000073,orig:id:000168,src:000156,op:havoc,rep:128 (73 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000074,orig:id:000169,src:000156,op:havoc,rep:64 (74 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000075,orig:id:000171,sync:ASAN000,src:000137,+cov (75 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000076,orig:id:000173,src:000172+000154,op:splice,rep:8,+cov (76 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000077,orig:id:000175,src:000173,op:havoc,rep:128,+cov (77 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000078,orig:id:000176,src:000175,op:havoc,rep:8 (78 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000079,orig:id:000177,src:000175,op:havoc,rep:8 (79 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000080,orig:id:000178,sync:ASAN000,src:000149 (80 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000081,orig:id:000179,sync:ASAN001,src:000154,+cov (81 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000082,orig:id:000182,src:000106+000020,op:splice,rep:64 (82 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000083,orig:id:000184,src:000106+000056,op:splice,rep:128 (83 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000084,orig:id:000185,src:000035+000182,op:splice,rep:64 (84 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000085,orig:id:000186,sync:ASAN000,src:000155 (85 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000086,orig:id:000187,src:000077+000122,op:splice,rep:128 (86 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000087,orig:id:000188,sync:ASAN001,src:000161 (87 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000088,orig:id:000189,src:000106+000182,op:splice,rep:64,+cov (88 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000089,orig:id:000190,src:000189+000081,op:splice,rep:128 (89 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000090,src:000000,op:flip1,pos:77 (90 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000091,src:000000,op:flip1,pos:77 (91 / 244), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    
+*** Imported 138 new test cases from: .orthrus/jobs/routine/1089995536/afl-out/ASAN000/queue
+
+    [+] AFL test case: id:000000,orig:35041 (0 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000001,orig:id:000023,src:000000,op:havoc,rep:128,+cov (1 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000002,orig:id:000026,src:000000,op:flip1,pos:556 (2 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000003,orig:id:000027,src:000000,op:havoc,rep:32,+cov (3 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000004,orig:id:000038,src:000000,op:havoc,rep:128,+cov (4 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000005,orig:id:000039,src:000000,op:havoc,rep:128 (5 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000006,orig:id:000040,src:000000,op:havoc,rep:128 (6 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000007,orig:id:000040,src:000000,op:havoc,rep:32 (7 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000008,orig:id:000044,src:000000,op:havoc,rep:128,+cov (8 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000009,orig:id:000050,src:000000,op:havoc,rep:128 (9 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000010,orig:id:000051,src:000000,op:havoc,rep:128 (10 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000011,orig:id:000053,src:000000,op:havoc,rep:64 (11 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000012,orig:id:000059,src:000000,op:havoc,rep:64 (12 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000013,orig:id:000061,src:000000,op:havoc,rep:128 (13 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000014,orig:id:000064,src:000000,op:havoc,rep:64 (14 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000015,orig:id:000070,src:000000+000003,op:splice,rep:32,+cov (15 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000016,orig:id:000079,sync:HARDEN001,src:000081,+cov (16 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000017,orig:id:000080,src:000000+000003,op:splice,rep:8,+cov (17 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000018,orig:id:000081,sync:ASAN000,src:000034 (18 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000019,orig:id:000081,sync:HARDEN001,src:000108 (19 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000020,orig:id:000082,src:000000+000003,op:splice,rep:64 (20 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000021,orig:id:000083,sync:HARDEN001,src:000106 (21 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000022,orig:id:000092,sync:ASAN000,src:000090,+cov (22 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000023,orig:id:000095,sync:ASAN000,src:000092,+cov (23 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000024,orig:id:000097,sync:HARDEN001,src:000078,+cov (24 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000025,orig:id:000100,src:000001,op:havoc,rep:128,+cov (25 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000026,orig:id:000101,sync:HARDEN001,src:000084 (26 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000027,orig:id:000102,sync:HARDEN001,src:000110,+cov (27 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000028,orig:id:000103,src:000001,op:havoc,rep:64 (28 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000029,orig:id:000103,sync:ASAN000,src:000093,+cov (29 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000030,orig:id:000104,sync:ASAN000,src:000103 (30 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000031,orig:id:000105,src:000001,op:havoc,rep:64 (31 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000032,orig:id:000105,sync:HARDEN001,src:000113,+cov (32 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000033,orig:id:000106,sync:HARDEN001,src:000086 (33 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000034,orig:id:000108,sync:ASAN000,src:000104 (34 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000035,orig:id:000109,src:000005+000098,op:splice,rep:32,+cov (35 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000036,orig:id:000111,src:000006,op:havoc,rep:64 (36 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000037,orig:id:000117,sync:HARDEN001,src:000130 (37 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000038,orig:id:000123,src:000006+000113,op:splice,rep:64 (38 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000039,orig:id:000123,sync:ASAN001,src:000115,+cov (39 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000040,orig:id:000124,src:000003,op:havoc,rep:8 (40 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000041,orig:id:000124,src:000006+000113,op:splice,rep:4,+cov (41 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000042,orig:id:000126,src:000003,op:havoc,rep:32,+cov (42 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000043,orig:id:000128,src:000003,op:havoc,rep:32 (43 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000044,orig:id:000129,src:000003,op:havoc,rep:128,+cov (44 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000045,orig:id:000130,sync:ASAN000,src:000113 (45 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000046,orig:id:000134,src:000005,op:havoc,rep:8 (46 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000047,orig:id:000134,sync:HARDEN001,src:000157,+cov (47 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000048,orig:id:000135,src:000005,op:havoc,rep:64 (48 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000049,orig:id:000136,src:000005+000081,op:splice,rep:64 (49 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000050,orig:id:000136,src:000090+000133,op:splice,rep:8 (50 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000051,orig:id:000138,src:000005+000081,op:splice,rep:128 (51 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000052,orig:id:000139,src:000005+000096,op:splice,rep:128 (52 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000053,orig:id:000140,sync:ASAN000,src:000135 (53 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000054,orig:id:000142,src:000006+000130,op:splice,rep:128,+cov (54 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000055,orig:id:000143,src:000006+000134,op:splice,rep:32 (55 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000056,orig:id:000143,sync:HARDEN001,src:000165 (56 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000057,orig:id:000144,sync:HARDEN001,src:000167 (57 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000058,orig:id:000147,src:000038,op:havoc,rep:128 (58 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000059,orig:id:000147,sync:ASAN000,src:000146,+cov (59 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000060,orig:id:000148,src:000038,op:havoc,rep:64 (60 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000061,orig:id:000148,sync:ASAN000,src:000142 (61 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000062,orig:id:000149,src:000072+000077,op:splice,rep:16 (62 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000063,orig:id:000151,sync:ASAN000,src:000147,+cov (63 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000064,orig:id:000154,sync:ASAN001,src:000127 (64 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000065,orig:id:000156,sync:ASAN000,src:000126 (65 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000066,orig:id:000158,src:000080+000076,op:splice,rep:32 (66 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000067,orig:id:000159,src:000107,op:havoc,rep:128 (67 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000068,orig:id:000160,sync:ASAN000,src:000154 (68 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000069,orig:id:000161,sync:ASAN000,src:000128 (69 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000070,orig:id:000162,src:000114+000007,op:splice,rep:64 (70 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000071,orig:id:000164,src:000140+000102,op:splice,rep:64 (71 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000072,orig:id:000166,src:000155,op:havoc,rep:4 (72 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000073,orig:id:000168,src:000156,op:havoc,rep:128 (73 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000074,orig:id:000169,src:000156,op:havoc,rep:64 (74 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000075,orig:id:000171,sync:ASAN000,src:000137,+cov (75 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000076,orig:id:000173,src:000172+000154,op:splice,rep:8,+cov (76 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000077,orig:id:000175,src:000173,op:havoc,rep:128,+cov (77 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000078,orig:id:000176,src:000175,op:havoc,rep:8 (78 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000079,orig:id:000177,src:000175,op:havoc,rep:8 (79 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000080,orig:id:000178,sync:ASAN000,src:000149 (80 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000081,orig:id:000179,sync:ASAN001,src:000154,+cov (81 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000082,orig:id:000182,src:000106+000020,op:splice,rep:64 (82 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000083,orig:id:000184,src:000106+000056,op:splice,rep:128 (83 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000084,orig:id:000185,src:000035+000182,op:splice,rep:64 (84 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000085,orig:id:000186,sync:ASAN000,src:000155 (85 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000086,orig:id:000187,src:000077+000122,op:splice,rep:128 (86 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000087,orig:id:000188,sync:ASAN001,src:000161 (87 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000088,orig:id:000189,src:000106+000182,op:splice,rep:64,+cov (88 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000089,orig:id:000190,src:000189+000081,op:splice,rep:128 (89 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000090,src:000000,op:havoc,rep:4,+cov (90 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000091,src:000000,op:havoc,rep:32,+cov (91 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000092,src:000000,op:havoc,rep:32 (92 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000093,src:000000,op:havoc,rep:4 (93 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000094,src:000000,op:havoc,rep:64 (94 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000095,src:000000,op:havoc,rep:32 (95 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000096,src:000000,op:havoc,rep:32 (96 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000097,src:000000,op:havoc,rep:16 (97 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000098,src:000000,op:havoc,rep:8 (98 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000099,src:000000,op:havoc,rep:8 (99 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000100,src:000000,op:havoc,rep:64,+cov (100 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000101,src:000000,op:havoc,rep:128,+cov (101 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000102,src:000000,op:havoc,rep:4 (102 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000103,src:000000,op:havoc,rep:32 (103 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000104,src:000000,op:havoc,rep:128 (104 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000105,src:000000,op:havoc,rep:64 (105 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000106,src:000000,op:havoc,rep:128 (106 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000107,src:000000,op:havoc,rep:128 (107 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000108,src:000000,op:havoc,rep:32 (108 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000109,src:000000,op:havoc,rep:8,+cov (109 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000110,src:000000,op:havoc,rep:128 (110 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000111,src:000000,op:havoc,rep:128,+cov (111 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000112,src:000000,op:havoc,rep:8 (112 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000113,src:000000,op:havoc,rep:64 (113 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000114,src:000000,op:havoc,rep:128 (114 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000115,src:000000,op:havoc,rep:8 (115 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000116,src:000000,op:havoc,rep:128 (116 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000117,src:000000,op:havoc,rep:128 (117 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000118,src:000000,op:havoc,rep:128 (118 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000119,src:000000+000020,op:splice,rep:8,+cov (119 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000120,src:000000+000020,op:splice,rep:8,+cov (120 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000121,src:000000+000034,op:splice,rep:128 (121 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000122,src:000000+000001,op:splice,rep:64 (122 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000123,src:000000+000001,op:splice,rep:16 (123 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000124,src:000000+000001,op:splice,rep:128 (124 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000125,src:000000+000001,op:splice,rep:128 (125 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000126,src:000000+000001,op:splice,rep:64,+cov (126 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000127,src:000000+000031,op:splice,rep:64,+cov (127 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000128,src:000000+000065,op:splice,rep:2,+cov (128 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000129,src:000004,op:havoc,rep:128 (129 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000130,src:000004,op:havoc,rep:4 (130 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000131,src:000004+000101,op:splice,rep:4,+cov (131 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000132,src:000007+000022,op:splice,rep:32 (132 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000133,src:000007+000022,op:splice,rep:64,+cov (133 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000134,src:000007+000022,op:splice,rep:16,+cov (134 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000135,src:000007+000022,op:splice,rep:128 (135 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000136,src:000007+000022,op:splice,rep:64 (136 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000137,src:000007+000022,op:splice,rep:64 (137 / 382), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    
+*** Imported 139 new test cases from: .orthrus/jobs/routine/1089995536/afl-out/ASAN001/queue
+
+    [+] AFL test case: id:000000,orig:35041 (0 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000001,orig:id:000023,src:000000,op:havoc,rep:128,+cov (1 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000002,orig:id:000026,src:000000,op:flip1,pos:556 (2 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000003,orig:id:000027,src:000000,op:havoc,rep:32,+cov (3 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000004,orig:id:000038,src:000000,op:havoc,rep:128,+cov (4 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000005,orig:id:000039,src:000000,op:havoc,rep:128 (5 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000006,orig:id:000040,src:000000,op:havoc,rep:128 (6 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000007,orig:id:000040,src:000000,op:havoc,rep:32 (7 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000008,orig:id:000044,src:000000,op:havoc,rep:128,+cov (8 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000009,orig:id:000050,src:000000,op:havoc,rep:128 (9 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000010,orig:id:000051,src:000000,op:havoc,rep:128 (10 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000011,orig:id:000053,src:000000,op:havoc,rep:64 (11 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000012,orig:id:000059,src:000000,op:havoc,rep:64 (12 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000013,orig:id:000061,src:000000,op:havoc,rep:128 (13 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000014,orig:id:000064,src:000000,op:havoc,rep:64 (14 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000015,orig:id:000070,src:000000+000003,op:splice,rep:32,+cov (15 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000016,orig:id:000079,sync:HARDEN001,src:000081,+cov (16 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000017,orig:id:000080,src:000000+000003,op:splice,rep:8,+cov (17 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000018,orig:id:000081,sync:ASAN000,src:000034 (18 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000019,orig:id:000081,sync:HARDEN001,src:000108 (19 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000020,orig:id:000082,src:000000+000003,op:splice,rep:64 (20 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000021,orig:id:000083,sync:HARDEN001,src:000106 (21 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000022,orig:id:000092,sync:ASAN000,src:000090,+cov (22 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000023,orig:id:000095,sync:ASAN000,src:000092,+cov (23 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000024,orig:id:000097,sync:HARDEN001,src:000078,+cov (24 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000025,orig:id:000100,src:000001,op:havoc,rep:128,+cov (25 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000026,orig:id:000101,sync:HARDEN001,src:000084 (26 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000027,orig:id:000102,sync:HARDEN001,src:000110,+cov (27 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000028,orig:id:000103,src:000001,op:havoc,rep:64 (28 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000029,orig:id:000103,sync:ASAN000,src:000093,+cov (29 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000030,orig:id:000104,sync:ASAN000,src:000103 (30 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000031,orig:id:000105,src:000001,op:havoc,rep:64 (31 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000032,orig:id:000105,sync:HARDEN001,src:000113,+cov (32 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000033,orig:id:000106,sync:HARDEN001,src:000086 (33 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000034,orig:id:000108,sync:ASAN000,src:000104 (34 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000035,orig:id:000109,src:000005+000098,op:splice,rep:32,+cov (35 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000036,orig:id:000111,src:000006,op:havoc,rep:64 (36 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000037,orig:id:000117,sync:HARDEN001,src:000130 (37 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000038,orig:id:000123,src:000006+000113,op:splice,rep:64 (38 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000039,orig:id:000123,sync:ASAN001,src:000115,+cov (39 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000040,orig:id:000124,src:000003,op:havoc,rep:8 (40 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000041,orig:id:000124,src:000006+000113,op:splice,rep:4,+cov (41 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000042,orig:id:000126,src:000003,op:havoc,rep:32,+cov (42 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000043,orig:id:000128,src:000003,op:havoc,rep:32 (43 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000044,orig:id:000129,src:000003,op:havoc,rep:128,+cov (44 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000045,orig:id:000130,sync:ASAN000,src:000113 (45 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000046,orig:id:000134,src:000005,op:havoc,rep:8 (46 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000047,orig:id:000134,sync:HARDEN001,src:000157,+cov (47 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000048,orig:id:000135,src:000005,op:havoc,rep:64 (48 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000049,orig:id:000136,src:000005+000081,op:splice,rep:64 (49 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000050,orig:id:000136,src:000090+000133,op:splice,rep:8 (50 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000051,orig:id:000138,src:000005+000081,op:splice,rep:128 (51 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000052,orig:id:000139,src:000005+000096,op:splice,rep:128 (52 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000053,orig:id:000140,sync:ASAN000,src:000135 (53 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000054,orig:id:000142,src:000006+000130,op:splice,rep:128,+cov (54 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000055,orig:id:000143,src:000006+000134,op:splice,rep:32 (55 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000056,orig:id:000143,sync:HARDEN001,src:000165 (56 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000057,orig:id:000144,sync:HARDEN001,src:000167 (57 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000058,orig:id:000147,src:000038,op:havoc,rep:128 (58 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000059,orig:id:000147,sync:ASAN000,src:000146,+cov (59 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000060,orig:id:000148,src:000038,op:havoc,rep:64 (60 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000061,orig:id:000148,sync:ASAN000,src:000142 (61 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000062,orig:id:000149,src:000072+000077,op:splice,rep:16 (62 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000063,orig:id:000151,sync:ASAN000,src:000147,+cov (63 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000064,orig:id:000154,sync:ASAN001,src:000127 (64 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000065,orig:id:000156,sync:ASAN000,src:000126 (65 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000066,orig:id:000158,src:000080+000076,op:splice,rep:32 (66 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000067,orig:id:000159,src:000107,op:havoc,rep:128 (67 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000068,orig:id:000160,sync:ASAN000,src:000154 (68 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000069,orig:id:000161,sync:ASAN000,src:000128 (69 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000070,orig:id:000162,src:000114+000007,op:splice,rep:64 (70 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000071,orig:id:000164,src:000140+000102,op:splice,rep:64 (71 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000072,orig:id:000166,src:000155,op:havoc,rep:4 (72 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000073,orig:id:000168,src:000156,op:havoc,rep:128 (73 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000074,orig:id:000169,src:000156,op:havoc,rep:64 (74 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000075,orig:id:000171,sync:ASAN000,src:000137,+cov (75 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000076,orig:id:000173,src:000172+000154,op:splice,rep:8,+cov (76 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000077,orig:id:000175,src:000173,op:havoc,rep:128,+cov (77 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000078,orig:id:000176,src:000175,op:havoc,rep:8 (78 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000079,orig:id:000177,src:000175,op:havoc,rep:8 (79 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000080,orig:id:000178,sync:ASAN000,src:000149 (80 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000081,orig:id:000179,sync:ASAN001,src:000154,+cov (81 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000082,orig:id:000182,src:000106+000020,op:splice,rep:64 (82 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000083,orig:id:000184,src:000106+000056,op:splice,rep:128 (83 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000084,orig:id:000185,src:000035+000182,op:splice,rep:64 (84 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000085,orig:id:000186,sync:ASAN000,src:000155 (85 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000086,orig:id:000187,src:000077+000122,op:splice,rep:128 (86 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000087,orig:id:000188,sync:ASAN001,src:000161 (87 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000088,orig:id:000189,src:000106+000182,op:splice,rep:64,+cov (88 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000089,orig:id:000190,src:000189+000081,op:splice,rep:128 (89 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000090,src:000000,op:havoc,rep:8,+cov (90 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000091,src:000000,op:havoc,rep:128 (91 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000092,src:000000,op:havoc,rep:4 (92 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000093,src:000000,op:havoc,rep:16 (93 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000094,src:000000,op:havoc,rep:128 (94 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000095,src:000000,op:havoc,rep:32 (95 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000096,src:000000,op:havoc,rep:16 (96 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000097,src:000000,op:havoc,rep:16 (97 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000098,src:000000,op:havoc,rep:32 (98 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000099,src:000000,op:havoc,rep:16,+cov (99 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000100,src:000000,op:havoc,rep:8 (100 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000101,src:000000,op:havoc,rep:16 (101 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000102,src:000000,op:havoc,rep:32 (102 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000103,src:000000,op:havoc,rep:128,+cov (103 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000104,src:000000,op:havoc,rep:32 (104 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000105,src:000000,op:havoc,rep:16 (105 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000106,src:000000,op:havoc,rep:128,+cov (106 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000107,src:000000,op:havoc,rep:16 (107 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000108,src:000000,op:havoc,rep:16,+cov (108 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000109,src:000000,op:havoc,rep:128 (109 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000110,src:000000,op:havoc,rep:128 (110 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000111,src:000000,op:havoc,rep:128 (111 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000112,src:000000,op:havoc,rep:32 (112 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000113,src:000000,op:havoc,rep:128 (113 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000114,src:000000,op:havoc,rep:128 (114 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000115,src:000000,op:havoc,rep:128,+cov (115 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000116,src:000000,op:havoc,rep:8,+cov (116 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000117,src:000000,op:havoc,rep:16,+cov (117 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000118,src:000000+000022,op:splice,rep:128,+cov (118 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000119,src:000000+000022,op:splice,rep:128 (119 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000120,src:000000+000022,op:splice,rep:128,+cov (120 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000121,src:000000+000022,op:splice,rep:64 (121 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000122,src:000000+000022,op:splice,rep:4 (122 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000123,src:000000+000022,op:splice,rep:64 (123 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000124,src:000000+000022,op:splice,rep:64,+cov (124 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000125,src:000000+000004,op:splice,rep:128 (125 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000126,src:000000+000026,op:splice,rep:16,+cov (126 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000127,src:000000+000086,op:splice,rep:128 (127 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000128,src:000000+000086,op:splice,rep:128 (128 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000129,src:000000+000085,op:splice,rep:128 (129 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000130,src:000004+000058,op:splice,rep:32 (130 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000131,src:000004+000058,op:splice,rep:128,+cov (131 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000132,src:000004+000047,op:splice,rep:128,+cov (132 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000133,src:000008+000087,op:splice,rep:32 (133 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000134,src:000008+000087,op:splice,rep:16 (134 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000135,src:000008+000028,op:splice,rep:16 (135 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000136,src:000008+000028,op:splice,rep:64 (136 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000137,src:000008+000125,op:splice,rep:128 (137 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] AFL test case: id:000138,src:000008+000125,op:splice,rep:64 (138 / 521), cycle: 0
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] Processed 521 / 521 test cases.
+
+    [+] Final zero coverage report: .orthrus/jobs/routine/1089995536/afl-out/cov/zero-cov
+    [+] Final positive coverage report: .orthrus/jobs/routine/1089995536/afl-out/cov/pos-cov
+        lines......: 35.8% (917 of 2558 lines)
+        functions..: 43.1% (31 of 72 functions)
+    [+] Final lcov web report: .orthrus/jobs/routine/1089995536/afl-out/cov/web/index.html

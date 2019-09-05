@@ -1,0 +1,3 @@
+diff id:000020,orig:id:000082,src:000000+000003,op:splice,rep:64 -> id:000021,orig:id:000083,sync:HARDEN001,src:000106
+Src file: /work/output/orthrus/mp3gain.c
+  New 'line' coverage: 647

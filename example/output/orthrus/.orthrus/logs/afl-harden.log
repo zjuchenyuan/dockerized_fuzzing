@@ -1,0 +1,516 @@
+nohup: ignoring input
+[0;36mafl-multicore [1;37m1.32a[0m by rc0r <hlt99@blinkenshell.org> # @_rc0r
+Wrapper script to easily set up parallel fuzzing jobs.
+
+[1;32m[*] [0mStarting fuzzer instance(s)...
+ Master 000 started inside new screen window
+ Slave 001 started (PID: 18248)
+[1;32m[*] [0mCheck the newly created screen windows!
+nohup: ignoring input
+[0;36mafl-fuzz [1;97m2.52b[0m by <lcamtuf@google.com>
+[1;92m[+] [0mLooks like we're not running on a tty, so I'll be a bit less verbose.[0m
+[1;92m[+] [0mYou have 4 CPU cores and 4 runnable tasks (utilization: 100%).[0m
+[1;94m[*] [0mChecking CPU core loadout...[0m
+[1;92m[+] [0mFound a free CPU core, binding to #1.[0m
+[1;94m[*] [0mChecking core_pattern...[0m
+[1;94m[*] [0mSetting up output directories...[0m
+[1;92m[+] [0mOutput directory exists, will attempt session resume.[0m
+[1;94m[*] [0mDeleting old session data...[0m
+[1;92m[+] [0mOutput dir cleanup successful.[0m
+[1;94m[*] [0mScanning '/work/output/orthrus/.orthrus/jobs/routine/1089995536/afl-out/HARDEN001/_resume'...[0m
+[1;92m[+] [0mNo auto-generated dictionary tokens to reuse.[0m
+[1;94m[*] [0mCreating hard links for all input files...[0m
+[1;94m[*] [0mValidating target binary...[0m
+[1;94m[*] [0mAttempting dry run with 'id:000000,orig:35041'...[0m
+[1;94m[*] [0mSpinning up the fork server...[0m
+[1;92m[+] [0mAll right - fork server is up.[0m
+[1;90m    len = 3704, map size = 248, exec speed = 1033 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000001,orig:id:000023,src:000000,op:havoc,rep:128,+cov'...[0m
+[1;90m    len = 5198, map size = 215, exec speed = 788 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000002,orig:id:000026,src:000000,op:flip1,pos:556'...[0m
+[1;90m    len = 8878, map size = 185, exec speed = 776 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000003,orig:id:000027,src:000000,op:havoc,rep:32,+cov'...[0m
+[1;90m    len = 5453, map size = 150, exec speed = 771 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000004,orig:id:000038,src:000000,op:havoc,rep:128,+cov'...[0m
+[1;90m    len = 4152, map size = 221, exec speed = 874 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000005,orig:id:000039,src:000000,op:havoc,rep:128'...[0m
+[1;90m    len = 5497, map size = 292, exec speed = 1088 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000006,orig:id:000040,src:000000,op:havoc,rep:128'...[0m
+[1;90m    len = 5648, map size = 151, exec speed = 764 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000007,orig:id:000040,src:000000,op:havoc,rep:32'...[0m
+[1;90m    len = 12, map size = 142, exec speed = 760 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000008,orig:id:000044,src:000000,op:havoc,rep:128,+cov'...[0m
+[1;90m    len = 40, map size = 143, exec speed = 754 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000009,orig:id:000050,src:000000,op:havoc,rep:128'...[0m
+[1;90m    len = 5144, map size = 286, exec speed = 1093 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000010,orig:id:000051,src:000000,op:havoc,rep:128'...[0m
+[1;90m    len = 4630, map size = 181, exec speed = 765 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000011,orig:id:000053,src:000000,op:havoc,rep:64'...[0m
+[1;90m    len = 1479, map size = 237, exec speed = 1022 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000012,orig:id:000059,src:000000,op:havoc,rep:64'...[0m
+[1;90m    len = 8382, map size = 183, exec speed = 790 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000013,orig:id:000061,src:000000,op:havoc,rep:128'...[0m
+[1;90m    len = 7086, map size = 183, exec speed = 768 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000014,orig:id:000064,src:000000,op:havoc,rep:64'...[0m
+[1;90m    len = 1796, map size = 238, exec speed = 1028 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000015,orig:id:000070,src:000000+000003,op:splice,rep:32,+cov'...[0m
+[1;90m    len = 17632, map size = 183, exec speed = 769 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000016,orig:id:000079,sync:HARDEN001,src:000081,+cov'...[0m
+[1;90m    len = 7894, map size = 183, exec speed = 764 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000017,orig:id:000080,src:000000+000003,op:splice,rep:8,+cov'...[0m
+[1;90m    len = 10033, map size = 184, exec speed = 780 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000018,orig:id:000081,sync:ASAN000,src:000034'...[0m
+[1;90m    len = 4384, map size = 223, exec speed = 880 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000019,orig:id:000081,sync:HARDEN001,src:000108'...[0m
+[1;90m    len = 3035, map size = 224, exec speed = 850 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000020,orig:id:000082,src:000000+000003,op:splice,rep:64'...[0m
+[1;90m    len = 10111, map size = 183, exec speed = 908 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000021,orig:id:000083,sync:HARDEN001,src:000106'...[0m
+[1;90m    len = 4608, map size = 226, exec speed = 1234 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000022,orig:id:000092,sync:ASAN000,src:000090,+cov'...[0m
+[1;90m    len = 13041, map size = 184, exec speed = 967 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000023,orig:id:000095,sync:ASAN000,src:000092,+cov'...[0m
+[1;90m    len = 437, map size = 197, exec speed = 942 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000024,orig:id:000097,sync:HARDEN001,src:000078,+cov'...[0m
+[1;90m    len = 7754, map size = 181, exec speed = 1044 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000025,orig:id:000100,src:000001,op:havoc,rep:128,+cov'...[0m
+[1;90m    len = 6150, map size = 181, exec speed = 1062 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000026,orig:id:000101,sync:HARDEN001,src:000084'...[0m
+[1;90m    len = 17932, map size = 189, exec speed = 1141 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000027,orig:id:000102,sync:HARDEN001,src:000110,+cov'...[0m
+[1;90m    len = 2515, map size = 186, exec speed = 1281 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000028,orig:id:000103,src:000001,op:havoc,rep:64'...[0m
+[1;90m    len = 5262, map size = 183, exec speed = 1331 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000029,orig:id:000103,sync:ASAN000,src:000093,+cov'...[0m
+[1;90m    len = 8189, map size = 181, exec speed = 1151 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000030,orig:id:000104,sync:ASAN000,src:000103'...[0m
+[1;90m    len = 17628, map size = 319, exec speed = 1765 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000031,orig:id:000105,src:000001,op:havoc,rep:64'...[0m
+[1;90m    len = 6206, map size = 181, exec speed = 1113 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000032,orig:id:000105,sync:HARDEN001,src:000113,+cov'...[0m
+[1;90m    len = 2462, map size = 219, exec speed = 1197 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000033,orig:id:000106,sync:HARDEN001,src:000086'...[0m
+[1;90m    len = 17741, map size = 258, exec speed = 1553 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000034,orig:id:000108,sync:ASAN000,src:000104'...[0m
+[1;90m    len = 17744, map size = 181, exec speed = 1118 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000035,orig:id:000109,src:000005+000098,op:splice,rep:32,+cov'...[0m
+[1;90m    len = 13532, map size = 183, exec speed = 1137 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000036,orig:id:000111,src:000006,op:havoc,rep:64'...[0m
+[1;90m    len = 2881, map size = 217, exec speed = 1207 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000037,orig:id:000117,sync:HARDEN001,src:000130'...[0m
+[1;90m    len = 360, map size = 217, exec speed = 1136 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000038,orig:id:000123,src:000006+000113,op:splice,rep:64'...[0m
+[1;90m    len = 574, map size = 215, exec speed = 1145 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000039,orig:id:000123,sync:ASAN001,src:000115,+cov'...[0m
+[1;90m    len = 388, map size = 178, exec speed = 1094 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000040,orig:id:000124,src:000003,op:havoc,rep:8'...[0m
+[1;90m    len = 560, map size = 181, exec speed = 1119 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000041,orig:id:000124,src:000006+000113,op:splice,rep:4,+cov'...[0m
+[1;90m    len = 481, map size = 235, exec speed = 1187 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000042,orig:id:000126,src:000003,op:havoc,rep:32,+cov'...[0m
+[1;90m    len = 388, map size = 133, exec speed = 1020 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000043,orig:id:000128,src:000003,op:havoc,rep:32'...[0m
+[1;90m    len = 522, map size = 142, exec speed = 1113 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000044,orig:id:000129,src:000003,op:havoc,rep:128,+cov'...[0m
+[1;90m    len = 163, map size = 148, exec speed = 1076 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000045,orig:id:000130,sync:ASAN000,src:000113'...[0m
+[1;90m    len = 3300, map size = 230, exec speed = 1274 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000046,orig:id:000134,src:000005,op:havoc,rep:8'...[0m
+[1;90m    len = 13242, map size = 181, exec speed = 1202 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000047,orig:id:000134,sync:HARDEN001,src:000157,+cov'...[0m
+[1;90m    len = 7615, map size = 184, exec speed = 1163 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000048,orig:id:000135,src:000005,op:havoc,rep:64'...[0m
+[1;90m    len = 12155, map size = 181, exec speed = 1146 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000049,orig:id:000136,src:000005+000081,op:splice,rep:64'...[0m
+[1;90m    len = 17333, map size = 183, exec speed = 1110 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000050,orig:id:000136,src:000090+000133,op:splice,rep:8'...[0m
+[1;90m    len = 431, map size = 142, exec speed = 1143 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000051,orig:id:000138,src:000005+000081,op:splice,rep:128'...[0m
+[1;90m    len = 17588, map size = 240, exec speed = 1902 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000052,orig:id:000139,src:000005+000096,op:splice,rep:128'...[0m
+[1;90m    len = 5422, map size = 183, exec speed = 1108 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000053,orig:id:000140,sync:ASAN000,src:000135'...[0m
+[1;90m    len = 12572, map size = 188, exec speed = 1260 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000054,orig:id:000142,src:000006+000130,op:splice,rep:128,+cov'...[0m
+[1;90m    len = 6, map size = 120, exec speed = 1161 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000055,orig:id:000143,src:000006+000134,op:splice,rep:32'...[0m
+[1;90m    len = 575, map size = 142, exec speed = 1061 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000056,orig:id:000143,sync:HARDEN001,src:000165'...[0m
+[1;90m    len = 447, map size = 264, exec speed = 1129 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000057,orig:id:000144,sync:HARDEN001,src:000167'...[0m
+[1;90m    len = 2286, map size = 213, exec speed = 1089 us
+[0m[1;93m[!] [1;9[0;36mafl-fuzz [1;97m2.52b[0m by <lcamtuf@google.com>
+[1;92m[+] [0mLooks like we're not running on a tty, so I'll be a bit less verbose.[0m
+[1;92m[+] [0mYou have 4 CPU cores and 4 runnable tasks (utilization: 100%).[0m
+[1;94m[*] [0mChecking CPU core loadout...[0m
+[1;92m[+] [0mFound a free CPU core, binding to #0.[0m
+[1;94m[*] [0mChecking core_pattern...[0m
+[1;94m[*] [0mSetting up output directories...[0m
+[1;92m[+] [0mOutput directory exists, will attempt session resume.[0m
+[1;94m[*] [0mDeleting old session data...[0m
+[1;92m[+] [0mOutput dir cleanup successful.[0m
+[1;94m[*] [0mScanning '/work/output/orthrus/.orthrus/jobs/routine/1089995536/afl-out/HARDEN000/_resume'...[0m
+[1;92m[+] [0mNo auto-generated dictionary tokens to reuse.[0m
+[1;94m[*] [0mCreating hard links for all input files...[0m
+[1;94m[*] [0mValidating target binary...[0m
+[1;94m[*] [0mAttempting dry run with 'id:000000,orig:35041'...[0m
+[1;94m[*] [0mSpinning up the fork server...[0m
+[1;92m[+] [0mAll right - fork server is up.[0m
+[1;90m    len = 3704, map size = 248, exec speed = 2925 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000001,orig:id:000023,src:000000,op:havoc,rep:128,+cov'...[0m
+[1;90m    len = 5198, map size = 215, exec speed = 1911 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000002,orig:id:000026,src:000000,op:flip1,pos:556'...[0m
+[1;90m    len = 8878, map size = 185, exec speed = 1792 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000003,orig:id:000027,src:000000,op:havoc,rep:32,+cov'...[0m
+[1;90m    len = 5453, map size = 150, exec speed = 2071 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000004,orig:id:000038,src:000000,op:havoc,rep:128,+cov'...[0m
+[1;90m    len = 4152, map size = 221, exec speed = 2943 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000005,orig:id:000039,src:000000,op:havoc,rep:128'...[0m
+[1;90m    len = 5497, map size = 292, exec speed = 4328 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000006,orig:id:000040,src:000000,op:havoc,rep:128'...[0m
+[1;90m    len = 5648, map size = 151, exec speed = 2269 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000007,orig:id:000040,src:000000,op:havoc,rep:32'...[0m
+[1;90m    len = 12, map size = 142, exec speed = 3793 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000008,orig:id:000044,src:000000,op:havoc,rep:128,+cov'...[0m
+[1;90m    len = 40, map size = 143, exec speed = 1992 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000009,orig:id:000050,src:000000,op:havoc,rep:128'...[0m
+[1;90m    len = 5144, map size = 286, exec speed = 6736 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000010,orig:id:000051,src:000000,op:havoc,rep:128'...[0m
+[1;90m    len = 4630, map size = 181, exec speed = 6125 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000011,orig:id:000053,src:000000,op:havoc,rep:64'...[0m
+[1;90m    len = 1479, map size = 237, exec speed = 8211 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000012,orig:id:000059,src:000000,op:havoc,rep:64'...[0m
+[1;90m    len = 8382, map size = 183, exec speed = 5982 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000013,orig:id:000061,src:000000,op:havoc,rep:128'...[0m
+[1;90m    len = 7086, map size = 183, exec speed = 6727 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000014,orig:id:000064,src:000000,op:havoc,rep:64'...[0m
+[1;90m    len = 1796, map size = 238, exec speed = 7560 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000015,orig:id:000070,src:000000+000003,op:splice,rep:32,+cov'...[0m
+[1;90m    len = 17632, map size = 183, exec speed = 5808 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000016,orig:id:000079,sync:HARDEN001,src:000081,+cov'...[0m
+[1;90m    len = 7894, map size = 183, exec speed = 6970 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo7mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000058,orig:id:000147,src:000038,op:havoc,rep:128'...[0m
+[1;90m    len = 5916, map size = 181, exec speed = 1065 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000059,orig:id:000147,sync:ASAN000,src:000146,+cov'...[0m
+[1;90m    len = 5088, map size = 241, exec speed = 1204 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000060,orig:id:000148,src:000038,op:havoc,rep:64'...[0m
+[1;90m    len = 7962, map size = 181, exec speed = 1122 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000061,orig:id:000148,sync:ASAN000,src:000142'...[0m
+[1;90m    len = 6881, map size = 183, exec speed = 1197 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000062,orig:id:000149,src:000072+000077,op:splice,rep:16'...[0m
+[1;90m    len = 17613, map size = 217, exec speed = 1136 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000063,orig:id:000151,sync:ASAN000,src:000147,+cov'...[0m
+[1;90m    len = 321, map size = 163, exec speed = 1094 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000064,orig:id:000154,sync:ASAN001,src:000127'...[0m
+[1;90m    len = 564, map size = 196, exec speed = 1109 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000065,orig:id:000156,sync:ASAN000,src:000126'...[0m
+[1;90m    len = 2390, map size = 213, exec speed = 1153 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000066,orig:id:000158,src:000080+000076,op:splice,rep:32'...[0m
+[1;90m    len = 17757, map size = 331, exec speed = 3424 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000067,orig:id:000159,src:000107,op:havoc,rep:128'...[0m
+[1;90m    len = 4048, map size = 225, exec speed = 1355 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000068,orig:id:000160,sync:ASAN000,src:000154'...[0m
+[1;90m    len = 7922, map size = 217, exec speed = 1328 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000069,orig:id:000161,sync:ASAN000,src:000128'...[0m
+[1;90m    len = 408, map size = 142, exec speed = 1107 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000070,orig:id:000162,src:000114+000007,op:splice,rep:64'...[0m
+[1;90m    len = 17038, map size = 183, exec speed = 1135 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000071,orig:id:000164,src:000140+000102,op:splice,rep:64'...[0m
+[1;90m    len = 4008, map size = 292, exec speed = 1550 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000072,orig:id:000166,src:000155,op:havoc,rep:4'...[0m
+[1;90m    len = 565, map size = 253, exec speed = 1259 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000073,orig:id:000168,src:000156,op:havoc,rep:128'...[0m
+[1;90m    len = 2280, map size = 224, exec speed = 1324 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000074,orig:id:000169,src:000156,op:havoc,rep:64'...[0m
+[1;90m    len = 2224, map size = 225, exec speed = 1270 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000075,orig:id:000171,sync:ASAN000,src:000137,+cov'...[0m
+[1;90m    len = 406, map size = 184, exec speed = 1125 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000076,orig:id:000173,src:000172+000154,op:splice,rep:8,+cov'...[0m
+[1;90m    len = 333, map size = 168, exec speed = 1150 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000077,orig:id:000175,src:000173,op:havoc,rep:128,+cov'...[0m
+[1;90m    len = 163, map size = 134, exec speed = 1061 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000078,orig:id:000176,src:000175,op:havoc,rep:8'...[0m
+[1;90m    len = 144, map size = 129, exec speed = 1207 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000079,orig:id:000177,src:000175,op:havoc,rep:8'...[0m
+[1;90m    len = 143, map size = 125, exec speed = 1511 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000080,orig:id:000178,sync:ASAN000,src:000149'...[0m
+[1;90m    len = 17727, map size = 226, exec speed = 1464 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000081,orig:id:000179,sync:ASAN001,src:000154,+cov'...[0m
+[1;90m    len = 135, map size = 139, exec speed = 1198 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000082,orig:id:000182,src:000106+000020,op:splice,rep:64'...[0m
+[1;90m    len = 8582, map size = 302, exec speed = 1682 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000083,orig:id:000184,src:000106+000056,op:splice,rep:128'...[0m
+[1;90m    len = 8605, map size = 181, exec speed = 1185 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000084,orig:id:000185,src:000035+000182,op:splice,rep:64'...[0m
+[1;90m    len = 17804, map size = 223, exec speed = 1576 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000085,orig:id:000186,sync:ASAN000,src:000155'...[0m
+[1;90m    len = 564, map size = 196, exec speed = 1182 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000086,orig:id:000187,src:000077+000122,op:splice,rep:128'...[0m
+[1;90m    len = 17395, map size = 183, exec speed = 1117 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000087,orig:id:000188,sync:ASAN001,src:000161'...[0m
+[1;90m    len = 17825, map size = 282, exec speed = 1632 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000088,orig:id:000189,src:000106+000182,op:splice,rep:64,+cov'...[0m
+[1;90m    len = 6920, map size = 297, exec speed = 1758 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000089,orig:id:000190,src:000189+000081,op:splice,rep:128'...[0m
+[1;90m    len = 9205, map size = 181, exec speed = 1063 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;92m[+] [0mAll test cases processed.[0m
+
+[1;93m[!] [1;97mWARNING: [0mSome test cases are big (17.5 kB) - see /usr/local/share/doc/afl/perf_tips.txt.[0m
+[1;93m[!] [1;97mWARNING: [0m[1;91mSome test cases look useless. Consider using a smaller set.[0m
+[1;93m[!] [1;97mWARNING: [0mYou have lots of input files; try starting small.[0m
+[1;92m[+] [0mHere are some useful stats:
+
+[1;90m    Test case count : [0m32 favored, 0 variable, 90 total
+[1;90m       Bitmap range : [0m120 to 331 bits (average: 200.20 bits)
+[1;90m        Exec timing : [0m754 to 3424 us (average: 1163 us)
+[0m
+[1;92m[+] [0mAll set and ready to roll![0m
+[1;94m[*] [0mEntering queue cycle 1.[0m
+[1;94m[*] [0mFuzzing test case #0 (90 total, 0 uniq crashes found)...[0m
+ new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000017,orig:id:000080,src:000000+000003,op:splice,rep:8,+cov'...[0m
+[1;90m    len = 10033, map size = 184, exec speed = 4785 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000018,orig:id:000081,sync:ASAN000,src:000034'...[0m
+[1;90m    len = 4384, map size = 223, exec speed = 7196 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000019,orig:id:000081,sync:HARDEN001,src:000108'...[0m
+[1;90m    len = 3035, map size = 224, exec speed = 6082 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000020,orig:id:000082,src:000000+000003,op:splice,rep:64'...[0m
+[1;90m    len = 10111, map size = 183, exec speed = 6840 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000021,orig:id:000083,sync:HARDEN001,src:000106'...[0m
+[1;90m    len = 4608, map size = 226, exec speed = 7554 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000022,orig:id:000092,sync:ASAN000,src:000090,+cov'...[0m
+[1;90m    len = 13041, map size = 184, exec speed = 6916 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000023,orig:id:000095,sync:ASAN000,src:000092,+cov'...[0m
+[1;90m    len = 437, map size = 197, exec speed = 4748 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000024,orig:id:000097,sync:HARDEN001,src:000078,+cov'...[0m
+[1;90m    len = 7754, map size = 181, exec speed = 7118 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000025,orig:id:000100,src:000001,op:havoc,rep:128,+cov'...[0m
+[1;90m    len = 6150, map size = 181, exec speed = 5855 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000026,orig:id:000101,sync:HARDEN001,src:000084'...[0m
+[1;90m    len = 17932, map size = 189, exec speed = 5842 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000027,orig:id:000102,sync:HARDEN001,src:000110,+cov'...[0m
+[1;90m    len = 2515, map size = 186, exec speed = 7132 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000028,orig:id:000103,src:000001,op:havoc,rep:64'...[0m
+[1;90m    len = 5262, map size = 183, exec speed = 5727 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000029,orig:id:000103,sync:ASAN000,src:000093,+cov'...[0m
+[1;90m    len = 8189, map size = 181, exec speed = 6973 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000030,orig:id:000104,sync:ASAN000,src:000103'...[0m
+[1;90m    len = 17628, map size = 319, exec speed = 8978 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000031,orig:id:000105,src:000001,op:havoc,rep:64'...[0m
+[1;90m    len = 6206, map size = 181, exec speed = 4714 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000032,orig:id:000105,sync:HARDEN001,src:000113,+cov'...[0m
+[1;90m    len = 2462, map size = 219, exec speed = 8146 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000033,orig:id:000106,sync:HARDEN001,src:000086'...[0m
+[1;90m    len = 17741, map size = 258, exec speed = 6661 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000034,orig:id:000108,sync:ASAN000,src:000104'...[0m
+[1;90m    len = 17744, map size = 181, exec speed = 6947 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000035,orig:id:000109,src:000005+000098,op:splice,rep:32,+cov'...[0m
+[1;90m    len = 13532, map size = 183, exec speed = 6056 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000036,orig:id:000111,src:000006,op:havoc,rep:64'...[0m
+[1;90m    len = 2881, map size = 217, exec speed = 6845 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000037,orig:id:000117,sync:HARDEN001,src:000130'...[0m
+[1;90m    len = 360, map size = 217, exec speed = 4720 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000038,orig:id:000123,src:000006+000113,op:splice,rep:64'...[0m
+[1;90m    len = 574, map size = 215, exec speed = 6822 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000039,orig:id:000123,sync:ASAN001,src:000115,+cov'...[0m
+[1;90m    len = 388, map size = 178, exec speed = 6121 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000040,orig:id:000124,src:000003,op:havoc,rep:8'...[0m
+[1;90m    len = 560, map size = 181, exec speed = 5813 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000041,orig:id:000124,src:000006+000113,op:splice,rep:4,+cov'...[0m
+[1;90m    len = 481, map size = 235, exec speed = 7117 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000042,orig:id:000126,src:000003,op:havoc,rep:32,+cov'...[0m
+[1;90m    len = 388, map size = 133, exec speed = 4591 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000043,orig:id:000128,src:000003,op:havoc,rep:32'...[0m
+[1;90m    len = 522, map size = 142, exec speed = 5857 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000044,orig:id:000129,src:000003,op:havoc,rep:128,+cov'...[0m
+[1;90m    len = 163, map size = 148, exec speed = 6965 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000045,orig:id:000130,sync:ASAN000,src:000113'...[0m
+[1;90m    len = 3300, map size = 230, exec speed = 6420 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000046,orig:id:000134,src:000005,op:havoc,rep:8'...[0m
+[1;90m    len = 13242, map size = 181, exec speed = 6792 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000047,orig:id:000134,sync:HARDEN001,src:000157,+cov'...[0m
+[1;90m    len = 7615, map size = 184, exec speed = 6026 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000048,orig:id:000135,src:000005,op:havoc,rep:64'...[0m
+[1;90m    len = 12155, map size = 181, exec speed = 5553 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000049,orig:id:000136,src:000005+000081,op:splice,rep:64'...[0m
+[1;90m    len = 17333, map size = 183, exec speed = 5657 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000050,orig:id:000136,src:000090+000133,op:splice,rep:8'...[0m
+[1;90m    len = 431, map size = 142, exec speed = 6235 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000051,orig:id:000138,src:000005+000081,op:splice,rep:128'...[0m
+[1;90m    len = 17588, map size = 240, exec speed = 8652 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000052,orig:id:000139,src:000005+000096,op:splice,rep:128'...[0m
+[1;90m    len = 5422, map size = 183, exec speed = 5563 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000053,orig:id:000140,sync:ASAN000,src:000135'...[0m
+[1;90m    len = 12572, map size = 188, exec speed = 5939 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000054,orig:id:000142,src:000006+000130,op:splice,rep:128,+cov'...[0m
+[1;90m    len = 6, map size = 120, exec speed = 6853 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000055,orig:id:000143,src:000006+000134,op:splice,rep:32'...[0m
+[1;90m    len = 575, map size = 142, exec speed = 6141 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000056,orig:id:000143,sync:HARDEN001,src:000165'...[0m
+[1;90m    len = 447, map size = 264, exec speed = 5870 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000057,orig:id:000144,sync:HARDEN001,src:000167'...[0m
+[1;90m    len = 2286, map size = 213, exec speed = 7160 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000058,orig:id:000147,src:000038,op:havoc,rep:128'...[0m
+[1;90m    len = 5916, map size = 181, exec speed = 5914 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000059,orig:id:000147,sync:ASAN000,src:000146,+cov'...[0m
+[1;90m    len = 5088, map size = 241, exec speed = 7052 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000060,orig:id:000148,src:000038,op:havoc,rep:64'...[0m
+[1;90m    len = 7962, map size = 181, exec speed = 5871 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000061,orig:id:000148,sync:ASAN000,src:000142'...[0m
+[1;90m    len = 6881, map size = 183, exec speed = 5494 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000062,orig:id:000149,src:000072+000077,op:splice,rep:16'...[0m
+[1;90m    len = 17613, map size = 217, exec speed = 5736 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000063,orig:id:000151,sync:ASAN000,src:000147,+cov'...[0m
+[1;90m    len = 321, map size = 163, exec speed = 6104 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000064,orig:id:000154,sync:ASAN001,src:000127'...[0m
+[1;90m    len = 564, map size = 196, exec speed = 5519 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000065,orig:id:000156,sync:ASAN000,src:000126'...[0m
+[1;90m    len = 2390, map size = 213, exec speed = 5772 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000066,orig:id:000158,src:000080+000076,op:splice,rep:32'...[0m
+[1;90m    len = 17757, map size = 331, exec speed = 10229 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000067,orig:id:000159,src:000107,op:havoc,rep:128'...[0m
+[1;90m    len = 4048, map size = 225, exec speed = 6909 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000068,orig:id:000160,sync:ASAN000,src:000154'...[0m
+[1;90m    len = 7922, map size = 217, exec speed = 6038 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000069,orig:id:000161,sync:ASAN000,src:000128'...[0m
+[1;90m    len = 408, map size = 142, exec speed = 6839 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000070,orig:id:000162,src:000114+000007,op:splice,rep:64'...[0m
+[1;90m    len = 17038, map size = 183, exec speed = 4703 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000071,orig:id:000164,src:000140+000102,op:splice,rep:64'...[0m
+[1;90m    len = 4008, map size = 292, exec speed = 8473 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000072,orig:id:000166,src:000155,op:havoc,rep:4'...[0m
+[1;90m    len = 565, map size = 253, exec speed = 6277 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000073,orig:id:000168,src:000156,op:havoc,rep:128'...[0m
+[1;90m    len = 2280, map size = 224, exec speed = 5606 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000074,orig:id:000169,src:000156,op:havoc,rep:64'...[0m
+[1;90m    len = 2224, map size = 225, exec speed = 6862 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000075,orig:id:000171,sync:ASAN000,src:000137,+cov'...[0m
+[1;90m    len = 406, map size = 184, exec speed = 6978 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000076,orig:id:000173,src:000172+000154,op:splice,rep:8,+cov'...[0m
+[1;90m    len = 333, map size = 168, exec speed = 4686 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000077,orig:id:000175,src:000173,op:havoc,rep:128,+cov'...[0m
+[1;90m    len = 163, map size = 134, exec speed = 5897 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000078,orig:id:000176,src:000175,op:havoc,rep:8'...[0m
+[1;90m    len = 144, map size = 129, exec speed = 6771 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000079,orig:id:000177,src:000175,op:havoc,rep:8'...[0m
+[1;90m    len = 143, map size = 125, exec speed = 4655 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000080,orig:id:000178,sync:ASAN000,src:000149'...[0m
+[1;90m    len = 17727, map size = 226, exec speed = 8434 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000081,orig:id:000179,sync:ASAN001,src:000154,+cov'...[0m
+[1;90m    len = 135, map size = 139, exec speed = 5942 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000082,orig:id:000182,src:000106+000020,op:splice,rep:64'...[0m
+[1;90m    len = 8582, map size = 302, exec speed = 8484 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000083,orig:id:000184,src:000106+000056,op:splice,rep:128'...[0m
+[1;90m    len = 8605, map size = 181, exec speed = 6907 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000084,orig:id:000185,src:000035+000182,op:splice,rep:64'...[0m
+[1;90m    len = 17804, map size = 223, exec speed = 8569 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000085,orig:id:000186,sync:ASAN000,src:000155'...[0m
+[1;90m    len = 564, map size = 196, exec speed = 4588 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000086,orig:id:000187,src:000077+000122,op:splice,rep:128'...[0m
+[1;90m    len = 17395, map size = 183, exec speed = 6030 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;94m[*] [0mAttempting dry run with 'id:000087,orig:id:000188,sync:ASAN001,src:000161'...[0m
+[1;90m    len = 17825, map size = 282, exec speed = 8818 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000088,orig:id:000189,src:000106+000182,op:splice,rep:64,+cov'...[0m
+[1;90m    len = 6920, map size = 297, exec speed = 8523 us
+[0m[1;94m[*] [0mAttempting dry run with 'id:000089,orig:id:000190,src:000189+000081,op:splice,rep:128'...[0m
+[1;90m    len = 9205, map size = 181, exec speed = 5553 us
+[0m[1;93m[!] [1;97mWARNING: [0mNo new instrumentation output, test case may be useless.[0m
+[1;92m[+] [0mAll test cases processed.[0m
+
+[1;93m[!] [1;97mWARNING: [0mSome test cases are big (17.5 kB) - see /usr/local/share/doc/afl/perf_tips.txt.[0m
+[1;93m[!] [1;97mWARNING: [0m[1;91mSome test cases look useless. Consider using a smaller set.[0m
+[1;93m[!] [1;97mWARNING: [0mYou have lots of input files; try starting small.[0m
+[1;92m[+] [0mHere are some useful stats:
+
+[1;90m    Test case count : [0m31 favored, 0 variable, 90 total
+[1;90m       Bitmap range : [0m120 to 331 bits (average: 200.20 bits)
+[1;90m        Exec timing : [0m1792 to 10.2k us (average: 6115 us)
+[0m
+[1;92m[+] [0mAll set and ready to roll![0m
+[1;94m[*] [0mEntering queue cycle 1.[0m
+[1;94m[*] [0mFuzzing test case #0 (90 total, 0 uniq crashes found)...[0m
+[1;94m[*] [0mFuzzing test case #4 (123 total, 0 uniq crashes found)...[0m
+[1;94m[*] [0mFuzzing test case #7 (127 total, 0 uniq crashes found)...[0m
+[1;94m[*] [0mFuzzing test case #8 (134 total, 0 uniq crashes found)...[0m
+[1;94m[*] [0mFuzzing test case #11 (144 total, 0 uniq crashes found)...[0m
+[1;94m[*] [0mFuzzing test case #18 (146 total, 0 uniq crashes found)...[0m
+[1;94m[*] [0mFuzzing test case #23 (146 total, 0 uniq crashes found)...[0m
+[1;94m[*] [0mFuzzing test case #27 (146 total, 0 uniq crashes found)...[0m
+[1;94m[*] [0mFuzzing test case #29 (148 total, 0 uniq crashes found)...[0m
+[1;94m[*] [0mFuzzing test case #32 (150 total, 0 uniq crashes found)...[0m
+[1;94m[*] [0mFuzzing test case #37 (151 total, 0 uniq crashes found)...[0m
+[1;94m[*] [0mFuzzing test case #39 (151 total, 0 uniq crashes found)...[0m
+[1;94m[*] [0mFuzzing test case #42 (152 total, 0 uniq crashes found)...[0m
+[1;94m[*] [0mFuzzing test case #44 (152 total, 0 uniq crashes found)...[0m
+[1;94m[*] [0mFuzzing test case #45 (152 total, 0 uniq crashes found)...[0m
+[1;94m[*] [0mFuzzing test case #51 (152 total, 0 uniq crashes found)...[0m
+[1;94m[*] [0mFuzzing test case #53 (152 total, 0 uniq crashes found)...[0m
+[1;94m[*] [0mFuzzing test case #56 (152 total, 0 uniq crashes found)...[0m
+[1;94m[*] [0mFuzzing test case #57 (152 total, 0 uniq crashes found)...[0m
+[1;94m[*] [0mFuzzing test case #59 (152 total, 0 uniq crashes found)...[0m
+[?25h[1;91m
+
++++ Testing aborted by user +++
+[0m[1;92m[+] [0mWe're done here. Have a nice day!
+[0m
+[?25h[1;91m
+
++++ Testing aborted by user +++
+[0m[1;92m[+] [0mWe're done here. Have a nice day!
+[0m

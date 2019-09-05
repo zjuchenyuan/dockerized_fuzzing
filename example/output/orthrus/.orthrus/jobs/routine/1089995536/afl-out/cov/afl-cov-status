@@ -1,0 +1,3 @@
+afl_cov_pid     : 30699
+afl_cov_version : 0.6
+command_line    : /usr/local/bin/afl-cov -d .orthrus/jobs/routine/1089995536/afl-out --lcov-path /usr/bin/lcov --genhtml-path /usr/bin/genhtml --coverage-cmd .orthrus/binaries/coverage/gcc/bin/mp3gain AFL_FILE --code-dir .

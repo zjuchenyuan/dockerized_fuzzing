@@ -1,0 +1,39 @@
+# All functions / lines in this file were executed by at
+# least one AFL test case. See the cov/id-delta-cov file
+# for more information.
+File: /work/output/orthrus/gain_analysis.c
+    function: AnalyzeSamples()
+    function: GetTitleGain()
+    function: InitGainAnalysis()
+    function: ResetSampleFrequency()
+    function: analyzeResult()
+    function: filterButter()
+    function: filterYule()
+    function: fsqr()
+File: /work/output/orthrus/rg_error.c
+    function: DoError()
+File: /work/output/orthrus/mp3gain.c
+    function: WriteMP3GainTag()
+    function: convert_decout()
+    function: fillBuffer()
+    function: find_maxsample()
+    function: frameSearch()
+    function: getSizeOfFile()
+    function: main()
+    function: passError()
+    function: peek8Bits()
+    function: scanFrameGain()
+    function: skipBits()
+    function: skipID3v2()
+File: /work/output/orthrus/apetag.c
+    function: ReadMP3APETag()
+    function: ReadMP3GainAPETag()
+    function: ReadMP3ID3v1Tag()
+    function: ReadMP3Lyrics3v2Tag()
+    function: Read_LE_Uint32()
+    function: Read_LE_Uint32_unsigned()
+    function: WriteMP3GainAPETag()
+    function: Write_LE_Uint32()
+    function: strlen_max()
+    function: truncate_file()
+File: /work/output/orthrus/id3tag.c

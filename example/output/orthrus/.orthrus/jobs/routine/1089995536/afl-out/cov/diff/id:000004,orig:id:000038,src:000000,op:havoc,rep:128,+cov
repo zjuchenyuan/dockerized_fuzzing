@@ -1,0 +1,36 @@
+diff id:000003,orig:id:000027,src:000000,op:havoc,rep:32,+cov -> id:000004,orig:id:000038,src:000000,op:havoc,rep:128,+cov
+Src file: /work/output/orthrus/gain_analysis.c
+  New 'function' coverage: GetTitleGain()
+  New 'function' coverage: analyzeResult()
+  New 'line' coverage: 257
+  New 'line' coverage: 431
+  New 'line' coverage: 437
+  New 'line' coverage: 438
+  New 'line' coverage: 439
+  New 'line' coverage: 440
+  New 'line' coverage: 441
+  New 'line' coverage: 454
+  New 'line' coverage: 459
+  New 'line' coverage: 461
+  New 'line' coverage: 462
+  New 'line' coverage: 463
+  New 'line' coverage: 466
+  New 'line' coverage: 467
+  New 'line' coverage: 469
+  New 'line' coverage: 470
+  New 'line' coverage: 471
+Src file: /work/output/orthrus/mp3gain.c
+  New 'line' coverage: 1435
+  New 'line' coverage: 1436
+  New 'line' coverage: 233
+  New 'line' coverage: 2433
+  New 'line' coverage: 2436
+  New 'line' coverage: 2442
+  New 'line' coverage: 2443
+  New 'line' coverage: 2444
+  New 'line' coverage: 2445
+  New 'line' coverage: 398
+  New 'line' coverage: 434
+  New 'line' coverage: 444
+  New 'line' coverage: 445
+  New 'line' coverage: 446

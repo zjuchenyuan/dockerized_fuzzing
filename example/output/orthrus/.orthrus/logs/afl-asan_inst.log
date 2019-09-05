@@ -1,0 +1,18 @@
+rm -rf mp3gain mp3gain.zip mp3gain.o apetag.o id3tag.o gain_analysis.o rg_error.o 
+afl-clang -O3 -Wall -DHAVE_MEMCPY   -c -o mp3gain.o mp3gain.c
+afl-clang -O3 -Wall -DHAVE_MEMCPY   -c -o apetag.o apetag.c
+afl-clang -O3 -Wall -DHAVE_MEMCPY   -c -o id3tag.o id3tag.c
+afl-clang -O3 -Wall -DHAVE_MEMCPY   -c -o gain_analysis.o gain_analysis.c
+afl-clang -O3 -Wall -DHAVE_MEMCPY   -c -o rg_error.o rg_error.c
+id3tag.c:931:48: warning: for loop has empty body [-Wempty-body]
+                for(p=sbuf+29; *p==' ' && p>=sbuf; *p--='\0');
+                                                             ^
+id3tag.c:931:48: note: put the semicolon on a separate line to silence this warning
+mp3gain.c:1008:24: warning: while loop has empty body [-Wempty-body]
+                while (fillBuffer(0));
+                                     ^
+mp3gain.c:1008:24: note: put the semicolon on a separate line to silence this warning
+1 warning generated.
+1 warning generated.
+afl-clang  -o mp3gain mp3gain.o apetag.o id3tag.o gain_analysis.o rg_error.o  -lm -lmpg123
+cp -p mp3gain "/usr/local/bin"

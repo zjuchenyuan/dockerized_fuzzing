@@ -1,0 +1,23 @@
+rm -rf mp3gain mp3gain.zip mp3gain.o apetag.o id3tag.o gain_analysis.o rg_error.o 
+gcc -g -O0 -fprofile-arcs -ftest-coverage -Wall -DHAVE_MEMCPY   -c -o mp3gain.o mp3gain.c
+gcc -g -O0 -fprofile-arcs -ftest-coverage -Wall -DHAVE_MEMCPY   -c -o apetag.o apetag.c
+gcc -g -O0 -fprofile-arcs -ftest-coverage -Wall -DHAVE_MEMCPY   -c -o id3tag.o id3tag.c
+gcc -g -O0 -fprofile-arcs -ftest-coverage -Wall -DHAVE_MEMCPY   -c -o gain_analysis.o gain_analysis.c
+gcc -g -O0 -fprofile-arcs -ftest-coverage -Wall -DHAVE_MEMCPY   -c -o rg_error.o rg_error.c
+apetag.c: In function ‘ReadMP3APETag’:
+apetag.c:165:33: warning: variable ‘curFieldNum’ set but not used [-Wunused-but-set-variable]
+     unsigned long               curFieldNum;
+                                 ^
+apetag.c:154:33: warning: variable ‘flags’ set but not used [-Wunused-but-set-variable]
+     unsigned long               flags;
+                                 ^
+mp3gain.c: In function ‘changeGain’:
+mp3gain.c:702:7: warning: variable ‘freqidx’ set but not used [-Wunused-but-set-variable]
+   int freqidx;
+       ^
+mp3gain.c: In function ‘main’:
+mp3gain.c:1465:6: warning: variable ‘crcflag’ set but not used [-Wunused-but-set-variable]
+  int crcflag;
+      ^
+gcc -lgcov --coverage -o mp3gain mp3gain.o apetag.o id3tag.o gain_analysis.o rg_error.o  -lm -lmpg123
+cp -p mp3gain "/usr/local/bin"

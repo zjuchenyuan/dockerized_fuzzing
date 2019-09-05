@@ -1,0 +1,206 @@
+{
+    "crashing-input": "ASAN:ASAN000:id:000001,sig:06,src:000000+000001,op:splice,rep:2", 
+    "slice-linecount": 50, 
+    "slice-node-spec": [
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:178:7"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:173:17"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:213:30"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3GainAPETag:380:13"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:205:7"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/mp3gain.c:main:1825:25"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/mp3gain.c:main:1773:39"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:179:17"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:strlen_max:145:29"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:232:34"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:229:34"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:254:17"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:204:5"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:252:34"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/mp3gain.c:main:1530:14"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/mp3gain.c:main:1534:14"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:strlen_max:145:13"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:strlen_max:143:0"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:strlen_max:145:19"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/mp3gain.c:main:1796:32"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3GainAPETag:366:0"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/mp3gain.c:main:1797:11"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:Read_LE_Uint32:128:0"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/mp3gain.c:main:1460:0"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:177:38"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:211:29"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:186:10"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:211:55"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:175:29"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:191:35"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:226:34"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:176:28"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/mp3gain.c:main:1525:16"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:strlen_max:145:2"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/mp3gain.c:main:1534:35"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:172:16"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/mp3gain.c:main:1530:25"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/mp3gain.c:main:1795:16"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:Read_LE_Uint32_unsigned:121:0"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:206:33"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:204:21"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/mp3gain.c:main:1835:22"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:235:34"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:151:0"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:204:40"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:strlen_max:146:9"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:174:20"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:180:28"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3GainAPETag:374:8"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/mp3gain.c:main:1770:2"
+        }
+    ]
+}

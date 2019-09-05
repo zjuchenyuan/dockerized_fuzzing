@@ -1,0 +1,23 @@
+diff id:000018,orig:id:000081,sync:ASAN000,src:000034 -> id:000019,orig:id:000081,sync:HARDEN001,src:000108
+Src file: /work/output/orthrus/gain_analysis.c
+  New 'line' coverage: 253
+Src file: /work/output/orthrus/mp3gain.c
+  New 'line' coverage: 2250
+  New 'line' coverage: 421
+  New 'line' coverage: 452
+  New 'line' coverage: 453
+  New 'line' coverage: 638
+  New 'line' coverage: 643
+  New 'line' coverage: 644
+  New 'line' coverage: 646
+  New 'line' coverage: 649
+  New 'line' coverage: 651
+  New 'line' coverage: 652
+  New 'line' coverage: 653
+  New 'line' coverage: 654
+  New 'line' coverage: 655
+  New 'line' coverage: 656
+  New 'line' coverage: 657
+  New 'line' coverage: 659
+  New 'line' coverage: 660
+  New 'line' coverage: 662

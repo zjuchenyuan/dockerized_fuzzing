@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - trace.lcov_info_final - orthrus/rg_error.c</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">orthrus</a> - rg_error.c<span style="font-size: 80%;"> (source / <a href="rg_error.c.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">trace.lcov_info_final</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">4</td>
+            <td class="headerCovTableEntry">7</td>
+            <td class="headerCovTableEntryLo">57.1 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-09-05 12:03:35</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">2</td>
+            <td class="headerCovTableEntryLo">50.0 %</td>
+          </tr>
+          <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : /*</a>
+<span class="lineNum">       2 </span>            :  *  ReplayGainAnalysis Error Reporting 
+<span class="lineNum">       3 </span>            :  *     Handles error reporting for mp3gain in either standalone or DLL form.
+<span class="lineNum">       4 </span>            :  *
+<span class="lineNum">       5 </span>            :  *  Copyright (C) 2002 John Zitterkopf (zitt@bigfoot.com) 
+<span class="lineNum">       6 </span>            :  *                     (http://www.zittware.com)
+<span class="lineNum">       7 </span>            :  *
+<span class="lineNum">       8 </span>            :  *  These comments must remain intact in all copies of the source code.
+<span class="lineNum">       9 </span>            :  *
+<span class="lineNum">      10 </span>            :  *  This library is free software; you can redistribute it and/or
+<span class="lineNum">      11 </span>            :  *  modify it under the terms of the GNU Lesser General Public
+<span class="lineNum">      12 </span>            :  *  License as published by the Free Software Foundation; either
+<span class="lineNum">      13 </span>            :  *  version 2.1 of the License, or (at your option) any later version.
+<span class="lineNum">      14 </span>            :  *
+<span class="lineNum">      15 </span>            :  *  This library is distributed in the hope that it will be useful,
+<span class="lineNum">      16 </span>            :  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+<span class="lineNum">      17 </span>            :  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+<span class="lineNum">      18 </span>            :  *  Lesser General Public License for more details.
+<span class="lineNum">      19 </span>            :  *
+<span class="lineNum">      20 </span>            :  *  You should have received a copy of the GNU Lesser General Public
+<span class="lineNum">      21 </span>            :  *  License along with this library; if not, write to the Free Software
+<span class="lineNum">      22 </span>            :  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+<span class="lineNum">      23 </span>            :  *
+<span class="lineNum">      24 </span>            :  *  based on code by Glen Sawyer (mp3gain@hotmail.com) 735 W 255 N, Orem, UT 84057-4505 USA
+<span class="lineNum">      25 </span>            :  *
+<span class="lineNum">      26 </span>            :  *  Error code for VC++5.0 by John Zitterkopf (zitt@bigfoot.com)
+<span class="lineNum">      27 </span>            :  *    -- blame him for nothing. This work evolves as needed.
+<span class="lineNum">      28 </span>            :  *
+<span class="lineNum">      29 </span>            :  *  V1.0 - jzitt
+<span class="lineNum">      30 </span>            :  *  * initial release based on V1.2.3 sources
+<span class="lineNum">      31 </span>            :  */
+<span class="lineNum">      32 </span>            : 
+<span class="lineNum">      33 </span>            : #include &quot;rg_error.h&quot;
+<span class="lineNum">      34 </span>            : 
+<span class="lineNum">      35 </span>            : #ifndef asWIN32DLL
+<span class="lineNum">      36 </span>            : extern int gSuccess;
+<a name="37"><span class="lineNum">      37 </span>            : #endif</a>
+<span class="lineNum">      38 </span>            : 
+<span class="lineNum">      39 </span><span class="lineCov">         19 : void DoError( char * localerrstr, MMRESULT localerrnum )</span>
+<span class="lineNum">      40 </span>            : {
+<span class="lineNum">      41 </span>            : #ifndef asWIN32DLL
+<span class="lineNum">      42 </span><span class="lineCov">         19 :     gSuccess = 0;</span>
+<span class="lineNum">      43 </span><span class="lineCov">         19 :         fprintf(stdout, &quot;%s&quot;, localerrstr);</span>
+<span class="lineNum">      44 </span>            : #else
+<span class="lineNum">      45 </span>            :         //send message to DLL's parent
+<span class="lineNum">      46 </span>            :     mp3gainerr = localerrnum;
+<span class="lineNum">      47 </span>            :     if (mp3gainerrstr != NULL) {
+<span class="lineNum">      48 </span>            :         free(mp3gainerrstr);
+<span class="lineNum">      49 </span>            :                 mp3gainerrstr = NULL;
+<span class="lineNum">      50 </span>            :         }
+<span class="lineNum">      51 </span>            :     mp3gainerrstr = malloc(strlen(localerrstr) + 1);
+<span class="lineNum">      52 </span>            :     strcpy(mp3gainerrstr,localerrstr);
+<span class="lineNum">      53 </span>            :         if  ( (apphandle != 0) &amp;&amp; ( apperrmsg != 0 ) )
+<span class="lineNum">      54 </span>            :         {
+<span class="lineNum">      55 </span>            :                 SendMessage(apphandle, apperrmsg, localerrnum, (LPARAM) localerrstr);
+<span class="lineNum">      56 </span>            :         }
+<span class="lineNum">      57 </span>            : #endif
+<a name="58"><span class="lineNum">      58 </span><span class="lineCov">         19 : }</span></a>
+<span class="lineNum">      59 </span>            : 
+<span class="lineNum">      60 </span><span class="lineNoCov">          0 : void DoUnkError( char * localerrstr)</span>
+<span class="lineNum">      61 </span>            : {
+<span class="lineNum">      62 </span><span class="lineNoCov">          0 :         DoError( localerrstr, MP3GAIN_UNSPECIFED_ERROR );</span>
+<span class="lineNum">      63 </span><span class="lineNoCov">          0 : }</span>
+<span class="lineNum">      64 </span>            : 
+<span class="lineNum">      65 </span>            : #ifdef asWIN32DLL
+<span class="lineNum">      66 </span>            : /*the sendpercentdone sends a windows message to the calling app with the progress 
+<span class="lineNum">      67 </span>            :   into the file (pdone). The calling app acknowledges the message by returning an 
+<span class="lineNum">      68 </span>            :   LRESULT. 
+<span class="lineNum">      69 </span>            :   LRESULT = 0 means continue processing the file.
+<span class="lineNum">      70 </span>            :   LRESULT != 0 means abort processing this file. 
+<span class="lineNum">      71 </span>            : */
+<span class="lineNum">      72 </span>            : LRESULT sendpercentdone( int pdone, long filesize ) 
+<span class="lineNum">      73 </span>            : {  //send message to DLL's parent
+<span class="lineNum">      74 </span>            :         if ( (apphandle != 0)  &amp;&amp; ( apppercentdonemsg != 0 ) )
+<span class="lineNum">      75 </span>            :         {
+<span class="lineNum">      76 </span>            :                 return !(SendNotifyMessage(apphandle, apppercentdonemsg, pdone, filesize));
+<span class="lineNum">      77 </span>            :         }
+<span class="lineNum">      78 </span>            :         else return(0); //no calling app defined, send by 0 to continue
+<span class="lineNum">      79 </span>            : }
+<span class="lineNum">      80 </span>            : #endif
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.12</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

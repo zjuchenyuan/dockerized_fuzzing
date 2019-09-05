@@ -1,0 +1,5 @@
+diff id:000077,orig:id:000175,src:000173,op:havoc,rep:128,+cov -> id:000078,orig:id:000176,src:000175,op:havoc,rep:8
+Src file: /work/output/orthrus/mp3gain.c
+  New 'line' coverage: 378
+  New 'line' coverage: 379
+  New 'line' coverage: 380

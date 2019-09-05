@@ -1,0 +1,3 @@
+diff id:000017,orig:id:000080,src:000000+000003,op:splice,rep:8,+cov -> id:000018,orig:id:000081,sync:ASAN000,src:000034
+Src file: /work/output/orthrus/gain_analysis.c
+  New 'line' coverage: 255

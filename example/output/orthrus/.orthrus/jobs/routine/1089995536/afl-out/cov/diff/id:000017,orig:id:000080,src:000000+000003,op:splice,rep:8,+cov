@@ -1,0 +1,6 @@
+diff id:000016,orig:id:000079,sync:HARDEN001,src:000081,+cov -> id:000017,orig:id:000080,src:000000+000003,op:splice,rep:8,+cov
+Src file: /work/output/orthrus/apetag.c
+  New 'line' coverage: 263
+  New 'line' coverage: 275
+  New 'line' coverage: 276
+  New 'line' coverage: 277

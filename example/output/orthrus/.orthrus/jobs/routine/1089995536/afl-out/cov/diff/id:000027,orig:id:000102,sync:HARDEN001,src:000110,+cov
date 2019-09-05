@@ -1,0 +1,9 @@
+diff id:000026,orig:id:000101,sync:HARDEN001,src:000084 -> id:000027,orig:id:000102,sync:HARDEN001,src:000110,+cov
+Src file: /work/output/orthrus/mp3gain.c
+  New 'line' coverage: 2261
+  New 'line' coverage: 2262
+  New 'line' coverage: 2268
+  New 'line' coverage: 2269
+  New 'line' coverage: 2271
+  New 'line' coverage: 2273
+  New 'line' coverage: 2275

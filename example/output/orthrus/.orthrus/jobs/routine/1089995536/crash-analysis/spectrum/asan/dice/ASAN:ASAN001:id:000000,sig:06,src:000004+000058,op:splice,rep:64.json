@@ -1,0 +1,133 @@
+{
+    "shrink-percent": 88.56088560885608, 
+    "dice-linecount": 31, 
+    "slice-linecount": 271, 
+    "diff-node-spec": [
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:178:7"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:213:30"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:205:7"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:179:17"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:235:34"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:232:34"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:229:34"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:254:17"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:204:5"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:252:34"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:strlen_max:145:13"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:strlen_max:143:0"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:strlen_max:145:19"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:211:55"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:177:38"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:Read_LE_Uint32:128:0"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:186:10"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:175:29"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:191:35"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:226:34"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:176:28"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:strlen_max:145:2"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:211:29"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:206:33"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:Read_LE_Uint32_unsigned:121:0"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/mp3gain.c:main:1534:35"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:204:21"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:strlen_max:145:29"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:204:40"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:strlen_max:146:9"
+        }, 
+        {
+            "count": 1, 
+            "line": "/work/output/orthrus/apetag.c:ReadMP3APETag:180:28"
+        }
+    ], 
+    "crashing-input": "ASAN:ASAN001:id:000000,sig:06,src:000004+000058,op:splice,rep:64", 
+    "parent-input": "id:000004,orig:id:000038,src:000000,op:havoc,rep:128,+cov"
+}
