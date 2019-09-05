@@ -1,0 +1,101 @@
+diff -ru vuzzer64ori/fuzzer-code/config.py vuzzer64/fuzzer-code/config.py
+--- vuzzer64ori/fuzzer-code/config.py	2019-09-05 20:56:09.454758891 +0800
++++ vuzzer64/fuzzer-code/config.py	2019-04-15 22:13:51.000000000 +0800
+@@ -150,7 +150,7 @@
+ BESTP=40
+ 
+ # number of iterations (generations) to run GA
+-GENNUM=1000
++GENNUM=1000000
+ 
+ #set probability of selecting new inputs from special or best inputs. Higer the number (0-9), less will be the chance of selecting from Special inputs.
+ SELECTNUM=3
+diff -ru vuzzer64ori/fuzzer-code/operators.py vuzzer64/fuzzer-code/operators.py
+--- vuzzer64ori/fuzzer-code/operators.py	2019-09-05 20:56:09.458758896 +0800
++++ vuzzer64/fuzzer-code/operators.py	2019-06-05 08:58:16.000000000 +0800
+@@ -4,6 +4,7 @@
+ 
+ This is partly based on mutation implementation by Jesse Burns (jesse@isecpartners.com)
+ """
++import traceback
+ import random
+ import config
+ 
+@@ -293,9 +294,19 @@
+     mutators = [eliminate_random, change_bytes, change_bytes,add_random, add_random, change_random,single_change_random, lower_single_random, raise_single_random, eliminate_null, eliminate_double_null, totally_random, int_slide, double_fuzz,change_random_full,change_random_full,eliminate_random,add_random, change_random]
+   
+     def mutate(self, original,fl):
+-        result=self.r.choice(self.mutators)(self, original,fl)
++        try:
++            result=self.r.choice(self.mutators)(self, original,fl)
++        except:
++            print("[error] mutate1: self.r.choice(self.mutators)(self, original,fl)")
++            traceback.print_exc()
++            result = original
+         while len(result)<3:
+-            result= self.r.choice(self.mutators)(self, original,fl)
++            try:
++                result= self.r.choice(self.mutators)(self, original,fl)
++            except:
++                print("[error] mutate2: self.r.choice(self.mutators)(self, original,fl)")
++                traceback.print_exc()
++                result = original
+         assert len(result)>2, "elimination failed to reduce size %d" % (len(result),)
+         return result
+ 
+diff -ru vuzzer64ori/fuzzer-code/runfuzzer.py vuzzer64/fuzzer-code/runfuzzer.py
+--- vuzzer64ori/fuzzer-code/runfuzzer.py	2019-09-05 20:56:09.458758896 +0800
++++ vuzzer64/fuzzer-code/runfuzzer.py	2019-06-20 15:04:31.000000000 +0800
+@@ -20,7 +20,7 @@
+ import copy
+ import re
+ import hashlib
+-
++import traceback
+ 
+ import gautils as gau
+ #import gautils_new as gau_new
+@@ -294,7 +295,7 @@
+     offlimit=0
+     #check if taint was generated, else exit
+     if (os.path.getsize("cmp.out") ==0):
+-        gau.die("Empty cmp.out file! Perhaps taint analysis did not run...")
++        raise Exception("Empty cmp.out file! Perhaps taint analysis did not run...")
+     cmpFD=open("cmp.out","r")
+     # each line of the cmp.out has the following format:
+     #32 reg imm 0xb640fb9d {155} {155} {155} {155} {} {} {} {} 0xc0 0xff
+@@ -464,7 +465,11 @@
+         if rcode ==255:
+             continue
+             gau.die("pintool terminated with error 255 on input %s"%(pfl,))
+-        config.TAINTMAP[fl]=read_taint(pfl)
++        try:
++            config.TAINTMAP[fl]=read_taint(pfl)
++        except:
++            traceback.print_exc()
++            continue
+         config.LEAMAP[fl]=read_lea()          
+         #print config.TAINTMAP[fl][1]
+         #raw_input("press key..")
+@@ -802,7 +807,11 @@
+                 iln=os.path.getsize(tfl)
+                 args = (config.SUT % tfl).split(' ')
+                 progname = os.path.basename(args[0])
+-                (bbs,retc)=execute(tfl)
++                try:
++                    (bbs,retc)=execute(tfl)
++                except:
++                    traceback.print_exc()
++                    continue
+                 if config.BBWEIGHT == True:
+                     fitnes[fl]=gau.fitnesCal2(bbs,fl,iln)
+                 else:
+@@ -832,7 +841,7 @@
+                         del config.SPECIALBITVECTORS[ele]
+                     
+  
+-                if retc < 0 and retc != -2:
++                if (retc < 0 and retc != -2) or (retc>128 and retc<193):
+                     print "[*]Error code is %d"%(retc,)
+                     efd.write("%s: %d\n"%(tfl, retc))
+                     efd.flush()
