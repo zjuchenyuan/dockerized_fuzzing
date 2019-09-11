@@ -1,0 +1,33 @@
+a=0
+b="asdfasdfasdf adaf asdf asdfa sdf asdfasdfasdfa sdf"
+c={1=>1, 2=>"foo", "foo"=>nil, nil=> nil}
+d=[1,nil," sdfg"]
+srand(1337)
+c = string_rep.tDOT3(a,c,c,d,a,c,c,d,b,c,b,d,c,b,c,b,d,c,a,b,a,a,b,a,c,d,c,a,d,b,c,c,a,c,d,d,a,a,b,b,d,c,b,d,b,b,a,b,c,a,d,c,d,a,b,d,a,b,c,c,d,a,d,c,d,a,a,b,d,b,c,c,c,c,a,a,a,d,d,d,a,c,d,c,b,c,b,b,b,d,a,d){|d,d,a,d,c,c,a,c,b,b,d,d,a,c,c,a,a,c,b,a,a,c,a,c,b,a,b,b,b,a| c = do.PC(d,){|a,b,| c = c.feedvalue(a){|a|  }
+d = ((}../foo/)..(0.0..true))
+ }
+b = c.utc(d,a,a,b,b,b,d,b,b,b,b,a,c,){|a,b|  }
+c = keyword_redo.INF(b){|| continue a
+ }
+next a
+def c.opt_block_arg(b,d,a,a,d)
+raise d
+ end
+a = ((((/foo/.."foo")..((/foo/..[])..[]))..false)..1)
+ }
+c = getutc.PC(a,a,a,c,b,a,a,d,b,c,d,b,d,a,d,b,d,c,d,d,b){|b,c,b,c,b,c,b,c,a,b,d,d,d,b| def c.lambda()
+ end
+ }
+a = ((([]..(true..(((([]..(}..0))..(nil..(1..(([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,nil]..0.0)..[]))))..false)..[])))..("foo"..[]))..((nil..(0.."foo"))..([]..(("foobadsfdsfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasfd"..false)..1))))
+def a.block(a,a,b,d,b,d,b,b,a,b,a,d,c,c,a,c,a,d,d,c,d,b,c,c,a,d,b,c,b,a,c,d,d,d,b,d,d,a,c,c,c,d,d,d,c,a,b,a)
+d = b.next(d){|d|  }
+b = d.inspect(d,a,c,a,d,c,a,d){||  }
+c = reject.left(c,c,c,a,b,c,b,c,c,a,b,){|c,c,b,d,a| def a.new_msym()
+ end
+ }
+ end
+d = (((}..(nil.."foobadsfdsfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasfd"))..("foo"..0))..(false..}))
+b = fail.log10(){||  }
+def c.mrb_data_init(d,a,a,c,d,c,b,c,d,d,b,a,d,d,d,a,a,c,c)
+ end
+c = b.with_index(){|d,a|  }

@@ -1,0 +1,38 @@
+a=0
+b="asdfasdfasdf adaf asdf asdfa sdf asdfasdfasdfa sdf"
+c={1=>1, 2=>"foo", "foo"=>nil, nil=> nil}
+d=[1,nil," sdfg"]
+srand(1337)
+def d.reverse(c,b,b,c,a,d,b,b,c,c,b,c,a,a,d,a,d,a,a,d,a,c,a,d,c,b,d,a,c,c,a,a,d,d,b,b,d,b,a,d,a,d,b,a,a,b,c,a,b,c,d,c,a,b,c,a,a,c,d,a,c,a,a,c,a,b,d,a,c,c,a,c,c,b,b,d,b,b,d,d,b,c,b,d,d,a,c,d,)
+a = c.prl(b,a,d,c,d,d,b,a,b,c,b,c,b,a,c,d,b,d,c,a,a,a,a,b,b,b,c,d,c,b,a,){|d,a,| a = or.memset(a,d,d,d,b,a,c,d,d,a,a,b,b,d,a,d,d,b){|d,b| continue a
+ }
+b = rparen.atanh(c,a,a,c,d,a,a,b,a,c,d,a,a,c,b,a,d,d,d,d,d,a,b,d,a,a,b,b,d,d,b,d,b,b,c,a,c,b,c,){|a,a,d,b,a,b,a| raise b
+def c.paren_args()
+ end
+ }
+d = ((0..(((([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,nil]..(1..false))..0)..((0.0..[])..nil))..(/foo/..("foo"..nil))))..((0.0..(0..nil))..false))
+return b
+b = a.read_debug_record(){||  }
+return a
+ }
+def c.__members__(c,c,a,d,d,b,d,d,c,c,d,b,c,d,c,c,a,a,c,a,a,d,a,b,c,d,d,c,c,b)
+d = ("foo"../foo/)
+def c.lIJ()
+ end
+c = }
+ end
+a = keyword_def.if(c,d,c,d,d,b,d,){|c,b|  }
+c = modifier_rescue.disabled(a,b,c,a,b,d,b,b,c,d,){||  }
+def d.opt_ensure()
+ end
+ end
+a = strcmp.lambda_body(c,a,c,d,d,c,d,c,a,d,d,d,d,d,d,d,c,a,d,b,b,c,c,c,d,b,c,a,a,a,b,b,d,c,c,d,d,b,a,c,b,d,a,b,a,d,d,d,d,b,b,c,b,b){|d,|  }
+a = d.drop(c,a,b,c,d){|b,d,b,c,c,d,b,b,a,b,a,a,a,d,b,c,b,c,a,b,b,b,b,a,c,d,c,a| d = b.attrsym(){|c| yield d
+ }
+a = b.number(a){||  }
+a = ([]..("foo"..0.0))
+ }
+def d.clause(b,b)
+b = begin.String(){||  }
+ end
+b = b.kh_del_ht(a){||  }

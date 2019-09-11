@@ -1,0 +1,10 @@
+a=0
+b="asdfasdfasdf adaf asdf asdfa sdf asdfasdfasdfa sdf"
+c={1=>1, 2=>"foo", "foo"=>nil, nil=> nil}
+d=[1,nil," sdfg"]
+srand(1337)
+c = __id__.row(){|| d = c.right(){|| continue c
+ }
+ }
+b = __ENCODING__.NODE_NIL(){||  }
+c = ("foobadsfdsfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasfd".."foobadsfdsfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasfd")

@@ -1,0 +1,11 @@
+a=0
+b="asdfasdfasdf adaf asdf asdfa sdf asdfasdfasdfa sdf"
+c={1=>1, 2=>"foo", "foo"=>nil, nil=> nil}
+d=[1,nil," sdfg"]
+srand(1337)
+d = b.caller(){|b,b,a,d,a| d = b.FREE(b,a,d,){|c,d| next c
+ }
+def a.LOCAL()
+ end
+continue c
+ }

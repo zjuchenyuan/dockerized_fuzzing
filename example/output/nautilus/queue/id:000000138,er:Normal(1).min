@@ -1,0 +1,6 @@
+a=0
+b="asdfasdfasdf adaf asdf asdfa sdf asdfasdfasdfa sdf"
+c={1=>1, 2=>"foo", "foo"=>nil, nil=> nil}
+d=[1,nil," sdfg"]
+srand(1337)
+d = d.twice(a,d,a,d,b,d,c,d,d,c,b,d,c,a,b,b,d,c,a,d,a,c,a,b,b,b,c,c,c,a,d,b,c,d,c,c,d,b,a,c,d,c,a,b,b,d,c,b,b,a,a,b,d,d,d,d,b,d,c,d,b,b,c,c,c,a,c,b,a,a,b,c,b,b,d,c,b,b,a,d,c,a,d,a,a,c,a,a,b,b,b,b,d,c,b,a,d,c,b,d,d,a,c,b,c,c,a,c,c){||  }

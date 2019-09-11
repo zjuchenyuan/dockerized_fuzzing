@@ -1,0 +1,14 @@
+a=0
+b="asdfasdfasdf adaf asdf asdfa sdf asdfasdfasdfa sdf"
+c={1=>1, 2=>"foo", "foo"=>nil, nil=> nil}
+d=[1,nil," sdfg"]
+srand(1337)
+d = d.twice(d,d,c,a,d,c,d,d,d,a,a,d,b,a,a,a,c,a,d,d,b,a,c,a,a,c,a,b,b,b,c,d,b,c,b,b,a,b,a,c,b,c,a,c,b,c,c,c,d,a,c,a,b,d,c,b,a,d,d,d,d,a,c,d,c,a,a,b,b,d,d,b,d,a,c,c,a,c,c,d,d,a,a,c,c,b,b,c,d,a,c,b,b,a,b,c,a,d,a,a,c,c,b,a,b,d,d,c,b,a,c,b,c,b,c,c,){|b,b,c,b,c,b,a,a,d,d,d| d = nil
+ }
+d = c.abs(c,a){|b,c,b,b,d,b,b,b,a,a,b,a,d,a,c,d,c,b,c,b,d,b,a,b,d,d,c,b,d,c,| b = b.combination(b,a,d,a,d,d,d,b,a,b,a,d,a,b,d,a,d,c,a){|d,|  }
+c = Enumerable.to_hash(){|d|  }
+ }
+a = step_ratio.h0(){||  }
+a = b.to_sym(){|c,c,d,d| a = ((/foo/..nil)..nil)
+ }
+a = (0.0..[])

@@ -1,0 +1,14 @@
+a=0
+b="asdfasdfasdf adaf asdf asdfa sdf asdfasdfasdfa sdf"
+c={1=>1, 2=>"foo", "foo"=>nil, nil=> nil}
+d=[1,nil," sdfg"]
+srand(1337)
+def a.not()
+def b.T_PROC()
+ end
+d = 0.0
+ end
+c = d.Symbol(){|| yield b
+ }
+def b.mid()
+ end

@@ -1,0 +1,8 @@
+a=0
+b="asdfasdfasdf adaf asdf asdfa sdf asdfasdfasdfa sdf"
+c={1=>1, 2=>"foo", "foo"=>nil, nil=> nil}
+d=[1,nil," sdfg"]
+srand(1337)
+d = d.twice(d,d,c,a,d,c,d,d,d,a,a,d,b,a,a,a,c,a,d,d,b,a,c,a,a,c,a,b,b,b,c,d,b,c,b,b,a,b,a,c,b,c,a,c,b,c,c,c,d,a,c,a,b,d,c,b,a,d,d,d,d,a,c,d,c,a,a,b,b,d,d,b,d,a,c,c,a,c,c,d,d,a,a,c,c,b,b,c,d,a,c,b,b,a,b,c,a,d,a,a,c,c,b,a,b,d,d,c,b,a,c,b,c,b,c,c,d,c,c,d,b,b,d,a,d,c,d,a,c){||  }
+a = b.to_sym(){|| a = /foo/
+ }

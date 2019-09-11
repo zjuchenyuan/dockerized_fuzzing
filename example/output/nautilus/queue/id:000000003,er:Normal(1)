@@ -1,0 +1,19 @@
+a=0
+b="asdfasdfasdf adaf asdf asdfa sdf asdfasdfasdfa sdf"
+c={1=>1, 2=>"foo", "foo"=>nil, nil=> nil}
+d=[1,nil," sdfg"]
+srand(1337)
+a = Sp.mon(b,a,a,a,d,d,c,a,c,c,d){|d,c,c,d,c,d,d,d,b,d,d,a,a,b,b,a,b,b,c,d,| d = nil
+d = permutation.keyword_break(c){|a| c = ("foo"..0)
+ }
+a = (true..[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,nil])
+ }
+def c.keyword_class(b,d,d,b,b,c,c,d,d,a,a)
+b = ((("foo"../foo/)..((true..((0..("foobadsfdsfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasfd".."foo"))..nil))..(([]..[])..(false.."foobadsfdsfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasfd"))))..((nil..((([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,nil]..0)..(0..(true..("foo"..true))))..[]))..([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,nil]..[])))
+d = tREGEXP.Fn(){||  }
+ end
+d = Mon.public(c){||  }
+d = ((((((("foobadsfdsfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasfd"..[])..(0.0..}))..[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,nil])..((0..0)..0))..(nil..(false..true)))..(0.0..(0..(0..true))))..((([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,nil]..(0..0))..false)..[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,nil]))
+return d
+def b.MRUBY_DESCRIPTION()
+ end

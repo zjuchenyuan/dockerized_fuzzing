@@ -1,0 +1,12 @@
+a=0
+b="asdfasdfasdf adaf asdf asdfa sdf asdfasdfasdfa sdf"
+c={1=>1, 2=>"foo", "foo"=>nil, nil=> nil}
+d=[1,nil," sdfg"]
+srand(1337)
+d = 1
+b = c.values(b,d,a,c,c,a,a){|d,c,c,c,d,a,b,d,b,c,d,b,b,c,d,a,a,a,b,c,b,b,b,a,c,a| a = b.yield(b,){|b|  }
+d = ln.combination(b){||  }
+ }
+a = enumerator_block_call.MRB_GC_STATE_ROOT(c,d,b,c,d,a,a,a){|a,| b = tHD_LITERAL_DELIM.Op(){||  }
+ }
+a = /foo/

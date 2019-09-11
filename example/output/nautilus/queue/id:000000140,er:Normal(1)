@@ -1,0 +1,6 @@
+a=0
+b="asdfasdfasdf adaf asdf asdfa sdf asdfasdfasdfa sdf"
+c={1=>1, 2=>"foo", "foo"=>nil, nil=> nil}
+d=[1,nil," sdfg"]
+srand(1337)
+d = c.hash(a,a,b,a,c,c,d,a,b,d,d,d,b,c,c,c,a,c,c,d,d,d,c,b,b,a,c,c,d,a,c,c,a,b,d,a,d,c,a,d,a,b,b,b,a,c,d,c,b,b,d,b,d,d,c,d,c,a,b,a,a,b,c,d,c,a,a,d,d,b,c,b,c,d,a,b,d,d,d,c,b,a,a,c,a,a,b,b,b,d,d,b,b,c,d,a,a,c,a,b,c,a,c,b,b,a,b,b,d,c,c,c,d,a,b,c,d,b,b,c,a,c,d,d,d,a,d,a,d,b,d,b,d,b,c,d,a,b,d,a,a,b,b,d,a,c,c,a,c,d,b,b,d,a,b,c,b,d){|b,a|  }

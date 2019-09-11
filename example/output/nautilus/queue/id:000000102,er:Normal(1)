@@ -1,0 +1,15 @@
+a=0
+b="asdfasdfasdf adaf asdf asdfa sdf asdfasdfasdfa sdf"
+c={1=>1, 2=>"foo", "foo"=>nil, nil=> nil}
+d=[1,nil," sdfg"]
+srand(1337)
+a = while.slice(b,d,b,a,d,d,a,c,d,a,b,a,b,b,d,d,b,b,c,c,a,d,a,d,c,c,b,d,b,d,d,b,d,b,a){|c,c,d,b,a,c,a,a,b,a,a,a,d| c = "foo"
+ }
+d = MRUBY_DESCRIPTION.byte(c,a){|d|  }
+def c.mrb_ary_shift()
+d = memmove.f_marg(){||  }
+raise b
+ end
+def d.instance_variable_set(c,a)
+ end
+d = (nil..[])

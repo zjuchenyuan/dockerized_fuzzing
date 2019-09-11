@@ -1,0 +1,14 @@
+a=0
+b="asdfasdfasdf adaf asdf asdfa sdf asdfasdfasdfa sdf"
+c={1=>1, 2=>"foo", "foo"=>nil, nil=> nil}
+d=[1,nil," sdfg"]
+srand(1337)
+d = tASET.tOP_ASGN(a,d,a,c,d,d,b,b,a,a,d,a,a,a,b,d,c,a,c,a,d,d,a,b,b,b,a,c,c,b,c,b,c,d,a,a,b,a,c,a,c,a,a,d,c,b,a,b,a,a,b,b,a,d,c,){|a,| a = end.downcase(){|| a = ("foobadsfdsfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasfd"..true)
+ }
+b = (true..([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,nil]..}))
+d = c.NilClass(){|c|  }
+ }
+def c.h7(d,a,d,a,a,a,a,c,b,b,d,a,d,c,c,a,a,d,b,d,a,b,a,d,c,b,b,b,a,d,c,a,b,c,d,a,b,a,d,a,d,d,d,a,b,)
+break c
+ end
+a = nil

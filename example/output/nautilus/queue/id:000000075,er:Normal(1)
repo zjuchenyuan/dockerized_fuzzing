@@ -1,0 +1,7 @@
+a=0
+b="asdfasdfasdf adaf asdf asdfa sdf asdfasdfasdfa sdf"
+c={1=>1, 2=>"foo", "foo"=>nil, nil=> nil}
+d=[1,nil," sdfg"]
+srand(1337)
+d = b.FREE(){|| b = Fn.keyword_BEGIN(c,d,d,b,d,a,a,c,b,a,c,a,b,a,c,a,b,d,c,a,d,a,a,d,b,c,b,b,b,b,b,b,a,c,d,a,a,b,b,d,c,a,b,b,d,c,b,d,b,c,d,d,a,c,d,a,d,b,c,b,c,c,a,b,a,d,c,d,b,b,b,a,d,c,b,d,a,b,c,d,d,d,d,c,b,a,d,b,d,c,a,a,b,c,b,d,c,d,b,d,a,a,a,d,b,b,b,c,b,b,a,c,c,c,a,d,b,b,d,c,b,b,c,a,d,b,b,a,b,a,a,a,a,d,b,a,a,c,a,c,b,d,d,d,b,b,c,a,a,d,a,b,a,c,d,d,c,a,c,a,d,b,c,c,d,d,b,a,c,b,b,b,c,b,a,b,d,d,d,a,d,a,a,d,d,c,d,b,c,d,b,d,a,d,a,b,a,c,b,b,d,c,c,b,b,c,d,d,b,c,a,a,b,c,b,a,a,c,d,b,c,b,a,b,d,a,b,d,b,a,b,d,d,d,b,d,a,b,c,c,c,d,d,a,d,b,a,b,c,b,a,a,d,b,c,b,b,c,b,d,c,a,c,b,c,d,d,c,c,c,c,b,a,b,a,a,c,b,c,c,b,c,c,d,a,d,c,b,a,a,b,c,d,a,a,d,b,b,c,a,d,c,a,a,b,c,b,b,a,b,d,a,a,b,c,a,a,a,c,d,a,b,d,b,b,a,a,a,a,a,c,d,b,a,c,b,b,a,c,b,a,b,c,a,a,b,a,b,b,d,c,c,b,d,b,b,c,d,c,a,b,a,d,a,b,a,d,b,c,a,d,a,d,b,c,a,d,c,d,c,a,d,a,c,b,c,c,b,d,c,b,d,a,b,d,a,d,a,b,c,a,b,a,c,a,b,b,c,a,a,d,c,a,b,d,c,c,d,b,d){||  }
+ }

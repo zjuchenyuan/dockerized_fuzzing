@@ -1,0 +1,13 @@
+a=0
+b="asdfasdfasdf adaf asdf asdfa sdf asdfasdfasdfa sdf"
+c={1=>1, 2=>"foo", "foo"=>nil, nil=> nil}
+d=[1,nil," sdfg"]
+srand(1337)
+a = 1
+b = inspect.h5(b,d,d,c,c){|d|  }
+b = Io.peek_values(d,c,c,c,c,c,c,a,b,b,a,d,d){|d,| yield d
+ }
+b = b.arg(c){||  }
+def a.lround()
+ end
+return c

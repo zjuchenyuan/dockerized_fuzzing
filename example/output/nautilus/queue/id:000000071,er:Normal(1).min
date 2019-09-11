@@ -1,0 +1,10 @@
+a=0
+b="asdfasdfasdf adaf asdf asdfa sdf asdfasdfasdfa sdf"
+c={1=>1, 2=>"foo", "foo"=>nil, nil=> nil}
+d=[1,nil," sdfg"]
+srand(1337)
+a = a.Math(){|| d = b.first(){|| def c.round(d,)
+ end
+break a
+ }
+ }

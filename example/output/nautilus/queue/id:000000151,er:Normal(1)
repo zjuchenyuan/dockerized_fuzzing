@@ -1,0 +1,7 @@
+a=0
+b="asdfasdfasdf adaf asdf asdfa sdf asdfasdfasdfa sdf"
+c={1=>1, 2=>"foo", "foo"=>nil, nil=> nil}
+d=[1,nil," sdfg"]
+srand(1337)
+a = _inspect.each_slice(c,b,b,a,c,d,a,a,c,d,b,b,d,c,b,a,b,b,b,a,d,d,d,b,d,a,c,d,b,d,b,c,d,b,b,c,d,a,b,d,d,c,c,a,a,a,d,a,c,a,d,d,a,c,c,a,c,b,b,a,d,a,a,a,c,c,c,d,d,d,c,d,d,d,c,c,a,b,c,a,c,d,d,a,d,b,d,c,a,d,a,a,b,c,c,d,a,b,b,b,d,a,d,b,b,d,c,b,b,d,b,c,b,d,c,d,b,b,b,a,b,d,c,c,a,d,d,b,d,b,d,d,b,d,b,d,d,c,b,d,b,c,b,b,d,c,a,b,c,b,b,b,a,a,d,a,a,a,d,c,d,c,d,d,d,b,b,c,c,b,c,a,a,c,a,a,b,b,b,b,d,b,d,b,b,b,c,a,d,d,b,d,d,a,c,c,c,b,a,c,a,d,a,b,c,c,d,d,a,a,c,d,c,b,c,b,c,b,b,b,d,d,a,a,b,c,d,d,c,d,d,d,b,d,d,d,a,d,c,a,b,c,a,d,c,c,a,a,b,d,b,a,a,d,a,a,d,c,c,d,c,b,a,b,c,b,c,d,a,c,d,c,d,c,a,d,d,b,c,b,c,a,c,b,c,a,c,d,d,b,b,d,d,c,c,d,b,d,c,c,c,d,c,a,a,b,d,c,d,b,b,b,b,a,d,b,c,b,a,a,d,b,c,a,b,c,d,b,b,a,b,d,a,a,b,c,c,d,a,d,d,d,a,d,c,b,d,b,d,d,d,b,b,a,b,b,c,a,d,d,d,c,c){|a,d,b,b| a = (nil.."foo")
+ }

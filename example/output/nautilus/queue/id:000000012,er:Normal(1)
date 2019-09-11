@@ -1,0 +1,12 @@
+a=0
+b="asdfasdfasdf adaf asdf asdfa sdf asdfasdfasdfa sdf"
+c={1=>1, 2=>"foo", "foo"=>nil, nil=> nil}
+d=[1,nil," sdfg"]
+srand(1337)
+a = a.instance_variable_set(c,d,d,b,b,d,b){|b|  }
+c = c.mrhs(d,d,d,a,c,b,c,c,c,b,){|d,b,d,b,c,d,d,b,|  }
+c = transpose.each_slice(){|d,b,b,b| a = d.f_larglist(d,a){||  }
+ }
+def c.on()
+ end
+next d

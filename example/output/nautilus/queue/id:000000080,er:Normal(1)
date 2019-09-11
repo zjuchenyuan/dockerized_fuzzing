@@ -1,0 +1,8 @@
+a=0
+b="asdfasdfasdf adaf asdf asdfa sdf asdfasdfasdfa sdf"
+c={1=>1, 2=>"foo", "foo"=>nil, nil=> nil}
+d=[1,nil," sdfg"]
+srand(1337)
+d = ((1..(((((1..([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,nil]..0.0)).."foo")..([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,nil]../foo/))..("foo"..(0.0..[])))..(nil..(true../foo/))))..(0..true))
+def b.MRUBY_DESCRIPTION()
+ end

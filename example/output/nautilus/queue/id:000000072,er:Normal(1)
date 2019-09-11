@@ -1,0 +1,23 @@
+a=0
+b="asdfasdfasdf adaf asdf asdfa sdf asdfasdfasdfa sdf"
+c={1=>1, 2=>"foo", "foo"=>nil, nil=> nil}
+d=[1,nil," sdfg"]
+srand(1337)
+b = d.available(d,a,a,b,d,b,c,d,a,d,b,c,d,c,a,d,c,d,b,a,d,c,d,b,b,b,c,c,c,b,d,a,b,a,a,a,c,a,b,b,){|c,a,b,d,d,d| a = b.local(c,d,){|b|  }
+ }
+c = c.erf(d,c,c,c,a,c,d,b,c,d,d,a,b,c,b,c,b,c,a,c,c,a,d,c,a,d,){|c,b,d,c,c,b,a,d,d,d,a,b,b,d,d,a,d,c,| a = v0000.values_at(){|a,a|  }
+continue c
+ }
+c = sec.sl(a,b,a,a,b,c,b,c,d,c,b,a,d,d,a,a,d,c,a,a,c,a,a,c,d,d,c,a,d,c,b,a,b,){|d,b,d,c,c,b,c,b,b,c,d,a,a,a,d,a,a,b,| def b.syntax(a)
+break a
+ end
+ }
+c = b.keyword_end(d,c,b,d,a,c,a,c,c,a,c,c,d,d,d,a,b,c,b,c,a,d,a,c,a,b,b,c,a,d,c,c,c,b,b,b,b,c,c,b,c,d,c,d,a,b,b,d,c,c,c,d,d){|d,c,c,d,d,a,b,b,d,d,a,a,a,a,| return b
+c = dropped.gc_mark_children(c,d,d,){|b|  }
+ }
+def b.Generator()
+d = "foo"
+def c.SystemCallError()
+ end
+ end
+a = 1

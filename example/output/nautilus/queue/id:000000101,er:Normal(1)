@@ -1,0 +1,10 @@
+a=0
+b="asdfasdfasdf adaf asdf asdfa sdf asdfasdfasdfa sdf"
+c={1=>1, 2=>"foo", "foo"=>nil, nil=> nil}
+d=[1,nil," sdfg"]
+srand(1337)
+c = begin.sprintf(b,a,b,d,c,b,a,d,d,b,d,c,c,a,c,a,b,b,a,b,b,b,c,b,c,c,a,d,d,a,a,){|a,c,a,b,d,c,c,c,b,b,a,d,c,b,a,b,d,a,a,b,c,d,d,c,c,b,b,a,a,a,b,c,a,d,c,b,a,d,c,d,b,b,d,a,d,c,d,d,a,b,d,a,b,a,d,c,d,c,b,a| d = taken.count(b,a,d,d,b,a,b,b,c,c,b,b,a,a,d,b,b,d,d,a,c,a,a,d,b,d,d,c,b,c,a,d,d,c){|c,b,c|  }
+a = /foo/
+ }
+b = a.strlen(d,d,a){|b,c,b,a|  }
+b = (}..1)

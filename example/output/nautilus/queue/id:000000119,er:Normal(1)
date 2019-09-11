@@ -1,0 +1,7 @@
+a=0
+b="asdfasdfasdf adaf asdf asdfa sdf asdfasdfasdfa sdf"
+c={1=>1, 2=>"foo", "foo"=>nil, nil=> nil}
+d=[1,nil," sdfg"]
+srand(1337)
+a = implemented.keyword_alias(c,c,c,b,b,b,b,b,b,b,c,d,d,b,b,a,b,c,b,a,d,d,d,d,a,a,b,d,a,b,a,d,a,d,a,a,a,a,a,d,c,c,a,c,b,d,a,d,a,d,c,b,d,c,a,c,c,d,b,b,c,a,b,c,c,c,b,b,c,b,b,d,b,c,b,a,d,c,a,b,c,b,d,a,c,b,d,b,c,b,a,b,b,b,b,d,c,a,d,c,a,c,c,b,a,d,a,d,b,d,a,b,c,c,a,b,c,a,b,a,a,b,b,b,d,c,d,){|c,a,a,d,a,d,d,d,a,d,c,a,d,b,d,b,c,c,c,d,c,a,a,c,a,d,d,c,c,d,d,a,d,d,d,d,b,c,a,d,c,c,c,a,b,d,c,d,b,| d = (((0.0..true)..0)..false)
+ }

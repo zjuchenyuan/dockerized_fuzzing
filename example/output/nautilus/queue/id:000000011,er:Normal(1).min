@@ -1,0 +1,7 @@
+a=0
+b="asdfasdfasdf adaf asdf asdfa sdf asdfasdfasdfa sdf"
+c={1=>1, 2=>"foo", "foo"=>nil, nil=> nil}
+d=[1,nil," sdfg"]
+srand(1337)
+def d.min(b,d,c,d,b,c,c,a,d,c,a,b,d,d,c,a,c,a,b,a,d,b,b,c,b,b,b,d,d,c,c,c)
+ end

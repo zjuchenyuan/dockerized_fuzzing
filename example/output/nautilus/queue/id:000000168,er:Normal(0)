@@ -1,0 +1,8 @@
+a=0
+b="asdfasdfasdf adaf asdf asdfa sdf asdfasdfasdfa sdf"
+c={1=>1, 2=>"foo", "foo"=>nil, nil=> nil}
+d=[1,nil," sdfg"]
+srand(1337)
+b = c.print(d,c,c,c,d,d,d,d,c,d,c,c,d,c,d,c,d,c,c,c,c,c,c,d,a,a,c,a,b,a,a,c,c,c,d,a,d,c,c,c,c,a,b,c,d,d,b,c,b,a,b,c,d,a,d,a,a,a,b,a,a,c,d,b,c,b,a,b,a,b,a,c,c,a,d,b,b,b,c,c,d,b,d,d,c,d,c,b,c,c,b,c,a,d,b,c,a,a,c,d,b,d,b,a,c,a,a,c,b,b,d,a,d,a,d,a,c,a,d,d,d,d,b,b,c,b,c,a,c,c,d,c,b,b,c,c,d,a,c,d,d,a,b,a,c,b,a,d,a,d,b,c,a,d,b,a,c,b,b,b,d,a,a,c,b,d,c,c,b,c,d,a,a,b,c,d,a,c,b,c,d,c,b,d,b,c,b,d,c,a,d,d,a,c,b,d,a,b,c,d,c,a,c,a,a,d,d,c,c,b,b,a,b,d,b,c,b,b,a,a,d,c,a,c,a,d,c,c,b,b,c,c,c,d,d,b,a,c,b,a,d,b,c,d,d,a,b,c,d,b,d,b,c,a,a,a,d,a,c,a,d,c,a,d,b,a,){|c,b,d,d,d,| def a.keyword_alias(d)
+ end
+ }

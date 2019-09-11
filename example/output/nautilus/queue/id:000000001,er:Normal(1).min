@@ -1,0 +1,46 @@
+a=0
+b="asdfasdfasdf adaf asdf asdfa sdf asdfasdfasdfa sdf"
+c={1=>1, 2=>"foo", "foo"=>nil, nil=> nil}
+d=[1,nil," sdfg"]
+srand(1337)
+def b.new_msym()
+def c.keyword_nil()
+yield c
+yield c
+c = ((0..("foo"..((((0.0..[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,nil])..[])..})..nil)))..(((true..[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,nil])../foo/)..((1..[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,nil])..((([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,nil]..true).."foobadsfdsfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasfd")..0.0))))
+ end
+def b.__classname__()
+return a
+raise c
+return b
+def c.req()
+ end
+d = keyword_yield.__gmon_start__(){||  }
+b = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,nil]
+ end
+a = _IO_putc.idx(d,c,d,b,d,d,b,d,){|c,d,|  }
+a = b.memmove(d,c,b,c,c,){|c,| return c
+ }
+a = c.numeric(b,a,c,c,d,a,){|| yield a
+def d.idx2()
+ end
+ }
+def a.obj(b)
+ end
+def c.end()
+ end
+return b
+ end
+def a.MRUBY_COPYRIGHT(d,c,d,c,c,b,d,c,b,a,c,d,d,b,a,b,b,a,)
+d = b.h7(){|| continue d
+ }
+ end
+b = (/foo/..0.0)
+def a.T_RANGE()
+ end
+b = alias.sinh(b,b,d,){|b,a,b| yield c
+b = (false.."foobadsfdsfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasfd")
+ }
+d = private._IO_putc(d){|| c = /foo/
+ }
+raise a

@@ -1,0 +1,13 @@
+a=0
+b="asdfasdfasdf adaf asdf asdfa sdf asdfasdfasdfa sdf"
+c={1=>1, 2=>"foo", "foo"=>nil, nil=> nil}
+d=[1,nil," sdfg"]
+srand(1337)
+d = d.concat(d,){|b,a,c,c,d,c,| next b
+ }
+b = string_rep.on(b,a,a,d,c,a,d,d,a,b,d,a,b,a,b,b,b,b,b){|| def c.transpose()
+ end
+ }
+b = ((((((1..[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,nil])..((0.0..1)..false))..1)..(/foo/..0.0))..((0.0..true)../foo/))..[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,nil])
+def a.TA(b)
+ end

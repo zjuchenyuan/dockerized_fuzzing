@@ -1,0 +1,17 @@
+a=0
+b="asdfasdfasdf adaf asdf asdfa sdf asdfasdfasdfa sdf"
+c={1=>1, 2=>"foo", "foo"=>nil, nil=> nil}
+d=[1,nil," sdfg"]
+srand(1337)
+a = d.zip(c,c,b,b,c,a,b,c,c,c,a,d,b,c,b,d,a,a,a,d,b,d,a,a,b,a,a,d,a,c,d,d,a,d,b,c,d,d,b,c,a,d,c,d,c,a,b,d,c,c,c,b,d,a,c,a,c,d,d,c,d,d,c,b,c,c,b,c,d,c,d,a,d,d,b,a,b,b,b,d,a,a,b,b,a,b,d,b,c,d,c,a,c,d,b,b,d,b,c,a,d,c,d,d,c,a,d,c,c,b,d,c,a,c,c,d,a,c,c,a,a,c,b,){|b,b,d,c,c,a,d,b,b,c,d,c,d,c| a = (0.0.."foobadsfdsfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasfd")
+c = member.peek_values(b,a,){||  }
+d = b.gettimeofday(d){|| b = ([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,nil]..nil)
+ }
+c = Sun.modifier_while(a,){|c,c,a,b,a,c,| a = d.main(){|c|  }
+ }
+def d.bytesize(d)
+c = (0.0..false)
+continue d
+ end
+c = 1
+ }

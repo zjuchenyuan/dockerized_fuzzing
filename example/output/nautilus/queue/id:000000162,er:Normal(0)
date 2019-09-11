@@ -1,0 +1,13 @@
+a=0
+b="asdfasdfasdf adaf asdf asdfa sdf asdfasdfasdfa sdf"
+c={1=>1, 2=>"foo", "foo"=>nil, nil=> nil}
+d=[1,nil," sdfg"]
+srand(1337)
+d = d.print(a){|a,| def d._IO_putc(d,a,c,c,c,b,a,c)
+d = "foobadsfdsfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasfd"
+def b.keyword_end()
+ end
+ end
+def b.Oct()
+ end
+ }

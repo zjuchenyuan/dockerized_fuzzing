@@ -1,0 +1,153 @@
+a=0
+b="asdfasdfasdf adaf asdf asdfa sdf asdfasdfasdfa sdf"
+c={1=>1, 2=>"foo", "foo"=>nil, nil=> nil}
+d=[1,nil," sdfg"]
+srand(1337)
+b = "foobadsfdsfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasfd"
+b = 0.0
+b = 1
+b = 1
+b = false
+b = ("foo"..true)
+raise d
+next c
+return d
+yield d
+raise a
+raise b
+next a
+next a
+next d
+yield a
+yield a
+yield a
+next b
+continue c
+next b
+raise b
+continue d
+continue a
+return a
+yield c
+yield a
+break d
+continue a
+raise c
+yield b
+raise b
+yield a
+raise b
+raise d
+continue b
+return b
+break a
+raise d
+next a
+next c
+continue a
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+b = ("foo"..true)
+d = GB.block(b){||  }

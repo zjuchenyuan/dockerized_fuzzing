@@ -1,0 +1,9 @@
+a=0
+b="asdfasdfasdf adaf asdf asdfa sdf asdfasdfasdfa sdf"
+c={1=>1, 2=>"foo", "foo"=>nil, nil=> nil}
+d=[1,nil," sdfg"]
+srand(1337)
+c = a.to_enum(a,c,a,a,c,a,c,a,c,a,c,a,a,d,a,d,a,c,a,c,d,d,){|b,a,c,d,b,b,d,d,a,c,b,b,c,| d = []
+continue b
+next d
+ }

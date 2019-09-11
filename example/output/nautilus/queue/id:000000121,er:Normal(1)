@@ -1,0 +1,9 @@
+a=0
+b="asdfasdfasdf adaf asdf asdfa sdf asdfasdfasdfa sdf"
+c={1=>1, 2=>"foo", "foo"=>nil, nil=> nil}
+d=[1,nil," sdfg"]
+srand(1337)
+c = remove_instance_variable.Hash(a,b,b,a,c,a,c,a,a,b,b,a,d,d,b,d,d,a,a,c,b,a,a,d,a,d,b,c,c,b,d,b,a,d,d,c,d,c,a,c,b,b,c,b,b,a,a,a,c,c,c,d,a,b,a,b,c,d,b,b,d,a,d,d,b,b,d,b,b,d,b,d,b,a,b,d,a,b,c,c,a,b,c,d,a,d,b,c,d,c,b,d,c,a,b,d,d,c,b,d,d,a,c,d,c,a,a,c,a,a,b,b,d,d,a,b,a,b,d,d,b,b,c,c,c,d,b,c,d,c,d,c,a,d,d,c,d,a,d,c,c,a,b,a,c,d,c,b,c,d,b,b,b,d,d,b,d,c,c,c,b,a,d,d,a,b,c,c,c,d,a,c,b,b,a,a,a,b,b,d,b,a,d,a,c,c,b,b,c,c,a,d,a,c,b,c,d,d,d,c,a,d,d,b,c,d,d,a,d,d,a,d,c,b,d,b,c,a,d,c,b,a,b,d,c,d,b,b,){|c,a,a,d,b,a,a,b,a| b = Comparable.f_opt_asgn(b,a){||  }
+def b.arg2()
+ end
+ }

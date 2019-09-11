@@ -1,0 +1,12 @@
+a=0
+b="asdfasdfasdf adaf asdf asdfa sdf asdfasdfasdfa sdf"
+c={1=>1, 2=>"foo", "foo"=>nil, nil=> nil}
+d=[1,nil," sdfg"]
+srand(1337)
+def c.command_asgn()
+ end
+c = extend.Kernel(b,b,c,b,c,d,b){|a,a| b = call_op2.opt_rescue(){||  }
+yield d
+ }
+a = d.private(){|a|  }
+b = "foobadsfdsfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasfd"

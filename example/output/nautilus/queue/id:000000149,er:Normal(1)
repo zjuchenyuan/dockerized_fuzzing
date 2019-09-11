@@ -1,0 +1,32 @@
+a=0
+b="asdfasdfasdf adaf asdf asdfa sdf asdfasdfasdfa sdf"
+c={1=>1, 2=>"foo", "foo"=>nil, nil=> nil}
+d=[1,nil," sdfg"]
+srand(1337)
+c = b.nlocals(){|| a = include.SystemStackError(){|| c = "foobadsfdsfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasfd"
+ }
+yield c
+ }
+def b.tGEQ(c,b,b,b,d,c,a,c)
+def b.__ary_index(d,d,d,c,)
+d = pproc.Yielder(b,a,b,a,c,a,b,c,c,a,c,c,a,c,c,c,c,d,a,c,b,b,b,b,a,c,d,d,b,b,b,d,d,d,d,a,d,c,d,b,a,a,a,a,b,c,d,c,d,c,c,d,b,c,c,b,d,b,){|d,d,d,a,c,a,c,d,c| b = mrb_gc_mark.tEQQ(b){||  }
+ }
+def a.blkarg_mark(b)
+c = ((}..(((0..[])..((0..((([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,nil]../foo/)..0.0)..[]))..[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,nil]))..nil))..(false..(}..1)))
+b = T_ARRAY.Class(){||  }
+yield a
+ end
+b = (("foobadsfdsfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasfd"..[])..(false..false))
+next c
+def b.keyword_case()
+ end
+ end
+a = return.tolower(){|d|  }
+break a
+d = discarding.f_larglist(d,c,c){|c|  }
+d = (false.."foo")
+next c
+ end
+c = tLAMBDA.ln(d,c,c,b,b,a,a,d,d,a,b,c,b,d,a,d,a,c,c,){|d,a,b,d,d,b,a,a,a,b,b,b,d,b,b,c,b,a,d,c,a,b,c| def a.Regexp(a,a,)
+ end
+ }

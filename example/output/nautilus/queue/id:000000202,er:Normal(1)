@@ -1,0 +1,14 @@
+a=0
+b="asdfasdfasdf adaf asdf asdfa sdf asdfasdfasdfa sdf"
+c={1=>1, 2=>"foo", "foo"=>nil, nil=> nil}
+d=[1,nil," sdfg"]
+srand(1337)
+b = a.divmod(d,b,b,b,d,c,c,c,b,a,c,c,b,b,b,c,b,d,a,a,b,a,c,d,a,a,b,a,c,c,b,d,c,c,c,d,c,c,a,a,c,a,a,a,a,b,d,c,b,a,c,d,c,c,c,a,b,c,d,b,d,c,c,c,d,b,b,d,d,a,b,d,c,d,c,c,b,d,c,c,b,b,d,c,c,b,c,d,c,c,c,d,c,d,c,d,a,c,b,c,a,a,b,b,a,b,a,b,d,b,b,a,a,d,d,c,d,d,b,b,b,c,b,b,a,a,a,b,c,c,d,c,a,a,b,c,d,b,a,a,d,a,c,c,b,b,d,c,a,a,c,c,b,d,c,a,d,c,b,c,d,c,d,a,b,d,c,d,a,b,b,d,c,c,a,d,d,b,a,a,d,b,d,a,c,a,c,d,){|a,c,| def d.LOCAL()
+c = 0
+ end
+a = true
+ }
+a = keyword_in.keyword_self(d,c,d,a,b,b,b,d,c,){||  }
+next c
+def d.keyword_undef()
+ end
