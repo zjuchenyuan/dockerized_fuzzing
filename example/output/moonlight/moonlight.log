@@ -1,0 +1,476 @@
+[2019-Sep-12 09:48:30.815158] Corpus directory is :"png"
+[2019-Sep-12 09:48:30.815412] This run is named :png1
+[2019-Sep-12 09:48:30.815436] Regex pattern for corpus files was not set. Defaulting to : exemplar_
+[2019-Sep-12 09:48:30.815456] Loading (or saving) matrix data to file :"png/m.matrix"
+[2019-Sep-12 09:48:30.815474] Corpus analytics file name was not set. Defaulting to : "png/png1_analytics.csv"
+[2019-Sep-12 09:48:30.815491] Will load a pre-existing matrix data file if it exists and write one if it doesn't
+[2019-Sep-12 09:48:30.815508] Data not too large in sparse format, will read in as normal
+[2019-Sep-12 09:48:30.815524] Using the Reduction Algorithm
+[2019-Sep-12 09:48:30.815540] Storing solution in file :"png/png1_solution.json"
+[2019-Sep-12 09:48:30.815574] Constructing matrix from corpus data
+[2019-Sep-12 09:48:30.815594] Finding files at path: "png" with pattern: exemplar_
+[2019-Sep-12 09:48:30.846939] Corpus size: 4831
+[2019-Sep-12 09:48:30.849328] Unweighted version
+[2019-Sep-12 09:48:30.849387] Parsing corpus files and inserting into the matrix...
+[2019-Sep-12 09:48:30.855329] File: 0, "exemplar_001091"
+[2019-Sep-12 09:48:31.322174] File: 100, "exemplar_000984"
+[2019-Sep-12 09:48:31.789566] File: 200, "exemplar_000983"
+[2019-Sep-12 09:48:32.155405] File: 300, "exemplar_002812"
+[2019-Sep-12 09:48:32.417575] File: 400, "exemplar_002037"
+[2019-Sep-12 09:48:32.676964] File: 500, "exemplar_004052"
+[2019-Sep-12 09:48:32.947130] File: 600, "exemplar_000167"
+[2019-Sep-12 09:48:33.210473] File: 700, "exemplar_004183"
+[2019-Sep-12 09:48:33.469672] File: 800, "exemplar_000264"
+[2019-Sep-12 09:48:33.731791] File: 900, "exemplar_002903"
+[2019-Sep-12 09:48:33.992569] File: 1000, "exemplar_004305"
+[2019-Sep-12 09:48:34.274655] File: 1100, "exemplar_001631"
+[2019-Sep-12 09:48:34.535504] File: 1200, "exemplar_003207"
+[2019-Sep-12 09:48:34.797439] File: 1300, "exemplar_000478"
+[2019-Sep-12 09:48:35.055102] File: 1400, "exemplar_000226"
+[2019-Sep-12 09:48:35.306312] File: 1500, "exemplar_004401"
+[2019-Sep-12 09:48:35.379418] File: 1600, "exemplar_001939"
+[2019-Sep-12 09:48:35.412166] File: 1700, "exemplar_000742"
+[2019-Sep-12 09:48:35.441961] File: 1800, "exemplar_004652"
+[2019-Sep-12 09:48:35.471625] File: 1900, "exemplar_000131"
+[2019-Sep-12 09:48:35.501190] File: 2000, "exemplar_003817"
+[2019-Sep-12 09:48:35.572745] File: 2100, "exemplar_003862"
+[2019-Sep-12 09:48:35.602255] File: 2200, "exemplar_002503"
+[2019-Sep-12 09:48:35.631738] File: 2300, "exemplar_004590"
+[2019-Sep-12 09:48:35.661255] File: 2400, "exemplar_002085"
+[2019-Sep-12 09:48:35.690738] File: 2500, "exemplar_000431"
+[2019-Sep-12 09:48:35.720119] File: 2600, "exemplar_001907"
+[2019-Sep-12 09:48:35.749675] File: 2700, "exemplar_000508"
+[2019-Sep-12 09:48:35.779133] File: 2800, "exemplar_001313"
+[2019-Sep-12 09:48:35.808482] File: 2900, "exemplar_004492"
+[2019-Sep-12 09:48:35.837933] File: 3000, "exemplar_004572"
+[2019-Sep-12 09:48:35.867369] File: 3100, "exemplar_001996"
+[2019-Sep-12 09:48:35.896692] File: 3200, "exemplar_000393"
+[2019-Sep-12 09:48:35.926106] File: 3300, "exemplar_001727"
+[2019-Sep-12 09:48:35.955580] File: 3400, "exemplar_002785"
+[2019-Sep-12 09:48:35.984859] File: 3500, "exemplar_001151"
+[2019-Sep-12 09:48:36.014319] File: 3600, "exemplar_004580"
+[2019-Sep-12 09:48:36.043803] File: 3700, "exemplar_003610"
+[2019-Sep-12 09:48:36.073245] File: 3800, "exemplar_001171"
+[2019-Sep-12 09:48:36.102686] File: 3900, "exemplar_000341"
+[2019-Sep-12 09:48:36.132032] File: 4000, "exemplar_002352"
+[2019-Sep-12 09:48:36.242622] File: 4100, "exemplar_002766"
+[2019-Sep-12 09:48:36.272069] File: 4200, "exemplar_000074"
+[2019-Sep-12 09:48:36.300972] File: 4300, "exemplar_002862"
+[2019-Sep-12 09:48:36.330420] File: 4400, "exemplar_004390"
+[2019-Sep-12 09:48:36.359173] File: 4500, "exemplar_001405"
+[2019-Sep-12 09:48:36.388528] File: 4600, "exemplar_000369"
+[2019-Sep-12 09:48:36.417927] File: 4700, "exemplar_003367"
+[2019-Sep-12 09:48:36.447156] File: 4800, "exemplar_000288"
+[2019-Sep-12 09:48:36.456312] Finished creating the matrix
+[2019-Sep-12 09:48:36.456339] Number of Rows: 4831
+[2019-Sep-12 09:48:36.456385] Number of Columns: 1384072
+[2019-Sep-12 09:48:36.456403] Number of Elements: 66155071
+[2019-Sep-12 09:48:36.456424] Sparsity (density): 0.98939 %
+[2019-Sep-12 09:48:36.456467] 
+[2019-Sep-12 09:48:36.456654] Finished constructing matrix from corpus data
+[2019-Sep-12 09:48:36.456678] Serialising matrix to disk for future possible use
+[2019-Sep-12 09:48:36.456799] Writing matrix data to file for archiving...
+[2019-Sep-12 09:48:36.456822] Finished Writing matrix data to file.
+[2019-Sep-12 09:48:36.519569] Constructing a corpus analytics store
+[2019-Sep-12 09:48:36.545239] Solving for optimised set cover...
+[2019-Sep-12 09:48:36.545302] SOLVE_OSCP()...
+[2019-Sep-12 09:48:36.545319] STATS:  Data[4831, 1384072]
+[2019-Sep-12 09:48:36.545335] 
+[2019-Sep-12 09:48:36.600565] METHOD: column singularities
+[2019-Sep-12 09:48:36.656850] STATS:  Data has 1360231 column singularities.
+[2019-Sep-12 09:48:36.707259] MATRIX: removing 1360231 cols
+[2019-Sep-12 09:48:36.855825] INFO:   Singularities removed...
+[2019-Sep-12 09:48:36.855892] 
+[2019-Sep-12 09:48:36.855909] STATS:  Matrix[4831, 23841]
+[2019-Sep-12 09:48:36.855927] STATS:  Soln size=0 weight=0
+[2019-Sep-12 09:48:36.855951] 
+[2019-Sep-12 09:48:36.855967] METHOD: row_unitarians
+[2019-Sep-12 09:48:36.904987] INFO:   Finding unitarian rows associated with 177 columns
+[2019-Sep-12 09:48:36.917700] LOOP:   Processed row 99 out of 4831
+[2019-Sep-12 09:48:36.930444] LOOP:   Processed row 199 out of 4831
+[2019-Sep-12 09:48:36.942177] LOOP:   Processed row 299 out of 4831
+[2019-Sep-12 09:48:36.954188] LOOP:   Processed row 399 out of 4831
+[2019-Sep-12 09:48:36.967705] LOOP:   Processed row 499 out of 4831
+[2019-Sep-12 09:48:36.981199] LOOP:   Processed row 599 out of 4831
+[2019-Sep-12 09:48:36.994679] LOOP:   Processed row 699 out of 4831
+[2019-Sep-12 09:48:37.008022] LOOP:   Processed row 799 out of 4831
+[2019-Sep-12 09:48:37.021474] LOOP:   Processed row 899 out of 4831
+[2019-Sep-12 09:48:37.034900] LOOP:   Processed row 999 out of 4831
+[2019-Sep-12 09:48:37.047993] LOOP:   Processed row 1099 out of 4831
+[2019-Sep-12 09:48:37.061257] LOOP:   Processed row 1199 out of 4831
+[2019-Sep-12 09:48:37.074802] LOOP:   Processed row 1299 out of 4831
+[2019-Sep-12 09:48:37.088248] LOOP:   Processed row 1399 out of 4831
+[2019-Sep-12 09:48:37.100327] LOOP:   Processed row 1499 out of 4831
+[2019-Sep-12 09:48:37.112459] LOOP:   Processed row 1599 out of 4831
+[2019-Sep-12 09:48:37.124780] LOOP:   Processed row 1699 out of 4831
+[2019-Sep-12 09:48:37.137221] LOOP:   Processed row 1799 out of 4831
+[2019-Sep-12 09:48:37.149591] LOOP:   Processed row 1899 out of 4831
+[2019-Sep-12 09:48:37.161451] LOOP:   Processed row 1999 out of 4831
+[2019-Sep-12 09:48:37.173111] LOOP:   Processed row 2099 out of 4831
+[2019-Sep-12 09:48:37.185107] LOOP:   Processed row 2199 out of 4831
+[2019-Sep-12 09:48:37.197402] LOOP:   Processed row 2299 out of 4831
+[2019-Sep-12 09:48:37.209713] LOOP:   Processed row 2399 out of 4831
+[2019-Sep-12 09:48:37.221999] LOOP:   Processed row 2499 out of 4831
+[2019-Sep-12 09:48:37.234085] LOOP:   Processed row 2599 out of 4831
+[2019-Sep-12 09:48:37.246283] LOOP:   Processed row 2699 out of 4831
+[2019-Sep-12 09:48:37.258392] LOOP:   Processed row 2799 out of 4831
+[2019-Sep-12 09:48:37.270419] LOOP:   Processed row 2899 out of 4831
+[2019-Sep-12 09:48:37.282192] LOOP:   Processed row 2999 out of 4831
+[2019-Sep-12 09:48:37.294316] LOOP:   Processed row 3099 out of 4831
+[2019-Sep-12 09:48:37.306473] LOOP:   Processed row 3199 out of 4831
+[2019-Sep-12 09:48:37.318589] LOOP:   Processed row 3299 out of 4831
+[2019-Sep-12 09:48:37.330638] LOOP:   Processed row 3399 out of 4831
+[2019-Sep-12 09:48:37.342745] LOOP:   Processed row 3499 out of 4831
+[2019-Sep-12 09:48:37.354913] LOOP:   Processed row 3599 out of 4831
+[2019-Sep-12 09:48:37.367064] LOOP:   Processed row 3699 out of 4831
+[2019-Sep-12 09:48:37.379219] LOOP:   Processed row 3799 out of 4831
+[2019-Sep-12 09:48:37.391306] LOOP:   Processed row 3899 out of 4831
+[2019-Sep-12 09:48:37.403411] LOOP:   Processed row 3999 out of 4831
+[2019-Sep-12 09:48:37.415545] LOOP:   Processed row 4099 out of 4831
+[2019-Sep-12 09:48:37.427622] LOOP:   Processed row 4199 out of 4831
+[2019-Sep-12 09:48:37.439667] LOOP:   Processed row 4299 out of 4831
+[2019-Sep-12 09:48:37.451768] LOOP:   Processed row 4399 out of 4831
+[2019-Sep-12 09:48:37.463909] LOOP:   Processed row 4499 out of 4831
+[2019-Sep-12 09:48:37.475983] LOOP:   Processed row 4599 out of 4831
+[2019-Sep-12 09:48:37.488049] LOOP:   Processed row 4699 out of 4831
+[2019-Sep-12 09:48:37.500052] LOOP:   Processed row 4799 out of 4831
+[2019-Sep-12 09:48:37.503865] INFO:   Data IS unitarian
+[2019-Sep-12 09:48:37.503888] STATS:  Unitarian columns: 177
+[2019-Sep-12 09:48:37.503904] STATS:  Unitarian rows:    36
+[2019-Sep-12 09:48:37.508798] INFO:   Row #3 added to soln. "exemplar_003692"
+[2019-Sep-12 09:48:37.513706] INFO:   Row #4 added to soln. "exemplar_000645"
+[2019-Sep-12 09:48:37.518604] INFO:   Row #5 added to soln. "exemplar_002972"
+[2019-Sep-12 09:48:37.523544] INFO:   Row #6 added to soln. "exemplar_004508"
+[2019-Sep-12 09:48:37.528478] INFO:   Row #7 added to soln. "exemplar_000736"
+[2019-Sep-12 09:48:37.533462] INFO:   Row #8 added to soln. "exemplar_001039"
+[2019-Sep-12 09:48:37.538418] INFO:   Row #14 added to soln. "exemplar_003527"
+[2019-Sep-12 09:48:37.543223] INFO:   Row #16 added to soln. "exemplar_000997"
+[2019-Sep-12 09:48:37.548026] INFO:   Row #19 added to soln. "exemplar_004356"
+[2019-Sep-12 09:48:37.552821] INFO:   Row #44 added to soln. "exemplar_001281"
+[2019-Sep-12 09:48:37.557745] INFO:   Row #137 added to soln. "exemplar_002005"
+[2019-Sep-12 09:48:37.562739] INFO:   Row #175 added to soln. "exemplar_000993"
+[2019-Sep-12 09:48:37.567731] INFO:   Row #178 added to soln. "exemplar_001897"
+[2019-Sep-12 09:48:37.572654] INFO:   Row #215 added to soln. "exemplar_000279"
+[2019-Sep-12 09:48:37.575436] INFO:   Row #396 added to soln. "exemplar_004774"
+[2019-Sep-12 09:48:37.578150] INFO:   Row #425 added to soln. "exemplar_000441"
+[2019-Sep-12 09:48:37.580837] INFO:   Row #485 added to soln. "exemplar_002810"
+[2019-Sep-12 09:48:37.583576] INFO:   Row #682 added to soln. "exemplar_003784"
+[2019-Sep-12 09:48:37.586290] INFO:   Row #1025 added to soln. "exemplar_000683"
+[2019-Sep-12 09:48:37.588957] INFO:   Row #1404 added to soln. "exemplar_000022"
+[2019-Sep-12 09:48:37.591685] INFO:   Row #1405 added to soln. "exemplar_001099"
+[2019-Sep-12 09:48:37.594334] INFO:   Row #1406 added to soln. "exemplar_002337"
+[2019-Sep-12 09:48:37.596985] INFO:   Row #1407 added to soln. "exemplar_004683"
+[2019-Sep-12 09:48:37.599571] INFO:   Row #1508 added to soln. "exemplar_001111"
+[2019-Sep-12 09:48:37.600168] INFO:   Row #1532 added to soln. "exemplar_001194"
+[2019-Sep-12 09:48:37.600702] INFO:   Row #1534 added to soln. "exemplar_001318"
+[2019-Sep-12 09:48:37.601229] INFO:   Row #1537 added to soln. "exemplar_003200"
+[2019-Sep-12 09:48:37.601770] INFO:   Row #1539 added to soln. "exemplar_003628"
+[2019-Sep-12 09:48:37.602298] INFO:   Row #1540 added to soln. "exemplar_003041"
+[2019-Sep-12 09:48:37.602774] INFO:   Row #1542 added to soln. "exemplar_002726"
+[2019-Sep-12 09:48:37.603068] INFO:   Row #1550 added to soln. "exemplar_002083"
+[2019-Sep-12 09:48:37.603332] INFO:   Row #1570 added to soln. "exemplar_003749"
+[2019-Sep-12 09:48:37.603592] INFO:   Row #1582 added to soln. "exemplar_004459"
+[2019-Sep-12 09:48:37.603841] INFO:   Row #1920 added to soln. "exemplar_000802"
+[2019-Sep-12 09:48:37.604086] INFO:   Row #1921 added to soln. "exemplar_004080"
+[2019-Sep-12 09:48:37.604341] INFO:   Row #1971 added to soln. "exemplar_003619"
+[2019-Sep-12 09:48:37.643712] STATS:  Removing 23344 columns (97.9154% of remaining)
+[2019-Sep-12 09:48:37.643779] STATS:  Number of columns remaining : 497
+[2019-Sep-12 09:48:37.693261] MATRIX: removing 23344 cols
+[2019-Sep-12 09:48:37.813280] MATRIX: removing 36 rows
+[2019-Sep-12 09:48:37.815501] INFO:   We now have row singularities. 
+[2019-Sep-12 09:48:37.815546] MATRIX: removing 2938 rows
+[2019-Sep-12 09:48:37.833650] 
+[2019-Sep-12 09:48:37.833675] STATS:  Matrix[1857, 497]
+[2019-Sep-12 09:48:37.833713] STATS:  Soln size=36 weight=36
+[2019-Sep-12 09:48:37.833739] 
+[2019-Sep-12 09:48:37.833755] METHOD: row_subsets
+[2019-Sep-12 09:48:38.467728] STATS:  1857 <-- num of rows
+[2019-Sep-12 09:48:38.467796] STATS:  179 <-- num of strict subsets
+[2019-Sep-12 09:48:38.467814] STATS:  1494 <-- num of duplicate rows that are not subset of any other
+[2019-Sep-12 09:48:38.467831] STATS:  184 <-- num of row remaining
+[2019-Sep-12 09:48:38.467923] INFO:   Eliminating 1673 redundant rows
+[2019-Sep-12 09:48:38.467944] MATRIX: removing 1673 rows
+[2019-Sep-12 09:48:38.470199] 
+[2019-Sep-12 09:48:38.470223] STATS:  Matrix[184, 497]
+[2019-Sep-12 09:48:38.470240] STATS:  Soln size=36 weight=36
+[2019-Sep-12 09:48:38.470265] 
+[2019-Sep-12 09:48:38.470280] METHOD: row_unitarians
+[2019-Sep-12 09:48:38.472060] INFO:   Finding unitarian rows associated with 137 columns
+[2019-Sep-12 09:48:38.473137] LOOP:   Processed row 99 out of 184
+[2019-Sep-12 09:48:38.473975] INFO:   Data IS unitarian
+[2019-Sep-12 09:48:38.474014] STATS:  Unitarian columns: 137
+[2019-Sep-12 09:48:38.474031] STATS:  Unitarian rows:    31
+[2019-Sep-12 09:48:38.478999] INFO:   Row #0 added to soln. "exemplar_001091"
+[2019-Sep-12 09:48:38.483857] INFO:   Row #5 added to soln. "exemplar_003354"
+[2019-Sep-12 09:48:38.488752] INFO:   Row #10 added to soln. "exemplar_004272"
+[2019-Sep-12 09:48:38.493683] INFO:   Row #19 added to soln. "exemplar_003279"
+[2019-Sep-12 09:48:38.498586] INFO:   Row #20 added to soln. "exemplar_001997"
+[2019-Sep-12 09:48:38.503503] INFO:   Row #21 added to soln. "exemplar_002064"
+[2019-Sep-12 09:48:38.508400] INFO:   Row #22 added to soln. "exemplar_000833"
+[2019-Sep-12 09:48:38.513338] INFO:   Row #23 added to soln. "exemplar_000697"
+[2019-Sep-12 09:48:38.518233] INFO:   Row #24 added to soln. "exemplar_000582"
+[2019-Sep-12 09:48:38.523152] INFO:   Row #25 added to soln. "exemplar_002580"
+[2019-Sep-12 09:48:38.528067] INFO:   Row #32 added to soln. "exemplar_002655"
+[2019-Sep-12 09:48:38.532943] INFO:   Row #40 added to soln. "exemplar_001005"
+[2019-Sep-12 09:48:38.534404] INFO:   Row #101 added to soln. "exemplar_000994"
+[2019-Sep-12 09:48:38.534993] INFO:   Row #102 added to soln. "exemplar_000108"
+[2019-Sep-12 09:48:38.535556] INFO:   Row #103 added to soln. "exemplar_002720"
+[2019-Sep-12 09:48:38.536064] INFO:   Row #104 added to soln. "exemplar_002057"
+[2019-Sep-12 09:48:38.536355] INFO:   Row #110 added to soln. "exemplar_002163"
+[2019-Sep-12 09:48:38.536640] INFO:   Row #111 added to soln. "exemplar_003803"
+[2019-Sep-12 09:48:38.536909] INFO:   Row #116 added to soln. "exemplar_000573"
+[2019-Sep-12 09:48:38.537189] INFO:   Row #129 added to soln. "exemplar_001454"
+[2019-Sep-12 09:48:38.537456] INFO:   Row #133 added to soln. "exemplar_003108"
+[2019-Sep-12 09:48:38.537745] INFO:   Row #134 added to soln. "exemplar_000562"
+[2019-Sep-12 09:48:38.538016] INFO:   Row #135 added to soln. "exemplar_002712"
+[2019-Sep-12 09:48:38.538305] INFO:   Row #152 added to soln. "exemplar_001531"
+[2019-Sep-12 09:48:38.538563] INFO:   Row #153 added to soln. "exemplar_000897"
+[2019-Sep-12 09:48:38.538823] INFO:   Row #157 added to soln. "exemplar_001100"
+[2019-Sep-12 09:48:38.539078] INFO:   Row #163 added to soln. "exemplar_002777"
+[2019-Sep-12 09:48:38.539334] INFO:   Row #175 added to soln. "exemplar_001094"
+[2019-Sep-12 09:48:38.539590] INFO:   Row #178 added to soln. "exemplar_004663"
+[2019-Sep-12 09:48:38.539846] INFO:   Row #179 added to soln. "exemplar_000658"
+[2019-Sep-12 09:48:38.540099] INFO:   Row #182 added to soln. "exemplar_003577"
+[2019-Sep-12 09:48:38.540481] STATS:  Removing 280 columns (56.338% of remaining)
+[2019-Sep-12 09:48:38.540513] STATS:  Number of columns remaining : 217
+[2019-Sep-12 09:48:38.542431] MATRIX: removing 280 cols
+[2019-Sep-12 09:48:38.546155] MATRIX: removing 31 rows
+[2019-Sep-12 09:48:38.546272] INFO:   We now have row singularities. 
+[2019-Sep-12 09:48:38.546291] MATRIX: removing 9 rows
+[2019-Sep-12 09:48:38.546320] 
+[2019-Sep-12 09:48:38.546342] STATS:  Matrix[144, 217]
+[2019-Sep-12 09:48:38.546390] STATS:  Soln size=67 weight=67
+[2019-Sep-12 09:48:38.546416] 
+[2019-Sep-12 09:48:38.546431] METHOD: row_subsets
+[2019-Sep-12 09:48:38.654467] STATS:  144 <-- num of rows
+[2019-Sep-12 09:48:38.654532] STATS:  44 <-- num of strict subsets
+[2019-Sep-12 09:48:38.654548] STATS:  15 <-- num of duplicate rows that are not subset of any other
+[2019-Sep-12 09:48:38.654565] STATS:  85 <-- num of row remaining
+[2019-Sep-12 09:48:38.654585] INFO:   Eliminating 59 redundant rows
+[2019-Sep-12 09:48:38.654602] MATRIX: removing 59 rows
+[2019-Sep-12 09:48:38.654692] 
+[2019-Sep-12 09:48:38.654710] STATS:  Matrix[85, 217]
+[2019-Sep-12 09:48:38.654727] STATS:  Soln size=67 weight=67
+[2019-Sep-12 09:48:38.654752] 
+[2019-Sep-12 09:48:38.654767] METHOD: row_unitarians
+[2019-Sep-12 09:48:38.655618] INFO:   Finding unitarian rows associated with 42 columns
+[2019-Sep-12 09:48:38.656482] INFO:   Data IS unitarian
+[2019-Sep-12 09:48:38.656522] STATS:  Unitarian columns: 42
+[2019-Sep-12 09:48:38.656538] STATS:  Unitarian rows:    10
+[2019-Sep-12 09:48:38.661500] INFO:   Row #0 added to soln. "exemplar_002811"
+[2019-Sep-12 09:48:38.666435] INFO:   Row #1 added to soln. "exemplar_002451"
+[2019-Sep-12 09:48:38.671385] INFO:   Row #2 added to soln. "exemplar_002473"
+[2019-Sep-12 09:48:38.676386] INFO:   Row #7 added to soln. "exemplar_002949"
+[2019-Sep-12 09:48:38.681394] INFO:   Row #12 added to soln. "exemplar_000170"
+[2019-Sep-12 09:48:38.684241] INFO:   Row #27 added to soln. "exemplar_002904"
+[2019-Sep-12 09:48:38.684866] INFO:   Row #49 added to soln. "exemplar_000277"
+[2019-Sep-12 09:48:38.685155] INFO:   Row #56 added to soln. "exemplar_001259"
+[2019-Sep-12 09:48:38.685407] INFO:   Row #67 added to soln. "exemplar_003920"
+[2019-Sep-12 09:48:38.685691] INFO:   Row #74 added to soln. "exemplar_002924"
+[2019-Sep-12 09:48:38.685838] STATS:  Removing 83 columns (38.2488% of remaining)
+[2019-Sep-12 09:48:38.685867] STATS:  Number of columns remaining : 134
+[2019-Sep-12 09:48:38.686772] MATRIX: removing 83 cols
+[2019-Sep-12 09:48:38.688467] MATRIX: removing 10 rows
+[2019-Sep-12 09:48:38.688530] INFO:   We now have row singularities. 
+[2019-Sep-12 09:48:38.688548] MATRIX: removing 6 rows
+[2019-Sep-12 09:48:38.688571] 
+[2019-Sep-12 09:48:38.688588] STATS:  Matrix[69, 134]
+[2019-Sep-12 09:48:38.688604] STATS:  Soln size=77 weight=77
+[2019-Sep-12 09:48:38.688626] 
+[2019-Sep-12 09:48:38.688642] METHOD: row_subsets
+[2019-Sep-12 09:48:38.710788] STATS:  69 <-- num of rows
+[2019-Sep-12 09:48:38.710847] STATS:  18 <-- num of strict subsets
+[2019-Sep-12 09:48:38.710863] STATS:  16 <-- num of duplicate rows that are not subset of any other
+[2019-Sep-12 09:48:38.710880] STATS:  35 <-- num of row remaining
+[2019-Sep-12 09:48:38.710898] INFO:   Eliminating 34 redundant rows
+[2019-Sep-12 09:48:38.710914] MATRIX: removing 34 rows
+[2019-Sep-12 09:48:38.710959] 
+[2019-Sep-12 09:48:38.710977] STATS:  Matrix[35, 134]
+[2019-Sep-12 09:48:38.710993] STATS:  Soln size=77 weight=77
+[2019-Sep-12 09:48:38.711017] 
+[2019-Sep-12 09:48:38.711032] METHOD: row_unitarians
+[2019-Sep-12 09:48:38.711372] INFO:   Finding unitarian rows associated with 25 columns
+[2019-Sep-12 09:48:38.711708] INFO:   Data IS unitarian
+[2019-Sep-12 09:48:38.711729] STATS:  Unitarian columns: 25
+[2019-Sep-12 09:48:38.711745] STATS:  Unitarian rows:    7
+[2019-Sep-12 09:48:38.716764] INFO:   Row #2 added to soln. "exemplar_004563"
+[2019-Sep-12 09:48:38.721751] INFO:   Row #8 added to soln. "exemplar_002063"
+[2019-Sep-12 09:48:38.724577] INFO:   Row #10 added to soln. "exemplar_000542"
+[2019-Sep-12 09:48:38.727300] INFO:   Row #18 added to soln. "exemplar_004626"
+[2019-Sep-12 09:48:38.727611] INFO:   Row #28 added to soln. "exemplar_004592"
+[2019-Sep-12 09:48:38.727868] INFO:   Row #32 added to soln. "exemplar_000465"
+[2019-Sep-12 09:48:38.728124] INFO:   Row #34 added to soln. "exemplar_001499"
+[2019-Sep-12 09:48:38.728229] STATS:  Removing 52 columns (38.806% of remaining)
+[2019-Sep-12 09:48:38.728257] STATS:  Number of columns remaining : 82
+[2019-Sep-12 09:48:38.728637] MATRIX: removing 52 cols
+[2019-Sep-12 09:48:38.729369] MATRIX: removing 7 rows
+[2019-Sep-12 09:48:38.735759] INFO:   We now have row singularities. 
+[2019-Sep-12 09:48:38.735815] MATRIX: removing 2 rows
+[2019-Sep-12 09:48:38.735836] 
+[2019-Sep-12 09:48:38.735853] STATS:  Matrix[26, 82]
+[2019-Sep-12 09:48:38.735869] STATS:  Soln size=84 weight=84
+[2019-Sep-12 09:48:38.735893] 
+[2019-Sep-12 09:48:38.735908] METHOD: row_subsets
+[2019-Sep-12 09:48:38.740530] STATS:  26 <-- num of rows
+[2019-Sep-12 09:48:38.740554] STATS:  6 <-- num of strict subsets
+[2019-Sep-12 09:48:38.740577] STATS:  3 <-- num of duplicate rows that are not subset of any other
+[2019-Sep-12 09:48:38.740592] STATS:  17 <-- num of row remaining
+[2019-Sep-12 09:48:38.740608] INFO:   Eliminating 9 redundant rows
+[2019-Sep-12 09:48:38.740624] MATRIX: removing 9 rows
+[2019-Sep-12 09:48:38.740644] 
+[2019-Sep-12 09:48:38.740660] STATS:  Matrix[17, 82]
+[2019-Sep-12 09:48:38.740676] STATS:  Soln size=84 weight=84
+[2019-Sep-12 09:48:38.740694] 
+[2019-Sep-12 09:48:38.740709] METHOD: row_unitarians
+[2019-Sep-12 09:48:38.740881] INFO:   Finding unitarian rows associated with 28 columns
+[2019-Sep-12 09:48:38.741052] INFO:   Data IS unitarian
+[2019-Sep-12 09:48:38.741071] STATS:  Unitarian columns: 28
+[2019-Sep-12 09:48:38.741087] STATS:  Unitarian rows:    7
+[2019-Sep-12 09:48:38.743898] INFO:   Row #8 added to soln. "exemplar_001853"
+[2019-Sep-12 09:48:38.746608] INFO:   Row #10 added to soln. "exemplar_003251"
+[2019-Sep-12 09:48:38.746929] INFO:   Row #12 added to soln. "exemplar_000017"
+[2019-Sep-12 09:48:38.747196] INFO:   Row #13 added to soln. "exemplar_003807"
+[2019-Sep-12 09:48:38.747467] INFO:   Row #14 added to soln. "exemplar_004371"
+[2019-Sep-12 09:48:38.747729] INFO:   Row #15 added to soln. "exemplar_002314"
+[2019-Sep-12 09:48:38.747984] INFO:   Row #16 added to soln. "exemplar_002413"
+[2019-Sep-12 09:48:38.748094] STATS:  Removing 72 columns (87.8049% of remaining)
+[2019-Sep-12 09:48:38.748122] STATS:  Number of columns remaining : 10
+[2019-Sep-12 09:48:38.748316] MATRIX: removing 72 cols
+[2019-Sep-12 09:48:38.748647] MATRIX: removing 7 rows
+[2019-Sep-12 09:48:38.748673] 
+[2019-Sep-12 09:48:38.748690] STATS:  Matrix[10, 10]
+[2019-Sep-12 09:48:38.748707] STATS:  Soln size=91 weight=91
+[2019-Sep-12 09:48:38.748726] 
+[2019-Sep-12 09:48:38.748741] METHOD: row_subsets
+[2019-Sep-12 09:48:38.749211] STATS:  10 <-- num of rows
+[2019-Sep-12 09:48:38.749230] STATS:  6 <-- num of strict subsets
+[2019-Sep-12 09:48:38.749246] STATS:  1 <-- num of duplicate rows that are not subset of any other
+[2019-Sep-12 09:48:38.749262] STATS:  3 <-- num of row remaining
+[2019-Sep-12 09:48:38.749279] INFO:   Eliminating 7 redundant rows
+[2019-Sep-12 09:48:38.749296] MATRIX: removing 7 rows
+[2019-Sep-12 09:48:38.749315] 
+[2019-Sep-12 09:48:38.749331] STATS:  Matrix[3, 10]
+[2019-Sep-12 09:48:38.749347] STATS:  Soln size=91 weight=91
+[2019-Sep-12 09:48:38.749365] 
+[2019-Sep-12 09:48:38.749380] METHOD: row_unitarians
+[2019-Sep-12 09:48:38.749423] INFO:   Finding unitarian rows associated with 9 columns
+[2019-Sep-12 09:48:38.749470] INFO:   Data IS unitarian
+[2019-Sep-12 09:48:38.749489] STATS:  Unitarian columns: 9
+[2019-Sep-12 09:48:38.749505] STATS:  Unitarian rows:    3
+[2019-Sep-12 09:48:38.754565] INFO:   Row #0 added to soln. "exemplar_000247"
+[2019-Sep-12 09:48:38.759541] INFO:   Row #1 added to soln. "exemplar_003082"
+[2019-Sep-12 09:48:38.762282] INFO:   Row #2 added to soln. "exemplar_002863"
+[2019-Sep-12 09:48:38.762371] STATS:  Removing 10 columns (100% of remaining)
+[2019-Sep-12 09:48:38.762398] STATS:  Number of columns remaining : 0
+[2019-Sep-12 09:48:38.762443] MATRIX: removing 10 cols
+[2019-Sep-12 09:48:38.762517] MATRIX: removing 3 rows
+[2019-Sep-12 09:48:38.762539] 
+[2019-Sep-12 09:48:38.762556] CHECKS: Finished reducing. Matrix[0, 0]
+[2019-Sep-12 09:48:38.762572] 
+[2019-Sep-12 09:48:38.762685] SOLN:   "exemplar_000017"
+[2019-Sep-12 09:48:38.762702] SOLN:   "exemplar_000022"
+[2019-Sep-12 09:48:38.762718] SOLN:   "exemplar_000108"
+[2019-Sep-12 09:48:38.762740] SOLN:   "exemplar_000170"
+[2019-Sep-12 09:48:38.762902] SOLN:   "exemplar_000247"
+[2019-Sep-12 09:48:38.762920] SOLN:   "exemplar_000277"
+[2019-Sep-12 09:48:38.762936] SOLN:   "exemplar_000279"
+[2019-Sep-12 09:48:38.762952] SOLN:   "exemplar_000441"
+[2019-Sep-12 09:48:38.762975] SOLN:   "exemplar_000465"
+[2019-Sep-12 09:48:38.762991] SOLN:   "exemplar_000542"
+[2019-Sep-12 09:48:38.763022] SOLN:   "exemplar_000562"
+[2019-Sep-12 09:48:38.763038] SOLN:   "exemplar_000573"
+[2019-Sep-12 09:48:38.763055] SOLN:   "exemplar_000582"
+[2019-Sep-12 09:48:38.763071] SOLN:   "exemplar_000645"
+[2019-Sep-12 09:48:38.763088] SOLN:   "exemplar_000658"
+[2019-Sep-12 09:48:38.763111] SOLN:   "exemplar_000683"
+[2019-Sep-12 09:48:38.763127] SOLN:   "exemplar_000697"
+[2019-Sep-12 09:48:38.763151] SOLN:   "exemplar_000736"
+[2019-Sep-12 09:48:38.763174] SOLN:   "exemplar_000802"
+[2019-Sep-12 09:48:38.763198] SOLN:   "exemplar_000833"
+[2019-Sep-12 09:48:38.763214] SOLN:   "exemplar_000897"
+[2019-Sep-12 09:48:38.763238] SOLN:   "exemplar_000993"
+[2019-Sep-12 09:48:38.763253] SOLN:   "exemplar_000994"
+[2019-Sep-12 09:48:38.763269] SOLN:   "exemplar_000997"
+[2019-Sep-12 09:48:38.763285] SOLN:   "exemplar_001005"
+[2019-Sep-12 09:48:38.763301] SOLN:   "exemplar_001039"
+[2019-Sep-12 09:48:38.763317] SOLN:   "exemplar_001091"
+[2019-Sep-12 09:48:38.763333] SOLN:   "exemplar_001094"
+[2019-Sep-12 09:48:38.763348] SOLN:   "exemplar_001099"
+[2019-Sep-12 09:48:38.763372] SOLN:   "exemplar_001100"
+[2019-Sep-12 09:48:38.763388] SOLN:   "exemplar_001111"
+[2019-Sep-12 09:48:38.763405] SOLN:   "exemplar_001194"
+[2019-Sep-12 09:48:38.763421] SOLN:   "exemplar_001259"
+[2019-Sep-12 09:48:38.763452] SOLN:   "exemplar_001281"
+[2019-Sep-12 09:48:38.763468] SOLN:   "exemplar_001318"
+[2019-Sep-12 09:48:38.763491] SOLN:   "exemplar_001454"
+[2019-Sep-12 09:48:38.763507] SOLN:   "exemplar_001499"
+[2019-Sep-12 09:48:38.763523] SOLN:   "exemplar_001531"
+[2019-Sep-12 09:48:38.763538] SOLN:   "exemplar_001853"
+[2019-Sep-12 09:48:38.763554] SOLN:   "exemplar_001897"
+[2019-Sep-12 09:48:38.763570] SOLN:   "exemplar_001997"
+[2019-Sep-12 09:48:38.763586] SOLN:   "exemplar_002005"
+[2019-Sep-12 09:48:38.763601] SOLN:   "exemplar_002057"
+[2019-Sep-12 09:48:38.763617] SOLN:   "exemplar_002063"
+[2019-Sep-12 09:48:38.763633] SOLN:   "exemplar_002064"
+[2019-Sep-12 09:48:38.763649] SOLN:   "exemplar_002083"
+[2019-Sep-12 09:48:38.763664] SOLN:   "exemplar_002163"
+[2019-Sep-12 09:48:38.763680] SOLN:   "exemplar_002314"
+[2019-Sep-12 09:48:38.763696] SOLN:   "exemplar_002337"
+[2019-Sep-12 09:48:38.763712] SOLN:   "exemplar_002413"
+[2019-Sep-12 09:48:38.763727] SOLN:   "exemplar_002451"
+[2019-Sep-12 09:48:38.763743] SOLN:   "exemplar_002473"
+[2019-Sep-12 09:48:38.763759] SOLN:   "exemplar_002580"
+[2019-Sep-12 09:48:38.763774] SOLN:   "exemplar_002655"
+[2019-Sep-12 09:48:38.763790] SOLN:   "exemplar_002712"
+[2019-Sep-12 09:48:38.763806] SOLN:   "exemplar_002720"
+[2019-Sep-12 09:48:38.763822] SOLN:   "exemplar_002726"
+[2019-Sep-12 09:48:38.763837] SOLN:   "exemplar_002777"
+[2019-Sep-12 09:48:38.763853] SOLN:   "exemplar_002810"
+[2019-Sep-12 09:48:38.763869] SOLN:   "exemplar_002811"
+[2019-Sep-12 09:48:38.763885] SOLN:   "exemplar_002863"
+[2019-Sep-12 09:48:38.763900] SOLN:   "exemplar_002904"
+[2019-Sep-12 09:48:38.763916] SOLN:   "exemplar_002924"
+[2019-Sep-12 09:48:38.763932] SOLN:   "exemplar_002949"
+[2019-Sep-12 09:48:38.763948] SOLN:   "exemplar_002972"
+[2019-Sep-12 09:48:38.763964] SOLN:   "exemplar_003041"
+[2019-Sep-12 09:48:38.763979] SOLN:   "exemplar_003082"
+[2019-Sep-12 09:48:38.763995] SOLN:   "exemplar_003108"
+[2019-Sep-12 09:48:38.764011] SOLN:   "exemplar_003200"
+[2019-Sep-12 09:48:38.764027] SOLN:   "exemplar_003251"
+[2019-Sep-12 09:48:38.764042] SOLN:   "exemplar_003279"
+[2019-Sep-12 09:48:38.764058] SOLN:   "exemplar_003354"
+[2019-Sep-12 09:48:38.764074] SOLN:   "exemplar_003527"
+[2019-Sep-12 09:48:38.764090] SOLN:   "exemplar_003577"
+[2019-Sep-12 09:48:38.764105] SOLN:   "exemplar_003619"
+[2019-Sep-12 09:48:38.764121] SOLN:   "exemplar_003628"
+[2019-Sep-12 09:48:38.764137] SOLN:   "exemplar_003692"
+[2019-Sep-12 09:48:38.764160] SOLN:   "exemplar_003749"
+[2019-Sep-12 09:48:38.764177] SOLN:   "exemplar_003784"
+[2019-Sep-12 09:48:38.764192] SOLN:   "exemplar_003803"
+[2019-Sep-12 09:48:38.764216] SOLN:   "exemplar_003807"
+[2019-Sep-12 09:48:38.764232] SOLN:   "exemplar_003920"
+[2019-Sep-12 09:48:38.764248] SOLN:   "exemplar_004080"
+[2019-Sep-12 09:48:38.764264] SOLN:   "exemplar_004272"
+[2019-Sep-12 09:48:38.764281] SOLN:   "exemplar_004356"
+[2019-Sep-12 09:48:38.764297] SOLN:   "exemplar_004371"
+[2019-Sep-12 09:48:38.764313] SOLN:   "exemplar_004459"
+[2019-Sep-12 09:48:38.764329] SOLN:   "exemplar_004508"
+[2019-Sep-12 09:48:38.764346] SOLN:   "exemplar_004563"
+[2019-Sep-12 09:48:38.764369] SOLN:   "exemplar_004592"
+[2019-Sep-12 09:48:38.764385] SOLN:   "exemplar_004626"
+[2019-Sep-12 09:48:38.764400] SOLN:   "exemplar_004663"
+[2019-Sep-12 09:48:38.764416] SOLN:   "exemplar_004683"
+[2019-Sep-12 09:48:38.764432] SOLN:   "exemplar_004774"
+[2019-Sep-12 09:48:38.764455] 
+[2019-Sep-12 09:48:38.764471] STATS:  Solution size: 94
+[2019-Sep-12 09:48:38.764487] STATS:  Solution weight: 94
+[2019-Sep-12 09:48:38.764507] STATS:  Non-optimal choices: 0
+[2019-Sep-12 09:48:38.764524] INFO:   Init singularities: 1360231
+[2019-Sep-12 09:48:38.764540] INFO:   Rows to verify: 94
+[2019-Sep-12 09:48:38.967336] 
+[2019-Sep-12 09:48:38.967399] CHECKS: Solution verified: true
+[2019-Sep-12 09:48:38.967425] Writing corpus distillation solution to "png/png1_solution.json"
+[2019-Sep-12 09:48:38.967694] Finished writing solution
+[2019-Sep-12 09:48:38.967717] Writing corpus analytics data to "png/png1_analytics.csv"
+[2019-Sep-12 09:48:38.993848] Finished writing analytics
+[2019-Sep-12 09:48:38.993873] End 
