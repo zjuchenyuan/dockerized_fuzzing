@@ -2,11 +2,12 @@
 
 https://hub.docker.com/r/zjuchenyuan/afl
 
+> Source: https://github.com/mirrorer/afl
 > Current Version: 2.52b
-Last Update: 2017/11
-Language: C
-Special dependencies: QEMU may be needed (not included in this image)
-Type: Mutation Fuzzer, need compile
+> Last Update: 2017/11
+> Language: C
+> Special dependencies: QEMU may be needed (not included in this image)
+> Type: Mutation Fuzzer, need compile
 
 ## Guidance
 
@@ -58,7 +59,8 @@ Then, you can start fuzzing:
 
 ```
 cd $WORKDIR/example
-docker run --rm -w /work -it -v `pwd`:/work --privileged zjuchenyuan/afl afl-fuzz -i seed/mp3 -o output/afl -- /work/build/mp3gain/afl/justafl/mp3gain @@
+docker run --rm -w /work -it -v `pwd`:/work --privileged zjuchenyuan/afl \
+    afl-fuzz -i seed/mp3 -o output/afl -- /work/build/mp3gain/afl/justafl/mp3gain @@
 ```
 
 ### Explaination
@@ -83,3 +85,7 @@ docker run [some params] <image name> program [program params]
 - `-t`: `-t 100+` to set time limit as 100ms, skip those seed files which leads to timeout
 - `--`: which means which after it is the target program and its command line
 - `@@`: place holder for mutated file
+
+#### Output Example
+
+See [example/output/afl](https://github.com/zjuchenyuan/dockerized_fuzzing/tree/master/example/output/afl)
