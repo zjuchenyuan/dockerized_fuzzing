@@ -2,12 +2,14 @@
 
 https://hub.docker.com/r/zjuchenyuan/afl
 
-> Source: https://github.com/mirrorer/afl
-> Current Version: 2.52b
-> Last Update: 2017/11
-> Language: C
-> Special dependencies: QEMU may be needed (not included in this image)
-> Type: Mutation Fuzzer, need compile
+```
+Source: https://github.com/mirrorer/afl
+Current Version: 2.52b
+Last Update: 2017/11
+Language: C
+Special dependencies: QEMU may be needed (not included in this image)
+Type: Mutation Fuzzer, need compile
+```
 
 ## Guidance
 
