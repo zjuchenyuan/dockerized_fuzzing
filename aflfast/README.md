@@ -29,7 +29,7 @@ docker run --rm -w /work -it -v `pwd`:/work --privileged zjuchenyuan/aflfast \
     afl-fuzz -p fast -i seed/mp3 -o output/aflfast -- /work/build/mp3gain/afl/justafl/mp3gain @@
 ```
 
-### Explaination
+### Explanation
 
 Almost the same as AFL, adding a parameter `-p fast`.
 

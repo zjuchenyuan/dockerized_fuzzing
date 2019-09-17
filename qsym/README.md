@@ -48,7 +48,7 @@ docker run --rm -w /work -it -v `pwd`:/work --privileged zjuchenyuan/qsym script
 
 Here [scripts/runqsym_mp3gain.sh](https://github.com/zjuchenyuan/dockerized_fuzzing/blob/master/example/scripts/runqsym_mp3gain.sh) start two AFL instances (master and slave) and then wait for `afl-slave/fuzzer_stats` to be created, then start qsym.
 
-### Explaination
+### Explanation
 
 `--privileged` is required for PIN to work, so it's mandatory.
 

@@ -69,7 +69,7 @@ docker run --rm -w /work -it -v `pwd`:/work --privileged zjuchenyuan/afl \
     afl-fuzz -i seed/mp3 -o output/afl -- /work/build/mp3gain/afl/justafl/mp3gain @@
 ```
 
-### Explaination
+### Explanation
 
 #### Docker run usage
 
