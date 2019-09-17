@@ -45,7 +45,6 @@ mkdir -p $WORKDIR/example/build/mp3gain/normal/
 mkdir -p $WORKDIR/example/build/mp3gain/afl/{justafl,aflasan}
 
 # build the justafl binary, justafl means AFL-instrumented binary, without ASAN.
-docker pull zjuchenyuan/afl
 cd $WORKDIR/example/code/mp3gain1.6.2
 docker run --rm -w /work -it -v `pwd`:/work --privileged zjuchenyuan/afl sh -c "make clean; make"
 mv mp3gain $WORKDIR/example/build/mp3gain/afl/justafl/
