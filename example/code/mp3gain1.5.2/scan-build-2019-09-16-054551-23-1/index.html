@@ -1,0 +1,184 @@
+<html>
+<head>
+<title>mp3gain1.5.2 - scan-build results</title>
+<link type="text/css" rel="stylesheet" href="scanview.css"/>
+<script src="sorttable.js"></script>
+<script language='javascript' type="text/javascript">
+function SetDisplay(RowClass, DisplayVal)
+{
+  var Rows = document.getElementsByTagName("tr");
+  for ( var i = 0 ; i < Rows.length; ++i ) {
+    if (Rows[i].className == RowClass) {
+      Rows[i].style.display = DisplayVal;
+    }
+  }
+}
+
+function CopyCheckedStateToCheckButtons(SummaryCheckButton) {
+  var Inputs = document.getElementsByTagName("input");
+  for ( var i = 0 ; i < Inputs.length; ++i ) {
+    if (Inputs[i].type == "checkbox") {
+      if(Inputs[i] != SummaryCheckButton) {
+        Inputs[i].checked = SummaryCheckButton.checked;
+        Inputs[i].onclick();
+      }
+    }
+  }
+}
+
+function returnObjById( id ) {
+    if (document.getElementById)
+        var returnVar = document.getElementById(id);
+    else if (document.all)
+        var returnVar = document.all[id];
+    else if (document.layers)
+        var returnVar = document.layers[id];
+    return returnVar;
+}
+
+var NumUnchecked = 0;
+
+function ToggleDisplay(CheckButton, ClassName) {
+  if (CheckButton.checked) {
+    SetDisplay(ClassName, "");
+    if (--NumUnchecked == 0) {
+      returnObjById("AllBugsCheck").checked = true;
+    }
+  }
+  else {
+    SetDisplay(ClassName, "none");
+    NumUnchecked++;
+    returnObjById("AllBugsCheck").checked = false;
+  }
+}
+</script>
+<!-- SUMMARYENDHEAD -->
+</head>
+<body>
+<h1>mp3gain1.5.2 - scan-build results</h1>
+
+<table>
+<tr><th>User:</th><td>root@4308f5b95792</td></tr>
+<tr><th>Working Directory:</th><td>/work/code/mp3gain1.5.2</td></tr>
+<tr><th>Command Line:</th><td>make</td></tr>
+<tr><th>Clang Version:</th><td>clang version 8.0.0 (https://github.com/llvm-mirror/clang.git ba09c43d20474c8a19afe3d22a205526ad4ed218) (https://github.com/llvm-mirror/llvm.git 9c31578d29f4882d9b17b7117cebd63b238f8c11)
+</td></tr>
+<tr><th>Date:</th><td>Mon Sep 16 05:45:48 2019</td></tr>
+</table>
+<h2>Bug Summary</h2><table>
+<thead><tr><td>Bug Type</td><td>Quantity</td><td class="sorttable_nosort">Display?</td></tr></thead>
+<tr style="font-weight:bold"><td class="SUMM_DESC">All Bugs</td><td class="Q">29</td><td><center><input type="checkbox" id="AllBugsCheck" onClick="CopyCheckedStateToCheckButtons(this);" checked/></center></td></tr>
+<tr><th>Dead store</th><th colspan=2></th></tr>
+<tr><td class="SUMM_DESC">Dead assignment</td><td class="Q">17</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_dead_store_dead_assignment');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Dead increment</td><td class="Q">2</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_dead_store_dead_increment');" checked/></center></td></tr>
+<tr><th>Logic error</th><th colspan=2></th></tr>
+<tr><td class="SUMM_DESC">Dereference of null pointer</td><td class="Q">4</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_dereference_of_null_pointer');" checked/></center></td></tr>
+<tr><th>Memory error</th><th colspan=2></th></tr>
+<tr><td class="SUMM_DESC">Memory leak</td><td class="Q">5</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_memory_error_memory_leak');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Use-after-free</td><td class="Q">1</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_memory_error_use-after-free');" checked/></center></td></tr>
+</table>
+<h2>Reports</h2>
+
+<table class="sortable" style="table-layout:automatic">
+<thead><tr>
+  <td>Bug Group</td>
+  <td class="sorttable_sorted">Bug Type<span id="sorttable_sortfwdind">&nbsp;&#x25BE;</span></td>
+  <td>File</td>
+  <td>Function/Method</td>
+  <td class="Q">Line</td>
+  <td class="Q">Path Length</td>
+  <td class="sorttable_nosort"></td>
+  <!-- REPORTBUGCOL -->
+</tr></thead>
+<tbody>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>id3tag.c</td><td class="DESC">id3_parse_v1_tag</td><td class="Q">897</td><td class="Q">1</td><td><a href="report-30cb9c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-30cb9c.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>apetag.c</td><td class="DESC">ReadMP3APETag</td><td class="Q">194</td><td class="Q">1</td><td><a href="report-bdde51.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-bdde51.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>mp3gain.c</td><td class="DESC">main</td><td class="Q">2238</td><td class="Q">1</td><td><a href="report-44096d.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-44096d.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>apetag.c</td><td class="DESC">ReadMP3APETag</td><td class="Q">198</td><td class="Q">1</td><td><a href="report-b6b6a5.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-b6b6a5.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>id3tag.c</td><td class="DESC">id3_make_frame</td><td class="Q">265</td><td class="Q">1</td><td><a href="report-697533.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-697533.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>mp3gain.c</td><td class="DESC">changeGain</td><td class="Q">825</td><td class="Q">1</td><td><a href="report-7dce99.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-7dce99.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>mp3gain.c</td><td class="DESC">main</td><td class="Q">2237</td><td class="Q">1</td><td><a href="report-7116dc.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-7116dc.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>mp3gain.c</td><td class="DESC">main</td><td class="Q">2193</td><td class="Q">1</td><td><a href="report-bedcf8.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-bedcf8.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>mp3gain.c</td><td class="DESC">main</td><td class="Q">2192</td><td class="Q">1</td><td><a href="report-64622f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-64622f.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>id3tag.c</td><td class="DESC">id3_make_frame</td><td class="Q">261</td><td class="Q">1</td><td><a href="report-16b07a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-16b07a.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>mp3gain.c</td><td class="DESC">changeGain</td><td class="Q">826</td><td class="Q">1</td><td><a href="report-be01ba.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-be01ba.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>mp3gain.c</td><td class="DESC">main</td><td class="Q">2140</td><td class="Q">1</td><td><a href="report-f2fcad.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-f2fcad.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>mp3gain.c</td><td class="DESC">changeGain</td><td class="Q">790</td><td class="Q">1</td><td><a href="report-a7a845.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-a7a845.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>id3tag.c</td><td class="DESC">WriteMP3GainID3Tag</td><td class="Q">1196</td><td class="Q">1</td><td><a href="report-3b6033.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-3b6033.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>mp3gain.c</td><td class="DESC">main</td><td class="Q">2236</td><td class="Q">1</td><td><a href="report-69271f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-69271f.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>mp3gain.c</td><td class="DESC">changeGain</td><td class="Q">860</td><td class="Q">1</td><td><a href="report-9a18cf.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-9a18cf.html" -->
+</tr>
+<tr class="bt_dead_store_dead_assignment"><td class="DESC">Dead store</td><td class="DESC">Dead assignment</td><td>mp3gain.c</td><td class="DESC">main</td><td class="Q">2171</td><td class="Q">1</td><td><a href="report-7451d9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-7451d9.html" -->
+</tr>
+<tr class="bt_dead_store_dead_increment"><td class="DESC">Dead store</td><td class="DESC">Dead increment</td><td>mpglibDBL/interface.c</td><td class="DESC">GetVbrTag</td><td class="Q">295</td><td class="Q">1</td><td><a href="report-f33c38.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-f33c38.html" -->
+</tr>
+<tr class="bt_dead_store_dead_increment"><td class="DESC">Dead store</td><td class="DESC">Dead increment</td><td>apetag.c</td><td class="DESC">WriteMP3GainAPETag</td><td class="Q">606</td><td class="Q">1</td><td><a href="report-cf3e82.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-cf3e82.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>mpglibDBL/interface.c</td><td class="DESC">read_buf_byte</td><td class="Q">133</td><td class="Q">36</td><td><a href="report-32c96a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-32c96a.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>id3tag.c</td><td class="DESC">id3_get_unsync_data</td><td class="Q">181</td><td class="Q">24</td><td><a href="report-947908.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-947908.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>mpglibDBL/interface.c</td><td class="DESC">copy_mp</td><td class="Q">181</td><td class="Q">25</td><td><a href="report-ad350f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-ad350f.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>mpglibDBL/interface.c</td><td class="DESC">sync_buffer</td><td class="Q">399</td><td class="Q">24</td><td><a href="report-2162f2.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-2162f2.html" -->
+</tr>
+<tr class="bt_memory_error_memory_leak"><td class="DESC">Memory error</td><td class="DESC">Memory leak</td><td>apetag.c</td><td class="DESC">WriteMP3GainAPETag</td><td class="Q">462</td><td class="Q">24</td><td><a href="report-8b87f9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-8b87f9.html" -->
+</tr>
+<tr class="bt_memory_error_memory_leak"><td class="DESC">Memory error</td><td class="DESC">Memory leak</td><td>mp3gain.c</td><td class="DESC">changeGain</td><td class="Q">774</td><td class="Q">11</td><td><a href="report-60c8eb.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-60c8eb.html" -->
+</tr>
+<tr class="bt_memory_error_memory_leak"><td class="DESC">Memory error</td><td class="DESC">Memory leak</td><td>apetag.c</td><td class="DESC">RemoveMP3GainAPETag</td><td class="Q">679</td><td class="Q">33</td><td><a href="report-dadb29.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-dadb29.html" -->
+</tr>
+<tr class="bt_memory_error_memory_leak"><td class="DESC">Memory error</td><td class="DESC">Memory leak</td><td>apetag.c</td><td class="DESC">RemoveMP3GainAPETag</td><td class="Q">679</td><td class="Q">20</td><td><a href="report-8d65bc.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-8d65bc.html" -->
+</tr>
+<tr class="bt_memory_error_memory_leak"><td class="DESC">Memory error</td><td class="DESC">Memory leak</td><td>id3tag.c</td><td class="DESC">id3_make_frame</td><td class="Q">305</td><td class="Q">5</td><td><a href="report-1e8168.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-1e8168.html" -->
+</tr>
+<tr class="bt_memory_error_use-after-free"><td class="DESC">Memory error</td><td class="DESC">Use-after-free</td><td>id3tag.c</td><td class="DESC">id3_release_frames</td><td class="Q">226</td><td class="Q">30</td><td><a href="report-29c8d9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-29c8d9.html" -->
+</tr>
+</tbody>
+</table>
+
+</body></html>

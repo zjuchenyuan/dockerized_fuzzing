@@ -19,11 +19,11 @@ Welcome to the world of fuzzing, in this tutorial, we will experience a simple r
 
 ### Step1: System configuration
 
-Run these commands as root:
+Run these commands as root or sudoer, if you have not or rebooted:
 
 ```
-echo core >/proc/sys/kernel/core_pattern
-echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+echo core | sudo tee /proc/sys/kernel/core_pattern
+echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 echo 0|sudo tee /proc/sys/kernel/yama/ptrace_scope
 echo 1|sudo tee /proc/sys/kernel/sched_child_runs_first # tfuzz require this
 echo 0|sudo tee /proc/sys/kernel/randomize_va_space # vuzzer require this
@@ -53,9 +53,7 @@ mv mp3gain $WORKDIR/example/build/mp3gain/afl/justafl/
 
 `zjuchenyuan/afl` image has already set environment `CC` and `CXX`, so you just need to `make`. If you want to build with clang, refer to last section.
 
-### Step3: Start Fuzzing
-
-First, rename the `output` folder provided by me to provide a clean folder:
+If you just cloned the repository, rename the `output` folder provided by me to provide a clean folder:
 
 ```
 cd $WORKDIR/example
@@ -63,7 +61,7 @@ mv output output.bak
 mkdir output
 ```
 
-Then, you can start fuzzing:
+### Step3: Start Fuzzing
 
 ```
 cd $WORKDIR/example
@@ -102,6 +100,6 @@ See [example/output/afl](https://github.com/zjuchenyuan/dockerized_fuzzing/tree/
 
 If you want to build program using `clang`, AFL provided llvm_mode. You can set environment variable `CC` and `CXX` to `/afl/afl-clang-fast` and `/afl/afl-clang-fast++` respectively.
 
-For example, instead of just `make`, you can `CC=/afl/afl-clang-fast CXX=/afl/afl-clang-fast++ make`.
+For example, instead of just `make`, you can `CC=/afl/afl-clang-fast CXX=/afl/afl-clang-fast++ make`. In some cases, you may need to manually change Makefile to change CC and CXX.
 
 This image use clang-3.8.
