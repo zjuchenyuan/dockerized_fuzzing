@@ -6,6 +6,7 @@ Source: https://github.com/google/honggfuzz
 
 ```
 Current Version: 1.9
+More Versions: clang 6.0
 Last Update: 2019/09 Active
 Language: C
 Type: Mutation Fuzzer, Compile-time Instrumentation
