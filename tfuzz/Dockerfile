@@ -19,9 +19,13 @@ RUN git clone https://github.com/shellphish/shellphish-afl.git &&\
     cd /usr/bin/afl-unix && make
 
 # fix Deprecation Warning issue, here we use latest version of shellphish/fuzzer
-RUN git clone https://github.com/HexHive/T-Fuzz &&\
+# it seems pip of base image is somewhat wierd, need to reinstall pip
+RUN python -m pip uninstall -y pip &&\
+    apt install --reinstall -y python-pip &&\
     python -m pip install -U pip &&\
-    cd T-Fuzz && sed -i 's/shellphish-afl==1.1//g' req.txt && pip install -r req.txt &&\
+    git clone https://github.com/HexHive/T-Fuzz &&\
+    cd T-Fuzz && sed -i 's/shellphish-afl==1.1//g' req.txt &&\
+    pip install -r req.txt &&\
     pip install -U git+https://github.com/shellphish/fuzzer.git
 
 # there are an issue related to number format of create_dict.py
