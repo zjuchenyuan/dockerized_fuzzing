@@ -22,8 +22,10 @@ Fuzzing MP3Gain 1.6.2 as an example.
 Run these commands as root or sudoer, if you have not or rebooted:
 
 ```
-echo "" | sudo tee /proc/sys/kernel/core_pattern
-echo 0 | sudo tee /proc/sys/kernel/core_uses_pid
+#echo "" | sudo tee /proc/sys/kernel/core_pattern
+#echo 0 | sudo tee /proc/sys/kernel/core_uses_pid
+# currently, Angora need exactly core
+echo core | sudo tee /proc/sys/kernel/core_pattern
 echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
 echo 1 | sudo tee /proc/sys/kernel/sched_child_runs_first # tfuzz require this
@@ -58,7 +60,7 @@ Here, we assume `fast/mp3gain` and `taint/mp3gain` binaries are present, as well
 ```
 mkdir -p output
 rm -rf output/angora
-docker run --rm -w /work -it -v `pwd`:/work --privileged zjuchenyuan/angora \
+docker run -w /work -it -v `pwd`:/work --privileged zjuchenyuan/angora \
     /angora/angora_fuzzer --input seed_mp3 --output output/angora \
         -t ./taint/mp3gain -- \
         ./fast/mp3gain @@
