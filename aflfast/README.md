@@ -15,18 +15,21 @@ Type: Mutation Fuzzer, Compile-time Instrumentation, AFL-based
 
 ## Guidance
 
-Fuzzing MP3Gain 1.6.2 as an example.
+Welcome to the world of fuzzing! 
+In this tutorial, we will experience a simple realistic fuzzing towards [MP3Gain](http://mp3gain.sourceforge.net/) 1.6.2.
 
 ### Step1: System configuration & Step2: Compile target programs
 
-Please refer to [AFL Guidance](https://hub.docker.com/r/zjuchenyuan/afl). 
+Since AFLFast is based on AFL, please refer to [AFL Guidance](https://hub.docker.com/r/zjuchenyuan/afl) Step 1 and 2.
+
+Here we assume you have build mp3gain in current folder and downloaded mp3 seed files.
 
 ### Step3: Start Fuzzing
 
 ```
-cd $WORKDIR/example
+mkdir -p output/aflfast
 docker run --rm -w /work -it -v `pwd`:/work --privileged zjuchenyuan/aflfast \
-    afl-fuzz -p fast -i seed/mp3 -o output/aflfast -- /work/build/mp3gain/afl/justafl/mp3gain @@
+    afl-fuzz -p fast -i seed_mp3 -o output/aflfast -- ./mp3gain @@
 ```
 
 ### Explanation

@@ -127,9 +127,9 @@ docker run -w /work -it -v `pwd`:/work --privileged zjuchenyuan/afl \
 
 ### Target programs need specific file name?
 
-AFL will always use `.cur_input` as the mutated file name, if your targeted program need specific suffix type for filename, you need to modify [afl-fuzz.c](https://github.com/mirrorer/afl/blob/master/afl-fuzz.c):
+AFL will always use `.cur_input` as the mutated file name, if your targeted program need specific suffix type for filename, you need to modify [afl-fuzz.c](https://github.com/mirrorer/afl/blob/master/afl-fuzz.c).
 
-For example, we use `x.mp3` to replace `.cur_input`
+Here is an example using `x.mp3` to replace `.cur_input`:
 
 ```
 docker run -w /work -it -v `pwd`:/work --privileged zjuchenyuan/afl /bin/bash
@@ -141,3 +141,4 @@ CC=gcc CXX=g++ make && make install
 
 # now you can use your customized afl-fuzz to run fuzzing
 ```
+
