@@ -19,28 +19,49 @@ Fuzzing MP3Gain 1.6.2 as an example.
 
 ### Step1: System configuration
 
-Please refer to [AFL Guidance](https://hub.docker.com/r/zjuchenyuan/afl). 
+Run these commands as root or sudoer, if you have not or rebooted:
+
+```
+echo "" | sudo tee /proc/sys/kernel/core_pattern
+echo 0 | sudo tee /proc/sys/kernel/core_uses_pid
+echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+echo 1 | sudo tee /proc/sys/kernel/sched_child_runs_first # tfuzz require this
+echo 0 | sudo tee /proc/sys/kernel/randomize_va_space # vuzzer require this
+```
+
+Error message like `No such file or directory` is fine, and you can just ignore it.
 
 ### Step2: Compile target programs
 
 ```
-mkdir -p $WORKDIR/example/build/mp3gain/angora/{fast,taint}
+wget https://sourceforge.net/projects/mp3gain/files/mp3gain/1.6.2/mp3gain-1_6_2-src.zip/download -O mp3gain-1_6_2-src.zip
+mkdir -p mp3gain1.6.2 && cd mp3gain1.6.2
+unzip ../mp3gain-1_6_2-src.zip
+
+mkdir -p {fast,taint}
 
 # build angora fast and taint binaries
-cd $WORKDIR/example/code/mp3gain1.6.2
 docker run --rm -w /work -it -v `pwd`:/work --privileged --env CC=/angora/bin/angora-clang --env CXX=/angora/bin/angora-clang++ zjuchenyuan/angora sh -c "make clean; make"
-mv mp3gain $WORKDIR/example/build/mp3gain/angora/fast/
+mv mp3gain fast/
+
 docker run --rm -w /work -it -v `pwd`:/work --privileged --env CC=/angora/bin/angora-clang --env CXX=/angora/bin/angora-clang++ --env USE_TRACK=1 --env ANGORA_TAINT_RULE_LIST=/tmp/abilist.txt zjuchenyuan/angora sh -c "make clean; /angora/tools/gen_library_abilist.sh  /usr/lib/x86_64-linux-gnu/libmpg123.so discard > /tmp/abilist.txt; make"
-mv mp3gain $WORKDIR/example/build/mp3gain/angora/taint/
+mv mp3gain taint/
+
+svn export https://github.com/UNIFUZZ/dockerized_fuzzing_examples/trunk/seed/mp3 seed_mp3
 ```
 
 ### Step3: Start Fuzzing
 
+Here, we assume `fast/mp3gain` and `taint/mp3gain` binaries are present, as well as seed files folder `seed_mp3`.
+
 ```
-cd $WORKDIR/example
+mkdir -p output
 rm -rf output/angora
 docker run --rm -w /work -it -v `pwd`:/work --privileged zjuchenyuan/angora \
-    /angora/angora_fuzzer --input seed/mp3 --output output/angora -t /work/build/mp3gain/angora/taint/mp3gain -- /work/build/mp3gain/angora/fast/mp3gain @@
+    /angora/angora_fuzzer --input seed_mp3 --output output/angora \
+        -t ./taint/mp3gain -- \
+        ./fast/mp3gain @@
 ```
 
 ### Explanation
@@ -62,3 +83,4 @@ pub const MAX_INPUT_LEN: usize = 15000;
 ```
 
 Angora only accept seed files less than 15000 bytes, so we changed `MAX_INPUT_LEN` in UNIFUZZ experiments to make fuzzers use same seed sets for a fair comparison.
+
