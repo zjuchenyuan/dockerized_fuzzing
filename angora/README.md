@@ -50,6 +50,7 @@ mv mp3gain fast/
 docker run --rm -w /work -it -v `pwd`:/work --privileged --env CC=/angora/bin/angora-clang --env CXX=/angora/bin/angora-clang++ --env USE_TRACK=1 --env ANGORA_TAINT_RULE_LIST=/tmp/abilist.txt zjuchenyuan/angora sh -c "make clean; /angora/tools/gen_library_abilist.sh  /usr/lib/x86_64-linux-gnu/libmpg123.so discard > /tmp/abilist.txt; make"
 mv mp3gain taint/
 
+# apt install -y subversion
 svn export https://github.com/UNIFUZZ/dockerized_fuzzing_examples/trunk/seed/mp3 seed_mp3
 ```
 
