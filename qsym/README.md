@@ -21,7 +21,7 @@ Fuzzing MP3Gain 1.6.2 as an example.
 ### Step1: System configuration & Step2: Compile target programs
 
 Since QSYM is incorporated on AFL, these steps are mostly equal to [AFL Guidance](https://hub.docker.com/r/zjuchenyuan/afl) Step 1 and 2. 
-The difference is we need build with Address Sanitizer as stated by [QSYM README](https://github.com/sslab-gatech/qsym).
+The difference is we need to build with Address Sanitizer as stated by [QSYM README](https://github.com/sslab-gatech/qsym) `Run hybrid fuzzing with AFL`.
 
 ```
 echo "" | sudo tee /proc/sys/kernel/core_pattern
@@ -34,6 +34,7 @@ echo 0 | sudo tee /proc/sys/kernel/randomize_va_space
 wget https://sourceforge.net/projects/mp3gain/files/mp3gain/1.6.2/mp3gain-1_6_2-src.zip/download -O mp3gain-1_6_2-src.zip
 mkdir -p mp3gain1.6.2 && cd mp3gain1.6.2
 unzip ../mp3gain-1_6_2-src.zip
+
 # build asan binary
 docker run --rm -w /work -it -v `pwd`:/work --privileged zjuchenyuan/afl \
     sh -c "make clean; AFL_USE_ASAN=1 make; mv mp3gain mp3gain_asan"
@@ -53,6 +54,7 @@ Here, we assume `mp3gain_asan` and `mp3gain_normal` binaries and mp3 seed files 
 wget https://raw.githubusercontent.com/UNIFUZZ/dockerized_fuzzing_examples/master/scripts/runqsym_mp3gain.sh
 chmod +x ./runqsym_mp3gain.sh
 
+mkdir -p output/qsym
 docker run --rm -w /work -it -v `pwd`:/work --privileged zjuchenyuan/qsym ./runqsym_mp3gain.sh
 ```
 

@@ -55,4 +55,3 @@ docker run --rm -w /work -it -v `pwd`:/work --privileged zjuchenyuan/aflfast \
 Almost the same as AFL, adding a parameter `-p fast`.
 
 You can choice `-p fast`, `-p coe`, `-p explore`, `-p quad`, `-p lin`, `-p exploit`. For details, refer to https://github.com/mboehme/aflfast .
-
