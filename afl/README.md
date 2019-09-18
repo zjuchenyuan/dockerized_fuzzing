@@ -51,7 +51,7 @@ wget https://sourceforge.net/projects/mp3gain/files/mp3gain/1.6.2/mp3gain-1_6_2-
 mkdir -p mp3gain1.6.2 && cd mp3gain1.6.2
 unzip ../mp3gain-1_6_2-src.zip
 
-# build the justafl binary, justafl means AFL-instrumented binary, without ASAN.
+# build using afl-gcc
 docker run --rm -w /work -it -v `pwd`:/work --privileged zjuchenyuan/afl \
     sh -c "make clean; make"
 ```
@@ -102,10 +102,25 @@ docker run [some params] <image name> program [program params]
 
 See [here](https://github.com/UNIFUZZ/dockerized_fuzzing_examples/tree/master/output/afl)
 
-### Use Clang Compiler
+### Using Clang Compiler
 
 If you want to build program using `clang`, AFL provided llvm_mode. You can set environment variable `CC` and `CXX` to `/afl/afl-clang-fast` and `/afl/afl-clang-fast++` respectively.
 
 For example, instead of just `make`, you can `CC=/afl/afl-clang-fast CXX=/afl/afl-clang-fast++ make`. In some cases, you may need to manually change Makefile to change CC and CXX.
 
 This image use clang-3.8.
+
+### Using ASAN
+
+Building with `AFL_USE_ASAN=1`, and running with `-m none` and longer timeout. Example:
+
+```
+# build ASAN binary, you will see "[+] Instrumented x locations (64-bit, ASAN/MSAN mode, ratio 33%)."
+docker run --rm -w /work -it -v `pwd`:/work --privileged zjuchenyuan/afl \
+    sh -c "make clean; AFL_USE_ASAN=1 make"
+
+# run fuzzing
+mkdir -p output/aflasan
+docker run -w /work -it -v `pwd`:/work --privileged zjuchenyuan/afl \
+    afl-fuzz -i seed_mp3 -o output/aflasan -m none -t 500+ -- ./mp3gain @@
+```
