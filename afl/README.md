@@ -22,14 +22,17 @@ Welcome to the world of fuzzing, in this tutorial, we will experience a simple r
 Run these commands as root or sudoer, if you have not or rebooted:
 
 ```
-echo core | sudo tee /proc/sys/kernel/core_pattern
+echo "" | sudo tee /proc/sys/kernel/core_pattern
+echo 0 | sudo tee /proc/sys/kernel/core_uses_pid
 echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
-echo 0|sudo tee /proc/sys/kernel/yama/ptrace_scope
-echo 1|sudo tee /proc/sys/kernel/sched_child_runs_first # tfuzz require this
-echo 0|sudo tee /proc/sys/kernel/randomize_va_space # vuzzer require this
+echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+echo 1 | sudo tee /proc/sys/kernel/sched_child_runs_first # tfuzz require this
+echo 0 | sudo tee /proc/sys/kernel/randomize_va_space # vuzzer require this
 ```
 
 Error message like `No such file or directory` is fine, and you can just ignore it.
+
+Note: instead of `echo core > /proc/sys/kernel/core_pattern` which generate a core dump file when crash happens, here we disable core dump file generation to reduce I/O pressure during fuzzing. [Ref](http://man7.org/linux/man-pages/man5/core.5.html).
 
 ### Step2: Compile target programs
 

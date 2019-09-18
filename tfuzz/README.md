@@ -47,7 +47,7 @@ This is considered and fixed in UNIFUZZ experiments, but this Docker image do no
 
 For big binaries, T-Fuzz will generate too many transformed binaries, causing huge I/O pressure and consuming large disk spaces.
 
-When we conduct UNIFUZZ experiments, we think this may be not appropriate for us to change related code. 
+When we conduct UNIFUZZ experiments, we think it may be not appropriate for us to change related code. 
 
 Which generating threshold should we take? Will this change hugely impact T-Fuzz performance?
 
