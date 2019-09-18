@@ -19,25 +19,40 @@ Fuzzing MP3Gain 1.6.2 as an example.
 
 ### Step1: System configuration
 
-Please refer to [AFL Guidance](https://hub.docker.com/r/zjuchenyuan/afl). 
+Run these commands as root or sudoer, if you have not or rebooted:
+
+```
+echo "" | sudo tee /proc/sys/kernel/core_pattern
+echo 0 | sudo tee /proc/sys/kernel/core_uses_pid
+echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+echo 1 | sudo tee /proc/sys/kernel/sched_child_runs_first # tfuzz require this
+echo 0 | sudo tee /proc/sys/kernel/randomize_va_space # vuzzer require this
+```
+
+Error message like `No such file or directory` is fine, and you can just ignore it.
 
 ### Step2: Compile target programs
 
 ```
-mkdir -p $WORKDIR/example/build/mp3gain/honggfuzz/
+wget https://sourceforge.net/projects/mp3gain/files/mp3gain/1.6.2/mp3gain-1_6_2-src.zip/download -O mp3gain-1_6_2-src.zip
+mkdir -p mp3gain1.6.2 && cd mp3gain1.6.2
+unzip ../mp3gain-1_6_2-src.zip
 
-cd $WORKDIR/example/code/mp3gain1.6.2
 docker run --rm -w /work -it -v `pwd`:/work --privileged zjuchenyuan/honggfuzz sh -c "make clean; make"
-mv mp3gain $WORKDIR/example/build/mp3gain/honggfuzz/
+
+# apt install -y subversion
+svn export https://github.com/UNIFUZZ/dockerized_fuzzing_examples/trunk/seed/mp3 seed_mp3
 ```
 
 ### Step3: Start Fuzzing
 
 ```
-cd $WORKDIR/example
 mkdir -p output/honggfuzz/queue
 docker run --rm -w /work -it -v `pwd`:/work --privileged zjuchenyuan/honggfuzz \
-    /honggfuzz/honggfuzz -f seed/mp3 -W output/honggfuzz/output --covdir_all output/honggfuzz/queue --threads 1 -- /work/build/mp3gain/honggfuzz/mp3gain ___FILE___
+    /honggfuzz/honggfuzz -f seed_mp3 -W output/honggfuzz/output \
+        --covdir_all output/honggfuzz/queue --threads 1 -- \
+        ./mp3gain ___FILE___
 ```
 
 ### Explanation
