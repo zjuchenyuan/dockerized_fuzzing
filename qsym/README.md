@@ -18,35 +18,47 @@ Type: Concolic Execution, PIN-based, Binary Instrumentation, Hybrid Fuzzing (wit
 
 Fuzzing MP3Gain 1.6.2 as an example.
 
-### Step1: System configuration
+### Step1: System configuration & Step2: Compile target programs
 
-Please refer to [AFL Guidance](https://hub.docker.com/r/zjuchenyuan/afl). 
-
-### Step2: Compile target programs
+Since QSYM is incorporated on AFL, these steps are mostly equal to [AFL Guidance](https://hub.docker.com/r/zjuchenyuan/afl) Step 1 and 2. 
+The difference is we need to build with Address Sanitizer as stated by [QSYM README](https://github.com/sslab-gatech/qsym) `Run hybrid fuzzing with AFL`.
 
 ```
-mkdir -p $WORKDIR/example/build/mp3gain/normal/
-mkdir -p $WORKDIR/example/build/mp3gain/afl/{justafl,aflasan}
+echo "" | sudo tee /proc/sys/kernel/core_pattern
+echo 0 | sudo tee /proc/sys/kernel/core_uses_pid
+echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+echo 1 | sudo tee /proc/sys/kernel/sched_child_runs_first
+echo 0 | sudo tee /proc/sys/kernel/randomize_va_space
 
-# build the aflasan binary, here aflasan means AFL-instrumented binary with AddressSanitizer
-cd $WORKDIR/example/code/mp3gain1.6.2
-docker run --rm -w /work -it -v `pwd`:/work --privileged --env AFL_USE_ASAN=1 zjuchenyuan/afl sh -c "make clean; make"
-mv mp3gain $WORKDIR/example/build/mp3gain/afl/aflasan/
+wget https://sourceforge.net/projects/mp3gain/files/mp3gain/1.6.2/mp3gain-1_6_2-src.zip/download -O mp3gain-1_6_2-src.zip
+mkdir -p mp3gain1.6.2 && cd mp3gain1.6.2
+unzip ../mp3gain-1_6_2-src.zip
 
-# build the normal binary, qsym itself do not need compile-time instrumentation
-cd $WORKDIR/example/code/mp3gain1.6.2
-docker run --rm -w /work -it -v `pwd`:/work --privileged --env CC=gcc --env CXX=g++ zjuchenyuan/afl sh -c "make clean; make"
-mv mp3gain $WORKDIR/example/build/mp3gain/normal/
+# build asan binary
+docker run --rm -w /work -it -v `pwd`:/work --privileged zjuchenyuan/afl \
+    sh -c "make clean; AFL_USE_ASAN=1 make; mv mp3gain mp3gain_asan"
+
+# build normal binary
+docker run --rm -w /work -it -v `pwd`:/work --privileged zjuchenyuan/afl \
+    sh -c "make clean; CC=gcc CXX=g++ make; mv mp3gain mp3gain_normal"
+
+svn export https://github.com/UNIFUZZ/dockerized_fuzzing_examples/trunk/seed/mp3 seed_mp3
 ```
 
 ### Step3: Start Fuzzing
 
+Here, we assume `mp3gain_asan` and `mp3gain_normal` binaries and mp3 seed files `seed_mp3` are present in current folder.
+
 ```
-cd $WORKDIR/example
-docker run --rm -w /work -it -v `pwd`:/work --privileged zjuchenyuan/qsym scripts/runqsym_mp3gain.sh
+wget https://raw.githubusercontent.com/UNIFUZZ/dockerized_fuzzing_examples/master/scripts/runqsym_mp3gain.sh
+chmod +x ./runqsym_mp3gain.sh
+
+mkdir -p output/qsym
+docker run --rm -w /work -it -v `pwd`:/work --privileged zjuchenyuan/qsym ./runqsym_mp3gain.sh
 ```
 
-Here [scripts/runqsym_mp3gain.sh](https://github.com/zjuchenyuan/dockerized_fuzzing/blob/master/example/scripts/runqsym_mp3gain.sh) start two AFL instances (master and slave) and then wait for `afl-slave/fuzzer_stats` to be created, then start qsym.
+Here [runqsym_mp3gain.sh](https://github.com/UNIFUZZ/dockerized_fuzzing_examples/blob/master/scripts/runqsym_mp3gain.sh) start two AFL instances (master and slave) and then wait for `afl-slave/fuzzer_stats` to be created, then start qsym.
 
 ### Explanation
 
