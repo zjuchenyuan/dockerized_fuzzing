@@ -124,3 +124,20 @@ mkdir -p output/aflasan
 docker run -w /work -it -v `pwd`:/work --privileged zjuchenyuan/afl \
     afl-fuzz -i seed_mp3 -o output/aflasan -m none -t 500+ -- ./mp3gain @@
 ```
+
+### Target programs need specific file name?
+
+AFL will always use `.cur_input` as the mutated file name, if your targeted program need specific suffix type for filename, you need to modify [afl-fuzz.c](https://github.com/mirrorer/afl/blob/master/afl-fuzz.c):
+
+For example, we use `x.mp3` to replace `.cur_input`
+
+```
+docker run -w /work -it -v `pwd`:/work --privileged zjuchenyuan/afl /bin/bash
+# in the container
+cd /afl
+sed -i 's/.cur_input/x.mp3/g' afl-fuzz.c
+make clean
+CC=gcc CXX=g++ make && make install
+
+# now you can use your customized afl-fuzz to run fuzzing
+```
