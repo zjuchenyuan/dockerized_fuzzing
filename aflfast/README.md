@@ -62,7 +62,7 @@ docker run --rm -w /work -it -v `pwd`:/work --privileged zjuchenyuan/afl \
 svn export https://github.com/UNIFUZZ/dockerized_fuzzing_examples/trunk/seed/mp3 seed_mp3
 ```
 
-### Step4: Start Fuzzing
+### Step4: Fuzzing!
 
 Here we assume you have built mp3gain binary in current folder and downloaded mp3 seed files.
 
