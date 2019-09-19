@@ -23,7 +23,7 @@ In this tutorial, we will experience a simple realistic fuzzing towards [MP3Gain
 Run these commands as root or sudoer, if you have not or rebooted:
 
 ```
-echo "" | sudo tee /proc/sys/kernel/core_pattern
+echo "" | sudo tee /proc/sys/kernel/core_pattern # disable generating of core dump file
 echo 0 | sudo tee /proc/sys/kernel/core_uses_pid
 echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
@@ -35,16 +35,16 @@ Error message like `No such file or directory` is fine, and you can just ignore 
 
 Note: 
 
-Although last two commands are not mandatory for AFL, we provide these command in a uniform manner for consistency between different fuzzers.
+Although not all configuration are required by this fuzzer, we provide these command in a uniform manner for consistency between different fuzzers. 
 
-These commands may impair your system security (turnning off ASLR), but not a big problem since fuzzing experiments are normally conducted in dedicated machines.
+These commands may impair your system security (turning off ASLR), but not a big problem since fuzzing experiments are normally conducted in dedicated machines.
 
-Instead of `echo core > /proc/sys/kernel/core_pattern` given by AFL which generate a core dump file when crash happens, 
+Instead of `echo core > /proc/sys/kernel/core_pattern` given by many fuzzers which still generate a core dump file when crash happens, 
 here we disable core dump file generation to reduce I/O pressure during fuzzing. [Ref](http://man7.org/linux/man-pages/man5/core.5.html).
 
 ### Step2: Compile target programs and Prepare seed files
 
-Since AFL need compilation-time instrumentation, we need to build target program using `afl-gcc`.
+Since AFL uses compilation-time instrumentation, we need to build target program using `afl-gcc` or `afl-clang`.
 
 ```
 wget https://sourceforge.net/projects/mp3gain/files/mp3gain/1.6.2/mp3gain-1_6_2-src.zip/download -O mp3gain-1_6_2-src.zip
@@ -60,7 +60,9 @@ docker run --rm -w /work -it -v `pwd`:/work --privileged zjuchenyuan/afl \
 
 If you want to build with clang, refer to last section.
 
-If you have not prepared mp3 seed files for fuzzing, you can use what I have provided [here](https://github.com/UNIFUZZ/dockerized_fuzzing_examples/tree/master/seed/mp3).
+### Step3: Prepare seed files
+
+If you have not prepared mp3 seed files for fuzzing, you can use what we have provided [here](https://github.com/UNIFUZZ/dockerized_fuzzing_examples/tree/master/seed/mp3). More seed types? Take a look at [UNIFUZZ seeds repo](https://github.com/UNIFUZZ/seeds).
 
 `apt install -y subversion` may be needed if `svn: command not found`.
 
@@ -68,7 +70,7 @@ If you have not prepared mp3 seed files for fuzzing, you can use what I have pro
 svn export https://github.com/UNIFUZZ/dockerized_fuzzing_examples/trunk/seed/mp3 seed_mp3
 ```
 
-### Step3: Start Fuzzing
+### Step4: Fuzzing!
 
 ```
 mkdir -p output/afl
@@ -142,3 +144,8 @@ CC=gcc CXX=g++ make && make install
 # now you can use your customized afl-fuzz to run fuzzing
 ```
 
+## Official Documentation
+
+http://lcamtuf.coredump.cx/afl/
+
+https://github.com/mirrorer/afl/tree/master/docs

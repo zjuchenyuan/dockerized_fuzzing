@@ -25,14 +25,34 @@ Fuzzing MP3Gain 1.6.2 as an example.
 
 ### Step1: System configuration & Step2: Compile target programs
 
-Please refer to [AFL Guidance](https://hub.docker.com/r/zjuchenyuan/afl). 
+Since T-Fuzz is based on AFL, these steps are equal to [AFL Guidance](https://hub.docker.com/r/zjuchenyuan/afl) Step 1 and 2. 
+
+```
+echo "" | sudo tee /proc/sys/kernel/core_pattern
+echo 0 | sudo tee /proc/sys/kernel/core_uses_pid
+echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+echo 1 | sudo tee /proc/sys/kernel/sched_child_runs_first
+echo 0 | sudo tee /proc/sys/kernel/randomize_va_space
+
+wget https://sourceforge.net/projects/mp3gain/files/mp3gain/1.6.2/mp3gain-1_6_2-src.zip/download -O mp3gain-1_6_2-src.zip
+mkdir -p mp3gain1.6.2 && cd mp3gain1.6.2
+unzip ../mp3gain-1_6_2-src.zip
+# build using afl-gcc
+docker run --rm -w /work -it -v `pwd`:/work --privileged zjuchenyuan/afl \
+    sh -c "make clean; make"
+
+svn export https://github.com/UNIFUZZ/dockerized_fuzzing_examples/trunk/seed/mp3 seed_mp3
+```
 
 ### Step3: Start Fuzzing
 
+Here we assume you have built mp3gain using AFL compiler in current folder and downloaded mp3 seed files.
+
 ```
-cd $WORKDIR/example
+mkdir -p output/tfuzz
 docker run --rm -w /work -it -v `pwd`:/work --privileged zjuchenyuan/tfuzz \
-    /T-Fuzz/TFuzz --program build/mp3gain/afl/justafl/mp3gain --work_dir output/tfuzz --seed_dir seed/mp3 --target_opts @@
+    /T-Fuzz/TFuzz --program ./mp3gain --work_dir output/tfuzz --seed_dir seed_mp3 --target_opts @@
 ```
 
 ## Possible issues
