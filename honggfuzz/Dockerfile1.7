@@ -7,7 +7,7 @@ RUN apt install -y libunwind8-dev binutils-dev clang-6.0 &&\
     update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-6.0 50
 
 RUN git clone https://github.com/google/honggfuzz.git &&\
-    cd honggfuzz && git checkout 1.8 &&\
+    cd honggfuzz && git checkout 1.7 &&\
     make && cp /honggfuzz/honggfuzz /bin
 
 WORKDIR /honggfuzz
