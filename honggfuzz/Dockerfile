@@ -5,7 +5,7 @@ LABEL description="Dockerfile for honggfuzz"
 RUN apt install -y libunwind8-dev binutils-dev clang-6.0
 
 RUN git clone https://github.com/google/honggfuzz.git &&\
-    git checkout master &&\
+    cd honggfuzz && git checkout master &&\
     make && cp /honggfuzz/honggfuzz /bin
 
 WORKDIR /honggfuzz
