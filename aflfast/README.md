@@ -29,9 +29,20 @@ echo 1 | sudo tee /proc/sys/kernel/sched_child_runs_first
 echo 0 | sudo tee /proc/sys/kernel/randomize_va_space
 ```
 
+Note: 
+
+Although not all configuration are required by this fuzzer, we provide these command in a uniform manner for consistency between different fuzzers. 
+
+These commands may impair your system security (turning off ASLR), but not a big problem since fuzzing experiments are normally conducted in dedicated machines.
+
+Instead of `echo core > /proc/sys/kernel/core_pattern` given by many fuzzers which still generate a core dump file when crash happens, 
+here we disable core dump file generation to reduce I/O pressure during fuzzing. [Ref](http://man7.org/linux/man-pages/man5/core.5.html).
+
 ### Step2: Compile target programs
 
 Since AFLFast is based on AFL, this step is equal to [AFL Guidance](https://hub.docker.com/r/zjuchenyuan/afl).
+
+Download the source code, compile using `afl-gcc`.
 
 ```
 wget https://sourceforge.net/projects/mp3gain/files/mp3gain/1.6.2/mp3gain-1_6_2-src.zip/download -O mp3gain-1_6_2-src.zip
@@ -53,7 +64,7 @@ svn export https://github.com/UNIFUZZ/dockerized_fuzzing_examples/trunk/seed/mp3
 
 ### Step4: Start Fuzzing
 
-Here we assume you have built mp3gain in current folder and downloaded mp3 seed files.
+Here we assume you have built mp3gain binary in current folder and downloaded mp3 seed files.
 
 ```
 mkdir -p output/aflfast
@@ -66,3 +77,7 @@ docker run --rm -w /work -it -v `pwd`:/work --privileged zjuchenyuan/aflfast \
 Almost the same as AFL, adding a parameter `-p fast`.
 
 You can choice `-p fast`, `-p coe`, `-p explore`, `-p quad`, `-p lin`, `-p exploit`. For details, refer to https://github.com/mboehme/aflfast .
+
+## Paper
+
+CCS 2016, TSE 2018: Coverage-based Greybox Fuzzing as Markov Chain [PDF](https://mboehme.github.io/paper/TSE18.pdf)
