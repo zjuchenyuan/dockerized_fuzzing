@@ -29,6 +29,8 @@ echo 1 | sudo tee /proc/sys/kernel/sched_child_runs_first
 echo 0 | sudo tee /proc/sys/kernel/randomize_va_space
 ```
 
+Error message like `No such file or directory` is fine, and you can just ignore it.
+
 Note: 
 
 Although not all configuration are required by this fuzzer, we provide these command in a uniform manner for consistency between different fuzzers. 
