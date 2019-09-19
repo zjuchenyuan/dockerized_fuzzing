@@ -17,10 +17,12 @@ File Formats: JS(canvas), JSON, SVG, URL, XSS
 
 ```
 # generate three js files:
-docker run -it --rm -v $WORKDIR/example/output/dharma:/output zjuchenyuan/dharma \
+docker run -it --rm -v `pwd`/output/dharma:/output zjuchenyuan/dharma \
     dharma -grammars dharma/grammars/canvas2d.dg -storage /output -count 3 -format js
 
 # generate one 1000-line json file
-docker run -it --rm -v $WORKDIR/example/output/dharma:/output zjuchenyuan/dharma \
+docker run -it --rm -v `pwd`/output/dharma:/output zjuchenyuan/dharma \
     sh -c "dharma -grammars dharma/grammars/json.dg -count 1000 > /output/output.json"
 ```
+
+You can view output files [here](https://github.com/UNIFUZZ/dockerized_fuzzing_examples/tree/master/output/dharma).
