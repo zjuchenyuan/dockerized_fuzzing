@@ -65,7 +65,7 @@ docker run --rm -w /work -it -v `pwd`:/work --privileged --env CC=/angora/bin/an
 mv mp3gain taint/
 ```
 
-### Step3: Preparing Seed Files
+### Step3: Prepare Seed Files
 
 [UNIFUZZ](https://github.com/UNIFUZZ/seeds) provides seed files with various types. Here we provides 10 mp3 seed files, to be downloaded to `seed_mp3` folder.
 
