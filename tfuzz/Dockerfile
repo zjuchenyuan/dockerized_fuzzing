@@ -2,8 +2,10 @@ FROM zjuchenyuan/base
 
 LABEL description="T-Fuzz: fuzzing by program transformation"
 
-RUN sed -i 's/# deb-src/deb-src/g' /etc/apt/sources.list &&\
-    apt-get update && apt-get build-dep -y qemu-system && apt install -y libtool libtool-bin git build-essential gcc-multilib libtool automake autoconf bison debootstrap debian-archive-keyring libacl1-dev  python-pip python-virtualenv
+#RUN sed -i 's/# deb-src/deb-src/g' /etc/apt/sources.list &&\
+#    apt-get update && apt-get build-dep -y qemu-system && apt install -y libtool libtool-bin git build-essential gcc-multilib libtool automake autoconf bison debootstrap debian-archive-keyring libacl1-dev  python-pip python-virtualenv
+
+RUN apt install -y libtool libtool-bin gcc-multilib bison debootstrap libacl1-dev
 
 RUN git clone https://github.com/radare/radare2.git &&\
     cd radare2 && ./sys/install.sh && cd .. 
@@ -19,16 +21,20 @@ RUN git clone https://github.com/shellphish/shellphish-afl.git &&\
     cd /usr/bin/afl-unix && make
 
 # fix Deprecation Warning issue, here we use latest version of shellphish/fuzzer
-# it seems pip of base image is somewhat wierd, need to reinstall pip
-RUN python -m pip uninstall -y pip &&\
-    apt install --reinstall -y python-pip &&\
-    python -m pip install -U pip &&\
+RUN python -m pip install -U pip &&\
     git clone https://github.com/HexHive/T-Fuzz &&\
     cd T-Fuzz && sed -i 's/shellphish-afl==1.1//g' req.txt &&\
-    pip install -r req.txt &&\
-    pip install -U git+https://github.com/shellphish/fuzzer.git
+    python -m pip install -r req.txt &&\
+    python -m pip install -U git+https://github.com/shellphish/fuzzer.git
 
 # there are an issue related to number format of create_dict.py
 ADD create_dict.py /usr/local/bin/create_dict.py
 
 RUN chmod +x /usr/local/bin/create_dict.py
+
+# patch for https://github.com/HexHive/T-Fuzz/issues/14
+ADD issue14.patch /tmp/
+RUN cd T-Fuzz && git apply /tmp/issue14.patch
+
+# fix for using empty core_pattern
+RUN sed -i 's/if not "core" in f.read():/if f.read().startswith("|"):/' /usr/local/lib/python2.7/dist-packages/fuzzer/fuzzer.py

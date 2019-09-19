@@ -1,0 +1,22 @@
+diff --git a/tfuzz/tfuzz_sys.py b/tfuzz/tfuzz_sys.py
+index 5bc1356..4239a99 100644
+--- a/tfuzz/tfuzz_sys.py
++++ b/tfuzz/tfuzz_sys.py
+@@ -51,7 +51,7 @@ class TFuzzSys():
+         original_tprogram_dir = os.path.join(self.workdir,
+                                              self.origin_binary_name + '_tfuzz')
+         original_tprogram_path = os.path.join(original_tprogram_dir,
+-                                              self.origin_binary_name + '_tfuzz')
++                                              self.origin_binary_name)
+
+         os.makedirs(original_tprogram_dir)
+         shutil.copyfile(binary_path, original_tprogram_path)
+@@ -195,7 +195,7 @@ class TFuzzSys():
+
+                 transformed_program_name = self.fuzzing_program.program_name + '_' + str(i)
+                 transformed_program_dir = os.path.join(self.workdir, transformed_program_name)
+-                transformed_program_path = os.path.join(transformed_program_dir, transformed_program_name)
++                transformed_program_path = os.path.join(transformed_program_dir, self.origin_binary_name)
+                 try:
+                     os.makedirs(transformed_program_dir)
+                 except:
