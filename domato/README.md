@@ -10,7 +10,7 @@ More Versions: Ubuntu 16.04, Python 3.5.2
 Last Update: 2019/03
 Language: Python
 Type: Generator
-File Formats: HTML, CSS, JS, SVG
+File Formats: HTML (including CSS, JS, SVG)
 ```
 
 ## Guidance
