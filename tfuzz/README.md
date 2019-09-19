@@ -120,3 +120,7 @@ If you need run QEMU mode in T-Fuzz, you can change [tfuzz/tfuzz_sys.py](https:/
 This image installed wrong same-name package `tracer`. Although T-Fuzz stated it require it, but it just import it and do not use it.
 
 To correctly install tracer provided by angr, `pip install -U git+https://github.com/angr/tracer`.
+
+## Paper
+
+S&P 2018: T-Fuzz: fuzzing by program transformation [PDF](https://nebelwelt.net/publications/files/18Oakland.pdf)
