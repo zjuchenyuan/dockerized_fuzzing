@@ -32,3 +32,8 @@ docker run -it --rm -v `pwd`/output/dharma:/output zjuchenyuan/dharma \
 ```
 
 You can view output files [here](https://github.com/UNIFUZZ/dockerized_fuzzing_examples/tree/master/output/dharma).
+
+## Official Documentation
+
+https://mozillasecurity.github.io/dharma/
+
