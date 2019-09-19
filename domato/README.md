@@ -18,6 +18,8 @@ File Formats: HTML, CSS, JS, SVG
 This will generate three html files:
 
 ```
-docker run -it --rm -v $WORKDIR/example/output/domato:/output zjuchenyuan/domato \
+docker run -it --rm -v `pwd`/output/domato:/output zjuchenyuan/domato \
     python3 generator.py --output_dir /output --no_of_files 3
 ```
+
+You can view output files [here](https://github.com/UNIFUZZ/dockerized_fuzzing_examples/tree/master/output/domato).
