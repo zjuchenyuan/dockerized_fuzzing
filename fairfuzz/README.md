@@ -10,7 +10,7 @@ More Versions: Ubuntu 16.04, gcc 5.4, clang 3.8
 Last Update: 2017/11
 Language: C
 Type: Mutation Fuzzer, Compile-time Instrumentation, AFL-based
-Tag: targeting rare branches, ASE 2018
+Tag: targeting rare branches
 ```
 
 ## Guidance
@@ -28,6 +28,17 @@ echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
 echo 1 | sudo tee /proc/sys/kernel/sched_child_runs_first
 echo 0 | sudo tee /proc/sys/kernel/randomize_va_space
 ```
+
+Error message like `No such file or directory` is fine, and you can just ignore it.
+
+Note: 
+
+Although not all configuration are required by this fuzzer, we provide these command in a uniform manner for consistency between different fuzzers. 
+
+These commands may impair your system security (turning off ASLR), but not a big problem since fuzzing experiments are normally conducted in dedicated machines.
+
+Instead of `echo core > /proc/sys/kernel/core_pattern` given by many fuzzers which still generate a core dump file when crash happens, 
+here we disable core dump file generation to reduce I/O pressure during fuzzing. [Ref](http://man7.org/linux/man-pages/man5/core.5.html).
 
 ### Step2: Compile target programs
 
@@ -61,11 +72,12 @@ docker run -it --rm -w /work -v `pwd`:/work --privileged  zjuchenyuan/fairfuzz \
     afl-fuzz -i seed_mp3 -o output/fairfuzz -- ./mp3gain @@
 ```
 
+Example output can be found here: https://github.com/UNIFUZZ/dockerized_fuzzing_examples/tree/master/output/fairfuzz
 
 ### More Usage
 
 See https://github.com/carolemieux/afl-rb
 
-## Example Output
+## Paper
 
-See https://github.com/UNIFUZZ/dockerized_fuzzing_examples/tree/master/output/fairfuzz
+ASE 2018: FairFuzz: A Targeted Mutation Strategy for Increasing Greybox Fuzz Testing Coverage [PDF](http://www.carolemieux.com/fairfuzz-ase18.pdf)
