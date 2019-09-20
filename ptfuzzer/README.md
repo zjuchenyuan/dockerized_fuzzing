@@ -4,7 +4,7 @@ https://hub.docker.com/r/zjuchenyuan/ptfuzzer
 
 Source: https://github.com/hunter-ht-2018/ptfuzzer
 
-**Caution: Running this fuzzer may be dangerous, it made our server unresponsive and we had to manually hard-reboot**
+**!!!Caution!!! Running this fuzzer may be dangerous, it made our server unresponsive and we had to manually hard-reboot**
 
 Requirements:
 
@@ -57,3 +57,7 @@ mkdir -p output/ptfuzzer
 docker run --rm -w /work -it -v `pwd`:/work --privileged zjuchenyuan/ptfuzzer \
     python /ptfuzzer/build/bin/ptfuzzer.py "-i seed_mp3 -o output/ptfuzzer" "./mp3gain"
 ```
+
+## Paper
+
+IEEE Access > Volume: 6 PTfuzz: Guided Fuzzing With Processor Trace Feedback [IEEE Document](https://ieeexplore.ieee.org/document/8399803)

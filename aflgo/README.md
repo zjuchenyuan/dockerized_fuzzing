@@ -14,9 +14,17 @@ Tag: directed fuzzing
 
 ## Tutorial
 
-Here is an example of using AFLGo: http://strongcourage.github.io/2019/06/20/aflgo.html
+Here is an example of using AFLGo: http://strongcourage.github.io/2019/06/20/aflgo.html . And we provide pre-built image [aflgo_example_lrzip](https://hub.docker.com/r/zjuchenyuan/aflgo_example_lrzip).
 
-[aflgo_example_lrzip](https://hub.docker.com/r/zjuchenyuan/aflgo_example_lrzip)
+```
+# apt install -y subversion
+svn export https://github.com/UNIFUZZ/dockerized_fuzzing_examples/trunk/seed/lrz seed_lrz
+
+mkdir -p output/aflgo
+docker run --rm -w /work -it -v `pwd`:/work --privileged zjuchenyuan/aflgo_example_lrzip \
+    /aflgo/afl-fuzz -m none -z exp -c 45m -i seed_lrz -o output/aflgo -- \
+        /lrzip-CVE-2018-11496/obj-aflgo/lrzip -t @@
+```
 
 ## Dockerfile
 
@@ -24,20 +32,23 @@ Here is an example of using AFLGo: http://strongcourage.github.io/2019/06/20/afl
 FROM zjuchenyuan/base
 
 RUN apt update && \
-    apt install -y sudo curl wget build-essential make cmake ninja-build git subversion python2.7 binutils-gold binutils-dev python-dev python3 python3-dev python3-pip autoconf automake libtool-bin python-bs4 libclang-4.0-dev &&\
+    apt install -y sudo curl wget build-essential make cmake ninja-build git subversion python2.7 binutils-gold binutils-dev python-dev python3 python3-dev python3-pip autoconf automake libtool-bin python-bs4 libclang-4.0-dev gawk pkg-config &&\
     python3 -m pip install --upgrade pip && python3 -m pip install networkx pydot pydotplus
 
-RUN mkdir -p /build/chromium_tools && cd /build/chromium_tools &&\
-    git clone https://chromium.googlesource.com/chromium/src/tools/clang && cd .. &&\
+RUN mkdir -p /build && cd /build &&\
     wget http://releases.llvm.org/4.0.0/llvm-4.0.0.src.tar.xz http://releases.llvm.org/4.0.0/cfe-4.0.0.src.tar.xz http://releases.llvm.org/4.0.0/compiler-rt-4.0.0.src.tar.xz http://releases.llvm.org/4.0.0/libcxx-4.0.0.src.tar.xz http://releases.llvm.org/4.0.0/libcxxabi-4.0.0.src.tar.xz &&\
     tar xf llvm-4.0.0.src.tar.xz && tar xf cfe-4.0.0.src.tar.xz && tar xf compiler-rt-4.0.0.src.tar.xz && tar xf libcxx-4.0.0.src.tar.xz && tar xf libcxxabi-4.0.0.src.tar.xz &&\
+    rm *.tar.xz &&\
     mv cfe-4.0.0.src /build/llvm-4.0.0.src/tools/clang && mv compiler-rt-4.0.0.src /build/llvm-4.0.0.src/projects/compiler-rt && mv libcxx-4.0.0.src /build/llvm-4.0.0.src/projects/libcxx && mv libcxxabi-4.0.0.src /build/llvm-4.0.0.src/projects/libcxxabi &&\
     mkdir -p build-llvm/llvm; cd build-llvm/llvm &&\
     cmake -G "Ninja" \
       -DLIBCXX_ENABLE_SHARED=OFF -DLIBCXX_ENABLE_STATIC_ABI_LIBRARY=ON \
       -DCMAKE_BUILD_TYPE=Release -DLLVM_TARGETS_TO_BUILD="X86" \
       -DLLVM_BINUTILS_INCDIR=/usr/include /build/llvm-4.0.0.src &&\
-    ninja && ninja install
+    ninja && ninja install &&\
+    mkdir /usr/lib/bfd-plugins && \
+    cp /usr/local/lib/libLTO.so /usr/lib/bfd-plugins &&\
+    cp /usr/local/lib/LLVMgold.so /usr/lib/bfd-plugins
 
 RUN mkdir -p /build/build-llvm/msan && cd /build/build-llvm/msan &&\
     cmake -G "Ninja" \
@@ -48,18 +59,11 @@ RUN mkdir -p /build/build-llvm/msan && cd /build/build-llvm/msan &&\
        /build/llvm-4.0.0.src &&\
     ninja cxx && ninja install-cxx
 
-RUN mkdir /usr/lib/bfd-plugins && \
-    cp /usr/local/lib/libLTO.so /usr/lib/bfd-plugins &&\
-    cp /usr/local/lib/LLVMgold.so /usr/lib/bfd-plugins
-
 RUN git clone https://github.com/aflgo/aflgo.git &&\
-    cd aflgo && make all
-
-RUN cd /aflgo/llvm_mode && make all
+    cd aflgo && make all &&\
+    cd /aflgo/llvm_mode && make all
 
 ENV AFLGO /aflgo
-
-RUN apt install -y gawk pkg-config
 ```
 
 Since DockerHub auto-build cannot build LLVM in 4 hours (maxinum time allowed for building Docker images), I locally built and pushed the image.
