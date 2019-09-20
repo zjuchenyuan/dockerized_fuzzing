@@ -68,7 +68,7 @@ svn export https://github.com/UNIFUZZ/dockerized_fuzzing_examples/trunk/seed/mp3
 
 ```
 mkdir -p output/honggfuzz/queue
-docker run --rm -w /work -it -v `pwd`:/work --privileged zjuchenyuan/honggfuzz \
+docker run -w /work -it -v `pwd`:/work --privileged zjuchenyuan/honggfuzz \
     /honggfuzz/honggfuzz -f seed_mp3 -W output/honggfuzz/output \
         --covdir_all output/honggfuzz/queue --threads 1 -- \
         ./mp3gain ___FILE___

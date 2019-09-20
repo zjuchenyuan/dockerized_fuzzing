@@ -80,7 +80,7 @@ Here we assume you have built mp3gain binary using AFL compiler in current folde
 
 ```
 mkdir -p output/tfuzz
-docker run --rm -w /work -it -v `pwd`:/work --privileged zjuchenyuan/tfuzz \
+docker run -w /work -it -v `pwd`:/work --privileged zjuchenyuan/tfuzz \
     /T-Fuzz/TFuzz --program ./mp3gain --work_dir output/tfuzz --seed_dir seed_mp3 --target_opts @@
 ```
 

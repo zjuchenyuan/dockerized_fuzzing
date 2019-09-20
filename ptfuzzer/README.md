@@ -54,7 +54,7 @@ svn export https://github.com/UNIFUZZ/dockerized_fuzzing_examples/trunk/seed/mp3
 
 ```
 mkdir -p output/ptfuzzer
-docker run --rm -w /work -it -v `pwd`:/work --privileged zjuchenyuan/ptfuzzer \
+docker run -w /work -it -v `pwd`:/work --privileged zjuchenyuan/ptfuzzer \
     python /ptfuzzer/build/bin/ptfuzzer.py "-i seed_mp3 -o output/ptfuzzer" "./mp3gain"
 ```
 

@@ -68,7 +68,7 @@ Here we assume you have built mp3gain in current folder and downloaded mp3 seed 
 
 ```
 mkdir -p output/fairfuzz
-docker run -it --rm -w /work -v `pwd`:/work --privileged  zjuchenyuan/fairfuzz \
+docker run -it -w /work -v `pwd`:/work --privileged  zjuchenyuan/fairfuzz \
     afl-fuzz -i seed_mp3 -o output/fairfuzz -- ./mp3gain @@
 ```
 

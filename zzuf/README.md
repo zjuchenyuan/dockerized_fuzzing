@@ -41,6 +41,6 @@ Or we can generate 3 mutated files, without invoking mp3gain.
 
 ```
 mkdir -p output/zzuf
-docker run --rm -w /work -it -v `pwd`:/work zjuchenyuan/zzuf \
+docker run -w /work -it -v `pwd`:/work zjuchenyuan/zzuf \
     sh -c 'for i in `seq 0 1 2`; do zzuf -s $i -r 0.0001:0.01 < seed/mp3/12566 >output/zzuf/$i; done'
 ```

@@ -18,7 +18,7 @@ File Formats: HTML (including CSS, JS, SVG)
 This will generate three html files:
 
 ```
-docker run -it --rm -v `pwd`/output/domato:/output zjuchenyuan/domato \
+docker run -it -v `pwd`/output/domato:/output zjuchenyuan/domato \
     python3 generator.py --output_dir /output --no_of_files 3
 ```
 

@@ -19,15 +19,15 @@ Take a look at available grammars at https://github.com/MozillaSecurity/dharma/t
 
 ```
 # generate three js files:
-docker run -it --rm -v `pwd`/output/dharma:/output zjuchenyuan/dharma \
+docker run -it -v `pwd`/output/dharma:/output zjuchenyuan/dharma \
     dharma -grammars dharma/grammars/canvas2d.dg -storage /output -count 3 -format js
 
 # generate one 1000-line json file
-docker run -it --rm -v `pwd`/output/dharma:/output zjuchenyuan/dharma \
+docker run -it -v `pwd`/output/dharma:/output zjuchenyuan/dharma \
     sh -c "dharma -grammars dharma/grammars/json.dg -count 1000 > /output/output.json"
 
 # generate a xss testing file
-docker run -it --rm -v `pwd`/output/dharma:/output zjuchenyuan/dharma \
+docker run -it -v `pwd`/output/dharma:/output zjuchenyuan/dharma \
     sh -c "dharma -grammars dharma/grammars/xss.dg -count 1000 > /output/xss.txt"
 ```
 

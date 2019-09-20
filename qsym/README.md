@@ -65,7 +65,7 @@ wget https://raw.githubusercontent.com/UNIFUZZ/dockerized_fuzzing_examples/maste
 chmod +x ./runqsym_mp3gain.sh
 
 mkdir -p output/qsym
-docker run --rm -w /work -it -v `pwd`:/work --privileged zjuchenyuan/qsym ./runqsym_mp3gain.sh
+docker run -w /work -it -v `pwd`:/work --privileged zjuchenyuan/qsym ./runqsym_mp3gain.sh
 ```
 
 Here [runqsym_mp3gain.sh](https://github.com/UNIFUZZ/dockerized_fuzzing_examples/blob/master/scripts/runqsym_mp3gain.sh) start two AFL instances (master and slave) and then wait for `afl-slave/fuzzer_stats` to be created, then start qsym.
