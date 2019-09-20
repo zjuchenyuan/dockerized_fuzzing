@@ -7,8 +7,9 @@ Source: https://github.com/aflsmart/aflsmart
 ```
 Current Version: 2.52b
 More Versions: Peach 3.0.202 (modified), gcc 4.4
+Last Update: 2019/09
 Type: AFL-based, input-structure aware
-Tags: Peach
+Tags: Peach (C#)
 ```
 
 ## Guidance
