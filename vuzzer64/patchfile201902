@@ -93,7 +93,7 @@ diff -ru vuzzer64ori/fuzzer-code/runfuzzer.py vuzzer64/fuzzer-code/runfuzzer.py
          config.LEAMAP[fl]=read_lea()          
          #print config.TAINTMAP[fl][1]
          #raw_input("press key..")
-@@ -825,7 +825,11 @@ def main():
+@@ -802,7 +807,11 @@
                  iln=os.path.getsize(tfl)
                  args = (config.SUT % tfl).split(' ')
                  progname = os.path.basename(args[0])
@@ -103,6 +103,15 @@ diff -ru vuzzer64ori/fuzzer-code/runfuzzer.py vuzzer64/fuzzer-code/runfuzzer.py
 +                except:
 +                    traceback.print_exc()
 +                    continue
-                 if per_gen_fnum % 10 ==0:
-                     print "[**] Gen: %d. Executed %d of %d.**"%(genran,per_gen_fnum,config.POPSIZE)
                  if config.BBWEIGHT == True:
+                     fitnes[fl]=gau.fitnesCal2(bbs,fl,iln)
+                 else:
+@@ -832,7 +841,7 @@
+                         del config.SPECIALBITVECTORS[ele]
+                     
+  
+-                if retc < 0 and retc != -2:
++                if (retc < 0 and retc != -2) or (retc>128 and retc<193):
+                     print "[*]Error code is %d"%(retc,)
+                     efd.write("%s: %d\n"%(tfl, retc))
+                     efd.flush()
