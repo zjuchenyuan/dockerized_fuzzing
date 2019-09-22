@@ -26,7 +26,6 @@ Tag: Intel PIN
 
 ```
 echo "" | sudo tee /proc/sys/kernel/core_pattern
-# caution: unpatched shellphish/fuzzer will not work in this setting, see below
 echo 0 | sudo tee /proc/sys/kernel/core_uses_pid
 echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
@@ -44,8 +43,6 @@ These commands may impair your system security (turning off ASLR), but not a big
 
 Instead of `echo core > /proc/sys/kernel/core_pattern` given by many fuzzers which still generate a core dump file when crash happens, 
 here we disable core dump file generation to reduce I/O pressure during fuzzing. [Ref](http://man7.org/linux/man-pages/man5/core.5.html).
-
-**Specifically, we patched `fuzzer.py` of shellphish/fuzzer, to use correct method to check core_pattern.**
 
 
 ### Step2: Compile target programs
@@ -82,6 +79,8 @@ you can also finish this step by using Ghidra or IDA. See: https://github.com/vu
 docker run --privileged --rm -w /work -it -v `pwd`:/work -v /dev/shm/vutemp:/vuzzer64/fuzzer-code/vutemp zjuchenyuan/vuzzer64 /bin/bash
 # now, we are in the container
 python3 /angr-static-analysis-for-vuzzer64/BB-weight-angr.py ./mp3gain
+
+# covert pickle files to version 2, for python2 to use
 python3 -c "import pickle; open('mp3gain.py2.pkl','wb').write(pickle.dumps(pickle.load(open('mp3gain.pkl', 'rb')), 2))"
 python3 -c "import pickle; x=pickle.load(open('mp3gain.names', 'rb')); open('mp3gain.py2.names','wb').write(pickle.dumps((set([i.encode() for i in x[0]]), set([i.encode() for i in x[1]])), 2))"
 ```
