@@ -79,3 +79,7 @@ svn export https://github.com/UNIFUZZ/dockerized_fuzzing_examples/trunk/seed/mp3
 docker run  -w /work -it -v `pwd`:/work zjuchenyuan/driller \
     shellphuzz -c 1 -d 1 -w output/driller -s seed_mp3 --target-opts @@ ./mp3gain
 ```
+
+## Paper
+
+NDSS 2016: Driller: Augmenting Fuzzing Through Selective Symbolic Execution [PDF](https://sites.cs.ucsb.edu/~vigna/publications/2016_NDSS_Driller.pdf)
