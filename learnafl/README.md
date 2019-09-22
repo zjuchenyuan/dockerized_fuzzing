@@ -1,15 +1,16 @@
-## MOpt
+## LearnAFL
 
-https://hub.docker.com/r/zjuchenyuan/mopt
+https://hub.docker.com/r/zjuchenyuan/learnafl
 
-Source: https://github.com/puppet-meteor/MOpt-AFL
+Source: https://github.com/MoonLight-SteinsGate/LearnAFL
 
 ```
 Version: 2.52b
-Last Update: 2019/08
-Type: AFL-based
-Tag: Mutation Strategy Selection, PSO Algorithm
+Last Update: 2019/09
+Type: AFL-based, Structure-Aware
 ```
+
+## Guidance
 
 ## Guidance
 
@@ -40,7 +41,7 @@ here we disable core dump file generation to reduce I/O pressure during fuzzing.
 
 ### Step2: Compile target programs
 
-Since MOPT is based on AFL, this step is equal to [AFL Guidance](https://hub.docker.com/r/zjuchenyuan/afl).
+Since LearnAFL is based on AFL, this step is equal to [AFL Guidance](https://hub.docker.com/r/zjuchenyuan/afl).
 
 Download the source code, compile using `afl-gcc`.
 
@@ -67,11 +68,11 @@ svn export https://github.com/UNIFUZZ/dockerized_fuzzing_examples/trunk/seed/mp3
 Here we assume you have built mp3gain binary in current folder and downloaded mp3 seed files.
 
 ```
-mkdir -p output/mopt
-docker run --rm --privileged -it -w /work -it -v `pwd`:/work zjuchenyuan/mopt \
-    afl-fuzz -L 0 -i seed_mp3 -o output/mopt -- ./mp3gain @@
+mkdir -p output/learnafl
+docker run --rm --privileged -it -w /LearnAFL -it -v `pwd`:/work zjuchenyuan/learnafl \
+    ./afl-fuzz -i /work/seed_mp3 -o /work/output/learnafl -- /work/mp3gain @@
 ```
 
 ## Paper
 
-USENIX 2019: MOPT: Optimized Mutation Scheduling for Fuzzers [PDF](https://raw.githubusercontent.com/puppet-meteor/MOpt-AFL/master/MOpt_TechReport.pdf)
+IEEE Access: LearnAFL: Greybox Fuzzing with Knowledge Enhancement [IEEE Document](https://ieeexplore.ieee.org/document/8811487)
