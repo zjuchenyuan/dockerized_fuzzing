@@ -4,6 +4,11 @@ https://hub.docker.com/r/zjuchenyuan/orthrus
 
 Source: https://github.com/test-pipeline/orthrus
 
+Modification: 
+
+- add correct exploitable path to `.gdbinit`
+- add `--coverage` to cov build command line.
+
 ```
 Version: 1.2
 More Versions: LLVM 3.8
