@@ -21,4 +21,6 @@ RUN python3 -m pip install -U pip &&\
     cp -R -v /shellphish-afl/bin/afl-unix /usr/bin/
 ADD shellphuzz /usr/local/bin/shellphuzz
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 10
-#ADD create_dict.py /usr/local/bin/create_dict.py
+
+# fix for using empty core_pattern
+RUN sed -i 's/if not "core" in f.read():/if f.read().startswith("|"):/' /usr/local/lib/python3.5/dist-packages/fuzzer/fuzzer.py
