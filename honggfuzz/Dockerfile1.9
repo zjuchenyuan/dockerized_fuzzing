@@ -2,7 +2,7 @@ FROM zjuchenyuan/base
 
 LABEL description="Dockerfile for honggfuzz"
 
-RUN apt install -y libunwind8-dev binutils-dev clang-6.0 &&\
+RUN apt update && apt install -y libunwind8-dev binutils-dev clang-6.0 &&\
     update-alternatives --install /usr/bin/clang clang /usr/bin/clang-6.0 50 &&\
     update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-6.0 50
 
