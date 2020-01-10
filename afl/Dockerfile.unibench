@@ -1,0 +1,43 @@
+FROM zjuchenyuan/afl
+RUN git clone https://github.com/UNIFUZZ/unibench &&\
+    cd unibench && \
+    mkdir mp3gain-1.5.2 && cd mp3gain-1.5.2 && mv ../mp3gain-1.5.2.zip ./ && unzip -q mp3gain-1.5.2.zip && rm mp3gain-1.5.2.zip && cd .. &&\
+    ls *.zip|xargs -i unzip -q '{}' &&\
+    ls *.tar.gz|xargs -i tar xf '{}' &&\
+    rm -r .git/ *.tar.gz *.zip &&\
+    mv SQLite-8a8ffc86 SQLite-3.8.9 && mv binutils_5279478 binutils-5279478 && mv libtiff-Release-v3-9-7 libtiff-3.9.7 &&\
+    ls -alh
+RUN mkdir -p /d/p/justafl /d/p/aflasan
+RUN cd /unibench/exiv2-0.26 && cmake -DEXIV2_ENABLE_SHARED=OFF . && make -j && cp bin/exiv2 /d/p/justafl/ &&\
+    make clean && AFL_USE_ASAN=1 make -j && cp bin/exiv2 /d/p/aflasan/ &&\
+    make clean
+
+RUN apt update && apt install -y libglib2.0-dev gtk-doc-tools libtiff-dev libpng-dev &&\
+    cd /unibench/gdk-pixbuf-2.31.1 &&\
+    ./autogen.sh --enable-static=yes --enable-shared=no --with-included-loaders=yes && make -j &&\
+    cp gdk-pixbuf/gdk-pixbuf-pixdata /d/p/justafl/ &&\
+    make clean && AFL_USE_ASAN=1 make -j &&\
+    cp gdk-pixbuf/gdk-pixbuf-pixdata /d/p/aflasan/ &&\
+    make clean
+
+RUN cd /unibench/jasper-2.0.12 && cmake -DJAS_ENABLE_SHARED=OFF -DALLOW_IN_SOURCE_BUILD=ON . &&\
+    make -j &&\
+    cp src/appl/imginfo /d/p/justafl/ &&\
+    make clean && AFL_USE_ASAN=1 make -j &&\
+    cp src/appl/imginfo /d/p/aflasan/ &&\
+    make clean
+
+RUN cd /unibench/jhead-3.00 &&\
+    make -j &&\
+    cp jhead /d/p/justafl/ &&\
+    make clean && AFL_USE_ASAN=1 make -j &&\
+    cp jhead /d/p/aflasan/ &&\
+    make clean
+
+RUN cd /unibench/libtiff-3.9.7 && ./autogen.sh && ./configure --disable-shared &&\
+    make -j &&\
+    cp tools/tiffsplit /d/p/justafl/ &&\
+    make clean && AFL_USE_ASAN=1 make -j &&\
+    cp tools/tiffsplit /d/p/aflasan/ &&\
+    make clean
+
