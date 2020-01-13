@@ -20,3 +20,5 @@ RUN ./build/install_rust.sh && \
     ./build/install_tools.sh
 RUN ./build/build.sh
 RUN ./build/install_pin_mode.sh
+
+ENV CC=/angora/bin/angora-clang CXX=/angora/bin/angora-clang++

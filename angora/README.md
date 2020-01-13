@@ -58,10 +58,10 @@ unzip ../mp3gain-1_6_2-src.zip
 mkdir -p {fast,taint}
 
 # build angora fast and taint binaries
-docker run --rm -w /work -it -v `pwd`:/work --privileged --env CC=/angora/bin/angora-clang --env CXX=/angora/bin/angora-clang++ zjuchenyuan/angora sh -c "make clean; make"
+docker run --rm -w /work -it -v `pwd`:/work --privileged zjuchenyuan/angora sh -c "make clean; make"
 mv mp3gain fast/
 
-docker run --rm -w /work -it -v `pwd`:/work --privileged --env CC=/angora/bin/angora-clang --env CXX=/angora/bin/angora-clang++ --env USE_TRACK=1 --env ANGORA_TAINT_RULE_LIST=/tmp/abilist.txt zjuchenyuan/angora sh -c "make clean; /angora/tools/gen_library_abilist.sh  /usr/lib/x86_64-linux-gnu/libmpg123.so discard > /tmp/abilist.txt; make"
+docker run --rm -w /work -it -v `pwd`:/work --privileged --env USE_TRACK=1 --env ANGORA_TAINT_RULE_LIST=/tmp/abilist.txt zjuchenyuan/angora sh -c "make clean; /angora/tools/gen_library_abilist.sh  /usr/lib/x86_64-linux-gnu/libmpg123.so discard > /tmp/abilist.txt; make"
 mv mp3gain taint/
 ```
 
