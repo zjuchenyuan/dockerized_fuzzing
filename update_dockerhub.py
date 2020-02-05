@@ -18,8 +18,9 @@ for filepath in filepaths:
     if name == "example":
         continue
     data["full_description"] = open(name+"/README.md", encoding="utf-8").read()
-    response = requests.patch('https://cloud.docker.com/v2/repositories/zjuchenyuan/'+name+'/', headers=headers, cookies=cookies, data=json.dumps(data))
+    response = requests.patch('https://hub.docker.com/v2/repositories/zjuchenyuan/'+name+'/', headers=headers, cookies=cookies, data=json.dumps(data))
     try:
-        print(response.json()["name"])
+        print(response.json())
     except:
         print("Error:", filepath)
+

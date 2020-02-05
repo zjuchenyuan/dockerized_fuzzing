@@ -1,0 +1,10 @@
+[Main]
+serverhost = 0.0.0.0
+serverport = 8888
+serverproto = https
+serverauthtoken = x
+sigdir = /tmp/sigcache/
+tool = jsfunfuzz
+product = jsfunfuzz
+platform = x86_64
+os = linux
