@@ -11,6 +11,8 @@ Language: Swift
 Type: Coverage-based fuzzer
 ```
 
+Dockerfile: [https://github.com/zjuchenyuan/dockerized_fuzzing/tree/master/fuzzilli](https://github.com/zjuchenyuan/dockerized_fuzzing/tree/master/fuzzilli)
+
 This image only contain spidermonkey (firefox js engine). `zjuchenyuan/fuzzilli:spidermonkey`
 
 TODO: add image for v8 and webkit.

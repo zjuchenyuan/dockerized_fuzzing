@@ -11,6 +11,8 @@ Language: Python, JavaScript
 Type: Generation
 ```
 
+Dockerfile: [https://github.com/zjuchenyuan/dockerized_fuzzing/tree/master/jsfunfuzz](https://github.com/zjuchenyuan/dockerized_fuzzing/tree/master/jsfunfuzz)
+
 ## Usage
 
 ```
