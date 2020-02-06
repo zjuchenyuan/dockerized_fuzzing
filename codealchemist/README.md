@@ -8,7 +8,8 @@ Source: https://github.com/SoftSec-KAIST/CodeAlchemist
 Current Version: git c7725d8 2019/11/11
 More Versions: .Net 2.1
 Language: .Net Core
-Type: Generation-based fuzzer
+Type: Generation-based fuzzer, Semantics-aware
+Target: JS engine
 ```
 
 ## Usage
