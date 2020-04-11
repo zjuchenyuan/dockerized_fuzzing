@@ -1,0 +1,9 @@
+FROM zjuchenyuan/angora:latest
+
+ENV CC="" CXX=""
+
+RUN sed -i 's/15000/1048576/g' /angora/common/src/config.rs &&\
+    rm -r /angora/target &&\
+    ./build/build.sh
+
+ENV CC=/angora/bin/angora-clang CXX=/angora/bin/angora-clang++

@@ -1,6 +1,6 @@
 ## AFLGo: Directed Greybox Fuzzing
 
-https://github.com/aflgo/aflgo
+https://hub.docker.com/r/zjuchenyuan/aflgo
 
 Source: https://github.com/aflgo/aflgo
 
