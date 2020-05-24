@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+"""
+this script is used to update README on DockerHub
+To use this, manually login to DockerHub, and trigger a README update request, 
+then copy cURL request (in Chrome DevTools) to https://curl.trillworks.com/ to get headers and cookies
+"""
 import requests
 import json
 import glob

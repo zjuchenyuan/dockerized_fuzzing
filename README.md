@@ -1,8 +1,6 @@
 # dockerized_fuzzing
 Run fuzzing within Docker
 
-This project is part of [UNIFUZZ](https://github.com/UNIFUZZ), providing Dockerfiles and build images for running fuzzers.
-
 ## Fuzzers
 
 | Name                                                    | Official Website                   | Mutation/Generation | Directed/Coverage | Source Code/Binary |
