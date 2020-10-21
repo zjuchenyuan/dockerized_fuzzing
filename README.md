@@ -43,3 +43,11 @@ This repo is part of [UNIFUZZ](https://github.com/unifuzz).
 |[VUzzer64](https://hub.docker.com/r/zjuchenyuan/vuzzer64)|https://github.com/vusec/vuzzer64|Mutation|Coverage|Binary|
 |[zzuf](https://hub.docker.com/r/zjuchenyuan/zzuf)|https://github.com/samhocevar/zzuf|Mutation|n.a.|Binary|
 
+### Welcome PR
+
+We are willing to accept pull requests for new fuzzers! Please follow these instructions:
+
+1. Edit the above table to include your fuzzer name, DockerHub link, and type information.
+2. In your DockerHub README, provide guidance for using your fuzzer, detailed steps are appreciated (you can follow the guidance template of [AFL](https://hub.docker.com/r/zjuchenyuan/afl)).
+3. Provide Dockerfile for building the fuzzer.
+4. If your fuzzer requires customized compilation steps rather than just AFL-instrumentation, please also implement [unibench_build](https://github.com/unifuzz/unibench_build) Dockerfile for building 20 unibench programs, so that your fuzzer can be directly used for evaluation.
