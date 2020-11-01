@@ -1,0 +1,31 @@
+diff --git a/fuzz/scripts/populate.sh b/fuzz/scripts/populate.sh
+index 6cf2ea8..c575019 100755
+--- fuzz/scripts/populate.sh
++++ fuzz/scripts/populate.sh
+@@ -15,8 +15,7 @@ else
+     libs="$DIE_corpus/lib.js $DIE_corpus/jsc.js $DIE_corpus/v8.js $DIE_corpus/ffx.js $DIE_corpus/chakra.js"
+ fi
+
+-tmux new-session -s corpus -d \
+-        "./fuzz/scripts/run-all.py -- ./fuzz/afl/afl-fuzz -m none -o output \
++./fuzz/scripts/run-all.py -- ./fuzz/afl/afl-fuzz -C -m none -o output \
+         -i ./corpus/output \
+-        "$1" ${libs} @@"
++        "$1" ${libs} @@
+
+diff --git a/fuzz/scripts/run-all.py b/fuzz/scripts/run-all.py
+index 00f409d..c431f31 100755
+--- fuzz/scripts/run-all.py
++++ fuzz/scripts/run-all.py
+@@ -10,9 +10,9 @@ environ["REDIS_URL"] = "redis://localhost:9000"
+ if __name__ == '__main__':
+     p = argparse.ArgumentParser()
+     p.add_argument('cmd', nargs='+')
+-    p.add_argument('--cpu', nargs='?', type=int, default=int(multiprocessing.cpu_count() - 4))
++    p.add_argument('--cpu', nargs='?', type=int, default=int(multiprocessing.cpu_count()))
+     cmd = p.parse_args().cmd
+     assert('output' in cmd)
+     for i in range(p.parse_args().cpu):
+         new_cmd = ' '.join(cmd).replace('output', 'output-%d' % i)
+-        os.system('tmux new-window -n jsfuzz-%d "AFL_NO_UI=1 REDIS_URL=redis://localhost:9000 %s; /bin/bash"' % (i, new_cmd))
++        os.system('AFL_NO_UI=1 REDIS_URL=redis://localhost:9000 %s' % (new_cmd))
