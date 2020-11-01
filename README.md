@@ -14,6 +14,7 @@ This repo is part of [UNIFUZZ](https://github.com/unifuzz).
 |[AFLSmart](https://hub.docker.com/r/zjuchenyuan/aflsmart)|https://github.com/aflsmart/aflsmart|Mutation|Coverage|Both|
 |[Angora](https://hub.docker.com/r/zjuchenyuan/angora)|https://github.com/AngoraFuzzer/Angora|Mutation|Coverage|Both|
 |[CodeAlchemist](https://hub.docker.com/r/zjuchenyuan/codealchemist)|https://github.com/SoftSec-KAIST/CodeAlchemist|Generation|n.a.|Binary|
+|[DIE](https://hub.docker.com/r/zjuchenyuan/die)|https://github.com/sslab-gatech/DIE|Mutation|Coverage|Source|
 |[Driller](https://hub.docker.com/r/zjuchenyuan/driller)|https://github.com/shellphish/driller|Mutation|Coverage|Binary|
 |[Domato](https://hub.docker.com/r/zjuchenyuan/domato)|https://github.com/googleprojectzero/domato|Generation|n.a.|Binary|
 |[Dharma](https://hub.docker.com/r/zjuchenyuan/dharma)|https://github.com/MozillaSecurity/dharma|Generation|n.a.|Binary|

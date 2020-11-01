@@ -2,6 +2,8 @@
 
 https://hub.docker.com/r/zjuchenyuan/die
 
+[Dockerfile](https://github.com/zjuchenyuan/dockerized_fuzzing/blob/master/die/Dockerfile)
+
 Source: https://github.com/sslab-gatech/DIE
 
 ```
