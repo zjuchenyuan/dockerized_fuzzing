@@ -1,7 +1,7 @@
 # dockerized_fuzzing
 Run fuzzing within Docker. Currently we have incorporated **36 usable fuzzing tools**.
 
-This repo is part of [UNIFUZZ](https://github.com/unifuzz). The conrresponding paper will appear on USENIX Security 2021 [paper pdf](https://nesa.zju.edu.cn/download/UNIFUZZ%20A%20Holistic%20and%20Pragmatic%20Metrics-Driven%20Platform%20for%20Evaluating%20Fuzzers.pdf).
+This repo is part of [UNIFUZZ](https://github.com/unifuzz). The corresponding paper will appear on USENIX Security 2021. [Paper PDF](https://nesa.zju.edu.cn/download/UNIFUZZ%20A%20Holistic%20and%20Pragmatic%20Metrics-Driven%20Platform%20for%20Evaluating%20Fuzzers.pdf)
 
 For citing this paper:
 
