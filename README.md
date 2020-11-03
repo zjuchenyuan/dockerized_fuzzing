@@ -1,5 +1,5 @@
 # dockerized_fuzzing
-Run fuzzing within Docker. Currently we have incorporated **36 usable fuzzing tools**.
+Run fuzzing within Docker. Currently we have incorporated **37 usable fuzzing tools**.
 
 This repo is part of [UNIFUZZ](https://github.com/unifuzz). The corresponding paper will appear on USENIX Security 2021. [Paper PDF](https://nesa.zju.edu.cn/download/UNIFUZZ%20A%20Holistic%20and%20Pragmatic%20Metrics-Driven%20Platform%20for%20Evaluating%20Fuzzers.pdf)
 
@@ -30,6 +30,7 @@ For citing this paper:
 |[Domato](https://hub.docker.com/r/zjuchenyuan/domato)|https://github.com/googleprojectzero/domato|Generation|n.a.|Binary|
 |[Dharma](https://hub.docker.com/r/zjuchenyuan/dharma)|https://github.com/MozillaSecurity/dharma|Generation|n.a.|Binary|
 |[Eclipser](https://hub.docker.com/r/zjuchenyuan/eclipser)|https://github.com/SoftSec-KAIST/Eclipser|Mutation|Coverage|Source|
+|[EcoFuzz](https://hub.docker.com/r/zjuchenyuan/ecofuzz)|https://github.com/MoonLight-SteinsGate/EcoFuzz|Mutation|Coverage|Both|
 |[FairFuzz](https://hub.docker.com/r/zjuchenyuan/fairfuzz)|https://github.com/carolemieux/afl-rb|Mutation|Coverage|Source|
 |[Fuzzilli](https://hub.docker.com/r/zjuchenyuan/fuzzilli)|https://github.com/googleprojectzero/fuzzilli|Mutation|Coverage|Source|
 |[Grammarinator](https://hub.docker.com/r/zjuchenyuan/grammarinator)|https://github.com/renatahodovan/grammarinator|Generation|n.a.|Binary|
