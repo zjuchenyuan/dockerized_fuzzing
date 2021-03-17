@@ -1,4 +1,4 @@
-## MOpt
+## EcoFuzz
 
 https://hub.docker.com/r/zjuchenyuan/ecofuzz
 
